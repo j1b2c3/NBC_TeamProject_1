@@ -1,0 +1,36 @@
+﻿#include "itemDB.h"
+
+using namespace std;
+
+// 실제 DB 정의
+map<int, Weapon> weaponDB;
+map<int, Armor> armorDB;
+map<int, Consumable> consumableDB;
+map<int, Loot> LootDB;
+map<int, Money> moneyDB;
+
+void initItemDB() {
+    // 무기 (아이템넘버, 이름, 구매가격, 판매가격, 공격력)
+    weaponDB[101] = { {101, "모험가의 검", 100, 60, true}, 10 };
+    weaponDB[102] = { {102, "롱 소드", 200, 120, true}, 20 };
+    weaponDB[103] = { {103, "브로드 소드", 300, 180, true}, 30 };
+    weaponDB[102] = { {104, "바스타드 소드", 500, 300, true}, 40 };
+
+    // 방어구 (번호, 이름, 구매가격, 판매가격, 방어력)
+    armorDB[201] = { {201, "낡은 가죽 갑옷", 150, 90, true}, 10 };
+    armorDB[202] = { {202, "체인 메일", 400, 240, true}, 20 };
+    armorDB[203] = { {203, "브리 건딘", 1000, 600, true}, 30 };
+
+    // 소모품 (번호, 이름, 구매가격, 판매가격, 회복력)
+    consumableDB[301] = { {301, "체력 포션", 50, 30, true}, 30 };
+    consumableDB[302] = { {302, "대형 체력 포션", 120, 72, true}, 100 };
+
+    // 전리품 (번호, 이름, 구매가격, 판매가격, 구매제한, 최대갯수)
+    LootDB[401] = { {401, "목재", 10, 2, false }, 999 };
+    LootDB[402] = { {402, "원석", 10, 2, false }, 999 };
+    LootDB[403] = { {403, "슬라임의 점액", 5, 5, false }, 999 };
+    LootDB[404] = { {404, "고블린의 귀", 10, 10, false }, 999 };
+
+    // 화폐 (번호, 이름, 구매가격, 판매가격, 구매제한, 최대갯수
+    consumableDB[501] = { {501, "금화", 1, 1, true }, 99999 };
+}

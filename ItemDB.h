@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// 아이템 타입 열거
+// 아이템 타입 열거형
 enum class ItemType {
     Weapon,
     Armor,
@@ -13,11 +13,13 @@ enum class ItemType {
     Money
 };
 
-// 공통 데이터
+// 공통 데이터 (우선순위) (상점에서 canBuy -> flase 구매 불가)
 struct ItemBase {
     int id;
     string name;
     int price;
+    int sellprice;
+    bool canBuy;
 };
 
 // 무기
@@ -32,13 +34,13 @@ struct Armor {
     int defense;
 };
 
-// 소모품 (단순 회복형)
+// 소모품 (회복형)
 struct Consumable {
     ItemBase base;
     int hp;
 };
 
-// 전리품
+// 전리품 
 struct Loot {
     ItemBase base;
     int amount;
