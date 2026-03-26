@@ -1,10 +1,10 @@
 #include <iostream>
-#include "monster.h"
-#include "player.h"
-#include "warrior.h"
-#include "magician.h"
-#include "thief.h"
-#include "archer.h"
+#include "Monster/monster.h"
+#include "Player/player.h"
+#include "Job/warrior.h"
+#include "Job/magician.h"
+#include "Job/thief.h"
+#include "Job/archer.h"
 using namespace std;
 
 string jobs[] = { "전사", "마법사", "도적", "궁수" };
