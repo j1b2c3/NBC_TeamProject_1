@@ -31,6 +31,7 @@ bool Inventory::hasItem(int id) const
     return items.count(id) > 0 && items.at(id) > 0;
 }
 
+// 소모품 사용
 void Inventory::useConsumable(int id, Player& player) {                                                                                                                                                                                                                                                           
     // 소모품인지 확인                                                                                                                                                                                                                                                                                            
     if (ItemFactory::getType(id) != ItemType::Consumable) {                                                                                                                                                                                                                                                       
@@ -46,7 +47,7 @@ void Inventory::useConsumable(int id, Player& player) {
 
     Consumable& item = consumableDB[id];
 
-    // 효과 적용
+    // 체력 회복
     int healed = std::min(item.hp, player.maxHP - player.hp);
     player.hp += healed;
 
@@ -58,6 +59,7 @@ void Inventory::useConsumable(int id, Player& player) {
     removeItem(id);
 }
 
+// 무기 장착
 void Inventory::equipWeapon(int id, Player& player) 
 {                                                                                                                                                                                                                                                             
       if (ItemFactory::getType(id) != ItemType::Weapon) 
@@ -86,6 +88,7 @@ void Inventory::equipWeapon(int id, Player& player)
                 << " (현재 공격력: " << player.attack << ")\n";
 }
 
+// 방어구 장착
 void Inventory::equipArmor(int id, Player& player) 
 {
     if (ItemFactory::getType(id) != ItemType::Armor) 
@@ -114,6 +117,7 @@ void Inventory::equipArmor(int id, Player& player)
               << " (현재 방어력: " << player.defense << ")\n";
 }
 
+// 무기 장착 해제
 void Inventory::unequipWeapon(Player& player) 
 {                                                                                                                                                                                                                                                                   
     if (equippedWeaponId == 0) 
@@ -131,6 +135,7 @@ void Inventory::unequipWeapon(Player& player)
     equippedWeaponId = 0;
 }
 
+// 방어구 장착 해제
 void Inventory::unequipArmor(Player& player) 
 {
     if (equippedArmorId == 0) 
@@ -148,6 +153,7 @@ void Inventory::unequipArmor(Player& player)
     equippedArmorId = 0;
 }
 
+// 인벤토리 출력
 void Inventory::displayItems() const 
 {                                                                                                                                                                                                                                                                            
     std::cout << "\n===== 인벤토리 =====\n";                                                                                                                                                                                                                                                                      
@@ -163,12 +169,14 @@ void Inventory::displayItems() const
         std::cout << "[" << pair.first << "] "
                   << ItemFactory::getName(pair.first)
                   << " x" << pair.second
+                // 가격 관련 -> 상점으로 이관
                   << " (가격: " << ItemFactory::getPrice(pair.first) << "골드)\n";
     }
 
     std::cout << "====================\n";
 }
 
+// 장착된 장비 출력
 void Inventory::displayEquipped() const 
 {
     std::cout << "\n===== 장착 장비 =====\n";
