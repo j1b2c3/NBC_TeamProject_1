@@ -1,97 +1,6 @@
 ﻿#include "shopsystem.h"
-
-// ----------------- 구매 -----------------
-void ShopSystem::buyItem(int id, ItemType type, int amount,
-    int& playerGold,
-    map<int, int>& playerWeapons,
-    map<int, int>& playerArmors,
-    map<int, int>& playerConsumables,
-    map<int, int>& playerLoot)
-{
-    int cost = 0;
-    bool canBuy = true;
-
-    switch (type) {
-    case ItemType::Weapon:
-        cost = weaponDB[id].base.price * amount;
-        canBuy = weaponDB[id].base.canBuy;
-        break;
-    case ItemType::Armor:
-        cost = armorDB[id].base.price * amount;
-        canBuy = armorDB[id].base.canBuy;
-        break;
-    case ItemType::Consumable:
-        cost = consumableDB[id].base.price * amount;
-        canBuy = consumableDB[id].base.canBuy;
-        break;
-    case ItemType::Loot:
-        cost = LootDB[id].base.price * amount;
-        canBuy = LootDB[id].base.canBuy;
-        break;
-    default: break;
-    }
-
-    if (!canBuy) {
-        cout << "이 아이템은 구매할 수 없습니다.\n";
-        return;
-    }
-
-    if (playerGold < cost) {
-        cout << "금화가 부족합니다. 필요 금화 : " << cost << "\n";
-        return;
-    }
-
-    playerGold -= cost;
-
-    switch (type) {
-    case ItemType::Weapon: playerWeapons[id] += amount; break;
-    case ItemType::Armor: playerArmors[id] += amount; break;
-    case ItemType::Consumable: playerConsumables[id] += amount; break;
-    case ItemType::Loot: playerLoot[id] += amount; break;
-    default: break;
-    }
-
-    cout << "구매 완료! " << amount << "개, 금화 -" << cost << "\n";
-}
-
-// ----------------- 판매 -----------------
-void ShopSystem::sellItem(int id, ItemType type,
-    int& playerGold,
-    map<int, int>& playerWeapons,
-    map<int, int>& playerArmors,
-    map<int, int>& playerConsumables,
-    map<int, int>& playerLoot)
-{
-    int qty = 0;
-    int gold = 0;
-
-    switch (type) {
-    case ItemType::Weapon:
-        qty = playerWeapons[id];
-        gold = qty * weaponDB[id].base.sellprice;
-        playerWeapons.erase(id);
-        break;
-    case ItemType::Armor:
-        qty = playerArmors[id];
-        gold = qty * armorDB[id].base.sellprice;
-        playerArmors.erase(id);
-        break;
-    case ItemType::Consumable:
-        qty = playerConsumables[id];
-        gold = qty * consumableDB[id].base.sellprice;
-        playerConsumables.erase(id);
-        break;
-    case ItemType::Loot:
-        qty = playerLoot[id];
-        gold = qty * LootDB[id].base.sellprice;
-        playerLoot.erase(id);
-        break;
-    default: break;
-    }
-
-    playerGold += gold;
-    cout << "판매 완료! 금화 +" << gold << "\n";
-}
+#include "ShopUI.h"
+#include "ShopLogic.h"
 
 // ----------------- 아즈키 스타일 상점 메뉴 -----------------
 void ShopSystem::showShopMenu(int& playerGold,
@@ -101,18 +10,10 @@ void ShopSystem::showShopMenu(int& playerGold,
     map<int, int>& playerLoot)
 {
     while (true) {
-        cout << "\n";
-        cout << "┌────────────────────────────────────┐\n";
-        cout << "|                   상점             |\n";
-        cout << "|────────────────────────────────────|\n";
-        cout << "| 금화: " << setw(15) << playerGold << "              |\n";
-        cout << "|────────────────────────────────────|\n";
-        cout << "| [1] 무기 구매       [2] 방어구 구매|\n";
-        cout << "| [3] 소모품 구매     [4] 전리품 판매|\n";
-        cout << "| [0] 상점 종료                      |\n";
-        cout << "└────────────────────────────────────┘\n";
+
+        printShopUI(playerGold);
         cout << "선택 >> ";
-        
+
         int menuchoice;
         cin >> menuchoice;
 
@@ -377,7 +278,7 @@ case 2: {
                 cin >> qty;
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-                ShopSystem::buyItem(itemId, ItemType::Consumable, qty, playerGold,
+                buyItem(itemId, ItemType::Consumable, qty, playerGold,
                     playerWeapons, playerArmors, playerConsumables, playerLoot);
             }
             else {
