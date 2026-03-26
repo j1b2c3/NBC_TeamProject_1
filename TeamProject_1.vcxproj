@@ -18,113 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include=".editorconfig" />
-    <Content Include=".gitignore" />
-    <Content Include=".git\config" />
-    <Content Include=".git\description" />
-    <Content Include=".git\HEAD" />
-    <Content Include=".git\hooks\applypatch-msg.sample" />
-    <Content Include=".git\hooks\commit-msg.sample" />
-    <Content Include=".git\hooks\fsmonitor-watchman.sample" />
-    <Content Include=".git\hooks\post-update.sample" />
-    <Content Include=".git\hooks\pre-applypatch.sample" />
-    <Content Include=".git\hooks\pre-commit.sample" />
-    <Content Include=".git\hooks\pre-merge-commit.sample" />
-    <Content Include=".git\hooks\pre-push.sample" />
-    <Content Include=".git\hooks\pre-rebase.sample" />
-    <Content Include=".git\hooks\pre-receive.sample" />
-    <Content Include=".git\hooks\prepare-commit-msg.sample" />
-    <Content Include=".git\hooks\push-to-checkout.sample" />
-    <Content Include=".git\hooks\sendemail-validate.sample" />
-    <Content Include=".git\hooks\update.sample" />
-    <Content Include=".git\index" />
-    <Content Include=".git\info\exclude" />
-    <Content Include=".git\objects\01\eabcacf2d22f59d038229501366bce0d9e63c4" />
-    <Content Include=".git\objects\06\88182a09b43bbbe5b6d467517860476fce11f9" />
-    <Content Include=".git\objects\0d\429e6f33dac379584be2ba6bb4519ad7847c7d" />
-    <Content Include=".git\objects\15\de63bdc23ff21c960e24846584880787ae283c" />
-    <Content Include=".git\objects\44\e16be25231b0ca0efa1f0e47c81b991325ab2d" />
-    <Content Include=".git\objects\45\571f8ad8225f6992fe6cfbca2d2f9ec98858b9" />
-    <Content Include=".git\objects\49\2fa0e25915ecbb8cfc2b0f72369dfb293cc8ac" />
-    <Content Include=".git\objects\55\4deccfa9ce16c4b478ef0a78d02c919c03095f" />
-    <Content Include=".git\objects\56\8725ae417743239ea55a6a7fa308509d9f01c6" />
-    <Content Include=".git\objects\60\6249ca35d8001e3e0cb8a176917f08024ddf29" />
-    <Content Include=".git\objects\7a\7bf8bc8924ef41d9201912e8510cd593cc1d7d" />
-    <Content Include=".git\objects\7a\f4c41b9d234f7341738482361bad08b4fe17dc" />
-    <Content Include=".git\objects\7b\bfd8e1ba1a409ce1c7d7d9d41266b2d7a50214" />
-    <Content Include=".git\objects\8e\ec1592d5587e7684983d097c781bdedf6fb71c" />
-    <Content Include=".git\objects\8f\413859820edce13ae63945263097a4153fd13c" />
-    <Content Include=".git\objects\8f\d7e570c361c06235a77242e5b106ca2b13db2f" />
-    <Content Include=".git\objects\90\d761f6d9ef508c4ca74552291070dff19c0c25" />
-    <Content Include=".git\objects\93\2e55f4bd1e5dc2ba4beada596e7f714d45bba1" />
-    <Content Include=".git\objects\98\f2bcb46ad79c342911fd67573aa39de1d1ea7e" />
-    <Content Include=".git\objects\a0\41f6796c03272520287e1a9226cca9d2361e28" />
-    <Content Include=".git\objects\a2\013da8a9620ce70589832bb14222f361e5e520" />
-    <Content Include=".git\objects\a7\ec41a08fcf5408ebb9954d7daa17316d700871" />
-    <Content Include=".git\objects\c3\260bbea6d53934a48d12cc5dfaac539dcf8439" />
-    <Content Include=".git\objects\c7\d45458270ded383611f317854fefd6003c73c4" />
-    <Content Include=".git\objects\d5\398a66d7a4872f1cb5005e47bd36962d998dcb" />
-    <Content Include=".git\objects\db\95d4169808c698496cc1f980a3b8f4b8686c83" />
-    <Content Include=".git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391" />
-    <Content Include=".git\objects\ec\12d16f1197f4d239e1d7dcbe802dbb78ee8eea" />
-    <Content Include=".git\objects\ff\71a3d15339b8f60b48e106d0cdf928550b86f1" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\.gitignore" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\encodings.xml" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\indexLayout.xml" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\projectSettingsUpdater.xml" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\vcs.xml" />
-    <Content Include=".idea\.idea.TeamProject_1\.idea\workspace.xml" />
-    <Content Include="README.md" />
-    <Content Include="TeamProject_1.sln" />
-    <Content Include="TeamProject_1.vcxproj.filters" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.exe.recipe" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.ilk" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.obj" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\CL.command.1.tlog" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\link.command.1.tlog" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\link.secondary.1.tlog" />
-    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\TeamProject_1.lastbuildstate" />
-    <Content Include="TeamProject_1\x64\Debug\vc143.idb" />
-    <Content Include="TeamProject_1\x64\Debug\vc143.pdb" />
-    <Content Include="x64\Debug\TeamProject_1.exe" />
-    <Content Include="x64\Debug\TeamProject_1.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include=".git\objects\info\" />
-    <Folder Include=".git\objects\pack\" />
-    <Folder Include=".git\refs\heads\" />
-    <Folder Include=".git\refs\tags\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BattleManager.cpp" />
-    <ClCompile Include="Item\Inventory.cpp" />
-    <ClCompile Include="Item\InventoryTest.cpp" />
-    <ClCompile Include="Item\ItemFactory.cpp" />
-    <ClCompile Include="Launch.cpp" />
-    <ClCompile Include="Player\createPlayer.cpp" />
-    <ClCompile Include="Player\Job\Archer.cpp" />
-    <ClCompile Include="Player\Job\Magician.cpp" />
-    <ClCompile Include="Player\Job\Thief.cpp" />
-    <ClCompile Include="Player\Job\Warrior.cpp" />
-    <ClCompile Include="Player\Monster\monster.cpp" />
-    <ClCompile Include="Player\Player\player.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BattleManager.h" />
-    <ClInclude Include="Item\Inventory.h" />
-    <ClInclude Include="Item\ItemFactory.h" />
-    <ClInclude Include="Item\Player_Temp.h" />
-    <ClInclude Include="Player\Job\archer.h" />
-    <ClInclude Include="Player\Job\magician.h" />
-    <ClInclude Include="Player\Job\thief.h" />
-    <ClInclude Include="Player\Job\warrior.h" />
-    <ClInclude Include="Player\Monster\monster.h" />
-    <ClInclude Include="Player\Player\player.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{7171E2C8-7221-47F8-B0E6-E0D35909B98F}</ProjectGuid>
+    <ProjectGuid>{73D6ACAB-E655-4EDC-912A-2ABE563A7D38}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TeamProject_1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -257,6 +153,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Launch.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
