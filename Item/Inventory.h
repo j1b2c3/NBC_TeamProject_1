@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <map>
-#include "itemDB.h"
+// Todo : DB 추가 필요
+// #include "itemDB.h"
 
 class Player; // 전방 선언
 

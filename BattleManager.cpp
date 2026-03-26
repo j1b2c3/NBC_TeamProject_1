@@ -32,8 +32,8 @@ void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데
 	// Battle Logic
 	while (b_LifeCheck)// 반복 player 가 살아있는지 확인
 	{
-		cout << " ---------------- 던 --------------"
-			cout << " 1. 던전 입장 / 2. 상점 / 0. 나가기 ( 상점 까지 입장 턴 : " << BattleCount << " ) " << endl;
+		cout << " ---------------- 던 --------------";
+		cout << " 1. 던전 입장 / 2. 상점 / 0. 나가기 ( 상점 까지 입장 턴 : " << BattleCount << " ) " << endl;
 		cin >> Select;
 		// 던전 입장 조건 부터 ?
 
@@ -61,11 +61,12 @@ void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데
 			// 상점 입장 singleton 이 따로 들어왕함.
 			break;
 		case DungenMenu::Dungen_Exit: // 던전 out
-			PlayChecking = false;
+			// 에러 구문
+			// PlayChecking = false;
 			cout << " 던전 에서 탈출합니다 ." << endl;
 			//return 도 가능
 			break;
-		case default:
+		default:
 			cout << "잘못 입력된 방식입니다 다시 입력해주세요  :" << endl;
 			break;
 		}

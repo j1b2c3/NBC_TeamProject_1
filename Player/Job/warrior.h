@@ -3,7 +3,7 @@
 
 class Warrior : public Player{
 public:
-    Warrior(string nickname);
+    Warrior(const string& nickname);
     void attack() override;
     void attack(Monster* monster) override;
 

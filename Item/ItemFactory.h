@@ -1,6 +1,7 @@
 ﻿#pragma once                                                                                                                                                                                                                                                                                                      
 #include <string>                                                                                                                                                                                                                                                                                                 
-#include "itemDB.h"                                                                                                                                                                                                                                                                                               
+// Todo : DB 추가 필요
+// #include "itemDB.h"                                                                                                                                                                                                                                                                                               
                   
 class ItemFactory 
 {
@@ -15,5 +16,6 @@ public:
     static bool exists(int id);
 
     // ID로 타입 반환
-    static ItemType getType(int id);
+    // Todo : 임시 사용 중지
+    // static ItemType getType(int id);
 };

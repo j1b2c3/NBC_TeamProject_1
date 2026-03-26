@@ -3,9 +3,9 @@
 #include <iostream>
 using namespace std;
 
-Archer::Archer(string nickname) : Player(nickname) {
+Archer::Archer(const string& nickname) : Player(nickname) {
     job_name = "궁수";
-    cout << "* 궁수로 전직하였습니다." << endl;
+    cout << "* 궁수로 전직하였습니다." << '\n';
 	HP = 50;
 	MP = 40;
 	power = 30;
@@ -15,20 +15,20 @@ Archer::Archer(string nickname) : Player(nickname) {
 }
 
 void Archer::attack() {
-    cout << "* 활을 쏘았다." << endl;
+    cout << "* 활을 쏘았다." << '\n';
 }
 
 void Archer::attack(Monster* monster)  {
 	attack();
 	int damage = power/2 - monster->getDefence();
 	if (damage <= 0) damage = 1;
-	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 2번 입혔습니다." << endl;
+	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 2번 입혔습니다." << '\n';
 	int newHP = monster->getHP() - damage * 2;
 	monster->setHP(newHP);
 	if (newHP > 0) {
-		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << endl;
+		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << '\n';
 	}
 	else {
-		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << endl;
+		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << '\n';
 	}
 }

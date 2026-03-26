@@ -97,7 +97,30 @@
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Item\Inventory.cpp" />
+    <ClCompile Include="Item\InventoryTest.cpp" />
+    <ClCompile Include="Item\ItemFactory.cpp" />
     <ClCompile Include="Launch.cpp" />
+    <ClCompile Include="Player\createPlayer.cpp" />
+    <ClCompile Include="Player\Job\Archer.cpp" />
+    <ClCompile Include="Player\Job\Magician.cpp" />
+    <ClCompile Include="Player\Job\Thief.cpp" />
+    <ClCompile Include="Player\Job\Warrior.cpp" />
+    <ClCompile Include="Player\Monster\monster.cpp" />
+    <ClCompile Include="Player\Player\player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="Item\Inventory.h" />
+    <ClInclude Include="Item\ItemFactory.h" />
+    <ClInclude Include="Item\Player_Temp.h" />
+    <ClInclude Include="Player\Job\archer.h" />
+    <ClInclude Include="Player\Job\magician.h" />
+    <ClInclude Include="Player\Job\thief.h" />
+    <ClInclude Include="Player\Job\warrior.h" />
+    <ClInclude Include="Player\Monster\monster.h" />
+    <ClInclude Include="Player\Player\player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

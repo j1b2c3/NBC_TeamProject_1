@@ -1,26 +1,28 @@
-#include "player.h"
+﻿#include "player.h"
 #include <iostream>
 using namespace std;
 
-Player::Player(string nickname) {
-	this->nickname = nickname;
-	level = 1;
-}
-
+Player::Player(const string& nickname) 
+	: nickname(nickname), level(1) {}
+	
 void Player::printPlayerStatus() {
-	cout << "------------------------------------" << endl;
-	cout << "* 현재 능력치" << endl;
-	cout << "닉네임: " << nickname << endl;
-	cout << "Lv. " << level << endl;
-	cout << "HP: " << HP << endl;
-	cout << "MP: " << MP << endl;
-	cout << "공격력: " << power << endl;
-	cout << "방어력: " << defence << endl;
-	cout << "정확도: " << accuracy << endl;
-	cout << "속도: " << speed << endl;
-	cout << "------------------------------------" << endl;
+	cout << "------------------------------------" << '\n';
+	cout << "* 현재 능력치" << '\n';
+	cout << "닉네임: " << nickname << '\n';
+	cout << "Lv. " << level << '\n';
+	cout << "HP: " << HP << '\n';
+	cout << "MP: " << MP << '\n';
+	cout << "공격력: " << power << '\n';
+	cout << "방어력: " << defence << '\n';
+	cout << "정확도: " << accuracy << '\n';
+	cout << "속도: " << speed << '\n';
+	cout << "------------------------------------" << '\n';
 }
 
+void Player::setNickname(string nickname)
+{
+	this->nickname = nickname;
+}
 
 void Player::setHP(int HP) {
 	this->HP = HP;

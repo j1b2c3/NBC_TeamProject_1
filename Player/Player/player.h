@@ -5,10 +5,9 @@ class Monster;
 
 class Player {
 public:
-    Player(string nickname);
-
     virtual void attack() = 0;
 	virtual void attack(Monster* monster) = 0;
+    Player(const string& nickname);
     void printPlayerStatus();
 
     // getter 함수

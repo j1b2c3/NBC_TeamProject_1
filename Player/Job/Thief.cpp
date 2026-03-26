@@ -4,9 +4,9 @@
 
 using namespace std;
 
-Thief::Thief(string nickname) : Player(nickname) {
+Thief::Thief(const string& nickname) : Player(nickname) {
     job_name = "도적";
-    cout << "* 도적으로 전직하였습니다." << endl;
+    cout << "* 도적으로 전직하였습니다." << '\n';
     HP = 60;
 	MP = 30;
 	power = 20;
@@ -16,7 +16,7 @@ Thief::Thief(string nickname) : Player(nickname) {
 }
 
 void Thief::attack() {
-    cout << "* 단검을 휘두른다" << endl;
+    cout << "* 단검을 휘두른다" << '\n';
 }
 
 
@@ -28,13 +28,13 @@ void Thief::attack(Monster* monster) {
 		damage *= 2;
 		cout << "* 크리티컬 히트! ";
 	}
-	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 입혔습니다." << endl;
+	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 입혔습니다." << '\n';
 	int newHP = monster->getHP() - damage;
 	monster->setHP(newHP);
 	if (newHP > 0) {
-		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << endl;
+		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << '\n';
 	}
 	else {
-		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << endl;
+		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << '\n';
 	}
 }
