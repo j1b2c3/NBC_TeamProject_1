@@ -1,5 +1,5 @@
 #include "monster.h"
-#include "../Player/player.h"
+#include "player.h"
 #include <iostream>
 using namespace std;
 

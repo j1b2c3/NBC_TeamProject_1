@@ -1,5 +1,5 @@
 #include "Magician.h"
-#include "../Monster/monster.h"
+#include "monster.h"
 #include <iostream>
 using namespace std;
 
