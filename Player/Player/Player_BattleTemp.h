@@ -1,6 +1,10 @@
 ﻿#pragma once
 #include <string>
 
+#include "../Monster/monster.h"
+
+class Monster;
+
 // 임시 Plater
 class Player
 {
@@ -29,11 +33,16 @@ public:
         gold = 0;
     }
 
-    int GetLevel() { return level; }
-    int GetExp() { return exp; }
-    int GetHP() { return hp; }
-    int GetMaxHP() { return hp_max; }
-    int GetATK() { return atk; }
-    int GetDEF() { return def; }
-    int GetGold() { return gold; }
+    int Attack(Monster* monster);
+
+    std::string GetName() { return name; }
+    int GetLevel() const { return level; }
+    int GetExp() const { return exp; }
+    int GetHP() const { return hp; }
+    int GetHP_MAX() const { return hp_max; }
+    int GetATK() const { return atk; }
+    int GetDEF() const { return def; }
+    int GetGold() const { return gold; }
+
+    void SetHP(int value);
 };
