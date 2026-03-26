@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NBC_TeamProject1.cpp">
+    <ClCompile Include="TeamProject_1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
