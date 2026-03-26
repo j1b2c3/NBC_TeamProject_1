@@ -115,7 +115,6 @@
     <ClInclude Include="Item\Inventory.h" />
     <ClInclude Include="Item\ItemFactory.h" />
     <ClInclude Include="Item\Player_Temp.h" />
-    <ClInclude Include="Player\createPlayer.h" />
     <ClInclude Include="Player\Job\archer.h" />
     <ClInclude Include="Player\Job\magician.h" />
     <ClInclude Include="Player\Job\thief.h" />
