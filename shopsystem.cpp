@@ -93,62 +93,6 @@ void ShopSystem::sellItem(int id, ItemType type,
     cout << "판매 완료! 금화 +" << gold << "\n";
 }
 
-void ShopSystem::showInventoryUI(int playerGold,
-    map<int, int>& playerWeapons,
-    map<int, int>& playerArmors,
-    map<int, int>& playerConsumables,
-    map<int, int>& playerLoot)
-{
-    // 총 폭 계산: 12 + 26 + 6 + 구분자 4 = 약 48
-    cout << "┌──────────────────────────────────────────────┐\n";
-    cout << "│              플레이어 인벤토리               │\n";
-    cout << "├──────────────────────────────────────────────┤\n";
-
-    // 헤더
-    cout << "│"
-        << left << setw(12) << "종류"
-        << "│"
-        << left << setw(26) << "이름"
-        << "│"
-        << right << setw(6) << "개수"
-        << "│\n";
-
-    cout << "├──────────────────────────────────────────────┤\n";
-
-    // 출력 함수
-    auto printItemRow = [](string typeName, string name, int qty) {
-        cout << "│"
-            << left << setw(12) << typeName
-            << "│"
-            << left << setw(26) << name
-            << "│"
-            << right << setw(6) << qty
-            << "│\n";
-        };
-
-    // 아이템 출력
-    for (auto& [id, qty] : playerWeapons)
-        printItemRow("무기", weaponDB[id].base.name, qty);
-    for (auto& [id, qty] : playerArmors)
-        printItemRow("방어구", armorDB[id].base.name, qty);
-    for (auto& [id, qty] : playerConsumables)
-        printItemRow("소모품", consumableDB[id].base.name, qty);
-    for (auto& [id, qty] : playerLoot)
-        printItemRow("전리품", LootDB[id].base.name, qty);
-
-    cout << "├──────────────────────────────────────────────┤\n";
-
-
-    cout << "│ 금화 : "
-        << left << setw(37) << playerGold << " │\n";
-
-    cout << "└──────────────────────────────────────────────┘\n";
-
-    cout << "\n아무 키나 입력하면 돌아갑니다 >> ";
-    cin.ignore();
-    cin.get();
-}
-
 // ----------------- 아즈키 스타일 상점 메뉴 -----------------
 void ShopSystem::showShopMenu(int& playerGold,
     map<int, int>& playerWeapons,
@@ -165,7 +109,7 @@ void ShopSystem::showShopMenu(int& playerGold,
         cout << "|────────────────────────────────────|\n";
         cout << "| [1] 무기 구매       [2] 방어구 구매|\n";
         cout << "| [3] 소모품 구매     [4] 전리품 판매|\n";
-        cout << "| [5] 인벤토리 확인   [0] 상점 종료  |\n";
+        cout << "| [0] 상점 종료                      |\n";
         cout << "└────────────────────────────────────┘\n";
         cout << "선택 >> ";
         
@@ -495,9 +439,6 @@ case 2: {
             }
             break;
         }
-        case 5:
-            ShopSystem::showInventoryUI(playerGold, playerWeapons, playerArmors, playerConsumables, playerLoot);
-            break;
         default:
             cout << "잘못된 입력입니다.\n";
         }
