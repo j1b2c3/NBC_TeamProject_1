@@ -6,6 +6,7 @@ using namespace std;
 
 // 메뉴 출력
 void displayMenu() {
+    
     cout << "\n" << endl;
     cout << "╔════════════════════════════════════════════════════════════════════════════╗" << endl;
     cout << "║                                                                            ║" << endl;
