@@ -1,39 +1,57 @@
-﻿#pragma once
+#pragma once
+#include <vector>
 #include <string>
-using namespace std;
 
 class Player;
 
-class Monster {
-public:
-    Monster(string name);
-    int attack(Player* player);
-
-    string getName() const;
-    int getHP() const;
-    int getHP_MAX() const;
-    int getPower() const;
-    int getDefence() const;
-    int getSpeed() const;
-
-    int getGold() const;
-    int getExp() const;
-
-    // 몬스터의 속성값을 정의하는 set 함수
-    void setName(string name);
-    void setHP(int value);
-    void setPower(int value);
-    void setDefence(int value);
-    void setSpeed(int value);
-
+class Monster
+{
 protected:
-    string name; // 몬스터의 이름
-    int HP; // 몬스터의 HP
-    int HP_MAX; // 몬스터의 HP
-    int power; // 몬스터의 공격력
-    int defence; // 몬스터의 방어력
-    int speed; // 몬스터의 스피드
+	std::string name;
+	int level;
+	float maxHp;
+	float curHp;
+	int atk;
+	int def;
+	int dodge;
+	int maxExp;
+	int minExp;
+	int maxGold;
+	int minGold;
+	//std::vector<item> items;
+private:
+	bool isDodged(int dodge);
+	int calculateDamage(int atk, int def);
+public:
+	Monster(
+		std::string name,
+		int level,
+		float maxHp,
+		float curHp,
+		int atk,
+		int def,
+		int dodge,
+		int minExp,
+		int maxExp,
+		int minGold,
+		int maxGold
+		//vector<item> items;
+	);
 
-    int gold;   // 몬스터의 골드
-    int exp;    // 몬스터의 경험치
+	void Attack(Player& player);
+
+	void TakeDamage(int damage, bool canDodge);
+	void giveLoot(Player& player);
+
+	std::string GetName();
+	int GetLevel();
+	float GetMaxHp();
+	float GetCurHp();
+	int GetAtk();
+	int GetDef();
+	int GetDodge();
+	int GetMaxExp();
+	int GetMinExp();
+	int GetMaxGold();
+	int GetMinGold();
 };

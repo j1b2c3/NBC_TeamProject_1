@@ -1,9 +1,12 @@
 #pragma once
-#include "../Player/player.h"
+#include "Player.h"
+#include <string>
+using namespace std;
 
-class Archer : public Player{
+class Archer : public Player
+{
 public:
-    Archer(const string& nickname);
-    void attack() override;
-    void attack(Monster* monster) override;
+	Archer(string nickname);
+
+	void Attack(Monster& monster) override;
 };

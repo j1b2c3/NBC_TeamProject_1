@@ -1,87 +1,178 @@
-﻿#include "player.h"
+#include "Player.h"
 #include <iostream>
 using namespace std;
 
-Player::Player(const string& nickname) 
-	: nickname(nickname), level(1) {}
-	
-void Player::printPlayerStatus() {
-	cout << "------------------------------------" << '\n';
-	cout << "* 현재 능력치" << '\n';
-	cout << "닉네임: " << nickname << '\n';
-	cout << "Lv. " << level << '\n';
-	cout << "HP: " << HP << '\n';
-	cout << "MP: " << MP << '\n';
-	cout << "공격력: " << power << '\n';
-	cout << "방어력: " << defence << '\n';
-	cout << "정확도: " << accuracy << '\n';
-	cout << "속도: " << speed << '\n';
-	cout << "------------------------------------" << '\n';
+Player::Player(string nickname)
+{
+	level = 1;
+	exp = 0;
+	maxHp = 100;
+	curHp = 100;
+	atk = 5;
+	def = 10;
+	dodge = 5;
+	gold = 0;
+	this->nickname = nickname;
 }
 
-void Player::setNickname(string nickname)
+bool Player::isDodged(int dodge)
+{
+	return rand() % 100 < dodge;
+}
+
+int Player::calculateDamage(int atk, int def)
+{
+	float reduction = def / 100.0f;
+	float damage = atk * (1.0f - reduction);
+
+	if (damage < 0) damage = 0;
+
+	return static_cast<int>(damage);
+}
+
+void Player::TakeDamage(int damage)
+{
+	if (isDodged(dodge))
+	{
+		cout << "플레이어가 공격을 회피했습니다!" << endl;
+	}
+	curHp -= damage;
+	if (curHp <= 0)
+	{
+		cout << "사망했습니다!" << endl;
+		cout << "게임 패배" << endl;
+	}
+}
+
+void Player::AddExp(int gainedExp)
+{
+    int needExp = 100;
+
+    for (int i = 1; i < level; i++)
+    {
+        needExp *= 2;
+    }
+
+    exp += gainedExp;
+
+    while (exp >= needExp)
+    {
+        exp -= needExp;
+        level++;
+        needExp *= 2;
+    }
+
+    cout << "레벨: " << level << endl;
+    cout << "남은 경험치: " << exp << " / " << needExp << endl;
+}
+
+void Player::SubExp(int lostExp)
+{
+	exp -= lostExp;
+	if (exp < 0) exp = 0;
+}
+
+void Player::AddGold(int gold)
+{
+	this->gold += gold;
+}
+
+void Player::SubGold(int gold)
+{
+	this->gold -= gold;
+}
+
+string Player::GetNickname()
+{
+	return nickname;
+}
+
+string Player::GetJobName()
+{
+	return jobname;
+}
+
+int Player::GetLevel()
+{
+	return level;
+}
+
+int Player::GetExp()
+{
+	return exp;
+}
+
+float Player::GetMaxHp()
+{
+	return maxHp;
+}
+
+float Player::GetCurHp()
+{
+	return curHp;
+}
+
+int Player::GetAtk()
+{
+	return atk;
+}
+
+int Player::GetDef()
+{
+	return def;
+}
+
+int Player::GetDodge()
+{
+	return dodge;
+}
+
+int Player::GetGold()
+{
+	return gold;
+}
+
+void Player::SetNickname(string nickname)
 {
 	this->nickname = nickname;
 }
 
-void Player::setHP(int HP) {
-	this->HP = HP;
+void Player::SetLevel(int level)
+{
+	this->level = level;
 }
 
-void Player::setMP(int MP) {
-	this->MP = MP;
+void Player::SetExp(int exp)
+{
+	this->exp = exp;
 }
 
-void Player::setPower(int power) {
-	this->power = power;
+void Player::SetMaxHp(float maxHp)
+{
+	this->maxHp = maxHp;
 }
 
-void Player::setDefence(int defence) {
-	this->defence = defence;
+void Player::SetCurHp(float curHp)
+{
+	this->curHp = curHp;
 }
 
-void Player::setAccuracy(int accuracy) {
-	this->accuracy = accuracy;
+void Player::SetAtk(int atk)
+{
+	this->atk = atk;
 }
 
-void Player::setSpeed(int speed) {
-	this->speed = speed;
+void Player::SetDef(int def)
+{
+	this->def = def;
 }
 
-string Player::getJobName() {
-	return job_name;
+void Player::SetDodge(int dodge)
+{
+	this->dodge = dodge;
 }
 
-string Player::getNickname() {
-	return nickname;
+void Player::SetGold(int gold)
+{
+	this->gold = gold;
 }
-
-int Player::getLevel() {
-	return level;
-}
-
-int Player::getHP() {
-	return HP;
-}
-
-int Player::getMP() {
-	return MP;
-}
-
-int Player::getPower() {
-	return power;
-}
-
-int Player::getDefence() {
-	return defence;
-}
-
-int Player::getAccuracy() {
-	return accuracy;
-}
-
-int Player::getSpeed() {
-	return speed;
-}
-
-
