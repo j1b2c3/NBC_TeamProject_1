@@ -24,11 +24,11 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 		{
 			if (Select % Shop_Stage == 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
 				EnterShop();
+
 			if (Select == Last_Stage) // 10번째 스테이지 
 				; // 보스 던전 입장 bool값으로 하는
-			else if (HiddenRand()) // 히든 던전 입장 
-				;
-			//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
+			else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
+				;//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 			else
 				; // 노말 던전 입장
 
@@ -94,11 +94,12 @@ void dungeonManager::EnterShop()
 		if (Shop_Select == 1)
 		{
 			; // 상점 입장 
+			cout << " ------ 상점 탈출 ----- " << endl;
 			break;// 끝나면 break해서 함수 탈출
 		}
 		else if (Shop_Select == 2)
 		{
-			cout << " 상점을 지나쳤습니다.. " << endl;
+			cout << " ------------상점을 지나쳤습니다.. " << endl;
 			break;// 반복문만 제거 
 		}
 		else
@@ -108,6 +109,7 @@ void dungeonManager::EnterShop()
 // reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
 void dungeonManager::DugenClear_Root() // 클리어 보상
 {
+	// 클리어 보상을 itemDb에서 singletoon에서 
 	if (Reward == Stage_Category::Normal) // 노말 클리서이 보상
 		; // inventory 호출해와서 item 분배 
 	else if (Reward == Stage_Category::Hidden) // hidden 클리어시 보상
@@ -121,4 +123,8 @@ bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 {
 	int roll = rand() % 100;
 	return roll < 5; // 5% 확률
+}
+void dungeonManager::Rooting()
+{
+	tempData.amount = 1;
 }
