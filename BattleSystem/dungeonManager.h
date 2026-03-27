@@ -16,7 +16,7 @@ static enum DungeonMenu //switch case 용
 {
 	Dungeon_Enter = 1,
 	Store_Enter = 2,
-	Dungen_Exit = 0
+	Dungeon_Exit = 0
 };
 static enum Stage_Category // 보상 관련 분할 
 {
