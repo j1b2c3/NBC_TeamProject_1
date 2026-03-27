@@ -5,7 +5,6 @@
 #include "../Player/Monster/monster.h"
 #include "../Player/Player/Player_BattleTemp.h"
 
-// 내가 전투관련인데 BattleManager가 따로 있다니... 이름 충돌이 있어서 헷갈려요ㅠㅠ
 class BattleSystem
 {
 private:
@@ -21,13 +20,14 @@ private:
 	Player* player = nullptr;
 	std::vector<Monster*> monsters;
 	bool bProgress = true;
+	bool bVictory = false;
 public:
 	static BattleSystem& getInstance()
 	{
 		static BattleSystem s;
 		return s;
 	}
-	void Battle(Player* _player, std::vector<Monster*> _monsters);
+	bool Battle(Player* _player, std::vector<Monster*> _monsters);	// 전투발생
 
 
 	int SelectAction(std::vector<std::string> actions, int col); // 행동명, 한 줄당 액션표시 개수
