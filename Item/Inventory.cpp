@@ -50,12 +50,12 @@ void Inventory::useConsumable(int id, Player& player)
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = std::min(item.hp, player.getMaxHP() - player.getHP());
-    player.setHP(player.getHP() + healed);
+    int healed = std::min(item.hp, player.getMaxHp() - player.getCurHp());
+    player.setCurHp(player.getCurHp() + healed);
 
     std::cout << "[아이템 사용] " << item.base.name
               << " → HP +" << healed
-              << " (현재 HP: " << player.getHP() << "/" << player.getMaxHP() << ")\n";
+              << " (현재 HP: " << player.getCurHp() << "/" << player.getMaxHp() << ")\n";
 
     // 사용 후 제거
     removeItem(id);
