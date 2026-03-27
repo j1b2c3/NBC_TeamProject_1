@@ -19,38 +19,40 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 	player = _player;
 	monsters = _monsters;
 
-	cout << "전투가 시작되었다!" << endl;
+	cout << "전투가 시작되었다!" << '\n';
 
 	bProgress = true; // 전투가 진행중인가?
 	while (true)
 	{
 		int choice;
 		// 플레이어 페이즈
-		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << player->GetDEF() << ")" << endl;
-		cout << endl;
+		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << player->GetDEF() << ")" <<
+			'\n';
+		cout << '\n';
 		for (Monster* m : monsters)
 		{
-			cout << m->getName() << ": (HP: " << m->getHP() << "/" << m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << m->getDefence() << ")" << endl;
+			cout << m->getName() << ": (HP: " << m->getHP() << "/" << m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << m->getDefence() << ")" <<
+				'\n';
 		}
-		cout << endl;
+		cout << '\n';
 		choice = SelectAction({"공격", "아이템", "도주"}, 2);
 
 		switch (choice)
 		{
 		case 0:
 			
-			cout << "누구를 공격할까?" << endl;
+			cout << "누구를 공격할까?" << '\n';
 			choice = SelectAction(GetMonsterNames(), 4);
 			
 			cout << monsters[choice]->getName() << "에게 공격! ";
-			cout << player->Attack(monsters[choice]) << "의 피해를 입혔다!" << endl;
+			cout << player->Attack(monsters[choice]) << "의 피해를 입혔다!" << '\n';
 			
 			break;
 		case 1:
-			cout << "아이템을 사용했다!" << endl;
+			cout << "아이템을 사용했다!" << '\n';
 			break;
 		case 2:
-			cout << "도주했다..." << endl;
+			cout << "도주했다..." << '\n';
 			bProgress = false;
 			break;
 		}
@@ -59,7 +61,7 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 		// 몬스터 페이즈
 		choice = rand() % monsters.size();
 		cout << monsters[choice]->getName() << "의 공격! ";
-		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << endl;
+		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << '\n';
 		if (CheckState()) break;
 	}
 	for (Monster* m : monsters)
@@ -75,7 +77,7 @@ bool BattleSystem::CheckState()
 	{
 		if ((*it)->getHP() <= 0)
 		{
-			cout << (*it)->getName() << "은 쓰러졌다! (+" << (*it)->getExp() << "EXP, " << (*it)->getGold() << "G)" << endl;
+			cout << (*it)->getName() << "은 쓰러졌다! (+" << (*it)->getExp() << "EXP, " << (*it)->getGold() << "G)" << '\n';
 			delete* it;
 			it = monsters.erase(it);
 		}
@@ -88,8 +90,8 @@ bool BattleSystem::CheckState()
 	// 플레이어 체력체크 (패배 체크)
 	if (player->GetHP() <= 0)
 	{
-		cout << player->GetName() << "은 쓰러졌다!" << endl;
-		cout << "전투에서 패배했다..." << endl;
+		cout << player->GetName() << "은 쓰러졌다!" << '\n';
+		cout << "전투에서 패배했다..." << '\n';
 		bProgress = false;
 		return true;
 	}
@@ -97,7 +99,7 @@ bool BattleSystem::CheckState()
 	// 승리 체크
 	if (monsters.empty())
 	{
-		cout << "전투에서 승리했다!" << endl;
+		cout << "전투에서 승리했다!" << '\n';
 		bProgress = false;
 		return true;
 	}
@@ -132,7 +134,7 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
 		if (not (i == actions.size() - 1 && i < col))
 		{
 			if ((i + 1) % col == 0)
-				cout << endl;
+				cout << '\n';
 			else
 				cout << " | ";
 		}
