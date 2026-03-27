@@ -1,8 +1,7 @@
 ﻿#include "Inventory.h"
+#include "ItemFactory.h"
 #include "../Player/Player/player.h"
 #include <iostream>
-
-#include "ItemFactory.h"
 
 void Inventory::addItem(int id, int amount) 
 {
@@ -32,15 +31,18 @@ bool Inventory::hasItem(int id) const
 }
 
 // 소모품 사용
-void Inventory::useConsumable(int id, Player& player) {                                                                                                                                                                                                                                                           
+void Inventory::useConsumable(int id, Player& player) 
+{                                                                                                                                                                                                                                                           
     // 소모품인지 확인                                                                                                                                                                                                                                                                                            
-    if (ItemFactory::getType(id) != ItemType::Consumable) {                                                                                                                                                                                                                                                       
+    if (ItemFactory::getType(id) != ItemType::Consumable) 
+    {                                                                                                                                                                                                                                                       
         std::cout << "[오류] 소모품이 아닙니다.\n";
         return;
     }
 
     // 보유 확인
-    if (!hasItem(id)) {
+    if (!hasItem(id)) 
+    {
         std::cout << "[오류] 해당 아이템이 없습니다.\n";
         return;
     }
@@ -81,11 +83,11 @@ void Inventory::equipWeapon(int id, Player& player)
 
       // 장착
       equippedWeaponId = id;
-      player.attack += weaponDB[id].attack;
+      player.setPower(player.getPower() + weaponDB[id].attack);
 
       std::cout << "[장착] " << weaponDB[id].base.name
                 << " → 공격력 +" << weaponDB[id].attack
-                << " (현재 공격력: " << player.attack << ")\n";
+                << " (현재 공격력: " << player.getPower() << ")\n";
 }
 
 // 방어구 장착
@@ -126,11 +128,11 @@ void Inventory::unequipWeapon(Player& player)
         return; 
     }
 
-    player.attack -= weaponDB[equippedWeaponId].attack;
+    player.setPower(player.getPower() - weaponDB[equippedWeaponId].attack);
 
     std::cout << "[해제] " << weaponDB[equippedWeaponId].base.name
               << " → 공격력 -" << weaponDB[equippedWeaponId].attack
-              << " (현재 공격력: " << player.attack << ")\n";
+              << " (현재 공격력: " << player.getPower() << ")\n";
 
     equippedWeaponId = 0;
 }

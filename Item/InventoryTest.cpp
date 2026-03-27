@@ -1,6 +1,5 @@
-﻿#include <iostream>                                                                                                                                                                                                                                                                                               
+﻿/*#include <iostream>                                                                                                                                                                                                                                                                                               
 #include "itemDB.h"                                                                                                                                                                                                                                                                                               
-#include "Player_Temp.h"                                                                                                                                                                                                                                                                                          
 #include "Inventory.h"
 #include "ItemFactory.h"
 
@@ -55,4 +54,4 @@ int main_test() {
 
     std::cout << "\n===== 테스트 종료 =====\n";
     return 0;
-}*/
+}#1#*/
