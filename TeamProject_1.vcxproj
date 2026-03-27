@@ -848,7 +848,6 @@
     <ClCompile Include="BattleSystem\BattleSystem.cpp" />
     <ClCompile Include="BattleSystem\dungeonUI.cpp" />
     <ClCompile Include="Item\Inventory.cpp" />
-    <ClCompile Include="Item\InventoryTest.cpp" />
     <ClCompile Include="Item\Inventory_UI.cpp" />
     <ClCompile Include="Item\ItemDB.cpp" />
     <ClCompile Include="Item\ItemFactory.cpp" />
