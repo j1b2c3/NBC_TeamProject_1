@@ -104,6 +104,7 @@
     <Content Include=".git\objects\11\92dc898feea2f126e18ea20fc97df1571b9be4" />
     <Content Include=".git\objects\11\ddaf41dbaa56c23b286932758af4a359f4a421" />
     <Content Include=".git\objects\12\4abfbe8041f9bd90f60d0656e7794c60574bb7" />
+    <Content Include=".git\objects\12\d85be9a99776ee5460f75663eeda98b25945ff" />
     <Content Include=".git\objects\12\e0cd9493e6d78feb3284b13a2b1bb317ebbdf4" />
     <Content Include=".git\objects\13\0ff08788db8b67fd69cd04484732787f9405e3" />
     <Content Include=".git\objects\13\863d771b3837cd56ca6b27b5071df69e7f8855" />
@@ -260,6 +261,7 @@
     <Content Include=".git\objects\50\59b77b110701ec8c4dcf0c3551ef7cc96631fc" />
     <Content Include=".git\objects\50\94f335c9e75918ef22e70ec44042d59cced789" />
     <Content Include=".git\objects\52\1a552f91f47415ecb714abcfaa7672b60c5e14" />
+    <Content Include=".git\objects\52\524b092bfba3f44fbf598ec6317e486748ba08" />
     <Content Include=".git\objects\52\89aad71ff5f71e5a84be8bb4410f06fbb8ae8d" />
     <Content Include=".git\objects\52\e0281ce51665c88133c77c23b3f23f551a3d97" />
     <Content Include=".git\objects\53\20010a582b31db6aabdc2ca0d92082c750cc8c" />
@@ -304,7 +306,9 @@
     <Content Include=".git\objects\61\6072939feb41abd6facde3f18a9fb9f9cd2691" />
     <Content Include=".git\objects\61\66d7efbbb1bccd7378fe3456471568f303639e" />
     <Content Include=".git\objects\61\9a2af1e970bea04b9a279b58970af9c8a2c416" />
+    <Content Include=".git\objects\61\de1f3578ecb0cce7f96f189a8c24e2c2ffefcb" />
     <Content Include=".git\objects\62\32b91d4ab1bf2afe552647644825007c9b430f" />
+    <Content Include=".git\objects\62\6442d6c7e4dcc73eb7ce403b095b230a640052" />
     <Content Include=".git\objects\63\f71ae4d3a17b5ce8ac252a4874d3c0295b8919" />
     <Content Include=".git\objects\63\f79668502ed526d25b313519909a7273d0e737" />
     <Content Include=".git\objects\64\1c12873177599ea857a2874c0b4639b96b5b82" />
@@ -429,6 +433,7 @@
     <Content Include=".git\objects\92\a9ea92cb3f438dcb8f9440c66d21bf8c8daa3e" />
     <Content Include=".git\objects\92\d4977548d445a2264cdedd0ba644aefee62551" />
     <Content Include=".git\objects\93\2e55f4bd1e5dc2ba4beada596e7f714d45bba1" />
+    <Content Include=".git\objects\93\6ac89465caee92053c8e0c92e73fc074d15e35" />
     <Content Include=".git\objects\93\95e43c90713d67d6e8595f3ac1cde912b5dc8b" />
     <Content Include=".git\objects\93\b54674fab2760d2ee374efbbdea9c934558c60" />
     <Content Include=".git\objects\94\1a19192d4493e82d14f71cb6d7a20b1e8986ca" />
@@ -456,6 +461,7 @@
     <Content Include=".git\objects\9f\c703a8ac29f381a1922872e9427538de8525ca" />
     <Content Include=".git\objects\9f\cabb0b375c78758f9d4fff8e99e6ed67f70892" />
     <Content Include=".git\objects\a0\41f6796c03272520287e1a9226cca9d2361e28" />
+    <Content Include=".git\objects\a0\4c9c51094144bb155596c646b1767d0ace5433" />
     <Content Include=".git\objects\a0\79a2c64e2b1da4a2d13e7d839c71dbf541e109" />
     <Content Include=".git\objects\a0\99ff2aa3ff30e12491f9ce9207fdc996fda91d" />
     <Content Include=".git\objects\a0\cfeb2905da9967d80f9e4d4c8634884137cbfd" />
@@ -500,6 +506,8 @@
     <Content Include=".git\objects\af\38e1eca0fdf8700664b7ebca1cb17751c005ef" />
     <Content Include=".git\objects\af\3b6004b205ab7f60fe0dd16a9d644a90dba9d5" />
     <Content Include=".git\objects\af\4040b6dd2ea0c14730f35a8412dac67560f826" />
+    <Content Include=".git\objects\af\d6cb819348280fc07045957326f9bc4654c462" />
+    <Content Include=".git\objects\af\f05c13978bdb9a9c04ecc4773714daed566a47" />
     <Content Include=".git\objects\b1\3b14b6ce3b96979d7c7c184a99a3f43b0252d5" />
     <Content Include=".git\objects\b1\67709591b191f5906330df78e6e5cf6e8ef425" />
     <Content Include=".git\objects\b1\876e17c659f829680329e2fb0c1388af2a83ee" />
@@ -628,6 +636,7 @@
     <Content Include=".git\objects\e9\e566fe7bde963a3663c1ca57af07f25212ced8" />
     <Content Include=".git\objects\ea\39835fc4cf99de1a9985a4a6df921afee4f276" />
     <Content Include=".git\objects\ea\c38e7a7e764dc1f251b911ddfed9546ff0a886" />
+    <Content Include=".git\objects\eb\30963861849b1ae239e144cf2453b60f3958dd" />
     <Content Include=".git\objects\eb\4a564d71b8d7c2b29706115b262f1788d290c8" />
     <Content Include=".git\objects\eb\a86406df6b2df86d4b8da5694f3fff25b8e90a" />
     <Content Include=".git\objects\eb\bc9a15cd9d8a806b373c32fb4990bf4bcbd150" />
@@ -844,9 +853,7 @@
     <ClCompile Include="Item\ItemDB.cpp" />
     <ClCompile Include="Item\ItemFactory.cpp" />
     <ClCompile Include="Launch.cpp" />
-    <ClCompile Include="Player\createPlayer.cpp" />
     <ClCompile Include="Player\Job\Archer.cpp" />
-    <ClCompile Include="Player\Job\Magician.cpp" />
     <ClCompile Include="Player\Job\Thief.cpp" />
     <ClCompile Include="Player\Job\Warrior.cpp" />
     <ClCompile Include="Player\Monster\monster.cpp" />
@@ -942,7 +949,6 @@
     <ClInclude Include="Item\ItemDB.h" />
     <ClInclude Include="Item\ItemFactory.h" />
     <ClInclude Include="Player\Job\archer.h" />
-    <ClInclude Include="Player\Job\magician.h" />
     <ClInclude Include="Player\Job\thief.h" />
     <ClInclude Include="Player\Job\warrior.h" />
     <ClInclude Include="Player\Monster\monster.h" />
