@@ -1,6 +1,9 @@
 ﻿#include "shopsystem.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
+#include "../Item/ItemDB.h"
+#include <iostream>
+#include <iomanip>
 
 // ----------------- 아즈키 스타일 상점 메뉴 -----------------
 void ShopSystem::showShopMenu(int& playerGold,
@@ -11,7 +14,7 @@ void ShopSystem::showShopMenu(int& playerGold,
 {
     while (true) {
 
-        printShopUI(playerGold);
+        displayShop(playerGold);
         cout << "선택 >> ";
 
         int menuchoice;
@@ -23,7 +26,7 @@ void ShopSystem::showShopMenu(int& playerGold,
         //무기 구매 및 판매 시스템
         case 1: {
 
-            cout << "\n=== 무기 메뉴 ===\n";
+            cout << "\n=== 무기 ===\n";
             cout << "1. 구매\n";
             cout << "2. 판매\n";
             cout << "선택 >> ";
@@ -135,7 +138,7 @@ void ShopSystem::showShopMenu(int& playerGold,
 
         // 방어구 메뉴
 case 2: { 
-    cout << "\n=== 방어구 메뉴 ===\n";
+    cout << "\n=== 방어구 ===\n";
     cout << "1. 구매\n";
     cout << "2. 판매\n";
     cout << "선택 >> ";
@@ -190,7 +193,7 @@ case 2: {
 
           // 방어구 판매 시스템
     case 2: {
-        cout << "\n=== 방어구 판매 ===\n";
+        cout << "\n=== 방어구 ===\n";
         int index = 1;
         map<int, int> indexToID;
 
@@ -247,7 +250,7 @@ case 2: {
 }
         // 소모품 구매 시스템
         case 3: { 
-            cout << "\n=== 소모품 구매 ===" << endl;
+            cout << "\n=== 소모품 구매 ===" << '\n';
             int index = 1;
             map<int, int> indexToID; // 화면 번호 → 아이템 ID
 
@@ -258,13 +261,13 @@ case 2: {
                 cout << "[" << index << "] "
                     << pair.second.base.name
                     << " (가격: " << pair.second.base.price
-                    << "G, 회복량: " << pair.second.hp << ")" << endl;
+                    << "G, 회복량: " << pair.second.hp << ")" << '\n';
 
                 indexToID[index] = pair.first;
                 index++;
             }
 
-            cout << "\n==================" << endl;
+            cout << "\n==================" << '\n';
             cout << "구매할 소모품 번호 입력 >> ";
             int choiceIndex;
             cin >> choiceIndex;
@@ -287,7 +290,7 @@ case 2: {
             break;
         }
         case 4: {
-            cout << "\n=== 전리품 판매 ===" << endl;
+            cout << "\n=== 전리품 판매 ===" << '\n';
             int index = 1;
             map<int, int> indexToID;
 
@@ -300,7 +303,7 @@ case 2: {
                 cout << "[" << index << "] "
                     << LootDB[itemId].base.name
                     << " (수량: " << qtyOwned
-                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << endl;
+                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << '\n';
 
                 indexToID[index] = itemId;
                 index++;

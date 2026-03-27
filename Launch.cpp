@@ -2,10 +2,6 @@
 #include <string>
 #include <limits>
 
-#include "Player/Player/Player_BattleTemp.h"
-#include "Player/Monster/monster.h"
-#include "BattleSystem/BattleSystem.h"
-
 using namespace std;
 
 // 메뉴 출력
@@ -49,8 +45,6 @@ int getUserChoice() {
 void startGame() {
     cout << "\n게임을 시작합니다..." << '\n';
     //Todo : Game Start (캐릭터 생성)
-    Player* player = new Player("플레이어");
-    BattleSystem::getInstance().Battle(player, { new Monster("샌즈"), new Monster("해골병사") });
 }
 
 int main() {

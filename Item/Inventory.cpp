@@ -1,8 +1,8 @@
 ﻿#include "Inventory.h"
 #include "Player_Temp.h"
-#include <iostream>
-
+#include "itemDB.h"
 #include "ItemFactory.h"
+#include <iostream>
 
 void Inventory::addItem(int id, int amount) 
 {
