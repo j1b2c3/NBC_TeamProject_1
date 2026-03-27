@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 
-#include "../Windows.h"
+#include "../System/Windows.h"
 #include "BattleSystem.h"
 
 using namespace std;
