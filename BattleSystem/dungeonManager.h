@@ -12,9 +12,9 @@ struct BattleResult
 	string item; // 예비용 
 };
 
-static enum DungenMenu //switch case 용 
+static enum DungeonMenu //switch case 용 
 {
-	Dungen_Enter = 1,
+	Dungeon_Enter = 1,
 	Store_Enter = 2,
 	Dungen_Exit = 0
 };
@@ -25,15 +25,15 @@ static enum Stage_Category // 보상 관련 분할
 	Boss
 };
 template <typename Player>
-class BattleManager
+class dungeonManager
 {
 private:
-	static BattleManager* Instance;
+	static dungeonManager* Instance;
 public:
-	static BattleManager* GetInstnace() // 싱글톤화
+	static dungeonManager* GetInstnace() // 싱글톤화
 	{
 		if (Instance == nullptr) // Instance 가 없으면 
-			Instance = new BattleManager*;  // 새로 할당
+			Instance = new dungeonManager*;  // 새로 할당
 		return Instance;// 할당되어있는 값 return ( 어차피 호출할 떄마다 투과됨) 
 	}
 private:
@@ -45,17 +45,17 @@ private:
 	Player* Player_; // 있다고 가정함.
 	Player* Monster_; // 있다고 가정함 
 public:
-	BattleManager() // 생성자 
+	dungeonManager() // 생성자 
 	{
 		Initialize(); // 일단은 생성과 동시에 초기화 하는 걸로 
 	}
-	~BattleManager() {}
+	~dungeonManager() {}
 
 	void Initialize();
 	bool HiddenRand(); // 히든던전 등장 확률
 	void startGame();
 
-	void StartDungen(Player* ply, Player* mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
+	void StartDungeon(Player* ply, Player* mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 	void StartBattle();// Player 와 몬스터 전투 호출 
 	void battleResult(); // 보상 확인
 	void ClearRoot();

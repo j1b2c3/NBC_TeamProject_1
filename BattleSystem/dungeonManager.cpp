@@ -1,21 +1,21 @@
-#include "BattleManager.h"
+#include "dungeonManager.h"
 
 template <typename Player>
-void BattleManager<Player>::Initialize()
+void dungeonManager<Player>::Initialize()
 {
 	BattleCount = 0; // Stage 시작은 0 으로 초기화
 	b_LifeCheck = true; // 시작할떈 살아있어야지?.
 }
 
 template <typename Player>
-bool BattleManager<Player>::HiddenRand() // 히든던전 등장 확률
+bool dungeonManager<Player>::HiddenRand() // 히든던전 등장 확률
 {
 	int roll = rand() % 100;
 	return roll < 5; // 5% 확률
 }
 
 template <typename Player>
-void BattleManager<Player>::startGame()
+void dungeonManager<Player>::startGame()
 {
 	cout << "\n게임을 시작합니다..." << endl;
 	//Todo : Game Start (캐릭터 생성)
@@ -23,7 +23,7 @@ void BattleManager<Player>::startGame()
 }
 
 template <typename Player>
-void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
+void dungeonManager<Player>::StartDungeon(Player* ply, Player* mons) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 {
 	// 시작전 데이터 입장 입력
 	Player_ = ply;
@@ -39,7 +39,7 @@ void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데
 
 		switch (Select) //
 		{
-		case DungenMenu::Dungen_Enter: // Dungen 입장  보스 입장은 따로 만들지 않음.일단은.
+		case DungeonMenu::Dungeon_Enter: // Dungen 입장  보스 입장은 따로 만들지 않음.일단은.
 			if (BattleCount == Last_Stage) // 보스 몬스터 체크 확인 
 			{
 				cout << " 보스던전에 입장합니다, 파이팅 " << endl;
@@ -57,10 +57,10 @@ void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데
 			}
 			battleResult(); // 보상 확인
 			break;
-		case DungenMenu::Store_Enter: // 상점 입장
+		case DungeonMenu::Store_Enter: // 상점 입장
 			// 상점 입장 singleton 이 따로 들어왕함.
 			break;
-		case DungenMenu::Dungen_Exit: // 던전 out
+		case DungeonMenu::Dungen_Exit: // 던전 out
 			// 에러 구문
 			// PlayChecking = false;
 			cout << " 던전 에서 탈출합니다 ." << endl;
@@ -73,13 +73,13 @@ void BattleManager<Player>::StartDungen(Player* ply, Player* mons) // player 데
 	}
 }
 template <typename Player>
-void BattleManager<Player>::StartBattle() // Player 와 몬스터 전투 호출 
+void dungeonManager<Player>::StartBattle() // Player 와 몬스터 전투 호출 
 {
 	//
 }
 
 template <typename Player>
-void BattleManager<Player>::battleResult() // 보상 확인
+void dungeonManager<Player>::battleResult() // 보상 확인
 {
 	if (Player_->GetHp() > 0) // 생존 확인
 		;// clear() root 보상
@@ -87,7 +87,7 @@ void BattleManager<Player>::battleResult() // 보상 확인
 		b_LifeCheck = false; // 사망처리 죽으면 보상 없어야지.
 }
 template <typename Player>
-void BattleManager<Player>::ClearRoot()
+void dungeonManager<Player>::ClearRoot()
 {
 
 }
