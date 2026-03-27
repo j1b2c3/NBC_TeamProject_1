@@ -4,7 +4,7 @@ void dungeonManager::Initialize()
 {
 	BattleCount = 0; // Stage 시작은 0 으로 초기화
 	b_LifeCheck = true; // 시작할떈 살아있어야지?.
-	Reward = Stage_Category::None;
+	Reward = Stage_Category::None; // 첫 시작시 보상은 없는걸로 
 }
 
 bool dungeonManager::HiddenRand() // 히든던전 등장 확률
@@ -52,7 +52,7 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 				; // 보스 던전 입장 bool값으로 하는
 			else if (HiddenRand()) // 히든 던전 입장 
 				;
-				//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
+			//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 			else
 				; // 노말 던전 입장
 
@@ -106,10 +106,10 @@ bool dungeonManager::battleResult() // 보상 확인 ??이거 한번더 확인�
 {
 	if (Player_->GetHP() > 0) // 생존 확인
 		return true;
-		// clear() root 보상
+	// clear() root 보상
 	else
 		return false; // 실패시 보상 없음
-		//b_LifeCheck = false; // 사망처리 죽으면 보상 없어야지.
+	//b_LifeCheck = false; // 사망처리 죽으면 보상 없어야지.
 }
 void dungeonManager::DugenClear_Root()
 {

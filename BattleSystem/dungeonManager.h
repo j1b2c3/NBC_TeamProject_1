@@ -36,12 +36,13 @@ private:
 public:
 	static dungeonManager* GetInstnace() // 싱글톤화
 	{
-		if (Instance == nullptr) // Instance 가 없으면 
+		if (Instance == nullptr) // Instance 가 없으면
 			Instance = new dungeonManager*;  // 새로 할당
-		return Instance;// 할당되어있는 값 return ( 어차피 호출할 떄마다 투과됨) 
+		return Instance;// 할당되어있는 값 return ( 어차피 호출할 떄마다 투과됨)
 	}
 	*/
 private:
+
 	static const int Last_Stage = 10; // 보스 등장 stage
 	static const int Shop_Stage = 5; // 5의 배율로 상점 등장
 	int BattleCount; //BattleCount 현제 플레이어이의 Stage
