@@ -5,7 +5,6 @@
 #include "../Player/Monster/monster.h"
 #include "../Player/Player/Player_BattleTemp.h"
 
-// 내가 전투관련인데 BattleManager가 따로 있다니... 이름 충돌이 있어서 헷갈려요ㅠㅠ
 class BattleSystem
 {
 private:

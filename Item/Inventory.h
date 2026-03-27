@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <map>
-#include "itemDB.h"
+
 
 class Player; // 전방 선언
 
