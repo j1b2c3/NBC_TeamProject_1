@@ -154,23 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Archer.cpp" />
-    <ClCompile Include="CreatePlayerMonsters.cpp" />
     <ClCompile Include="Launch.cpp" />
-    <ClCompile Include="Mage.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Thief.cpp" />
-    <ClCompile Include="Warrior.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Archer.h" />
-    <ClInclude Include="CreatePlayerMonsters.h" />
-    <ClInclude Include="Mage.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Thief.h" />
-    <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

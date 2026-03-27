@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 
-// 상점 메뉴
+// 상점
 void ShopSystem::showShopMenu(int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,

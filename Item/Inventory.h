@@ -29,4 +29,6 @@ public:
     bool hasItem(int id) const;
     int getEquippedWeaponId() const { return equippedWeaponId; }
     int getEquippedArmorId() const  { return equippedArmorId; }
+    
+    const std::map<int, int>& getItems() const { return items; }
 };
