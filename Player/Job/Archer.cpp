@@ -1,34 +1,20 @@
 #include "Archer.h"
-#include "../Monster/monster.h"
-#include <iostream>
-using namespace std;
+#include "Player.h"
 
-Archer::Archer(const string& nickname) : Player(nickname) {
-    job_name = "궁수";
-    cout << "* 궁수로 전직하였습니다." << '\n';
-	HP = 50;
-	MP = 40;
-	power = 30;
-	defence = 5;
-	accuracy = 30;
-	speed = 15;
+Archer::Archer(string nickname) : Player(nickname)
+{
+	jobname = nickname;
+	maxHp = 100;
+	curHp = 100;
+	atk = 7;
+	def = 10;
+	dodge = 5;
 }
 
-void Archer::attack() {
-    cout << "* 활을 쏘았다." << '\n';
-}
+void Archer::Attack(Monster& monster)
+{
+	int damage = calculateDamage(atk, monster.GetDef());
+	if (damage < 0) damage = 0;
 
-void Archer::attack(Monster* monster)  {
-	attack();
-	int damage = power/2 - monster->getDefence();
-	if (damage <= 0) damage = 1;
-	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 2번 입혔습니다." << '\n';
-	int newHP = monster->getHP() - damage * 2;
-	monster->setHP(newHP);
-	if (newHP > 0) {
-		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << '\n';
-	}
-	else {
-		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << '\n';
-	}
+	monster.TakeDamage(damage, false);
 }

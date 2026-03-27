@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 
-class Thief : public Player
+class Mage : public Player
 {
 public:
-	Thief(string nickname);
+	Mage(string nickname);
 
 	void Attack(Monster& monster) override;
 };
