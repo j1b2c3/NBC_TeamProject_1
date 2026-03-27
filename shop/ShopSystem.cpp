@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 
-// ----------------- 아즈키 스타일 상점 메뉴 -----------------
+// 상점 메뉴
 void ShopSystem::showShopMenu(int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,
