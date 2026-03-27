@@ -1,12 +1,8 @@
 ﻿#pragma once
-#include "itemDB.h"
 #include <map>
-#include <iostream>
-#include <iomanip>
-
 using namespace std;
 
-class ShopSystem {
+class Shop {
 public:
     // 아즈키 스타일 인벤토리 출력
     static void showInventoryUI(int playerGold,
