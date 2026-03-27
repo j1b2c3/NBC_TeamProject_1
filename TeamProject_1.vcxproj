@@ -18,185 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <PropertyGroup Label="Globals">
-    <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{73D6ACAB-E655-4EDC-912A-2ABE563A7D38}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TeamProject_1</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="BattleSystem\BattleSystem.cpp" />
-    <ClCompile Include="BattleSystem\Battle_UI.cpp" />
-    <ClCompile Include="BattleSystem\dungeonManager.cpp" />
-    <ClCompile Include="BattleSystem\dungeonUI.cpp" />
-    <ClCompile Include="Item\Inventory.cpp" />
-    <ClCompile Include="Item\InventoryTest.cpp" />
-    <ClCompile Include="Item\Inventory_UI.cpp" />
-    <ClCompile Include="Item\ItemDB.cpp" />
-    <ClCompile Include="Item\ItemFactory.cpp" />
-    <ClCompile Include="Launch.cpp" />
-    <ClCompile Include="Player\CreatePlayerMonsters.cpp" />
-    <ClCompile Include="Player\Job\Archer.cpp" />
-    <ClCompile Include="Player\Job\Mage.cpp" />
-    <ClCompile Include="Player\Job\Thief.cpp" />
-    <ClCompile Include="Player\Job\Warrior.cpp" />
-    <ClCompile Include="Player\Monster\Monster.cpp" />
-    <ClCompile Include="Player\Player\Player.cpp" />
-    <ClCompile Include="Shop\ShopLogic.cpp" />
-    <ClCompile Include="Shop\shopsystem.cpp" />
-    <ClCompile Include="Shop\ShopUI.cpp" />
-    <ClCompile Include="System\Windows.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BattleSystem\BattleSystem.h" />
-    <ClInclude Include="BattleSystem\Battle_UI.h" />
-    <ClInclude Include="BattleSystem\dungeonManager.h" />
-    <ClInclude Include="BattleSystem\dungeonUI.h" />
-    <ClInclude Include="Item\Inventory.h" />
-    <ClInclude Include="Item\Inventory_UI.h" />
-    <ClInclude Include="Item\ItemDB.h" />
-    <ClInclude Include="Item\ItemFactory.h" />
-    <ClInclude Include="Player\CreatePlayerMonsters.h" />
-    <ClInclude Include="Player\Job\Archer.h" />
-    <ClInclude Include="Player\Job\Mage.h" />
-    <ClInclude Include="Player\Job\Thief.h" />
-    <ClInclude Include="Player\Job\Warrior.h" />
-    <ClInclude Include="Player\Monster\Monster.h" />
-    <ClInclude Include="Player\Player\Player.h" />
-    <ClInclude Include="Shop\ShopLogic.h" />
-    <ClInclude Include="Shop\ShopSystem.h" />
-    <ClInclude Include="Shop\ShopUI.h" />
-    <ClInclude Include="System\Windows.h" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include=".editorconfig" />
     <Content Include=".gitignore" />
@@ -232,13 +53,13 @@
     <Content Include=".git\logs\refs\remotes\origin\detached" />
     <Content Include=".git\logs\refs\remotes\origin\Dev" />
     <Content Include=".git\logs\refs\remotes\origin\Dev-Item" />
-    <Content Include=".git\logs\refs\remotes\origin\HBranch" />
     <Content Include=".git\logs\refs\remotes\origin\HEAD" />
     <Content Include=".git\logs\refs\remotes\origin\main" />
     <Content Include=".git\logs\refs\remotes\origin\PlayerMonsterStatus" />
     <Content Include=".git\objects\00\53c59185b272070d6eaa02b90e0af9a66ea4ac" />
     <Content Include=".git\objects\00\83abe2801deda726fdef8732b8eb290d80e63f" />
     <Content Include=".git\objects\01\861c084aac698b5c402d54ebb79d6672d49753" />
+    <Content Include=".git\objects\01\eabcacf2d22f59d038229501366bce0d9e63c4" />
     <Content Include=".git\objects\02\718988bbc2f8b570724409f404f7aed2dadd24" />
     <Content Include=".git\objects\02\9db5c67ea7028d83de98e8d8cdbb48dff571ca" />
     <Content Include=".git\objects\02\cf66285cd1405c31a992c437f695e57ae8cf76" />
@@ -249,6 +70,8 @@
     <Content Include=".git\objects\05\5f4e740e9164aa38fb6556ac169b1058768b99" />
     <Content Include=".git\objects\05\679b2bfe6f60d9adf3c6b4841dcb2b26c9f259" />
     <Content Include=".git\objects\05\b32435901196976da5d7110d2e49b1f641ebd2" />
+    <Content Include=".git\objects\06\88182a09b43bbbe5b6d467517860476fce11f9" />
+    <Content Include=".git\objects\07\14ac6c886677c253a467491b42c3fa111cffd0" />
     <Content Include=".git\objects\07\2b6eac403253ef7b6b84ade689daa157d60d2d" />
     <Content Include=".git\objects\07\b2a46681c6b2285a4b43c90b4b110859ec70c5" />
     <Content Include=".git\objects\07\c077a55cec9d6611d67186a52a5a7038b3c4d5" />
@@ -263,6 +86,7 @@
     <Content Include=".git\objects\0b\60e5596a5d4f3d0a8a8277dc0e6f15fdce49d2" />
     <Content Include=".git\objects\0c\698f6eb0d97d5c8350759bd7dc20c245f27c71" />
     <Content Include=".git\objects\0c\a3ce62090d6072b5769ecb4e307cad5f7ef00e" />
+    <Content Include=".git\objects\0d\429e6f33dac379584be2ba6bb4519ad7847c7d" />
     <Content Include=".git\objects\0d\954b36e50db4753f8f32925a63eda044a435e4" />
     <Content Include=".git\objects\0d\f7daabefccd8547d8370a0bf540c89089929a1" />
     <Content Include=".git\objects\0e\8fb6896611a2b77025aaab0d0b0155e11280df" />
@@ -285,6 +109,7 @@
     <Content Include=".git\objects\13\863d771b3837cd56ca6b27b5071df69e7f8855" />
     <Content Include=".git\objects\15\5a88a0f1837814589dd5e0ab8852615a2aa02d" />
     <Content Include=".git\objects\15\69adac9aaf1d3f31b2ad43c2138571753ddc4f" />
+    <Content Include=".git\objects\15\de63bdc23ff21c960e24846584880787ae283c" />
     <Content Include=".git\objects\15\f4f9275c0cd524f275d78974fe2a8f040a5941" />
     <Content Include=".git\objects\17\035ebe0fb10d9c70def00e2c777f87017b705c" />
     <Content Include=".git\objects\17\a3e990d2c270815d255bec604eb6273d39ef1c" />
@@ -365,6 +190,7 @@
     <Content Include=".git\objects\37\aaf5f4464186129b1628b9dc873f04b3030775" />
     <Content Include=".git\objects\37\e66b901fc7a93f9d888270120de452f42a9f6c" />
     <Content Include=".git\objects\38\1dcd648b1b9890d83d38e47a82e2799435afd4" />
+    <Content Include=".git\objects\38\7a0222f3f1501c392d4c5b23d5f18ae8d6ef20" />
     <Content Include=".git\objects\38\81d278570a2434cca3fece328b7a9273a139da" />
     <Content Include=".git\objects\38\85c9d2d65ab15ad8808741df6a809f4e4ebe6d" />
     <Content Include=".git\objects\38\b81887154b29ceff16cfa90dc621bd4fb0a1ff" />
@@ -398,6 +224,8 @@
     <Content Include=".git\objects\44\34c6516e91d9d39af4ef212d161de630c1328d" />
     <Content Include=".git\objects\44\6cf29d4f17b35b68b0d48d366e8141ec29d4c1" />
     <Content Include=".git\objects\44\c260c225b712db6cb705ee85c93196bc5933e9" />
+    <Content Include=".git\objects\44\e16be25231b0ca0efa1f0e47c81b991325ab2d" />
+    <Content Include=".git\objects\45\571f8ad8225f6992fe6cfbca2d2f9ec98858b9" />
     <Content Include=".git\objects\45\6923f8877c5284a30b6cbd32e3c2da53b81b4b" />
     <Content Include=".git\objects\45\e1aa459bd6f9fd5e48703fc71329d3b7ac9460" />
     <Content Include=".git\objects\45\e870f41590bd9d80d0e1a0c21e2a31df6b006e" />
@@ -407,6 +235,7 @@
     <Content Include=".git\objects\47\d472a5f83108313845316dc0a8364a8ddfcda9" />
     <Content Include=".git\objects\47\dce8b0a024061281111c7fdc825939c4e155a6" />
     <Content Include=".git\objects\49\21b840c4de7c179da83928846fb6c57d9dc988" />
+    <Content Include=".git\objects\49\2fa0e25915ecbb8cfc2b0f72369dfb293cc8ac" />
     <Content Include=".git\objects\49\41f651188cd2eabb9b909acb95434e4b2f64ed" />
     <Content Include=".git\objects\4a\b9e667053bce9d1213c5a655e98ba7648e42c2" />
     <Content Include=".git\objects\4b\a1477d2f99e1339ffa6caa0a11f419162e4014" />
@@ -416,6 +245,7 @@
     <Content Include=".git\objects\4c\d8c5ef37c6d0dcb7de18eda51297c47d08fef2" />
     <Content Include=".git\objects\4c\ef3ce6a6de502c3b0bdbdfb70671bb81ece19b" />
     <Content Include=".git\objects\4d\1042de0793e0dd7c28d8c6747d891a3129a06d" />
+    <Content Include=".git\objects\4d\2e27e67e521a74cca1b69ba185d09edd712876" />
     <Content Include=".git\objects\4d\ad60ceb5fc9731f9868a598531dfb7bde29405" />
     <Content Include=".git\objects\4d\d92caafc4410181ffd416de99a9b445a97879b" />
     <Content Include=".git\objects\4d\d96cd9e9c198268be5fe05897b04307064e94a" />
@@ -442,9 +272,11 @@
     <Content Include=".git\objects\54\bdfcd7df80d766dccd27b31b271ec406e392c0" />
     <Content Include=".git\objects\54\c2bbf2d6aa5cb234186f4732d6ec122bea8472" />
     <Content Include=".git\objects\55\0a7cf29f8b59f148d730c22445389b76200879" />
+    <Content Include=".git\objects\55\4deccfa9ce16c4b478ef0a78d02c919c03095f" />
     <Content Include=".git\objects\55\5b29c36557e0ffcebded272ff59b026b89d510" />
     <Content Include=".git\objects\55\bd30c1d1f01b300f779748e3f6d145fb9dc52d" />
     <Content Include=".git\objects\55\ddad3db57f94829619d95f252d5fdece41b962" />
+    <Content Include=".git\objects\56\8725ae417743239ea55a6a7fa308509d9f01c6" />
     <Content Include=".git\objects\56\931e3499871a66323c48de416901a4a2ef2c27" />
     <Content Include=".git\objects\57\35ba2dbe2a4edc8f74ea4e968d15a2abf6a519" />
     <Content Include=".git\objects\57\487d64321e1cb0bc394fc9fd4b44b25b0d6aca" />
@@ -465,6 +297,7 @@
     <Content Include=".git\objects\5e\0fdbc1bb1807b003fcf850e2c782262e418e58" />
     <Content Include=".git\objects\5e\9d1f2f160e685f25013b92d63caf3c77a3162c" />
     <Content Include=".git\objects\5f\8461c8ea2b090692aa211ff27e718bebd0639d" />
+    <Content Include=".git\objects\60\6249ca35d8001e3e0cb8a176917f08024ddf29" />
     <Content Include=".git\objects\60\d662c4ec14a6835ed906958ead8cde35fd5dd9" />
     <Content Include=".git\objects\60\e689fcc45d3c323aba281d98479121b67fb339" />
     <Content Include=".git\objects\60\f236084c41e373dce216088c51fd22774d249b" />
@@ -484,6 +317,7 @@
     <Content Include=".git\objects\66\ff2696924df945d55ef031844ae308febfb381" />
     <Content Include=".git\objects\67\6b408efff6528b4b549521e9b4d5fb29166e8f" />
     <Content Include=".git\objects\68\46e80026b85a869e3a753813ad500f101e1e1a" />
+    <Content Include=".git\objects\68\d3da0221ee7e97d7ab704a868f3b87d483e5b6" />
     <Content Include=".git\objects\69\257aa20919dc8eee57fbde8740e3304ec30e7f" />
     <Content Include=".git\objects\69\541c77edc4a549f67f56c46742d911ce2057d5" />
     <Content Include=".git\objects\6a\a462e843cf1e738b9a83ffe68464e8e0ae032f" />
@@ -525,15 +359,20 @@
     <Content Include=".git\objects\79\f0ae0d0675228538c61704a7acbcf0d2c63e30" />
     <Content Include=".git\objects\7a\057d314ae8712ce5d1eaa40db7e8edd4ec1f03" />
     <Content Include=".git\objects\7a\45349591a9076536f965f32994694550092332" />
+    <Content Include=".git\objects\7a\4aa64ccfe31100d19fe65e7a49768d92058618" />
     <Content Include=".git\objects\7a\4cec2fbffc86b3db73d147379470d6e436d0c6" />
     <Content Include=".git\objects\7a\521fb323ea93227636cac56177705fd15bff55" />
+    <Content Include=".git\objects\7a\7bf8bc8924ef41d9201912e8510cd593cc1d7d" />
+    <Content Include=".git\objects\7a\f4c41b9d234f7341738482361bad08b4fe17dc" />
     <Content Include=".git\objects\7b\485842bc343ad52d6340e9d0f98c73ea03201b" />
     <Content Include=".git\objects\7b\7283f4d8fe83c4cbdb9a14e6547aa09ef92deb" />
+    <Content Include=".git\objects\7b\bfd8e1ba1a409ce1c7d7d9d41266b2d7a50214" />
     <Content Include=".git\objects\7b\dd62de3156cb85e847ef29e5f95c34e5806bf9" />
     <Content Include=".git\objects\7c\340cf4f15e17c0d941a4c3a5f345f4eed5a592" />
     <Content Include=".git\objects\7d\04c1d91783b6bbc5bc6851bf980963e921c548" />
     <Content Include=".git\objects\7d\1fe0ba140a007d1aaf9ba15a0f9f712276c73a" />
     <Content Include=".git\objects\7d\ce07c15dabe851e251608994ce6769b841ad64" />
+    <Content Include=".git\objects\7e\7a5727c96f83431e6965c62ded61826af7fedc" />
     <Content Include=".git\objects\7f\2b327acf96d2c8af4cf0eb57c1fb575f950d28" />
     <Content Include=".git\objects\7f\36d032b822d3925aba37ff8109122585ed75d4" />
     <Content Include=".git\objects\7f\6d1699be07874e23226602fc3aae62a113ce52" />
@@ -575,16 +414,21 @@
     <Content Include=".git\objects\8e\0559d24d5bea438253a9d94444a863cedf103d" />
     <Content Include=".git\objects\8e\57a159d1908218d2638cf7dd4165717893ad33" />
     <Content Include=".git\objects\8e\9336493ff070c776c8a952f7d197ba48a9c7de" />
+    <Content Include=".git\objects\8e\ec1592d5587e7684983d097c781bdedf6fb71c" />
+    <Content Include=".git\objects\8f\413859820edce13ae63945263097a4153fd13c" />
+    <Content Include=".git\objects\8f\d7e570c361c06235a77242e5b106ca2b13db2f" />
     <Content Include=".git\objects\8f\f4287538bf25ac09982ceec7d110bf0d730d8a" />
     <Content Include=".git\objects\90\07eb8aeab3d65ea4638c11419c36109c170ab8" />
     <Content Include=".git\objects\90\4867e944a415a4fce258b97fdb9c83abd9da2e" />
     <Content Include=".git\objects\90\b68a7bafd7758bf43366462fb7286bbd34b80b" />
+    <Content Include=".git\objects\90\d761f6d9ef508c4ca74552291070dff19c0c25" />
     <Content Include=".git\objects\90\debf8fffce2cf834926c6fa18f2dd614a5e16b" />
     <Content Include=".git\objects\91\39217cc1ad40bd6cbfd65e38b4ee023f14e465" />
     <Content Include=".git\objects\91\e18a682fc63172b3587f887a82a798c2e2d0a5" />
     <Content Include=".git\objects\91\f6bc404508fbf7f823dc9975542a6e283e11da" />
     <Content Include=".git\objects\92\a9ea92cb3f438dcb8f9440c66d21bf8c8daa3e" />
     <Content Include=".git\objects\92\d4977548d445a2264cdedd0ba644aefee62551" />
+    <Content Include=".git\objects\93\2e55f4bd1e5dc2ba4beada596e7f714d45bba1" />
     <Content Include=".git\objects\93\95e43c90713d67d6e8595f3ac1cde912b5dc8b" />
     <Content Include=".git\objects\93\b54674fab2760d2ee374efbbdea9c934558c60" />
     <Content Include=".git\objects\94\1a19192d4493e82d14f71cb6d7a20b1e8986ca" />
@@ -595,6 +439,7 @@
     <Content Include=".git\objects\95\d9e5945774665e03b10863e7edcbd9d14935bc" />
     <Content Include=".git\objects\96\05510b550e58848d86eb7f1ce4348c6f3e0991" />
     <Content Include=".git\objects\98\50fa366a195fbfb0ea01d84319a2cfea21e7ce" />
+    <Content Include=".git\objects\98\f2bcb46ad79c342911fd67573aa39de1d1ea7e" />
     <Content Include=".git\objects\99\c6f75a82f39114fd5f33cfd842b0a08365288f" />
     <Content Include=".git\objects\9a\c15e10778a35c7e62cc4abfd01898f6b328016" />
     <Content Include=".git\objects\9b\0f25afcd54494c9a3a61be00ea01ad862218c7" />
@@ -610,12 +455,14 @@
     <Content Include=".git\objects\9f\2204320474f19083ca35918c38261287a37686" />
     <Content Include=".git\objects\9f\c703a8ac29f381a1922872e9427538de8525ca" />
     <Content Include=".git\objects\9f\cabb0b375c78758f9d4fff8e99e6ed67f70892" />
+    <Content Include=".git\objects\a0\41f6796c03272520287e1a9226cca9d2361e28" />
     <Content Include=".git\objects\a0\79a2c64e2b1da4a2d13e7d839c71dbf541e109" />
     <Content Include=".git\objects\a0\99ff2aa3ff30e12491f9ce9207fdc996fda91d" />
     <Content Include=".git\objects\a0\cfeb2905da9967d80f9e4d4c8634884137cbfd" />
     <Content Include=".git\objects\a1\1da0c4bdd150bdf2211557e93fce950fd5c490" />
     <Content Include=".git\objects\a1\3226471c05a640432c91f9e50eb2f8c4261642" />
     <Content Include=".git\objects\a1\f381677b31fd5f5991991f685b679d7c47dc50" />
+    <Content Include=".git\objects\a2\013da8a9620ce70589832bb14222f361e5e520" />
     <Content Include=".git\objects\a2\2f2af142905b0d32b67d26de9d15068349e463" />
     <Content Include=".git\objects\a2\d34acff8aec7ac5af26e07986305bb10578d9d" />
     <Content Include=".git\objects\a3\161baeddf714af6841129b1ee56df0c6c58fb0" />
@@ -631,10 +478,12 @@
     <Content Include=".git\objects\a6\98343d4a1da44124f294f26a71939e2012f61e" />
     <Content Include=".git\objects\a7\5099e75a52763468459d5e2683c7fdf962f9ad" />
     <Content Include=".git\objects\a7\cb575c251de5b8b5a3ee0be404418ae9ba59d6" />
+    <Content Include=".git\objects\a7\ec41a08fcf5408ebb9954d7daa17316d700871" />
     <Content Include=".git\objects\a8\1328924439193f2421b32479a13bb3c101da07" />
     <Content Include=".git\objects\a8\87728592362094fcba33753b157e0381ded6e1" />
     <Content Include=".git\objects\a8\8cbaac6db8bfaed2c9561a51ef42970a84a506" />
     <Content Include=".git\objects\a9\e9723c8d0f36918de6c1c6365676a3f084e197" />
+    <Content Include=".git\objects\aa\16e26688f5cfa4472152bb942a6ba5a6dcd973" />
     <Content Include=".git\objects\aa\200ee2d96a70f49217f0b13ba1b440fc20f752" />
     <Content Include=".git\objects\aa\bb9fd956f866f79975478cdb270aed43d5dc69" />
     <Content Include=".git\objects\aa\c16aaebb353aea7cf553f511740167c0612885" />
@@ -681,7 +530,9 @@
     <Content Include=".git\objects\c0\e32784942817790f221b3d6c238d30144cdc13" />
     <Content Include=".git\objects\c0\f6d3cacadaea7f9883d0a1ac4ec560044a5b4b" />
     <Content Include=".git\objects\c1\4fc7dc827458f71b1286c02a892537c02556b8" />
+    <Content Include=".git\objects\c2\16ad8757ee4d8bfef53d7e8eed515a3b141867" />
     <Content Include=".git\objects\c2\337d09c1e1f18afc2becf0060e901fb4d32791" />
+    <Content Include=".git\objects\c3\260bbea6d53934a48d12cc5dfaac539dcf8439" />
     <Content Include=".git\objects\c3\379ad0dff3a3e2cde2fe92b55512e9211e663c" />
     <Content Include=".git\objects\c3\63a31c8212b22d2f546a51cf91f0b365e0804e" />
     <Content Include=".git\objects\c3\72c8714828944728da5fa138d9c58965d5c8e8" />
@@ -696,6 +547,7 @@
     <Content Include=".git\objects\c5\cc75f156e1b848bec3c99989e45ef121597110" />
     <Content Include=".git\objects\c7\7ae1a95f67f93dc1709e7db4848567d9d7d56f" />
     <Content Include=".git\objects\c7\a41961478275ae3dfff14a629e3101a805494c" />
+    <Content Include=".git\objects\c7\d45458270ded383611f317854fefd6003c73c4" />
     <Content Include=".git\objects\c8\9d9718d5e6d56a06285d4c26ab88f2adcd451a" />
     <Content Include=".git\objects\c9\26cab8570ad5550d20d21d604c3e4500989f92" />
     <Content Include=".git\objects\c9\6e1c07928e1335821d88b7eba86b4370d53888" />
@@ -706,6 +558,7 @@
     <Content Include=".git\objects\ca\81d213e8a9bd1cb2e24dcec64bd68469976987" />
     <Content Include=".git\objects\cb\1a48431fb01de1a775d239d21b60ae1561d5db" />
     <Content Include=".git\objects\cb\2a4412116c35ce72da9375d238968e5ed964bd" />
+    <Content Include=".git\objects\cb\55ab127667441fa24907dfc232d9db29216078" />
     <Content Include=".git\objects\cb\d79544203cf432a18640e7f6506d1ef28a5abc" />
     <Content Include=".git\objects\cc\f75a78bae3d1fad606e26bb84c8df6e7e4952a" />
     <Content Include=".git\objects\cd\23f0e6c5215a0bc8cb3e05e4e347f433f75961" />
@@ -730,6 +583,7 @@
     <Content Include=".git\objects\d4\0eff738c0f7d7f312adc240488193f4bcea6a6" />
     <Content Include=".git\objects\d4\99a3898335aab62241aa24e804e52ef4896038" />
     <Content Include=".git\objects\d4\9f0e97ac9a5f23d02cfc5154c959cdd1f7c654" />
+    <Content Include=".git\objects\d5\398a66d7a4872f1cb5005e47bd36962d998dcb" />
     <Content Include=".git\objects\d5\473590034bfe79a602af0c266a6a4372254581" />
     <Content Include=".git\objects\d5\5af9f526256b386902e68039407ecb9b007beb" />
     <Content Include=".git\objects\d5\81c8934c4743248a1085366938b433180ade47" />
@@ -749,6 +603,7 @@
     <Content Include=".git\objects\da\a4c2484c4064b32918e39a42d9ec503668f543" />
     <Content Include=".git\objects\db\3cccc1d3bb5865380e2729a385eb16902f1dc8" />
     <Content Include=".git\objects\db\54c709d335224e7343b14fc8ad06592540939f" />
+    <Content Include=".git\objects\db\95d4169808c698496cc1f980a3b8f4b8686c83" />
     <Content Include=".git\objects\db\99795659b477dbca7066450cbd74f65884d62d" />
     <Content Include=".git\objects\dc\9fa07b8ef1259e9c20b37a0308ec0351480dba" />
     <Content Include=".git\objects\dc\b759f0c84ca7daa3bc1c42d121d11ce92b6c71" />
@@ -764,6 +619,7 @@
     <Content Include=".git\objects\e5\4a39230375a9b27797329aa69ad12aa75f4124" />
     <Content Include=".git\objects\e5\bdf76a7d7b6dd16d3801ce3a29113726d3330a" />
     <Content Include=".git\objects\e6\2482786d5eb3fae38a499384b3f26cf2ae1bd5" />
+    <Content Include=".git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391" />
     <Content Include=".git\objects\e7\0f63400366c562f9fec43b15d3bf45eafefb8b" />
     <Content Include=".git\objects\e8\25fc73339c5b6b121a69cd9f8021b92dba3467" />
     <Content Include=".git\objects\e8\5993ed9ce5557ae0e100ae30c4c0a4bb4d5c45" />
@@ -774,11 +630,14 @@
     <Content Include=".git\objects\ea\c38e7a7e764dc1f251b911ddfed9546ff0a886" />
     <Content Include=".git\objects\eb\4a564d71b8d7c2b29706115b262f1788d290c8" />
     <Content Include=".git\objects\eb\a86406df6b2df86d4b8da5694f3fff25b8e90a" />
+    <Content Include=".git\objects\eb\bc9a15cd9d8a806b373c32fb4990bf4bcbd150" />
+    <Content Include=".git\objects\ec\12d16f1197f4d239e1d7dcbe802dbb78ee8eea" />
     <Content Include=".git\objects\ec\93db710ca446d8f6ec6e0ef234e8457170ce03" />
     <Content Include=".git\objects\ec\eb18d521e23d3767781e6dc59e0701203cd174" />
     <Content Include=".git\objects\ed\290ea09448be56c3490db2c1bbc605a3f1204a" />
     <Content Include=".git\objects\ed\a143cfa3a7bbdcc199476af1ff1af44bfd27df" />
     <Content Include=".git\objects\ee\38de00d1ccd47e319c5c0135adb697ce6ba9be" />
+    <Content Include=".git\objects\ee\69cc6f89cd40f0acbd3a46d271949dea6bde21" />
     <Content Include=".git\objects\ee\73aa4bdfbd2dab5c1372a20bf1f76b51712ccb" />
     <Content Include=".git\objects\ee\eee06a73c0ea2a807ebd7a4c2cb1e0b33cb475" />
     <Content Include=".git\objects\ef\ed79905991f2b61d92dbb5c63d6e97d2ea0367" />
@@ -813,6 +672,7 @@
     <Content Include=".git\objects\f9\e10707c140e5f67afd098fbdacebfc0d432a6c" />
     <Content Include=".git\objects\fa\ac78f58628fe4f53c52c7d263d280043eb97b6" />
     <Content Include=".git\objects\fa\ba0e76be5cdc8514c410cbaaab7178b93d2377" />
+    <Content Include=".git\objects\fc\27ca1f738ba36a6349af7777a08bcbd0afca32" />
     <Content Include=".git\objects\fc\6593f3dc0055822b31b3d644054eb1592b6255" />
     <Content Include=".git\objects\fc\7072445791740e60543deff15166e5e19a85dc" />
     <Content Include=".git\objects\fc\ba804326f80cbb24ae03163e53bd0dffc23ffa" />
@@ -821,6 +681,7 @@
     <Content Include=".git\objects\fe\d4c78d08afd64be13418bf964664bbe32b4843" />
     <Content Include=".git\objects\ff\19cdb80b6549eb204bcba370dc017df015a571" />
     <Content Include=".git\objects\ff\4a0a35e011a91467e0e4409aac27bbc9041b88" />
+    <Content Include=".git\objects\ff\71a3d15339b8f60b48e106d0cdf928550b86f1" />
     <Content Include=".git\objects\pack\pack-516e337d7ea857df14aad287e5a34157613f7ec2.idx" />
     <Content Include=".git\objects\pack\pack-516e337d7ea857df14aad287e5a34157613f7ec2.pack" />
     <Content Include=".git\objects\pack\pack-516e337d7ea857df14aad287e5a34157613f7ec2.rev" />
@@ -836,7 +697,6 @@
     <Content Include=".git\refs\remotes\origin\detached" />
     <Content Include=".git\refs\remotes\origin\Dev" />
     <Content Include=".git\refs\remotes\origin\Dev-Item" />
-    <Content Include=".git\refs\remotes\origin\HBranch" />
     <Content Include=".git\refs\remotes\origin\HEAD" />
     <Content Include=".git\refs\remotes\origin\main" />
     <Content Include=".git\refs\remotes\origin\PlayerMonsterStatus" />
@@ -879,6 +739,15 @@
     <Content Include="README.md" />
     <Content Include="TeamProject_1.sln" />
     <Content Include="TeamProject_1.vcxproj.filters" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.exe.recipe" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.ilk" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.obj" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\CL.command.1.tlog" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\link.command.1.tlog" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\link.secondary.1.tlog" />
+    <Content Include="TeamProject_1\x64\Debug\TeamProject_1.tlog\TeamProject_1.lastbuildstate" />
+    <Content Include="TeamProject_1\x64\Debug\vc143.idb" />
+    <Content Include="TeamProject_1\x64\Debug\vc143.pdb" />
     <Content Include="x64\Debug\TeamProject_1.exe" />
     <Content Include="x64\Debug\TeamProject_1.pdb" />
   </ItemGroup>
@@ -889,6 +758,340 @@
     <Folder Include=".idea\.idea.TeamProject_1\.idea\shelf\26__3__27__오후_3_33,_업데이트_전에_커밋되지_않은_변경_내용_[변경]1\" />
     <Folder Include=".idea\.idea.TeamProject_1\.idea\shelf\26__3__27__오후_3_33,_업데이트_전에_커밋되지_않은_변경_내용_[변경]\" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BattleSystem\Battle_UI.cpp" />
+    <ClCompile Include="BattleSystem\dungeonManager.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>TeamProject_1\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>TeamProject_1\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>TeamProject_1\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>TeamProject_1\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>TeamProject_1\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>TeamProject_1\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>TeamProject_1\x64\Debug\TeamProject_1.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>TeamProject_1\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>TeamProject_1\x64\Debug\TeamProject_1.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>TeamProject_1\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="BattleSystem\BattleSystem.cpp" />
+    <ClCompile Include="BattleSystem\dungeonUI.cpp" />
+    <ClCompile Include="Item\Inventory.cpp" />
+    <ClCompile Include="Item\InventoryTest.cpp" />
+    <ClCompile Include="Item\Inventory_UI.cpp" />
+    <ClCompile Include="Item\ItemDB.cpp" />
+    <ClCompile Include="Item\ItemFactory.cpp" />
+    <ClCompile Include="Launch.cpp" />
+    <ClCompile Include="Player\createPlayer.cpp" />
+    <ClCompile Include="Player\Job\Archer.cpp" />
+    <ClCompile Include="Player\Job\Magician.cpp" />
+    <ClCompile Include="Player\Job\Thief.cpp" />
+    <ClCompile Include="Player\Job\Warrior.cpp" />
+    <ClCompile Include="Player\Monster\monster.cpp" />
+    <ClCompile Include="Player\Player\player.cpp" />
+    <ClCompile Include="Player\Player\Player_BattleTemp.cpp" />
+    <ClCompile Include="Shop\ShopSystem.cpp" />
+    <ClCompile Include="Shop\ShopLogic.cpp" />
+    <ClCompile Include="Shop\ShopUI.cpp" />
+    <ClCompile Include="System\Windows.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>TeamProject_1\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>TeamProject_1\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>TeamProject_1\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>TeamProject_1\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>TeamProject_1\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>TeamProject_1\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>TeamProject_1\x64\Debug\TeamProject_1.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>TeamProject_1\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>TeamProject_1\x64\Debug\TeamProject_1.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>TeamProject_1\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BattleSystem\Battle_UI.h" />
+    <ClInclude Include="BattleSystem\dungeonManager.h" />
+    <ClInclude Include="BattleSystem\BattleSystem.h" />
+    <ClInclude Include="BattleSystem\dungeonUI.h" />
+    <ClInclude Include="Item\Inventory.h" />
+    <ClInclude Include="Item\Inventory_UI.h" />
+    <ClInclude Include="Item\ItemDB.h" />
+    <ClInclude Include="Item\ItemFactory.h" />
+    <ClInclude Include="Player\Job\archer.h" />
+    <ClInclude Include="Player\Job\magician.h" />
+    <ClInclude Include="Player\Job\thief.h" />
+    <ClInclude Include="Player\Job\warrior.h" />
+    <ClInclude Include="Player\Monster\monster.h" />
+    <ClInclude Include="Player\Player\player.h" />
+    <ClInclude Include="Player\Player\Player_BattleTemp.h" />
+    <ClInclude Include="Shop\ShopSystem.h" />
+    <ClInclude Include="Shop\ShopLogic.h" />
+    <ClInclude Include="Shop\ShopUI.h" />
+    <ClInclude Include="System\Windows.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{7171E2C8-7221-47F8-B0E6-E0D35909B98F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>TeamProject_1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

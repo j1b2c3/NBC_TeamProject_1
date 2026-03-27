@@ -1,7 +1,6 @@
 ﻿#pragma once
-#include "itemDB.h"
+#include "../Item/ItemDB.h"
 #include <map>
-using namespace std;
 
 void buyItem(int id, ItemType type, int amount,
     int& playerGold,
