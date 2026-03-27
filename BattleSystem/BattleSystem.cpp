@@ -3,122 +3,82 @@
 
 #include "../System/Windows.h"
 #include "BattleSystem.h"
+#include "../System/Utility.h"
+#include "Battle_UI.h"
 
 //#include <conio.h>
 
 using namespace std;
 
-vector<string> BattleSystem::GetMonsterNames()
+bool BattleSystem::Battle(Player& player, Monster& monster)
 {
-	vector<string> v;
-	for (Monster* m : monsters)
-		v.push_back(m->getName());
-	return v;
-}
-
-bool BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
-{
-	player = _player;
-	monsters = _monsters;
-
-	cout << "전투가 시작되었다!" << '\n';
-
+	string msg = "전투가 시작되었다!";
 	bProgress = true; // 전투가 진행중인가?
 	bVictory = false; // 승리유무
 	while (true)
 	{
 		int choice;
-		// 플레이어 페이즈
-		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << player->GetDEF() << ")" <<
-			'\n';
-		cout << '\n';
-		for (Monster* m : monsters)
-		{
-			cout << m->getName() << ": (HP: " << m->getHP() << "/" << m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << m->getDefence() << ")" <<
-				'\n';
-		}
-		cout << '\n';
-		choice = SelectAction({"공격", "아이템", "도주"}, 2);
 
+		//플레이어 페이즈
+		displayBattle(player, monster, msg);
+		cout << "  행동을 선택하세요 >> " << '\n';
+		cin >> choice;
+		choice--;
 		switch (choice)
 		{
 		case 0:
-			
-			cout << "누구를 공격할까?" << '\n';
-			choice = SelectAction(GetMonsterNames(), 4);
-			
-			cout << monsters[choice]->getName() << "에게 공격! ";
-			cout << player->Attack(monsters[choice]) << "의 피해를 입혔다!" << '\n';
-			
+			cout << monster.GetName() << "에게 공격! ";
+			cout << player.Attack(monster) << "의 피해를 입혔다!" << '\n';
 			break;
 		case 1:
-			cout << "아이템을 사용했다!" << '\n';
+			cout << "방어를 시도했다!" << '\n';
 			break;
 		case 2:
+			cout << "아이템을 사용했다!" << '\n';
+			break;
+		case 3:
 			cout << "도주했다..." << '\n';
 			bProgress = false;
 			break;
+		default:
+			break;
 		}
-		if (CheckState()) break;
+		if (CheckState(player, monster)) break;
 
 		// 몬스터 페이즈
-		choice = rand() % monsters.size();
-		cout << monsters[choice]->getName() << "의 공격! ";
-		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << '\n';
-		if (CheckState()) break;
+		cout << monster.GetName() << "의 공격! ";
+		cout << monster.Attack(player) << "의 피해를 입었다!" << '\n';
+		if (CheckState(player, monster)) break;
 	}
 	return bVictory;
 }
 
 // 전투상황 체크, 리타이어나 승패여부를 가른다.
-bool BattleSystem::CheckState()
+bool BattleSystem::CheckState(Player& player, Monster& monster)
 {
 	if (!bProgress)
 		return true;
 
 	// 몬스터 체력체크
-	auto it = monsters.begin();
-	while (it != monsters.end())
+	if (monster.GetCurHp() <= 0)
 	{
-		if ((*it)->getHP() <= 0)
-		{
-<<<<<<< HEAD
-			cout << (*it)->getName() << "은(는) 쓰러졌다! (+" << (*it)->getExp() << " EXP, " << (*it)->getGold() << " G)" << endl;
-=======
-			cout << (*it)->getName() << "은 쓰러졌다! (+" << (*it)->getExp() << "EXP, " << (*it)->getGold() << "G)" << '\n';
-			delete* it;
->>>>>>> main
-			it = monsters.erase(it);
-		}
-		else
-		{
-			it++;
-		}
+		cout << monster.GetName() << "은(는) 쓰러졌다!" << endl;
 	}
 
 	// 플레이어 체력체크 (패배 체크)
-	if (player->GetHP() <= 0)
+	if (player.GetCurHp() <= 0)
 	{
-<<<<<<< HEAD
-		cout << player->GetName() << "은(는) 쓰러졌다!" << endl;
+		cout << player.GetNickname() << "은(는) 쓰러졌다!" << endl;
 		cout << "전투에서 패배했다..." << endl;
-=======
-		cout << player->GetName() << "은 쓰러졌다!" << '\n';
-		cout << "전투에서 패배했다..." << '\n';
->>>>>>> main
 		bProgress = false;
 		return true;
 	}
 
-	// 승리 체크
-	if (monsters.empty())
+	// 승리 체크 (플레이어가 먼저 쓰러지면 패배, 승리)
+	if (monster.GetCurHp() <= 0)
 	{
-<<<<<<< HEAD
 		cout << "전투에서 승리했다!" << endl;
 		bVictory = true;
-=======
-		cout << "전투에서 승리했다!" << '\n';
->>>>>>> main
 		bProgress = false;
 		return true;
 	}

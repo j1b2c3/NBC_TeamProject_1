@@ -1,4 +1,4 @@
-#include "Thief.h"
+﻿#include "Thief.h"
 #include "../Player/Player.h"
 #include <iostream>
 using namespace std;
@@ -13,7 +13,7 @@ Thief::Thief(string nickname) : Player(nickname)
 	dodge = 20;
 }
 
-void Thief::Attack(Monster& monster)
+int Thief::Attack(Monster& monster)
 {
     int damage = calculateDamage(atk, monster.GetDef());
     if (damage < 0) damage = 0;
@@ -25,5 +25,5 @@ void Thief::Attack(Monster& monster)
         cout << "크리티컬!" << '\n';
     }
 
-    monster.TakeDamage(damage, true);
+    return monster.TakeDamage(damage, true);
 }

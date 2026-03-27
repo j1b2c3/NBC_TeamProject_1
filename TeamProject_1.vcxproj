@@ -960,6 +960,7 @@
     <ClInclude Include="Shop\ShopLogic.h" />
     <ClInclude Include="Shop\ShopUI.h" />
     <ClInclude Include="System\Windows.h" />
+    <ClInclude Include="System\Utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

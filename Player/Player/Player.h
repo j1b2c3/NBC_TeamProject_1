@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Monster/Monster.h"
 #include <string>
 using namespace std;
@@ -10,8 +10,8 @@ protected:
 	string jobname;
 	int level;
 	int exp;
-	float maxHp;
-	float curHp;
+	int maxHp;
+	int curHp;
 	int atk;
 	int def;
 	int dodge;
@@ -23,8 +23,8 @@ protected:
 public:
 	Player(string nickname);
 
-	virtual void Attack(Monster& monster) = 0;
-	void TakeDamage(int damage);
+	virtual int Attack(Monster& monster) = 0;
+	int TakeDamage(int damage);
 	void AddExp(int gainedExp);
 	void SubExp(int lostExp);
 	void AddGold(int gold);
@@ -34,8 +34,8 @@ public:
 	string GetJobName();
 	int GetLevel();
 	int GetExp();
-	float GetMaxHp();
-	float GetCurHp();
+	int GetMaxHp();
+	int GetCurHp();
 	int GetAtk();
 	int GetDef();
 	int GetDodge();

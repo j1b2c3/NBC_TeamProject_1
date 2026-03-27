@@ -6,8 +6,7 @@ using namespace std;
 Monster::Monster(
 	string name,
 	int level,
-	float maxHp,
-	float curHp,
+	int Hp,
 	int atk,
 	int def,
 	int dodge,
@@ -19,8 +18,7 @@ Monster::Monster(
 {
 	this->name = name;
 	this->level = level;
-	this->maxHp = maxHp;
-	this->curHp = curHp;
+	this->maxHp = this->curHp = Hp;
 	this->atk = atk;
 	this->def = def;
 	this->dodge = dodge;
@@ -45,26 +43,23 @@ int Monster::calculateDamage(int atk, int def)
 	return static_cast<int>(damage);
 }
 
-void Monster::Attack(Player& player)
+int Monster::Attack(Player& player)
 {
 	int damage = calculateDamage(atk, player.GetDef());
 	if (damage < 0) damage = 0;
 
-	player.TakeDamage(damage);
+	return player.TakeDamage(damage);
 }
 
-void Monster::TakeDamage(int damage, bool canDodge)
+int Monster::TakeDamage(size_t damage, bool canDodge)
 {
 	if (isDodged(dodge))
-	{
-		cout << "몬스터가 공격을 회피했습니다!" << '\n';
-	}
+		return -1;
+
 	curHp -= damage;
-	if (curHp <= 0)
-	{
+	if (curHp < 0)
 		curHp = 0;
-		cout << "몬스터를 처치했습니다!" << '\n';
-	}
+	return damage;
 }
 
 inline int getRandom(int min, int max)
@@ -90,12 +85,12 @@ int Monster::GetLevel()
 	return level;
 }
 
-float Monster::GetMaxHp()
+int Monster::GetMaxHp()
 {
 	return maxHp;
 }
 
-float Monster::GetCurHp()
+int Monster::GetCurHp()
 {
 	return curHp;
 }

@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "Player.h"
 #include <iostream>
 using namespace std;
 
@@ -30,18 +30,15 @@ int Player::calculateDamage(int atk, int def)
 	return static_cast<int>(damage);
 }
 
-void Player::TakeDamage(int damage)
+int Player::TakeDamage(int damage)
 {
 	if (isDodged(dodge))
-	{
-		cout << "플레이어가 공격을 회피했습니다!" << endl;
-	}
+		return -1;
+
 	curHp -= damage;
-	if (curHp <= 0)
-	{
-		cout << "사망했습니다!" << endl;
-		cout << "게임 패배" << endl;
-	}
+	if (curHp < 0)
+		curHp = 0;
+	return damage;
 }
 
 void Player::AddExp(int gainedExp)
@@ -102,12 +99,12 @@ int Player::GetExp()
 	return exp;
 }
 
-float Player::GetMaxHp()
+int Player::GetMaxHp()
 {
 	return maxHp;
 }
 
-float Player::GetCurHp()
+int Player::GetCurHp()
 {
 	return curHp;
 }

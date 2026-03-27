@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <string>
 
@@ -9,8 +9,8 @@ class Monster
 protected:
 	std::string name;
 	int level;
-	float maxHp;
-	float curHp;
+	int maxHp;
+	int curHp;
 	int atk;
 	int def;
 	int dodge;
@@ -26,8 +26,7 @@ public:
 	Monster(
 		std::string name,
 		int level,
-		float maxHp,
-		float curHp,
+		int Hp,
 		int atk,
 		int def,
 		int dodge,
@@ -38,15 +37,15 @@ public:
 		//vector<item> items;
 	);
 
-	void Attack(Player& player);
+	int Attack(Player& player);
 
-	void TakeDamage(int damage, bool canDodge);
+	int TakeDamage(size_t damage, bool canDodge);
 	void giveLoot(Player& player);
 
 	std::string GetName();
 	int GetLevel();
-	float GetMaxHp();
-	float GetCurHp();
+	int GetMaxHp();
+	int GetCurHp();
 	int GetAtk();
 	int GetDef();
 	int GetDodge();

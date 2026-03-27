@@ -1,4 +1,4 @@
-#include <string>
+﻿#include <string>
 #include <iostream>
 #include "Monster/Monster.h"
 #include "Player/Player.h"
@@ -53,5 +53,5 @@ Player* CreatePlayer()
 
 void CreateMonsters()
 {
-    Monster* slime = new Monster("슬라임", 1, 10.0f, 10.0f, 2, 5, 0, 2, 10, 2, 4);
+    Monster* slime = new Monster("슬라임", 1, 10, 2, 5, 0, 2, 10, 2, 4);
 }

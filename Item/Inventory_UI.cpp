@@ -83,7 +83,7 @@ void showInventoryUI(Inventory& inventory, Player& player)
             }
         }
 
-        displayInventory(player.getGold(), weapons, armors, consumables);
+        displayInventory(player.GetGold(), weapons, armors, consumables);
 
         int choice;
         std::cin >> choice;
