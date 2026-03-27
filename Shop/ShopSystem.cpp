@@ -17,12 +17,12 @@ void ShopSystem::showShopMenu(int& playerGold,
         displayShop(playerGold);
         cout << "선택 >> ";
 
-        int menuchoice;
-        cin >> menuchoice;
+        int menuChoice;
+        cin >> menuChoice;
 
-        if (menuchoice == 0) break;
+        if (menuChoice == 0) break;
 
-        switch (menuchoice) {
+        switch (menuChoice) {
         case 1: { // 메인 메뉴의 '무기 상점' 진입
             std::cout << "\n=== 무기 메뉴 ===\n";
             std::cout << "1. 구매\n";
@@ -341,7 +341,7 @@ case 3: {
     break;
 }
         case 4: {
-            cout << "\n=== 전리품 판매 ===" << endl;
+            cout << "\n=== 전리품 판매 ===" << '\n';
             int index = 1;
             map<int, int> indexToID;
 
@@ -354,7 +354,7 @@ case 3: {
                 cout << "[" << index << "] "
                     << LootDB[itemId].base.name
                     << " (수량: " << qtyOwned
-                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << endl;
+                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << '\n';
 
                 indexToID[index] = itemId;
                 index++;
