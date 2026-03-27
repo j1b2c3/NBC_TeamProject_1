@@ -191,7 +191,7 @@
     <ClCompile Include="Player\Player\player.cpp" />
     <ClCompile Include="Player\Player\Player_BattleTemp.cpp" />
     <ClCompile Include="Shop\ShopLogic.cpp" />
-    <ClCompile Include="Shop\shopsystem.cpp" />
+    <ClCompile Include="Shop\ShopSystem2.cpp" />
     <ClCompile Include="Shop\ShopUI.cpp" />
     <ClCompile Include="System\Windows.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -287,7 +287,7 @@
     <ClInclude Include="Player\Player\player.h" />
     <ClInclude Include="Player\Player\Player_BattleTemp.h" />
     <ClInclude Include="Shop\ShopLogic.h" />
-    <ClInclude Include="Shop\shopsystem.h" />
+    <ClInclude Include="Shop\ShopSystem2.h" />
     <ClInclude Include="Shop\ShopUI.h" />
     <ClInclude Include="System\Windows.h" />
   </ItemGroup>
@@ -367,6 +367,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -382,6 +383,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -399,6 +401,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -418,6 +421,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
