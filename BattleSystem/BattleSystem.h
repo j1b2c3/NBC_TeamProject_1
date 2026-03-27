@@ -3,7 +3,9 @@
 #include <string>
 
 #include "../Player/Monster/monster.h"
-#include "../Player/Player/Player_BattleTemp.h"
+//#include "../Player/Player/Player_BattleTemp.h"
+#include "BattleSystem.h"
+#include "../Player/Player/player.h"
 
 class BattleSystem
 {

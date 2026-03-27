@@ -23,24 +23,7 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 		for (Select = 1; Select <= Last_Stage; Select++) // 선택지가 아닌 자동으로 입장하는 형식
 		{
 			if (Select % Shop_Stage == 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
-			{
-				while (true) //상점 입장 확인
-				{
-					cout << " ------------ 상점 ---------" << endl << "입장 하시겠습니까? 1. 입장 / 2 스킵 ";
-					int Shop_Select;
-					cin >> Shop_Select;// 상점 입장 여부 
-
-					if (Shop_Select == 1)
-						; // 상점 입장 
-					else if (Shop_Select == 2)
-					{
-						cout << " 상점을 지나쳤습니다.. " << endl;
-						break;// 반복문만 제거 
-					}
-					else
-						cout << "잘못된 입력입니다 다시 확인해주세요 " << endl;
-				}
-			}
+				EnterShop();
 			if (Select == Last_Stage) // 10번째 스테이지 
 				; // 보스 던전 입장 bool값으로 하는
 			else if (HiddenRand()) // 히든 던전 입장 
@@ -97,6 +80,29 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 			cout << "잘못 입력된 방식입니다 다시 입력해주세요  :" << endl;
 			break;
 		}*/ // 횟수에 따른 입장 ( 1~ 4 일반 입장 5 상점 6 ~ 9  일반입장 10 상점 + 보스 입장 
+	}
+}
+
+void dungeonManager::EnterShop()
+{
+	while (true) //상점 입장 확인
+	{
+		cout << " ------------ 상점 ---------" << endl << "입장 하시겠습니까? 1. 입장 / 2 스킵 ";
+		int Shop_Select;
+		cin >> Shop_Select;// 상점 입장 여부 
+
+		if (Shop_Select == 1)
+		{
+			; // 상점 입장 
+			break;// 끝나면 break해서 함수 탈출
+		}
+		else if (Shop_Select == 2)
+		{
+			cout << " 상점을 지나쳤습니다.. " << endl;
+			break;// 반복문만 제거 
+		}
+		else
+			cout << "잘못된 입력입니다 다시 확인해주세요 " << endl;
 	}
 }
 // reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 

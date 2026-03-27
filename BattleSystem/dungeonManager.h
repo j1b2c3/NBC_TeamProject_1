@@ -60,5 +60,6 @@ public:
 
 	void DugenClear_Root(); // 던전 클리어시 
 	bool HiddenRand(); // 히든던전 등장 확률
+	void EnterShop(); // 상점 입장 유무
 	
 };

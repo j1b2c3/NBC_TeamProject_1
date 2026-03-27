@@ -4,6 +4,7 @@
 #include "../System/Windows.h"
 #include "BattleSystem.h"
 
+
 using namespace std;
 
 vector<string> BattleSystem::GetMonsterNames()
