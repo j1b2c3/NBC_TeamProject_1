@@ -1,50 +1,54 @@
 #pragma once
+#include "../Monster/Monster.h"
 #include <string>
-
 using namespace std;
 
-class Monster;
-
-class Player {
-public:
-    virtual void attack() = 0;
-	virtual void attack(Monster* monster) = 0;
-    Player(const std::string& nickname);
-    void printPlayerStatus();
-
-    // getter 함수
-    std::string getJobName();
-    std::string getNickname();
-    int getLevel();
-    int getHP();
-    int getMaxHP();
-    int getMP();
-    int getPower();
-    int getDefence();
-    int getAccuracy();
-    int getSpeed();
-    int getGold();
-
-    // setter 함수
-    void setNickname(std::string nickname);
-    void setHP(int HP);
-    void setMP(int MP);
-    void setPower(int power);
-    void setDefence(int defence);
-    void setAccuracy(int accuracy);
-    void setSpeed(int speed);
-    void setGold(int g);
-
+class Player
+{
 protected:
-    std::string job_name;
-    std::string nickname;
-    int level;
-    int maxHp;
-    int HP;
-    int MP;
-    int power;
-    int defence;
-    int accuracy;
-    int speed;
-    int gold = 0;
+	string nickname;
+	string jobname;
+	int level;
+	int exp;
+	float maxHp;
+	float curHp;
+	int atk;
+	int def;
+	int dodge;
+	int gold;
+private:
+	bool isDodged(int dodge);
+protected:
+	int calculateDamage(int atk, int def);
+public:
+	Player(string nickname);
+
+	virtual void Attack(Monster& monster) = 0;
+	void TakeDamage(int damage);
+	void AddExp(int gainedExp);
+	void SubExp(int lostExp);
+	void AddGold(int gold);
+	void SubGold(int gold);
+
+	string GetNickname();
+	string GetJobName();
+	int GetLevel();
+	int GetExp();
+	float GetMaxHp();
+	float GetCurHp();
+	int GetAtk();
+	int GetDef();
+	int GetDodge();
+	int GetGold();
+
+	void SetNickname(string nickname);
+	void SetLevel(int level);
+	void SetExp(int exp);
+	void SetMaxHp(float maxHp);
+	void SetCurHp(float curHp);
+	void SetAtk(int atk);
+	void SetDef(int def);
+	void SetDodge(int dodge);
+	void SetGold(int gold);
 };
+
