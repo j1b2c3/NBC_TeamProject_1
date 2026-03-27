@@ -1,40 +1,29 @@
 #include "Thief.h"
-#include "../Monster/monster.h"
+#include "Player.h"
 #include <iostream>
-
 using namespace std;
 
-Thief::Thief(const string& nickname) : Player(nickname) {
-    job_name = "도적";
-    cout << "* 도적으로 전직하였습니다." << '\n';
-    HP = 60;
-	MP = 30;
-	power = 20;
-	defence = 5;
-	accuracy = 20;
-	speed = 20;
+Thief::Thief(string nickname) : Player(nickname)
+{
+	jobname = nickname;
+	maxHp = 70;
+	curHp = 70;
+	atk = 15;
+	def = 5;
+	dodge = 20;
 }
 
-void Thief::attack() {
-    cout << "* 단검을 휘두른다" << '\n';
-}
+void Thief::Attack(Monster& monster)
+{
+    int damage = calculateDamage(atk, monster.GetDef());
+    if (damage < 0) damage = 0;
 
+    // 크리티컬 (30%)
+    if (rand() % 100 < 30)
+    {
+        damage *= 1.5;
+        cout << "크리티컬!" << endl;
+    }
 
-void Thief::attack(Monster* monster) {
-	int damage = power - monster->getDefence();
-	if (damage <= 0) damage = 1;
-	int criticalChance = rand() % 100;
-	if (criticalChance > 90) {
-		damage *= 2;
-		cout << "* 크리티컬 히트! ";
-	}
-	cout << "* " << monster->getName() << "에게 " << damage << "의 데미지를 입혔습니다." << '\n';
-	int newHP = monster->getHP() - damage;
-	monster->setHP(newHP);
-	if (newHP > 0) {
-		cout << "* " << monster->getName() << "의 남은 HP: " << newHP << '\n';
-	}
-	else {
-		cout << "* " << monster->getName() << "이(가) 쓰러졌습니다." << '\n';
-	}
+    monster.TakeDamage(damage, true);
 }

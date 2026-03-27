@@ -97,6 +97,7 @@
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleSystem\Battle_UI.cpp" />
     <ClCompile Include="BattleSystem\dungeonManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -174,8 +175,10 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="BattleSystem\BattleSystem.cpp" />
+    <ClCompile Include="BattleSystem\dungeonUI.cpp" />
     <ClCompile Include="Item\Inventory.cpp" />
     <ClCompile Include="Item\InventoryTest.cpp" />
+    <ClCompile Include="Item\Inventory_UI.cpp" />
     <ClCompile Include="Item\ItemDB.cpp" />
     <ClCompile Include="Item\ItemFactory.cpp" />
     <ClCompile Include="Launch.cpp" />
@@ -268,9 +271,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleSystem\Battle_UI.h" />
     <ClInclude Include="BattleSystem\dungeonManager.h" />
     <ClInclude Include="BattleSystem\BattleSystem.h" />
+    <ClInclude Include="BattleSystem\dungeonUI.h" />
     <ClInclude Include="Item\Inventory.h" />
+    <ClInclude Include="Item\Inventory_UI.h" />
     <ClInclude Include="Item\ItemDB.h" />
     <ClInclude Include="Item\ItemFactory.h" />
     <ClInclude Include="Item\Player_Temp.h" />
