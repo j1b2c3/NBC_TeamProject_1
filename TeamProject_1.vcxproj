@@ -858,6 +858,7 @@
     <ClCompile Include="Player\Job\Thief.cpp" />
     <ClCompile Include="Player\Job\Warrior.cpp" />
     <ClCompile Include="Player\Monster\Monster.cpp" />
+    <ClCompile Include="Player\Player\Player.cpp" />
     <ClCompile Include="Shop\ShopSystem.cpp" />
     <ClCompile Include="Shop\ShopLogic.cpp" />
     <ClCompile Include="Shop\ShopUI.cpp" />
@@ -953,6 +954,7 @@
     <ClInclude Include="Player\Job\Thief.h" />
     <ClInclude Include="Player\Job\Warrior.h" />
     <ClInclude Include="Player\Monster\Monster.h" />
+    <ClInclude Include="Player\Player\Player.h" />
     <ClInclude Include="Shop\ShopSystem.h" />
     <ClInclude Include="Shop\ShopLogic.h" />
     <ClInclude Include="Shop\ShopUI.h" />
