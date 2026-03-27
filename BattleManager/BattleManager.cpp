@@ -18,9 +18,8 @@ template <typename Player>
 void dungeonManager<Player>::startGame()
 {
 	cout << "\n게임을 시작합니다..." << endl;
-	// 게임 시작 > 캐릭터 생성 이후 던전 입장으로 로직 변경 예정
 	//Todo : Game Start (캐릭터 생성)
-	// StartDungeon(Player );
+	// StartDungen(Player );
 }
 
 template <typename Player>
@@ -61,7 +60,7 @@ void dungeonManager<Player>::StartDungeon(Player* ply, Player* mons) // player �
 		case DungeonMenu::Store_Enter: // 상점 입장
 			// 상점 입장 singleton 이 따로 들어왕함.
 			break;
-		case DungeonMenu::Dungeon_Exit: // 던전 out
+		case DungeonMenu::Dungen_Exit: // 던전 out
 			// 에러 구문
 			// PlayChecking = false;
 			cout << " 던전 에서 탈출합니다 ." << endl;
