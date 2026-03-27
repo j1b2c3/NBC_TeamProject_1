@@ -1,7 +1,6 @@
 ﻿#include "Inventory.h"
-#include "Player_Temp.h"
-#include "itemDB.h"
 #include "ItemFactory.h"
+#include "../Player/Player/player.h"
 #include <iostream>
 
 void Inventory::addItem(int id, int amount) 
@@ -32,15 +31,18 @@ bool Inventory::hasItem(int id) const
 }
 
 // 소모품 사용
-void Inventory::useConsumable(int id, Player& player) {                                                                                                                                                                                                                                                           
+void Inventory::useConsumable(int id, Player& player) 
+{                                                                                                                                                                                                                                                           
     // 소모품인지 확인                                                                                                                                                                                                                                                                                            
-    if (ItemFactory::getType(id) != ItemType::Consumable) {                                                                                                                                                                                                                                                       
+    if (ItemFactory::getType(id) != ItemType::Consumable) 
+    {                                                                                                                                                                                                                                                       
         std::cout << "[오류] 소모품이 아닙니다.\n";
         return;
     }
 
     // 보유 확인
-    if (!hasItem(id)) {
+    if (!hasItem(id)) 
+    {
         std::cout << "[오류] 해당 아이템이 없습니다.\n";
         return;
     }
@@ -48,12 +50,12 @@ void Inventory::useConsumable(int id, Player& player) {
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = std::min(item.hp, player.maxHP - player.hp);
-    player.hp += healed;
+    int healed = std::min(item.hp, player.getMaxHP() - player.getHP());
+    player.setHP(player.getHP() + healed);
 
     std::cout << "[아이템 사용] " << item.base.name
               << " → HP +" << healed
-              << " (현재 HP: " << player.hp << "/" << player.maxHP << ")\n";
+              << " (현재 HP: " << player.getHP() << "/" << player.getMaxHP() << ")\n";
 
     // 사용 후 제거
     removeItem(id);
@@ -81,11 +83,11 @@ void Inventory::equipWeapon(int id, Player& player)
 
       // 장착
       equippedWeaponId = id;
-      player.attack += weaponDB[id].attack;
+      player.setPower(player.getPower() + weaponDB[id].attack);
 
       std::cout << "[장착] " << weaponDB[id].base.name
                 << " → 공격력 +" << weaponDB[id].attack
-                << " (현재 공격력: " << player.attack << ")\n";
+                << " (현재 공격력: " << player.getPower() << ")\n";
 }
 
 // 방어구 장착
@@ -110,11 +112,11 @@ void Inventory::equipArmor(int id, Player& player)
 
     // 장착
     equippedArmorId = id;
-    player.defense += armorDB[id].defense;
+    player.setDefence(player.getDefence() + armorDB[id].defense);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
-              << " (현재 방어력: " << player.defense << ")\n";
+              << " (현재 방어력: " << player.getDefence() << ")\n";
 }
 
 // 무기 장착 해제
@@ -126,11 +128,11 @@ void Inventory::unequipWeapon(Player& player)
         return; 
     }
 
-    player.attack -= weaponDB[equippedWeaponId].attack;
+    player.setPower(player.getPower() - weaponDB[equippedWeaponId].attack);
 
     std::cout << "[해제] " << weaponDB[equippedWeaponId].base.name
               << " → 공격력 -" << weaponDB[equippedWeaponId].attack
-              << " (현재 공격력: " << player.attack << ")\n";
+              << " (현재 공격력: " << player.getPower() << ")\n";
 
     equippedWeaponId = 0;
 }
@@ -144,11 +146,11 @@ void Inventory::unequipArmor(Player& player)
         return;
     }
 
-    player.defense -= armorDB[equippedArmorId].defense;
+    player.setDefence(player.getDefence() - armorDB[equippedArmorId].defense);
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense
-              << " (현재 방어력: " << player.defense << ")\n";
+              << " (현재 방어력: " << player.getDefence() << ")\n";
 
     equippedArmorId = 0;
 }

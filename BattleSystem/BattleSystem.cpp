@@ -4,6 +4,10 @@
 #include "../System/Windows.h"
 #include "BattleSystem.h"
 
+<<<<<<< HEAD
+=======
+//#include <conio.h>
+>>>>>>> BattleSystem-Num5_Branch
 
 using namespace std;
 
@@ -15,7 +19,7 @@ vector<string> BattleSystem::GetMonsterNames()
 	return v;
 }
 
-void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
+bool BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 {
 	player = _player;
 	monsters = _monsters;
@@ -23,6 +27,7 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 	cout << "전투가 시작되었다!" << '\n';
 
 	bProgress = true; // 전투가 진행중인가?
+	bVictory = false; // 승리유무
 	while (true)
 	{
 		int choice;
@@ -69,21 +74,32 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << '\n';
 		if (CheckState()) break;
 	}
+<<<<<<< HEAD
 	for (Monster* m : monsters) // 사냥 끝난 몬스터들 제거.
 		delete m;
+=======
+	return bVictory;
+>>>>>>> BattleSystem-Num5_Branch
 }
 
 // 전투상황 체크, 리타이어나 승패여부를 가른다.
 bool BattleSystem::CheckState()
 {
+	if (!bProgress)
+		return true;
+
 	// 몬스터 체력체크
 	auto it = monsters.begin();
 	while (it != monsters.end())
 	{
 		if ((*it)->getHP() <= 0)
 		{
+<<<<<<< HEAD
+			cout << (*it)->getName() << "은(는) 쓰러졌다! (+" << (*it)->getExp() << " EXP, " << (*it)->getGold() << " G)" << endl;
+=======
 			cout << (*it)->getName() << "은 쓰러졌다! (+" << (*it)->getExp() << "EXP, " << (*it)->getGold() << "G)" << '\n';
 			delete* it;
+>>>>>>> main
 			it = monsters.erase(it);
 		}
 		else
@@ -95,8 +111,13 @@ bool BattleSystem::CheckState()
 	// 플레이어 체력체크 (패배 체크)
 	if (player->GetHP() <= 0)
 	{
+<<<<<<< HEAD
+		cout << player->GetName() << "은(는) 쓰러졌다!" << endl;
+		cout << "전투에서 패배했다..." << endl;
+=======
 		cout << player->GetName() << "은 쓰러졌다!" << '\n';
 		cout << "전투에서 패배했다..." << '\n';
+>>>>>>> main
 		bProgress = false;
 		return true;
 	}
@@ -104,7 +125,12 @@ bool BattleSystem::CheckState()
 	// 승리 체크
 	if (monsters.empty())
 	{
+<<<<<<< HEAD
+		cout << "전투에서 승리했다!" << endl;
+		bVictory = true;
+=======
 		cout << "전투에서 승리했다!" << '\n';
+>>>>>>> main
 		bProgress = false;
 		return true;
 	}
@@ -148,13 +174,14 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
 	cout << "\n\n입력: ";
 	cin >> choice;
 
-	
 	// 실시간 로그방식: 추후에 추가
 	//Windows::CursorView(false);
 	//while (true)
 	//{
-	//	
+	//	int a = _getch();
+	//	cout << a << endl;
 	//}
 	//Windows::CursorView(true);
+
 	return choice - 1;
 }

@@ -1,4 +1,4 @@
-﻿#include "ShopUI.h"
+#include "ShopUI.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -7,7 +7,7 @@ using namespace std;
 
 void displayShop(int playerGold) {
     string goldDisplay = to_string(playerGold) + "G";
-    
+
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     ######     ##     ##      #######      ########                          |" << '\n';
@@ -19,7 +19,7 @@ void displayShop(int playerGold) {
     cout << "|     ######     ##     ##      #######      ##                                |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "|    보유 금화: " << left << setw(62) << goldDisplay << " |" << '\n';    
+    cout << "|    보유 금화: " << left << setw(62) << goldDisplay << " |" << '\n';
     cout << "|  --------------------------------------------------------------------------  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|    [1] 무기                [2] 방어구                 [3] 소모품             |" << '\n';
