@@ -9,6 +9,8 @@ class Player;
 
 #include "../Player/Player/player.h"
 #include "../Player//Monster/monster.h"
+#include "BattleSystem.h"
+#include "../Item/ItemDB.h"
 
 struct BattleResult
 {
@@ -49,20 +51,13 @@ private:
 	Player* Player_; // 있다고 가정함.
 	vector<Monster*> Monster_; // 있다고 가정함 
 public:
-	dungeonManager() // 생성자 
-	{
-		Initialize(); // 일단은 생성과 동시에 초기화 하는 걸로 
-	}
+	dungeonManager() {}// 생성자 
 	~dungeonManager() {}
 
-	void Initialize();
+	void Initialize(); // 시작 초기화
 	bool HiddenRand(); // 히든던전 등장 확률
-	void startGame();
 
 	void StartDungeon(Player* ply, vector<Monster*>  mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
-	void StartBattle();// Player 와 몬스터 전투 호출 
 	bool battleResult(); // 보상 확인
 	void DugenClear_Root(); // 던전 클리어시 
-
-
 };
