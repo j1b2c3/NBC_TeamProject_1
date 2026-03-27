@@ -1,0 +1,86 @@
+﻿#include <iostream>
+#include <string>
+#include <limits>
+
+#include "Player/Player/Player_BattleTemp.h"
+#include "Player/Monster/monster.h"
+#include "BattleSystem/BattleSystem.h"
+
+using namespace std;
+
+// 메뉴 출력
+void displayMenu() {
+
+    cout << "\n" << '\n';
+    cout << "╔════════════════════════════════════════════════════════════════════════════╗" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "║                        ████████╗ ███████╗ ██╗  ██╗ ████████╗               ║" << '\n';
+    cout << "║                        ╚══██╔══╝ ██╔════╝ ╚██╗██╔╝ ╚══██╔══╝               ║" << '\n';
+    cout << "║                           ██║    █████╗    ╚███╔╝     ██║                  ║" << '\n';
+    cout << "║                           ██║    ██╔══╝    ██╔██╗     ██║                  ║" << '\n';
+    cout << "║                           ██║    ███████╗ ██╔╝ ██╗    ██║                  ║" << '\n';
+    cout << "║                           ╚═╝    ╚══════╝ ╚═╝  ╚═╝    ╚═╝                  ║" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "║                          ██████╗  ██████╗   ██████╗                        ║" << '\n';
+    cout << "║                          ██╔══██╗ ██╔══██╗ ██╔════╝                        ║" << '\n';
+    cout << "║                          ██████╔╝ ██████╔╝ ██║  ███╗                       ║" << '\n';
+    cout << "║                          ██╔══██╗ ██╔═══╝  ██║   ██║                       ║" << '\n';
+    cout << "║                          ██║  ██║ ██║      ╚██████╔╝                       ║" << '\n';
+    cout << "║                          ╚═╝  ╚═╝ ╚═╝       ╚═════╝                        ║" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "║                            - EPIC ADVENTURE -                              ║" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "╠════════════════════════════════════════════════════════════════════════════╣" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "║                         [1] 게임 시작                                      ║" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "║                         [2] 게임 종료                                      ║" << '\n';
+    cout << "║                                                                            ║" << '\n';
+    cout << "╚════════════════════════════════════════════════════════════════════════════╝" << '\n';
+    cout << "\n선택 >> ";
+}
+
+// 사용자 입력 받기
+int getUserChoice() {
+    int choice;
+    cin >> choice;
+
+    // 입력 버퍼 클리어
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    return choice;
+}
+
+// 게임 시작 함수
+void startGame() {
+    cout << "\n게임을 시작합니다..." << '\n';
+    //Todo : Game Start (캐릭터 생성)
+    Player* player = new Player("플레이어");
+    BattleSystem::getInstance().Battle(player, { new Monster("샌즈"), new Monster("해골병사") });
+}
+
+int main() {
+    bool isRunning = true;
+    
+    while (isRunning) {
+        displayMenu();
+        int choice = getUserChoice();
+
+        switch (choice) {
+            case 1:
+                startGame();
+                break;
+            case 2:
+                cout << "\n게임을 종료합니다. 감사합니다!" << '\n';
+                isRunning = false;
+                break;
+            default:
+                cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << '\n';
+                break;
+        }
+    }
+
+    return 0;
+}
+
