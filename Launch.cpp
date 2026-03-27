@@ -51,6 +51,7 @@ int main() {
     bool isRunning = true;
     
     while (isRunning) {
+        
         displayMenu();
         int choice = getUserChoice();
 

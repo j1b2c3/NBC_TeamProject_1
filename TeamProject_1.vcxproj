@@ -97,6 +97,7 @@
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleSystem\Battle_UI.cpp" />
     <ClCompile Include="BattleSystem\dungeonManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -268,6 +269,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleSystem\Battle_UI.h" />
     <ClInclude Include="BattleSystem\dungeonManager.h" />
     <ClInclude Include="BattleSystem\BattleSystem.h" />
     <ClInclude Include="Item\Inventory.h" />
