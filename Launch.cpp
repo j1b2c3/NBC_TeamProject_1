@@ -2,6 +2,8 @@
 #include <string>
 #include <limits>
 
+#include "BattleSystem/dungeonUI.h"
+
 using namespace std;
 
 // 메뉴 출력
@@ -51,7 +53,6 @@ int main() {
     bool isRunning = true;
     
     while (isRunning) {
-        
         displayMenu();
         int choice = getUserChoice();
 

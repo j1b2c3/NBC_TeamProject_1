@@ -40,7 +40,7 @@ void dungeonManager<Player>::StartDungeon(Player* ply, Player* mons) // player �
 
 		switch (Select) //
 		{
-		case DungeonMenu::Dungeon_Enter: // Dungen 입장  보스 입장은 따로 만들지 않음.일단은.
+		case DungeonMenu::Dungeon_Enter: // Dungeon 입장  보스 입장은 따로 만들지 않음.일단은.
 			if (BattleCount == Last_Stage) // 보스 몬스터 체크 확인 
 			{
 				cout << " 보스던전에 입장합니다, 파이팅 " << endl;
