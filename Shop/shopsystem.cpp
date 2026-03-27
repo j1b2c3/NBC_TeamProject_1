@@ -11,7 +11,7 @@ void ShopSystem::showShopMenu(int& playerGold,
 {
     while (true) {
 
-        printShopUI(playerGold);
+        displayShop(playerGold);
         cout << "선택 >> ";
 
         int menuchoice;

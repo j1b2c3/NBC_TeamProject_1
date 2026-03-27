@@ -1,17 +1,11 @@
 ﻿#include "Inventory_UI.h"
+#include "ItemFactory.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <vector>
 
 using namespace std;
-
-// 테스트 구조체
-struct ItemInfo {
-    string name;
-    int count;
-    string desc;
-};
 
 void displayInventory(int playerGold, const vector<ItemInfo>& weapons, const vector<ItemInfo>& armors, const vector<ItemInfo>& consumables) {
     cout << "+==============================================================================+" << '\n';
@@ -61,4 +55,40 @@ void displayInventory(int playerGold, const vector<ItemInfo>& weapons, const vec
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "  선택 >> ";
+}
+
+void showInventoryUI(Inventory& inventory, Player& player) 
+{
+    while (true) 
+    {
+        std::vector<ItemInfo> weapons, armors, consumables;
+
+        for (const auto& [id, count] : inventory.getItems()) {
+            ItemType type = ItemFactory::getType(id);
+            ItemInfo info;
+            info.count = count;
+
+            if (type == ItemType::Weapon) {
+                info.name = weaponDB.at(id).base.name;
+                info.desc = "공격력 +" + std::to_string(weaponDB.at(id).attack);
+                weapons.push_back(info);
+            } else if (type == ItemType::Armor) {
+                info.name = armorDB.at(id).base.name;
+                info.desc = "방어력 +" + std::to_string(armorDB.at(id).defense);
+                armors.push_back(info);
+            } else if (type == ItemType::Consumable) {
+                info.name = consumableDB.at(id).base.name;
+                info.desc = "HP +" + std::to_string(consumableDB.at(id).hp);
+                consumables.push_back(info);
+            }
+        }
+
+        displayInventory(player.getGold(), weapons, armors, consumables);
+
+        int choice;
+        std::cin >> choice;
+        if (choice == 0) break;
+
+        // 이후 선택 처리 (장착/사용 등)
+    }
 }

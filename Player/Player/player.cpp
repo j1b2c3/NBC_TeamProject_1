@@ -48,6 +48,11 @@ void Player::setSpeed(int speed) {
 	this->speed = speed;
 }
 
+void Player::setGold(int g)
+{
+	this->gold = g;
+}
+
 string Player::getJobName() {
 	return job_name;
 }
@@ -87,6 +92,11 @@ int Player::getAccuracy() {
 
 int Player::getSpeed() {
 	return speed;
+}
+
+int Player::getGold()
+{
+	return gold;
 }
 
 
