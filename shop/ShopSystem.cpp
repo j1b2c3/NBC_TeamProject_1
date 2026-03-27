@@ -1,4 +1,4 @@
-﻿#include "shopsystem.h"
+﻿#include "ShopSystem.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
 #include "../Item/ItemDB.h"
