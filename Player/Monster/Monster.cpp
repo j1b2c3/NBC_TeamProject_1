@@ -1,5 +1,5 @@
-#include "Monster.h"
-#include "Player.h"
+﻿#include "Monster.h"
+#include "../Player/Player.h"
 #include <iostream>
 using namespace std;
 
@@ -57,13 +57,13 @@ void Monster::TakeDamage(int damage, bool canDodge)
 {
 	if (isDodged(dodge))
 	{
-		cout << "몬스터가 공격을 회피했습니다!" << endl;
+		cout << "몬스터가 공격을 회피했습니다!" << '\n';
 	}
 	curHp -= damage;
 	if (curHp <= 0)
 	{
 		curHp = 0;
-		cout << "몬스터를 처치했습니다!" << endl;
+		cout << "몬스터를 처치했습니다!" << '\n';
 	}
 }
 

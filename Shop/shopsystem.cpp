@@ -1,11 +1,11 @@
-﻿#include "shopsystem.h"
+﻿#include "ShopSystem.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
 #include "../Item/ItemDB.h"
 #include <iostream>
 #include <iomanip>
 
-// ----------------- 아즈키 스타일 상점 메뉴 -----------------
+// 상점
 void ShopSystem::showShopMenu(int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,

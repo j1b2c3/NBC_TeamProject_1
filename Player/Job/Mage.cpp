@@ -1,5 +1,5 @@
 #include "Mage.h"
-#include "Player.h"
+#include "../Player/Player.h"
 
 Mage::Mage(string nickname) : Player(nickname)
 {
