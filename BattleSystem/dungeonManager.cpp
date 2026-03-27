@@ -5,6 +5,7 @@ void dungeonManager::Initialize()
 	BattleCount = 0; // Stage 시작은 0 으로 초기화
 	b_LifeCheck = true; // 시작할떈 살아있어야지?.
 	Reward = Stage_Category::None; // 첫 시작시 보상은 없는걸로 
+	b_Wincheck = true;
 }
 
 // monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
@@ -25,14 +26,19 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 			if (Select % Shop_Stage == 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
 				EnterShop();
 
+
+			// TODO : 던전 관련 올려놓긴했는데 몬스터는 한마리씩 들어오는건 battle system 에서 고치는대로 수정하겠습니다.
+			// TODO : 그리고 몬스터 DB 가 필요 해.... 우어어어ㅓ어..
 			if (Select == Last_Stage) // 10번째 스테이지 
 				; // 보스 던전 입장 bool값으로 하는 던전 보스 DB는????? 
 			else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
-				;//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
+				b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 			else
-				b_LifeCheck = BattleSystem::getInstance().Battle(ply, mons); // 일반 던전
+				b_Wincheck = BattleSystem::getInstance().Battle(ply, mons); // 일반 던전
 
-			if (b_LifeCheck) // 생존 유무확인 
+
+			playerLifeCheck();// 생존 유무확인 
+			if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
 				DugenClear_Root(); // 루팅
 		}
 		// 이 아랬쪽 부분은 주석은 전부 삭제 해도 무관합니다.
@@ -109,7 +115,7 @@ void dungeonManager::EnterShop()
 			cout << "잘못된 입력입니다 다시 확인해주세요 " << endl;
 	}
 }
-// reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
+// ToDo reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
 void dungeonManager::DugenClear_Root() // 클리어 보상
 {
 	// 클리어 보상을 itemDb에서 singletoon에서 
@@ -127,9 +133,11 @@ bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 	int roll = rand() % 100;
 	return roll < 5; // 5% 확률
 }
-// TODO : 플레이어가 가지고 있는 inventory 불러와서 추가함수 에 ItemDB 에서 Rooting 데이터 떄려박기
-// 내가 없을 떄 시간이 되는데로 Reward 값에 따른 보상순차적으로 나누던가 DungenClear_Root함수랑 합치도록 해 보겠습니다.
-void dungeonManager::Rooting() 
+void dungeonManager::playerLifeCheck() // 플레이어 생존 책크 
 {
-	tempData.amount = 1;
+	if (Player_->GetCurHp() <= 0) 
+		b_LifeCheck = false; // 플레이어 뒈짐 게임 끝
+	// 살이 있는데 뭘 true합니까 그냥 비워둡니다.
+
 }
+

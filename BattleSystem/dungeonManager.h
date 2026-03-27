@@ -48,6 +48,7 @@ private:
 	static const int Shop_Stage = 5; // 5의 배율로 상점 등장
 	int BattleCount; //BattleCount 현제 플레이어이의 Stage
 	bool b_LifeCheck; // 플레이어 생존 유무 확인
+	bool b_Wincheck; // 플레이어 승리 유무 확인 변수 
 	Stage_Category Reward; //보상목록 
 
 	Loot tempData;
@@ -65,6 +66,8 @@ public:
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(); // 상점 입장 유무
 
-	void Rooting();
+	void playerLifeCheck();
 	
 };
+
+// 요청사항 필요시 여기 아래 주석 입력 부탁드립니다..... 꾸엉...
