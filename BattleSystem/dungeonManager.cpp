@@ -26,11 +26,11 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 				EnterShop();
 
 			if (Select == Last_Stage) // 10번째 스테이지 
-				; // 보스 던전 입장 bool값으로 하는
+				; // 보스 던전 입장 bool값으로 하는 던전 보스 DB는?????
 			else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
 				;//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 			else
-				; // 노말 던전 입장
+				b_LifeCheck = BattleSystem::getInstance().Battle(ply, mons);
 
 			if (b_LifeCheck) // 생존 유무확인 
 				DugenClear_Root(); // 루팅
