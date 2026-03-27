@@ -34,13 +34,13 @@ void Player::TakeDamage(int damage)
 {
 	if (isDodged(dodge))
 	{
-		cout << "플레이어가 공격을 회피했습니다!" << endl;
+		cout << "플레이어가 공격을 회피했습니다!" << '\n';
 	}
 	curHp -= damage;
 	if (curHp <= 0)
 	{
-		cout << "사망했습니다!" << endl;
-		cout << "게임 패배" << endl;
+		cout << "사망했습니다!" << '\n';
+		cout << "게임 패배" << '\n';
 	}
 }
 
@@ -62,8 +62,8 @@ void Player::AddExp(int gainedExp)
         needExp *= 2;
     }
 
-    cout << "레벨: " << level << endl;
-    cout << "남은 경험치: " << exp << " / " << needExp << endl;
+    cout << "레벨: " << level << '\n';
+    cout << "남은 경험치: " << exp << " / " << needExp << '\n';
 }
 
 void Player::SubExp(int lostExp)
