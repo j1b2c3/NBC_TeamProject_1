@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "ItemDB.h"
+#include "../Item/ItemDB.h"
 
 void displayShop(int playerGold);
 
