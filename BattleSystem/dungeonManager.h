@@ -56,9 +56,9 @@ public:
 	~dungeonManager() {}
 
 	void Initialize(); // 시작 초기화
-	bool HiddenRand(); // 히든던전 등장 확률
-
 	void StartDungeon(Player* ply, vector<Monster*>  mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
-	bool battleResult(); // 보상 확인
+
 	void DugenClear_Root(); // 던전 클리어시 
+	bool HiddenRand(); // 히든던전 등장 확률
+	
 };

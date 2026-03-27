@@ -7,14 +7,7 @@ void dungeonManager::Initialize()
 	Reward = Stage_Category::None; // 첫 시작시 보상은 없는걸로 
 }
 
-bool dungeonManager::HiddenRand() // 히든던전 등장 확률
-{
-	int roll = rand() % 100;
-	return roll < 5; // 5% 확률
-}
-
 // monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
-
 void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 {
 	Initialize();
@@ -45,7 +38,7 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 						break;// 반복문만 제거 
 					}
 					else
-						cout << "잘못된 입력입니다 다시 확인해주세요 ";
+						cout << "잘못된 입력입니다 다시 확인해주세요 " << endl;
 				}
 			}
 			if (Select == Last_Stage) // 10번째 스테이지 
@@ -101,25 +94,20 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 		}*/ // 횟수에 따른 입장 ( 1~ 4 일반 입장 5 상점 6 ~ 9  일반입장 10 상점 + 보스 입장 
 	}
 }
-
-bool dungeonManager::battleResult() // 보상 확인 ??이거 한번더 확인해야할듯?.
-{
-	if (Player_->GetHP() > 0) // 생존 확인
-		return true;
-	// clear() root 보상
-	else
-		return false; // 실패시 보상 없음
-	//b_LifeCheck = false; // 사망처리 죽으면 보상 없어야지.
-}
-void dungeonManager::DugenClear_Root()
+// reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
+void dungeonManager::DugenClear_Root() // 클리어 보상
 {
 	if (Reward == Stage_Category::Normal) // 노말 클리서이 보상
-		;
+		; // inventory 호출해와서 item 분배 
 	else if (Reward == Stage_Category::Hidden) // hidden 클리어시 보상
 		;
 	else if (Reward == Stage_Category::Boss) // Boss 클리어시 보상
 		;
 
 	Reward = Stage_Category::None; // 현제 보상 NOde으로 
-
+}
+bool dungeonManager::HiddenRand() // 히든던전 등장 확률
+{
+	int roll = rand() % 100;
+	return roll < 5; // 5% 확률
 }
