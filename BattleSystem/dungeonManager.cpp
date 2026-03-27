@@ -10,8 +10,8 @@ void dungeonManager::Initialize()
 // monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
 void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 {
-	Initialize();
-	// 시작전 데이터 입장 입력
+	Initialize(); // 기초 데이터 초기화 
+	// 시작전 데이터 복붙
 	Player_ = ply;
 	Monster_ = mons;
 	int Select = 0; // 상점 스킵 또는 던전 입장 선택
@@ -26,15 +26,16 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 				EnterShop();
 
 			if (Select == Last_Stage) // 10번째 스테이지 
-				; // 보스 던전 입장 bool값으로 하는 던전 보스 DB는?????
+				; // 보스 던전 입장 bool값으로 하는 던전 보스 DB는????? 
 			else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
 				;//b_LifeCheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 			else
-				b_LifeCheck = BattleSystem::getInstance().Battle(ply, mons);
+				b_LifeCheck = BattleSystem::getInstance().Battle(ply, mons); // 일반 던전
 
 			if (b_LifeCheck) // 생존 유무확인 
 				DugenClear_Root(); // 루팅
 		}
+		// 이 아랬쪽 부분은 주석은 전부 삭제 해도 무관합니다.
 		// 수정 되어야 함
 		/*
 		cout << " ---------------- 던 --------------"
@@ -42,7 +43,6 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 		cin >> Select;
 		*/
 		// 던전 입장 조건 부터 ?
-
 /*		switch (Select) //
 		{
 <<<<<<< HEAD
@@ -80,6 +80,7 @@ void dungeonManager::StartDungeon(Player* ply, vector<Monster*> mons) // player 
 			cout << "잘못 입력된 방식입니다 다시 입력해주세요  :" << endl;
 			break;
 		}*/ // 횟수에 따른 입장 ( 1~ 4 일반 입장 5 상점 6 ~ 9  일반입장 10 상점 + 보스 입장 
+
 	}
 }
 
@@ -93,6 +94,8 @@ void dungeonManager::EnterShop()
 
 		if (Shop_Select == 1)
 		{
+			// TODO : 상점 직접적으로 불러올려면 singletoon으로 되어 있어야겠쥬?
+			// 상점  호출
 			; // 상점 입장 
 			cout << " ------ 상점 탈출 ----- " << endl;
 			break;// 끝나면 break해서 함수 탈출
@@ -110,7 +113,7 @@ void dungeonManager::EnterShop()
 void dungeonManager::DugenClear_Root() // 클리어 보상
 {
 	// 클리어 보상을 itemDb에서 singletoon에서 
-	if (Reward == Stage_Category::Normal) // 노말 클리서이 보상
+	if (Reward == Stage_Category::Normal) // 노말 클리서이 보상 // Rooting 함수 호출하면 됩니다.
 		; // inventory 호출해와서 item 분배 
 	else if (Reward == Stage_Category::Hidden) // hidden 클리어시 보상
 		;
@@ -124,7 +127,9 @@ bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 	int roll = rand() % 100;
 	return roll < 5; // 5% 확률
 }
-void dungeonManager::Rooting()
+// TODO : 플레이어가 가지고 있는 inventory 불러와서 추가함수 에 ItemDB 에서 Rooting 데이터 떄려박기
+// 내가 없을 떄 시간이 되는데로 Reward 값에 따른 보상순차적으로 나누던가 DungenClear_Root함수랑 합치도록 해 보겠습니다.
+void dungeonManager::Rooting() 
 {
 	tempData.amount = 1;
 }
