@@ -22,7 +22,7 @@ void Thief::Attack(Monster& monster)
     if (rand() % 100 < 30)
     {
         damage *= 1.5;
-        cout << "크리티컬!" << endl;
+        cout << "크리티컬!" << '\n';
     }
 
     monster.TakeDamage(damage, true);

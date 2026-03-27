@@ -853,7 +853,9 @@
     <ClCompile Include="Item\ItemDB.cpp" />
     <ClCompile Include="Item\ItemFactory.cpp" />
     <ClCompile Include="Launch.cpp" />
+    <ClCompile Include="Player\CreatePlayerMonsters.cpp" />
     <ClCompile Include="Player\Job\Archer.cpp" />
+    <ClCompile Include="Player\Job\Mage.cpp" />
     <ClCompile Include="Player\Job\Thief.cpp" />
     <ClCompile Include="Player\Job\Warrior.cpp" />
     <ClCompile Include="Player\Monster\monster.cpp" />
@@ -948,7 +950,9 @@
     <ClInclude Include="Item\Inventory_UI.h" />
     <ClInclude Include="Item\ItemDB.h" />
     <ClInclude Include="Item\ItemFactory.h" />
+    <ClInclude Include="Player\CreatePlayerMonsters.h" />
     <ClInclude Include="Player\Job\archer.h" />
+    <ClInclude Include="Player\Job\Mage.h" />
     <ClInclude Include="Player\Job\thief.h" />
     <ClInclude Include="Player\Job\warrior.h" />
     <ClInclude Include="Player\Monster\monster.h" />
