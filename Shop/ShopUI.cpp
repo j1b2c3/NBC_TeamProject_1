@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void displayShop(int playerGold) {
+void displayshop(int playerGold) {
     string goldDisplay = to_string(playerGold) + "G";
 
     cout << "+==============================================================================+" << '\n';

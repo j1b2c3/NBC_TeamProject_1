@@ -1,9 +1,9 @@
 ﻿#include "ShopSystem.h"
-#include "ShopUI.h"
-#include "ShopLogic.h"
-#include "../Item/ItemDB.h"
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+#include "ShopLogic.h"
+#include "ShopUI.h"
+#include "../Item/ItemDB.h"
 
 // 상점 메뉴 
 void ShopSystem::showShopMenu(int& playerGold,
@@ -14,7 +14,7 @@ void ShopSystem::showShopMenu(int& playerGold,
 {
     while (true) {
 
-        displayShop(playerGold);
+        displayshop(playerGold);
         cout << "선택 >> ";
 
         int menuchoice;
