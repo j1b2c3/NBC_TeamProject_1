@@ -1,5 +1,5 @@
 #include "Warrior.h"
-#include "Player.h"
+#include "../Player/Player.h"
 
 Warrior::Warrior(string nickname) : Player(nickname)
 {

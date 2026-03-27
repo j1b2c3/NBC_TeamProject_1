@@ -1,11 +1,11 @@
 #include <string>
 #include <iostream>
-#include "Monster.h"
-#include "Player.h"
-#include "Warrior.h"
-#include "Thief.h"
-#include "Mage.h"
-#include "Archer.h"
+#include "Monster/Monster.h"
+#include "Player/Player.h"
+#include "Job/Warrior.h"
+#include "Job/Thief.h"
+#include "Job/Mage.h"
+#include "Job/Archer.h"
 using namespace std;
 
 Player* CreatePlayer()
@@ -19,13 +19,13 @@ Player* CreatePlayer()
     cout << "* 닉네임을 입력해주세요: ";
     cin >> nickname;
 
-    cout << "<전직 시스템>" << endl;
-    cout << nickname << "님, 환영합니다!" << endl;
-    cout << "* 원하시는 직업을 선택해주세요." << endl;
+    cout << "<전직 시스템>" << '\n';
+    cout << nickname << "님, 환영합니다!" << '\n';
+    cout << "* 원하시는 직업을 선택해주세요." << '\n';
 
     for (int i = 0; i < 4; i++)
     {
-        cout << (i + 1) << ". " << jobs[i] << endl;
+        cout << (i + 1) << ". " << jobs[i] << '\n';
     }
 
     cout << "선택: ";
@@ -46,7 +46,7 @@ Player* CreatePlayer()
         player = new Mage(nickname);
         break;
     default:
-        cout << "잘못된 입력입니다." << endl;
+        cout << "잘못된 입력입니다." << '\n';
     }
     return player;
 }

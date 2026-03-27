@@ -1,6 +1,6 @@
 #pragma once
 
-class Player;
+#include "Player/Player.h"
 
 Player* CreatePlayer();
 void CreateMonsters();
