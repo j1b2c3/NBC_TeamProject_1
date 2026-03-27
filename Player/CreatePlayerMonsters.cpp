@@ -1,11 +1,11 @@
 #include <string>
 #include <iostream>
-#include "Monster.h"
-#include "Player.h"
-#include "Warrior.h"
-#include "Thief.h"
-#include "Mage.h"
-#include "Archer.h"
+#include "Monster/Monster.h"
+#include "Player/Player.h"
+#include "Job/Warrior.h"
+#include "Job/Thief.h"
+#include "Job/Mage.h"
+#include "Job/Archer.h"
 using namespace std;
 
 Player* CreatePlayer()
