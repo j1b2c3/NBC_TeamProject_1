@@ -26,12 +26,16 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 	{
 		int choice;
 		// 플레이어 페이즈
-		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << player->GetDEF() << ")" <<
+		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << 
+			player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << 
+			player->GetDEF() << ")" <<
 			'\n';
 		cout << '\n';
 		for (Monster* m : monsters)
 		{
-			cout << m->getName() << ": (HP: " << m->getHP() << "/" << m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << m->getDefence() << ")" <<
+			cout << m->getName() << ": (HP: " << m->getHP() << "/" << 
+				m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << 
+				m->getDefence() << ")" <<
 				'\n';
 		}
 		cout << '\n';
@@ -64,7 +68,7 @@ void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
 		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << '\n';
 		if (CheckState()) break;
 	}
-	for (Monster* m : monsters)
+	for (Monster* m : monsters) // 사냥 끝난 몬스터들 제거.
 		delete m;
 }
 
