@@ -1,5 +1,5 @@
-﻿#pragma once
-#include "../Monster/monster.h"
+#pragma once
+#include "../Monster/Monster.h"
 #include <string>
 using namespace std;
 
