@@ -15,6 +15,7 @@ public:
     string getNickname();
     int getLevel();
     int getHP();
+    int getMaxHP();
     int getMP();
     int getPower();
     int getDefence();
@@ -34,6 +35,7 @@ protected:
     string job_name;
     string nickname;
     int level;
+    int maxHp;
     int HP;
     int MP;
     int power;

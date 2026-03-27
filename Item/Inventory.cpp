@@ -1,5 +1,5 @@
 ﻿#include "Inventory.h"
-#include "Player_Temp.h"
+#include "../Player/Player/player.h"
 #include <iostream>
 
 #include "ItemFactory.h"
@@ -48,12 +48,12 @@ void Inventory::useConsumable(int id, Player& player) {
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = std::min(item.hp, player.maxHP - player.hp);
-    player.hp += healed;
+    int healed = std::min(item.hp, player.getMaxHP() - player.getHP());
+    player.setHP(player.getHP() + healed);
 
     std::cout << "[아이템 사용] " << item.base.name
               << " → HP +" << healed
-              << " (현재 HP: " << player.hp << "/" << player.maxHP << ")\n";
+              << " (현재 HP: " << player.getHP() << "/" << player.getMaxHP() << ")\n";
 
     // 사용 후 제거
     removeItem(id);
@@ -110,11 +110,11 @@ void Inventory::equipArmor(int id, Player& player)
 
     // 장착
     equippedArmorId = id;
-    player.defense += armorDB[id].defense;
+    player.setDefence(player.getDefence() + armorDB[id].defense);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
-              << " (현재 방어력: " << player.defense << ")\n";
+              << " (현재 방어력: " << player.getDefence() << ")\n";
 }
 
 // 무기 장착 해제
@@ -144,11 +144,11 @@ void Inventory::unequipArmor(Player& player)
         return;
     }
 
-    player.defense -= armorDB[equippedArmorId].defense;
+    player.setDefence(player.getDefence() - armorDB[equippedArmorId].defense);
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense
-              << " (현재 방어력: " << player.defense << ")\n";
+              << " (현재 방어력: " << player.getDefence() << ")\n";
 
     equippedArmorId = 0;
 }

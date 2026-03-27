@@ -64,6 +64,11 @@ int Player::getHP() {
 	return HP;
 }
 
+int Player::getMaxHP()
+{
+	return maxHp;
+}
+
 int Player::getMP() {
 	return MP;
 }
