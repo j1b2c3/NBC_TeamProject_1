@@ -1,3 +1,5 @@
 ﻿#pragma once
+#include <iostream>
+#include <iomanip>
 
-void displayShop(int playerGold);
+void printShopUI(int playerGold);
