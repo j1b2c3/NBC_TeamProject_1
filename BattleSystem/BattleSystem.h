@@ -3,7 +3,6 @@
 #include <string>
 
 #include "../Player/Monster/monster.h"
-#include "../Player/Player/Player_BattleTemp.h"
 
 class BattleSystem
 {

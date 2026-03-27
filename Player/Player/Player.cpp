@@ -6,11 +6,6 @@ Player::Player(string nickname)
 {
 	level = 1;
 	exp = 0;
-	maxHp = 100;
-	curHp = 100;
-	atk = 5;
-	def = 10;
-	dodge = 5;
 	gold = 0;
 	this->nickname = nickname;
 }

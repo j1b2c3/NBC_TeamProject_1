@@ -1,9 +1,9 @@
-#include "Warrior.h"
+﻿#include "Warrior.h"
 #include "../Player/Player.h"
 
 Warrior::Warrior(string nickname) : Player(nickname)
 {
-	jobname = nickname;
+	jobname = "전사";
 	maxHp = 120;
 	curHp = 120;
 	atk = 3;

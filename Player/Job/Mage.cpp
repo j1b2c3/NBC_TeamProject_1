@@ -1,9 +1,9 @@
-#include "Mage.h"
+﻿#include "Mage.h"
 #include "../Player/Player.h"
 
 Mage::Mage(string nickname) : Player(nickname)
 {
-    jobname = nickname;
+    jobname = "마법사";
     maxHp = 85;
     curHp = 85;
     atk = 10;
