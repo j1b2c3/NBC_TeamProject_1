@@ -1,4 +1,4 @@
-﻿#include "ShopSystem.h"
+﻿#include "Shop.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
 #include "../Item/ItemDB.h"
@@ -6,7 +6,7 @@
 #include <iomanip>
 
 // 상점
-void ShopSystem::showShopMenu(int& playerGold,
+void Shop::showShopMenu(int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,
     map<int, int>& playerConsumables,
