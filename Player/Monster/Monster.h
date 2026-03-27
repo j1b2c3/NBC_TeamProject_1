@@ -19,9 +19,11 @@ protected:
     int maxGold;
     int minGold;
     //std::vector<item> items;
+    
 private:
     bool isDodged(int dodge);
     int calculateDamage(int atk, int def);
+    
 public:
     Monster(
         std::string name,

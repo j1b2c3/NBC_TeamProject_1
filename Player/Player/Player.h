@@ -16,10 +16,13 @@ protected:
 	int def;
 	int dodge;
 	int gold;
+	
 private:
 	bool isDodged(int dodge);
+	
 protected:
 	int calculateDamage(int atk, int def);
+	
 public:
 	Player(string nickname);
 
