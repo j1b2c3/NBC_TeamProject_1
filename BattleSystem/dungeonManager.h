@@ -19,6 +19,7 @@ struct BattleResult
 	string item; // 예비용 
 };
 
+
 //switch case 용 필요 없어져서 제거 
 
 static enum Stage_Category // 보상 관련 분할 
@@ -49,6 +50,8 @@ private:
 	bool b_LifeCheck; // 플레이어 생존 유무 확인
 	Stage_Category Reward; //보상목록 
 
+	Loot tempData;
+
 	Player* Player_; // 있다고 가정함.
 	vector<Monster*> Monster_; // 있다고 가정함 
 public:
@@ -61,5 +64,7 @@ public:
 	void DugenClear_Root(); // 던전 클리어시 
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(); // 상점 입장 유무
+
+	void Rooting();
 	
 };
