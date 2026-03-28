@@ -4,6 +4,9 @@
 
 #include "../Player/Monster/monster.h"
 #include "../Player/Player/Player.h"
+#include "../System/Windows.h"
+#include "../System/Utility.h"
+#include "Battle_UI.h"
 
 class BattleSystem
 {
@@ -14,8 +17,9 @@ private:
 	BattleSystem& operator=(const BattleSystem& ref) {}
 	~BattleSystem() {}
 
-	bool CheckState(Player& player, Monster& monster);
+	void CheckState(Player& player, Monster& monster);
 private:
+	BattleLog log;
 	bool bProgress = true;
 	bool bVictory = false;
 public:
