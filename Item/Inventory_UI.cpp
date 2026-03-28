@@ -63,7 +63,8 @@ void showInventoryUI(Inventory& inventory, Player& player)
     {
         std::vector<ItemInfo> weapons, armors, consumables;
 
-        for (const auto& [id, count] : inventory.getItems()) {
+        for (const auto& [id, count] : inventory.getItems()) 
+        {
             ItemType type = ItemFactory::getType(id);
             ItemInfo info;
             info.count = count;
