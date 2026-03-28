@@ -7,7 +7,11 @@
 
 using namespace std;
 
-void displayInventory(int playerGold, const vector<ItemInfo>& weapons, const vector<ItemInfo>& armors, const vector<ItemInfo>& consumables) {
+void displayInventory(int playerGold, 
+                        const vector<ItemInfo>& weapons, 
+                        const vector<ItemInfo>& armors, 
+                        const vector<ItemInfo>& consumables) 
+{
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     ####      ########      ########      ##     ##        ######            |" << '\n';
