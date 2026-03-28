@@ -6,11 +6,6 @@ Player::Player(string nickname)
 {
 	level = 1;
 	exp = 0;
-	maxHp = 100;
-	curHp = 100;
-	atk = 5;
-	def = 10;
-	dodge = 5;
 	gold = 0;
 	this->nickname = nickname;
 }
@@ -82,97 +77,97 @@ void Player::SubGold(int gold)
 	this->gold -= gold;
 }
 
-string Player::GetNickname()
+string Player::getNickname()
 {
 	return nickname;
 }
 
-string Player::GetJobName()
+string Player::getJobName()
 {
 	return jobname;
 }
 
-int Player::GetLevel()
+int Player::getLevel()
 {
 	return level;
 }
 
-int Player::GetExp()
+int Player::getExp()
 {
 	return exp;
 }
 
-float Player::GetMaxHp()
+float Player::getMaxHp()
 {
 	return maxHp;
 }
 
-float Player::GetCurHp()
+float Player::getCurHp()
 {
 	return curHp;
 }
 
-int Player::GetAtk()
+int Player::getAtk()
 {
 	return atk;
 }
 
-int Player::GetDef()
+int Player::getDef()
 {
 	return def;
 }
 
-int Player::GetDodge()
+int Player::getDodge()
 {
 	return dodge;
 }
 
-int Player::GetGold()
+int Player::getGold()
 {
 	return gold;
 }
 
-void Player::SetNickname(string nickname)
+void Player::setNickname(string nickname)
 {
 	this->nickname = nickname;
 }
 
-void Player::SetLevel(int level)
+void Player::setLevel(int level)
 {
 	this->level = level;
 }
 
-void Player::SetExp(int exp)
+void Player::setExp(int exp)
 {
 	this->exp = exp;
 }
 
-void Player::SetMaxHp(float maxHp)
+void Player::setMaxHp(float maxHp)
 {
 	this->maxHp = maxHp;
 }
 
-void Player::SetCurHp(float curHp)
+void Player::setCurHp(float curHp)
 {
 	this->curHp = curHp;
 }
 
-void Player::SetAtk(int atk)
+void Player::setAtk(int atk)
 {
 	this->atk = atk;
 }
 
-void Player::SetDef(int def)
+void Player::setDef(int def)
 {
 	this->def = def;
 }
 
-void Player::SetDodge(int dodge)
+void Player::setDodge(int dodge)
 {
 	this->dodge = dodge;
 }
 
-void Player::SetGold(int gold)
+void Player::setGold(int gold)
 {
 	this->gold = gold;
 }

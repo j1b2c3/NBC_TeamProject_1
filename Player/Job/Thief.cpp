@@ -1,11 +1,11 @@
-#include "Thief.h"
+﻿#include "Thief.h"
 #include "../Player/Player.h"
 #include <iostream>
 using namespace std;
 
 Thief::Thief(string nickname) : Player(nickname)
 {
-	jobname = nickname;
+	jobname = "도적";
 	maxHp = 70;
 	curHp = 70;
 	atk = 15;

@@ -1,9 +1,9 @@
-#include "Archer.h"
+﻿#include "Archer.h"
 #include "../Player/Player.h"
 
 Archer::Archer(string nickname) : Player(nickname)
 {
-	jobname = nickname;
+	jobname = "궁수";
 	maxHp = 100;
 	curHp = 100;
 	atk = 7;

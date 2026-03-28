@@ -47,7 +47,7 @@ int Monster::calculateDamage(int atk, int def)
 
 void Monster::Attack(Player& player)
 {
-	int damage = calculateDamage(atk, player.GetDef());
+	int damage = calculateDamage(atk, player.getDef());
 	if (damage < 0) damage = 0;
 
 	player.TakeDamage(damage);

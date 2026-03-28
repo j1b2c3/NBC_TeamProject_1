@@ -181,7 +181,7 @@
     <ClCompile Include="Item\ItemDB.cpp" />
     <ClCompile Include="Item\ItemFactory.cpp" />
     <ClCompile Include="Launch.cpp" />
-    <ClCompile Include="Player\CreatePlayerMonsters.cpp" />
+    <ClCompile Include="Player\CreatePlayer.cpp" />
     <ClCompile Include="Player\Job\Archer.cpp" />
     <ClCompile Include="Player\Job\Mage.cpp" />
     <ClCompile Include="Player\Job\Thief.cpp" />
@@ -277,7 +277,7 @@
     <ClInclude Include="Item\Inventory_UI.h" />
     <ClInclude Include="Item\ItemDB.h" />
     <ClInclude Include="Item\ItemFactory.h" />
-    <ClInclude Include="Player\CreatePlayerMonsters.h" />
+    <ClInclude Include="Player\CreatePlayer.h" />
     <ClInclude Include="Player\Job\Archer.h" />
     <ClInclude Include="Player\Job\Mage.h" />
     <ClInclude Include="Player\Job\Thief.h" />
