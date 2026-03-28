@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <conio.h>
 
 class Utility
 {
@@ -11,6 +12,14 @@ public:
 	static float RandFloat(float min, float max)
 	{
 		return ((max - min) * ((float)rand() / RAND_MAX)) + min;
+	}
+
+	// 아무 키를 받기전까지 대기
+	static void PressAnyKey()
+	{
+		int temp;
+		if (_getch() == 224)
+			temp = _getch();
 	}
 };
 
