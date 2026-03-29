@@ -32,10 +32,6 @@ public:
 	~Player();
 	
 	Inventory* getInventory() {return inventory;}
-	
-	
-	virtual void Attack(Monster& monster) = 0;
-	void TakeDamage(int damage);
 
 	virtual int Attack(Monster& monster) = 0;
 	int TakeDamage(int damage);
