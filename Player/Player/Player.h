@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+class Inventory;
+
 class Player
 {
 protected:
@@ -16,12 +18,24 @@ protected:
 	int def;
 	int dodge;
 	int gold;
+	
+	Inventory* inventory;
+	
 private:
 	bool isDodged(int dodge);
+	
 protected:
 	int calculateDamage(int atk, int def);
+	
 public:
 	Player(string nickname);
+	~Player();
+	
+	Inventory* getInventory() {return inventory;}
+	
+	
+	virtual void Attack(Monster& monster) = 0;
+	void TakeDamage(int damage);
 
 	virtual int Attack(Monster& monster) = 0;
 	int TakeDamage(int damage);

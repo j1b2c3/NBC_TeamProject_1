@@ -3,7 +3,7 @@
 
 Archer::Archer(string nickname) : Player(nickname)
 {
-	jobname = nickname;
+	jobname = "궁수";
 	maxHp = 100;
 	curHp = 100;
 	atk = 7;

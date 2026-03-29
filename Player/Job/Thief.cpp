@@ -5,7 +5,7 @@ using namespace std;
 
 Thief::Thief(string nickname) : Player(nickname)
 {
-	jobname = nickname;
+	jobname = "도적";
 	maxHp = 70;
 	curHp = 70;
 	atk = 15;

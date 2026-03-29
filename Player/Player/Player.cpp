@@ -59,8 +59,8 @@ void Player::AddExp(int gainedExp)
         needExp *= 2;
     }
 
-    cout << "레벨: " << level << endl;
-    cout << "남은 경험치: " << exp << " / " << needExp << endl;
+    cout << "레벨: " << level << '\n';
+    cout << "남은 경험치: " << exp << " / " << needExp << '\n';
 }
 
 void Player::SubExp(int lostExp)
@@ -79,12 +79,12 @@ void Player::SubGold(int gold)
 	this->gold -= gold;
 }
 
-string Player::GetNickname()
+string Player::getNickname()
 {
 	return nickname;
 }
 
-string Player::GetJobName()
+string Player::getJobName()
 {
 	return jobname;
 }

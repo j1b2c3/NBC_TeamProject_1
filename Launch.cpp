@@ -1,41 +1,31 @@
 ﻿#include <iostream>
 #include <string>
 #include <limits>
-
-#include "Player/Job/Thief.h"
-#include "Player/Monster/Monster.h"
-#include "BattleSystem/BattleSystem.h"
-
+#include "Player/CreatePlayer.h"
 using namespace std;
 
 // 메뉴 출력
 void displayMenu() {
+
     cout << "\n" << '\n';
-    cout << "╔════════════════════════════════════════════════════════════════════════════╗" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "║                        ████████╗ ███████╗ ██╗  ██╗ ████████╗               ║" << '\n';
-    cout << "║                        ╚══██╔══╝ ██╔════╝ ╚██╗██╔╝ ╚══██╔══╝               ║" << '\n';
-    cout << "║                           ██║    █████╗    ╚███╔╝     ██║                  ║" << '\n';
-    cout << "║                           ██║    ██╔══╝    ██╔██╗     ██║                  ║" << '\n';
-    cout << "║                           ██║    ███████╗ ██╔╝ ██╗    ██║                  ║" << '\n';
-    cout << "║                           ╚═╝    ╚══════╝ ╚═╝  ╚═╝    ╚═╝                  ║" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "║                          ██████╗  ██████╗   ██████╗                        ║" << '\n';
-    cout << "║                          ██╔══██╗ ██╔══██╗ ██╔════╝                        ║" << '\n';
-    cout << "║                          ██████╔╝ ██████╔╝ ██║  ███╗                       ║" << '\n';
-    cout << "║                          ██╔══██╗ ██╔═══╝  ██║   ██║                       ║" << '\n';
-    cout << "║                          ██║  ██║ ██║      ╚██████╔╝                       ║" << '\n';
-    cout << "║                          ╚═╝  ╚═╝ ╚═╝       ╚═════╝                        ║" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "║                            - EPIC ADVENTURE -                              ║" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "╠════════════════════════════════════════════════════════════════════════════╣" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "║                         [1] 게임 시작                                      ║" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "║                         [2] 게임 종료                                      ║" << '\n';
-    cout << "║                                                                            ║" << '\n';
-    cout << "╚════════════════════════════════════════════════════════════════════════════╝" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|                           TEXT RPG - EPIC ADVENTURE                          |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|  ########  ########  ##     ##  ########     ########  ########    #######   |" << '\n';
+    cout << "|     ##     ##         ##   ##      ##        ##     ## ##     ##  ##     ##  |" << '\n';
+    cout << "|     ##     ######       ###        ##        ########  ########   ##         |" << '\n';
+    cout << "|     ##     ##         ##   ##      ##        ##   ##   ##         ##   ####  |" << '\n';
+    cout << "|     ##     ##        ##     ##     ##        ##    ##  ##         ##     ##  |" << '\n';
+    cout << "|     ##     ########  ##     ##     ##        ##     ## ##          #######   |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|                              [1] 게임 시작                                   |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|                              [2] 게임 종료                                   |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
     cout << "\n선택 >> ";
 }
 
@@ -55,34 +45,29 @@ int getUserChoice() {
 void startGame() {
     cout << "\n게임을 시작합니다..." << '\n';
     //Todo : Game Start (캐릭터 생성)
-    Thief* p = new Thief("sans");
-    Monster* m = new Monster("aaa",1,100,5,3,1,1,1,1,1);
-
-    BattleSystem::getInstance().Battle(*p, *m);
-    
 }
 
-int main() {
-    bool isRunning = true;
-    
-    while (isRunning) {
-        displayMenu();
-        int choice = getUserChoice();
-
-        switch (choice) {
-            case 1:
-                startGame();
-                break;
-            case 2:
-                cout << "\n게임을 종료합니다. 감사합니다!" << endl;
-                isRunning = false;
-                break;
-            default:
-                cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << endl;
-                break;
-        }
-    }
-
-    return 0;
-}
+//int main() {
+//    bool isRunning = true;
+//    
+//    while (isRunning) {
+//        displayMenu();
+//        int choice = getUserChoice();
+//
+//        switch (choice) {
+//            case 1:
+//                startGame();
+//                break;
+//            case 2:
+//                cout << "\n게임을 종료합니다. 감사합니다!" << endl;
+//                isRunning = false;
+//                break;
+//            default:
+//                cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << endl;
+//                break;
+//        }
+//    }
+//
+//    return 0;
+//}
 
