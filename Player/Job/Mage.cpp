@@ -11,9 +11,9 @@ Mage::Mage(string nickname) : Player(nickname)
     dodge = 5;
 }
 
-void Mage::Attack(Monster& monster)
+int Mage::Attack(Monster& monster)
 {
     int damage = atk;
 
-    monster.TakeDamage(damage, true);
+	return monster.TakeDamage(damage, true);
 }

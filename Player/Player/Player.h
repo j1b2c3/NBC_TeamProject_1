@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Monster/Monster.h"
 #include <string>
 using namespace std;
@@ -12,8 +12,8 @@ protected:
 	string jobname;
 	int level;
 	int exp;
-	float maxHp;
-	float curHp;
+	int maxHp;
+	int curHp;
 	int atk;
 	int def;
 	int dodge;
@@ -32,34 +32,33 @@ public:
 	~Player();
 	
 	Inventory* getInventory() {return inventory;}
-	
-	
-	virtual void Attack(Monster& monster) = 0;
-	void TakeDamage(int damage);
+
+	virtual int Attack(Monster& monster) = 0;
+	int TakeDamage(int damage);
 	void AddExp(int gainedExp);
 	void SubExp(int lostExp);
 	void AddGold(int gold);
 	void SubGold(int gold);
 
-	string getNickname();
-	string getJobName();
-	int getLevel();
-	int getExp();
-	float getMaxHp();
-	float getCurHp();
-	int getAtk();
-	int getDef();
-	int getDodge();
-	int getGold();
-	
-	void setNickname(string nickname);
-	void setLevel(int level);
-	void setExp(int exp);
-	void setMaxHp(float maxHp);
-	void setCurHp(float curHp);
-	void setAtk(int atk);
-	void setDef(int def);
-	void setDodge(int dodge);
-	void setGold(int gold);
+	string GetNickname();
+	string GetJobName();
+	int GetLevel();
+	int GetExp();
+	int GetMaxHp();
+	int GetCurHp();
+	int GetAtk();
+	int GetDef();
+	int GetDodge();
+	int GetGold();
+
+	void SetNickname(string nickname);
+	void SetLevel(int level);
+	void SetExp(int exp);
+	void SetMaxHp(float maxHp);
+	void SetCurHp(float curHp);
+	void SetAtk(int atk);
+	void SetDef(int def);
+	void SetDodge(int dodge);
+	void SetGold(int gold);
 };
 

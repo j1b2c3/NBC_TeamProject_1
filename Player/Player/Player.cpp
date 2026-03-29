@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "Player.h"
 #include <iostream>
 using namespace std;
 
@@ -6,8 +6,17 @@ Player::Player(string nickname)
 {
 	level = 1;
 	exp = 0;
+	maxHp = curHp = 100;
+	atk = 5;
+	def = 10;
+	dodge = 5;
 	gold = 0;
 	this->nickname = nickname;
+}
+
+Player::~Player()
+{
+
 }
 
 bool Player::isDodged(int dodge)
@@ -25,18 +34,15 @@ int Player::calculateDamage(int atk, int def)
 	return static_cast<int>(damage);
 }
 
-void Player::TakeDamage(int damage)
+int Player::TakeDamage(int damage)
 {
 	if (isDodged(dodge))
-	{
-		cout << "플레이어가 공격을 회피했습니다!" << '\n';
-	}
+		return -1;
+
 	curHp -= damage;
-	if (curHp <= 0)
-	{
-		cout << "사망했습니다!" << '\n';
-		cout << "게임 패배" << '\n';
-	}
+	if (curHp < 0)
+		curHp = 0;
+	return damage;
 }
 
 void Player::AddExp(int gainedExp)
@@ -77,97 +83,97 @@ void Player::SubGold(int gold)
 	this->gold -= gold;
 }
 
-string Player::getNickname()
+string Player::GetNickname()
 {
 	return nickname;
 }
 
-string Player::getJobName()
+string Player::GetJobName()
 {
 	return jobname;
 }
 
-int Player::getLevel()
+int Player::GetLevel()
 {
 	return level;
 }
 
-int Player::getExp()
+int Player::GetExp()
 {
 	return exp;
 }
 
-float Player::getMaxHp()
+int Player::GetMaxHp()
 {
 	return maxHp;
 }
 
-float Player::getCurHp()
+int Player::GetCurHp()
 {
 	return curHp;
 }
 
-int Player::getAtk()
+int Player::GetAtk()
 {
 	return atk;
 }
 
-int Player::getDef()
+int Player::GetDef()
 {
 	return def;
 }
 
-int Player::getDodge()
+int Player::GetDodge()
 {
 	return dodge;
 }
 
-int Player::getGold()
+int Player::GetGold()
 {
 	return gold;
 }
 
-void Player::setNickname(string nickname)
+void Player::SetNickname(string nickname)
 {
 	this->nickname = nickname;
 }
 
-void Player::setLevel(int level)
+void Player::SetLevel(int level)
 {
 	this->level = level;
 }
 
-void Player::setExp(int exp)
+void Player::SetExp(int exp)
 {
 	this->exp = exp;
 }
 
-void Player::setMaxHp(float maxHp)
+void Player::SetMaxHp(float maxHp)
 {
 	this->maxHp = maxHp;
 }
 
-void Player::setCurHp(float curHp)
+void Player::SetCurHp(float curHp)
 {
 	this->curHp = curHp;
 }
 
-void Player::setAtk(int atk)
+void Player::SetAtk(int atk)
 {
 	this->atk = atk;
 }
 
-void Player::setDef(int def)
+void Player::SetDef(int def)
 {
 	this->def = def;
 }
 
-void Player::setDodge(int dodge)
+void Player::SetDodge(int dodge)
 {
 	this->dodge = dodge;
 }
 
-void Player::setGold(int gold)
+void Player::SetGold(int gold)
 {
 	this->gold = gold;
 }

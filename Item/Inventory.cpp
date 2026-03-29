@@ -50,12 +50,12 @@ void Inventory::useConsumable(int id, Player& player)
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = std::min(item.hp, player.getMaxHp() - player.getCurHp());
-    player.setCurHp(player.getCurHp() + healed);
+    int healed = std::min(item.hp, player.GetMaxHp() - player.GetCurHp());
+    player.SetCurHp(player.GetCurHp() + healed);
 
     std::cout << "[아이템 사용] " << item.base.name
               << " → HP +" << healed
-              << " (현재 HP: " << player.getCurHp() << "/" << player.getMaxHp() << ")\n";
+              << " (현재 HP: " << player.GetCurHp() << "/" << player.GetMaxHp() << ")\n";
 
     // 사용 후 제거
     removeItem(id);
@@ -83,11 +83,11 @@ void Inventory::equipWeapon(int id, Player& player)
 
       // 장착
       equippedWeaponId = id;
-      player.setPower(player.getPower() + weaponDB[id].attack);
+      player.SetAtk(player.GetAtk() + weaponDB[id].attack);
 
       std::cout << "[장착] " << weaponDB[id].base.name
                 << " → 공격력 +" << weaponDB[id].attack
-                << " (현재 공격력: " << player.getPower() << ")\n";
+                << " (현재 공격력: " << player.GetAtk() << ")\n";
 }
 
 // 방어구 장착
@@ -112,11 +112,11 @@ void Inventory::equipArmor(int id, Player& player)
 
     // 장착
     equippedArmorId = id;
-    player.setDefence(player.getDefence() + armorDB[id].defense);
+    player.SetDef(player.GetDef() + armorDB[id].defense);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
-              << " (현재 방어력: " << player.getDefence() << ")\n";
+              << " (현재 방어력: " << player.GetDef() << ")\n";
 }
 
 // 무기 장착 해제
@@ -128,11 +128,11 @@ void Inventory::unequipWeapon(Player& player)
         return; 
     }
 
-    player.setPower(player.getPower() - weaponDB[equippedWeaponId].attack);
+    player.SetAtk(player.GetAtk() - weaponDB[equippedWeaponId].attack);
 
     std::cout << "[해제] " << weaponDB[equippedWeaponId].base.name
               << " → 공격력 -" << weaponDB[equippedWeaponId].attack
-              << " (현재 공격력: " << player.getPower() << ")\n";
+              << " (현재 공격력: " << player.GetAtk() << ")\n";
 
     equippedWeaponId = 0;
 }
@@ -146,11 +146,11 @@ void Inventory::unequipArmor(Player& player)
         return;
     }
 
-    player.setDefence(player.getDefence() - armorDB[equippedArmorId].defense);
+    player.SetDef(player.GetDef() - armorDB[equippedArmorId].defense);
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense
-              << " (현재 방어력: " << player.getDefence() << ")\n";
+              << " (현재 방어력: " << player.GetDef() << ")\n";
 
     equippedArmorId = 0;
 }

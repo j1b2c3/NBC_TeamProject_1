@@ -1,121 +1,102 @@
 ﻿#include <iostream>
 #include <vector>
+#include <algorithm>
 
-#include "../System/Windows.h"
 #include "BattleSystem.h"
+
+//#include <conio.h>
 
 using namespace std;
 
-vector<string> BattleSystem::GetMonsterNames()
+bool BattleSystem::Battle(Player& player, Monster& monster)
 {
-	vector<string> v;
-	for (Monster* m : monsters)
-		v.push_back(m->getName());
-	return v;
-}
-
-void BattleSystem::Battle(Player* _player, vector<Monster*> _monsters)
-{
-	player = _player;
-	monsters = _monsters;
-
-	cout << "전투가 시작되었다!" << '\n';
-
+	string msg = "전투가 시작되었다!";
 	bProgress = true; // 전투가 진행중인가?
+	bVictory = false; // 승리유무
+	Vector2D curPos;
 	while (true)
 	{
 		int choice;
-		// 플레이어 페이즈
-		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << player->GetDEF() << ")" <<
-			'\n';
-		cout << '\n';
-		for (Monster* m : monsters)
-		{
-			cout << m->getName() << ": (HP: " << m->getHP() << "/" << m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << m->getDefence() << ")" <<
-				'\n';
-		}
-		cout << '\n';
-		choice = SelectAction({"공격", "아이템", "도주"}, 2);
-
+		log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
+		//플레이어 페이즈
+		displayBattle(player, monster, curPos, log, "행동을 선택하세요 >> ");
+		InputDigit(choice);
+		choice--;
+		log.Clear();
 		switch (choice)
 		{
 		case 0:
-			
-			cout << "누구를 공격할까?" << '\n';
-			choice = SelectAction(GetMonsterNames(), 4);
-			
-			cout << monsters[choice]->getName() << "에게 공격! ";
-			cout << player->Attack(monsters[choice]) << "의 피해를 입혔다!" << '\n';
-			
+			log.line_1.assign(monster.GetName() + "에게 공격!");
+			log.line_2.assign(to_string(player.Attack(monster)) + "의 피해를 입혔다! ");
 			break;
 		case 1:
-			cout << "아이템을 사용했다!" << '\n';
+			log.line_1.assign("방어를 시도했다!");
 			break;
 		case 2:
-			cout << "도주했다..." << '\n';
+			log.line_1.assign("아이템을 사용했다!");
+			break;
+		case 3:
+			log.line_1.assign("도주했다...");
+			log.line_2.assign("전투가 종료되었다.");
 			bProgress = false;
 			break;
+		default:
+			log.line_3 = "                            잘못된 입력이다.";
+			continue;
+			break;
 		}
-		if (CheckState()) break;
+		CheckState(player, monster);
+		displayBattle(player, monster, curPos, log);
+		Utility::PressAnyKey();
+		if (!bProgress) break;
 
 		// 몬스터 페이즈
-		choice = rand() % monsters.size();
-		cout << monsters[choice]->getName() << "의 공격! ";
-		cout << monsters[choice]->attack(player) << "의 피해를 입었다!" << '\n';
-		if (CheckState()) break;
+		log.line_1.assign(monster.GetName() + "의 공격!");
+		log.line_2.assign(to_string(monster.Attack(player)) + "의 피해를 입었다! ");
+		CheckState(player, monster);
+		displayBattle(player, monster, curPos, log);
+		Utility::PressAnyKey();
+		if (!bProgress) break;
+		log.Clear();
 	}
-	for (Monster* m : monsters)
-		delete m;
+	Windows::SetCursorPos(curPos);
+	return bVictory;
 }
 
 // 전투상황 체크, 리타이어나 승패여부를 가른다.
-bool BattleSystem::CheckState()
+void BattleSystem::CheckState(Player& player, Monster& monster)
 {
+	if (!bProgress)
+		return;
+
 	// 몬스터 체력체크
-	auto it = monsters.begin();
-	while (it != monsters.end())
+	if (monster.GetCurHp() <= 0)
 	{
-		if ((*it)->getHP() <= 0)
-		{
-			cout << (*it)->getName() << "은 쓰러졌다! (+" << (*it)->getExp() << "EXP, " << (*it)->getGold() << "G)" << '\n';
-			delete* it;
-			it = monsters.erase(it);
-		}
-		else
-		{
-			it++;
-		}
+		log.line_2.append(monster.GetName() + "은(는) 쓰러졌다!");
 	}
 
 	// 플레이어 체력체크 (패배 체크)
-	if (player->GetHP() <= 0)
+	if (player.GetCurHp() <= 0)
 	{
-		cout << player->GetName() << "은 쓰러졌다!" << '\n';
-		cout << "전투에서 패배했다..." << '\n';
+		log.line_2.append(player.GetNickname() + "은(는) 쓰러졌다!");
+		log.line_3.assign("전투에서 패배했다...");
 		bProgress = false;
-		return true;
+		return;
 	}
 
-	// 승리 체크
-	if (monsters.empty())
+	// 승리 체크 (플레이어가 먼저 쓰러지면 패배, 승리)
+	if (monster.GetCurHp() <= 0)
 	{
-		cout << "전투에서 승리했다!" << '\n';
+		log.line_3.assign("전투에서 승리했다!");
+		bVictory = true;
 		bProgress = false;
-		return true;
+		return;
 	}
-	return false;
 }
 
 // 취할 수 있는 행동(action)들을 출력한다. 한줄에 출력되는 action은 col갯수만큼.
 int BattleSystem::SelectAction(vector<string> actions, int col)
 {
-
-	//
-	// ex) SelectAction({"공격", "행동", "아이템", "도망간다"}, 2}
-	// ----------------------------------------------
-	// ▶1.공격　　 | 　2.행동
-	//   3.아이템　 | 　4.도망간다
-	// ----------------------------------------------
 
 	int choice = -1;
 	int str_maxlen = 0;
@@ -143,13 +124,5 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
 	cout << "\n\n입력: ";
 	cin >> choice;
 
-	
-	// 실시간 로그방식: 추후에 추가
-	//Windows::CursorView(false);
-	//while (true)
-	//{
-	//	
-	//}
-	//Windows::CursorView(true);
 	return choice - 1;
 }

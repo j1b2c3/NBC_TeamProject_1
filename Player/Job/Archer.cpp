@@ -11,10 +11,10 @@ Archer::Archer(string nickname) : Player(nickname)
 	dodge = 5;
 }
 
-void Archer::Attack(Monster& monster)
+int Archer::Attack(Monster& monster)
 {
 	int damage = calculateDamage(atk, monster.GetDef());
 	if (damage < 0) damage = 0;
 
-	monster.TakeDamage(damage, false);
+	return monster.TakeDamage(damage, false);
 }

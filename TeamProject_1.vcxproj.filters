@@ -18,48 +18,126 @@
     <ClCompile Include="Launch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="BattleSystem\Battle_UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
+    <ClCompile Include="BattleSystem\dungeonManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Warrior.cpp">
+    <ClCompile Include="BattleSystem\BattleSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Thief.cpp">
+    <ClCompile Include="BattleSystem\dungeonUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mage.cpp">
+    <ClCompile Include="Item\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Archer.cpp">
+    <ClCompile Include="Item\InventoryTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreatePlayerMonsters.cpp">
+    <ClCompile Include="Item\Inventory_UI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\ItemDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item\ItemFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\CreatePlayerMonsters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Job\Archer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Job\Mage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Job\Thief.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Job\Warrior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Monster\Monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop\ShopSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop\ShopLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop\ShopUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="BattleSystem\Battle_UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
+    <ClInclude Include="BattleSystem\dungeonManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Warrior.h">
+    <ClInclude Include="BattleSystem\BattleSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Thief.h">
+    <ClInclude Include="BattleSystem\dungeonUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mage.h">
+    <ClInclude Include="Item\Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Archer.h">
+    <ClInclude Include="Item\Inventory_UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CreatePlayerMonsters.h">
+    <ClInclude Include="Item\ItemDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\ItemFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\CreatePlayerMonsters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Job\Archer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Job\Mage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Job\Thief.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Job\Warrior.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Monster\Monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop\ShopSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop\ShopLogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop\ShopUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
