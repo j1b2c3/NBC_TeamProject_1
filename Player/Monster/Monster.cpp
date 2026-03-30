@@ -77,7 +77,7 @@ void Monster::giveLoot(Player& player)
 	int exp = getRandom(minExp, maxExp);
 	player.addexp(exp);
 	int gold = getRandom(minGold, maxGold);
-	player.subGold(gold);
+	player.addGold(gold);
 }
 
 string Monster::getName()
