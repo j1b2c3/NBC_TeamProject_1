@@ -49,7 +49,6 @@ public:
     }
 
 	void Initialize(); // 시작 초기화
-	bool setMonster(vector<Monster*> mons);
 	void StartDungeon(Player* Player_);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 
     bool HiddenRand(); // 히든던전 등장 확률

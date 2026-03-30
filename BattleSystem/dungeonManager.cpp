@@ -9,17 +9,6 @@ void dungeonManager::Initialize()
     b_Wincheck = true;
 }
 
-bool dungeonManager::setMonster(vector<Monster*> mons) // 몬스터 값이 있는지 없는지 확인 이후 반환
-{
-    if (!mons.empty()) // 없는지 있는지 확인 비어있지 않으면 treu 비었으면 false
-    {
-        // Monster Monster_ = mons; // vector 값이 있으면 
-        return true;
-    }
-    cout << " 망했어요 몬스터가 없어요 " << '\n'; // 예외 확인 
-    return false;
-}
-
 string getAreaName(int stageLevel)
 {
     switch (stageLevel)
