@@ -4,45 +4,44 @@ using namespace std;
 
 Player::Player(string nickname)
 {
-	level = 1;
-	exp = 0;
-	maxHP = curHP = 100;
-	atk = 5;
-	def = 10;
-	dodge = 5;
-	gold = 0;
-	this->nickname = nickname;
+    level = 1;
+    exp = 0;
+    maxHP = curHP = 100;
+    atk = 5;
+    def = 10;
+    dodge = 5;
+    gold = 0;
+    this->nickname = nickname;
 }
 
 Player::~Player()
 {
-	
 }
 
 bool Player::isDodged(int dodge)
 {
-	return rand() % 100 < dodge;
+    return rand() % 100 < dodge;
 }
 
 int Player::calculateDamage(int atk, int def)
 {
-	float reduction = def / 100.0f;
-	float damage = atk * (1.0f - reduction);
+    float reduction = def / 100.0f;
+    float damage = atk * (1.0f - reduction);
 
-	if (damage < 0) damage = 0;
+    if (damage < 0) damage = 0;
 
-	return static_cast<int>(damage);
+    return static_cast<int>(damage);
 }
 
 int Player::TakeDamage(int damage)
 {
-	if (isDodged(dodge))
-		return -1;
+    if (isDodged(dodge))
+        return -1;
 
-	curHP -= damage;
-	if (curHP < 0)
-		curHP = 0;
-	return damage;
+    curHP -= damage;
+    if (curHP < 0)
+        curHP = 0;
+    return damage;
 }
 
 void Player::addexp(int gainedExp)
@@ -69,117 +68,117 @@ void Player::addexp(int gainedExp)
 
 int Player::Attack(Monster& monster)
 {
-	int damage = calculateDamage(atk, monster.getDef());
-	return damage;
+    int damage = calculateDamage(atk, monster.getDef());
+    return damage;
 }
 
 void Player::subExp(int lostExp)
 {
-	exp -= lostExp;
-	if (exp < 0) exp = 0;
+    exp -= lostExp;
+    if (exp < 0) exp = 0;
 }
 
 void Player::addGold(int gold)
 {
-	this->gold += gold;
+    this->gold += gold;
 }
 
 void Player::subGold(int gold)
 {
-	this->gold -= gold;
+    this->gold -= gold;
 }
 
 string Player::getNickname()
 {
-	return nickname;
+    return nickname;
 }
 
 string Player::getJobName()
 {
-	return jobname;
+    return jobname;
 }
 
 int Player::getLevel()
 {
-	return level;
+    return level;
 }
 
 int Player::getExp()
 {
-	return exp;
+    return exp;
 }
 
 int Player::getMaxHP()
 {
-	return maxHP;
+    return maxHP;
 }
 
 int Player::getCurHP()
 {
-	return curHP;
+    return curHP;
 }
 
 int Player::getAtk()
 {
-	return atk;
+    return atk;
 }
 
 int Player::getDef()
 {
-	return def;
+    return def;
 }
 
 int Player::getDodge()
 {
-	return dodge;
+    return dodge;
 }
 
 int Player::getGold()
 {
-	return gold;
+    return gold;
 }
 
 void Player::setNickname(string nickname)
 {
-	this->nickname = nickname;
+    this->nickname = nickname;
 }
 
 void Player::setLevel(int level)
 {
-	this->level = level;
+    this->level = level;
 }
 
 void Player::setExp(int exp)
 {
-	this->exp = exp;
+    this->exp = exp;
 }
 
 void Player::setMaxHP(int maxHP)
 {
-	this->maxHP = maxHP;
+    this->maxHP = maxHP;
 }
 
 void Player::setCurHP(int curHP)
 {
-	this->curHP = curHP;
+    this->curHP = curHP;
 }
 
 void Player::setAtk(int atk)
 {
-	this->atk = atk;
+    this->atk = atk;
 }
 
-void Player::getDef(int def)
+void Player::setDef(int def)
 {
-	this->def = def;
+    this->def = def;
 }
 
-void Player::setdodge(int dodge)
+void Player::setDodge(int dodge)
 {
-	this->dodge = dodge;
+    this->dodge = dodge;
 }
 
-void Player::setgold(int gold)
+void Player::setGold(int gold)
 {
-	this->gold = gold;
+    this->gold = gold;
 }
