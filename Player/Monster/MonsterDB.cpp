@@ -1,12 +1,12 @@
 ﻿#include "MonsterDB.h"
 using namespace std;
 
-int FinalBoss::attack(Player& player)
+int FinalBoss::attack(Player& player, bool is_defence)
 {
     if (isCharging)
     {
         cout << "📢 [BOSS] 보스가 준비했던 강력한 일격을 가합니다! (데미지 2배)" << endl;
-        int heavyDamage = calculateDamage(atk * 2, player.getDef());
+        int heavyDamage = calculateDamage(atk * 2, player.getDef(), is_defence);
         player.TakeDamage(heavyDamage);
 
         isCharging = false; 
@@ -22,5 +22,5 @@ int FinalBoss::attack(Player& player)
     }
 
     // 3. 일반 공격
-    return Monster::attack(player);
+    return Monster::attack(player, is_defence);
 }

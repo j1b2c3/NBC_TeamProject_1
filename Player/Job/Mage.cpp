@@ -11,13 +11,14 @@ Mage::Mage(string nickname) : Player(nickname)
     dodge = 5;
 }
 
-int Mage::Attack(Monster& monster)
+int Mage::Attack(Monster& monster, string& action_str)
 {
     int damage = atk;
     // 10프로 확률로 대미지 2배
     if (rand() % 100 < 10)
     {
-        damage *= 2;
+        action_str = "2배의 크리티컬!";
+        damage *= 2.0f;
     }
     monster.TakeDamage(damage, true);
 

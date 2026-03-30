@@ -81,8 +81,10 @@ int main()
 
                 if (myPlayer != nullptr)
                 {
-                    dm.StartDungeon(myPlayer);
-
+                    Monster* m = new Monster("sans", 1, 100, 1, 1, 5, 1, 2, 1, 2);
+                    //dm.StartDungeon(myPlayer, { m });
+                    BattleSystem::getInstance().Battle(*myPlayer, *m);
+                    delete m;
                     delete myPlayer;
                     myPlayer = nullptr;
                 }
