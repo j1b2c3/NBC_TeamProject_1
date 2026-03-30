@@ -68,7 +68,6 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
         switch (Select)
         {
-
         case 1:
             {
                 // 상점 체크
@@ -116,16 +115,12 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                     return;
                 }
             }
-
-        }
             break;
         case 2: // 아이템
-            while (true)
-            {
-                // Player_->getInventory()->displayEquipped(); // 장비 호출
-                // Player_->getInventory()->displayItems(); // 아이템 호출
-                //displayInventory();
-            }
+
+            // Player_->getInventory()->displayEquipped(); // 장비 호출
+            // Player_->getInventory()->displayItems(); // 아이템 호출
+            //displayInventory();
             break;
         case 3: //휴식 
             Player_->setCurHP(Player_->getMaxHP()); // 체력 만땅 딴거 필요한게 있으면 호출 플리즈
