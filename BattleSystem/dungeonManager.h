@@ -6,6 +6,7 @@
 #include "../Item/ItemDB.h"
 #include "../Shop/shopsystem.h"
 #include "../Player/Monster/MonsterDB.h"
+#include "../Item/Inventory.h"
 
 
 
@@ -56,7 +57,6 @@ public:
     void EnterShop(Player* player_); // 상점 입장유무 
 
     void playerLifeCheck(Player* Player_);
-    Monster* getrandmonster(vector<Monster*> mons);
 };
 
 // 요청사항 필요시 여기 아래 주석 입력 부탁드립니다..... 꾸엉...
