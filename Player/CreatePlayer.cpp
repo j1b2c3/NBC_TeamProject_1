@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 
+#include "../Util/util.h"
 #include "Player/Player.h"
 #include "Job/Warrior.h"
 #include "Job/Thief.h"
@@ -11,6 +12,7 @@ using namespace std;
 
 void displayMainUI()
 {
+    system("cls");
     cout << "\n" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -26,71 +28,36 @@ void displayMainUI()
     cout << "+==============================================================================+" << '\n';
 }
 
-void jobChoiceWarrior()
+void displayConfirmJob(string jobName, string description)
 {
     displayMainUI();
     cout << "|                                                                              |" << '\n';
-    cout << "|  전사는 높은 체력과 방어력을 갖는 대신 공격력이 약합니다.                    |" << '\n';
+    cout << "|  " << left << setw(76) << jobName + ": " + description << "|" << '\n';
     cout << "|  정말 전사로 전직하시겠습니까?                                               |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "선택 : ";
-}
-
-void jobChoiceArcher()
-{
-    displayMainUI();
-    cout << "|                                                                              |" << '\n';
-    cout << "|  궁수는 높은 어쩌구 저쩌구                          |" << '\n';
-    cout << "|  정말 궁수로 전직하시겠습니까?                                                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
+    cout << "|    선택 >>                                                                   | " << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "선택 : ";
-}
-
-void jobChoiceMage()
-{
-    displayMainUI();
-    cout << "|                                                                              |" << '\n';
-    cout << "|  마법사는 어쩌구                          |" << '\n';
-    cout << "|  정말 마법사로 전직하시겠습니까?                                                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "+==============================================================================+" << '\n';
-    cout << "선택 : ";
-}
-
-void jobChoiceThief()
-{
-    displayMainUI();
-    cout << "|                                                                              |" << '\n';
-    cout << "|  도적은 어쩌구                          |" << '\n';
-    cout << "|  정말 도적으로 전직하시겠습니까?                                                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "+==============================================================================+" << '\n';
-    cout << "선택 : ";
 }
 
 void selectJobUI(string nickname)
 {
     string msg = nickname + "님, 원하시는 직업을 선택해 주세요";
-    int remainingSpace = 74 - (int)msg.length();    
-    
+    int remainingSpace = 74 - static_cast<int>(msg.length());
+
     displayMainUI();
     cout << "|                                                                              |" << '\n';
     cout << "|     <전직 시스템>                                                            |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     " << left << msg;
     cout << right << setw(remainingSpace) << "|" << '\n';
+    cout << "|                                                                              |" << '\n';
     cout << "|    [1] 전사           [2] 궁수             [3]  도적          [4] 마법사     |" << '\n';
     cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|    선택 >>                                                                   | " << '\n';
     cout << "+==============================================================================+" << '\n';
 }
 
@@ -99,92 +66,59 @@ void choose_Job(string nickname, Player*& player)
 {
     int job_choice = 0;
     int answer = 0;
-    
+
     while (true)
     {
         selectJobUI(nickname);
-        cout << "선택: ";
-        if (!(cin >> job_choice)) {
-            cin.clear(); cin.ignore(1000, '\n');
+        // "선택 >>" 위치로 이동 (줄 번호 확인 필요, 대략 19~20번 라인)
+        gotoxy(15, 20);
+
+        if (!(cin >> job_choice))
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
         }
-    
+
+        // 직업별 확인 창 로직
+        string jobName = "";
+        string desc = "";
+
         switch (job_choice)
         {
-        case 1:
-            jobChoiceWarrior();
-            cin >> answer;
-            if (answer == 1)
-            {
-                player = new Warrior(nickname);
-                break;
-            }
-            else if (answer == 2)
-                break;
-            else
-            {
-                cout << "잘못 입력하셨습니다.";
-                cin.clear(); cin.ignore(1000, '\n');
-                break;
-            }
-        case 2:
-            jobChoiceArcher();
-            cin >> answer;
-            if (answer == 1)
-            {
-                player = new Archer(nickname);
-                break;
-            }
-            else if (answer == 2)
-                break;
-            else
-            {
-                cout << "잘못 입력하셨습니다.";
-                cin.clear(); cin.ignore(1000, '\n');
-                return;
-            }
+        case 1: jobName = "전사";
+            desc = "높은 체력과 방어력을 갖습니다. 특별한 능력이 없지만 기본 능력이 높습니다.";
+            break;
+        case 2: jobName = "궁수";
+            desc = "방어 무시와 높은 회피를 갖습니다. 최소 5의 대미지를 줍니다.";
+            break;
+        case 3: jobName = "도적";
+            desc = "높은 회피를 갖습니다. 50프로의 확률로 1.5배의 대미지를 줍니다.";
+            break;
+        case 4: jobName = "마법사";
+            desc = "강력한 마법 공격력을 갖습니다. 10프로 확률로 2배의 대미지를 줍니다";
+            break;
+        default: continue;
+        }
 
-        case 3:
-            jobChoiceThief();
-            cin >> answer;
-            if (answer == 1)
-            {
-                player = new Thief(nickname);
-                break;
-            }
-            else if (answer == 2)
-                break;
-            else
-            {
-                cout << "잘못 입력하셨습니다.";
-                cin.clear(); cin.ignore(1000, '\n');
-                break;
-            }
+        displayConfirmJob(jobName, desc);
+        gotoxy(15, 20);
+        cin >> answer;
 
-        case 4:
-            jobChoiceMage();
-            cin >> answer;
-            if (answer == 1)
-            {
-                player = new Mage(nickname);
-                break;
-            }
-            else if (answer == 2)
-                break;
-            else
-            {
-                cout << "잘못 입력하셨습니다.";
-                cin.clear(); cin.ignore(1000, '\n');
-                break;
-            }
-        default:
-            cout << "잘못된 입력입니다." << '\n';
+        if (answer == 1)
+        {
+            if (job_choice == 1) player = new Warrior(nickname);
+            else if (job_choice == 2) player = new Archer(nickname);
+            else if (job_choice == 3) player = new Thief(nickname);
+            else if (job_choice == 4) player = new Mage(nickname);
+            return;
         }
     }
 }
 
 Player* createPlayer()
 {
-    string jobs[] = { "전사", "궁수", "도적", "마법사" };    
+    string jobs[] = {"전사", "궁수", "도적", "마법사"};
     string nickname;
     Player* player = nullptr;
     cout << "\n" << '\n';
@@ -196,11 +130,11 @@ Player* createPlayer()
     cout << "|     닉네임을 입력해 주세요!                                                  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "닉네임 : ";
+    cout << "|    닉네임 >>                                                                 | " << '\n';
+    cout << "+==============================================================================+" << '\n';
+    gotoxy(15, 20);
     cin >> nickname;
-    
+
     choose_Job(nickname, player);
-    // 여기서 던전 시스템으로 연결, 인자 Player
-    
     return player;
 }
