@@ -92,7 +92,7 @@ void dungeonManager::EnterShop(Player* player_)
 		if (Shop_Select == 1)
 		{
 			// TODO : 상점 연결
-
+			//Shop_.showShopMenu; 매개변수 너무 많아서 일단 킵 
 			cout << " ------ 상점에서 나갑니다 ----- " << endl;
 			break;// 끝나면 break해서 함수 탈출
 		}
