@@ -33,7 +33,7 @@ void displayConfirmJob(string jobName, string description)
     displayMainUI();
     cout << "|                                                                              |" << '\n';
     cout << "|  " << left << setw(76) << jobName + ": " + description << "|" << '\n';
-    cout << "|  정말 전사로 전직하시겠습니까?                                               |" << '\n';
+    cout << "|  정말 " << left << setw(2) << jobName + "(으)로 전직하시겠습니까?                                          |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';

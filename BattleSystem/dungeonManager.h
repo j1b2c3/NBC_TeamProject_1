@@ -50,7 +50,7 @@ public:
     bool b_LifeCheck; // 플레이어 생존 유무 확인
     bool b_Wincheck; // 플레이어 승리 유무 확인 변수 
 
-    Loot tempData;
+    // Loot tempData;
 
     ShopSystem Shop_;
     MonsterGenerator Mons_g;

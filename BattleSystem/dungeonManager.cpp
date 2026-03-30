@@ -119,7 +119,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
             // Player_->getInventory()->displayEquipped(); // 장비 호출
             // Player_->getInventory()->displayItems(); // 아이템 호출
-            //displayInventory();
+            // showInventoryUI();
             break;
         case 3: //휴식 
             Player_->setCurHP(Player_->getMaxHP()); // 체력 만땅 딴거 필요한게 있으면 호출 플리즈
@@ -146,7 +146,6 @@ void dungeonManager::EnterShop(Player* player_)
         if (Shop_Select == 1)
         {
             // TODO : 상점 연결
-            //Shop_.showShopMenu; 매개변수 너무 많아서 일단 킵 
             cout << " ------ 상점에서 나갑니다 ----- " << '\n';
             break; // 끝나면 break해서 함수 탈출
         }

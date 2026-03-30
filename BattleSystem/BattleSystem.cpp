@@ -1,7 +1,6 @@
 ﻿#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 #include "BattleSystem.h"
 
@@ -16,6 +15,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     while (true)
     {
         int choice;
+        log.Clear();
         log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
         //플레이어 페이즈
         displayBattle(player, monster, curPos, log, "행동을 선택하세요 >> ");
@@ -50,6 +50,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         if (!bProgress) break;
 
         // 몬스터 페이즈
+        log.Clear();
         log.line_1.assign(monster.getName() + "의 공격!");
         log.line_2.assign(to_string(monster.attack(player)) + "의 피해를 입었다! ");
         CheckState(player, monster);

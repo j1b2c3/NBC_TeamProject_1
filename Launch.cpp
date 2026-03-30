@@ -47,7 +47,7 @@ int getUserChoice()
         cin.clear();
         cin.ignore(1000, '\n');
         gotoxy(14, 20);
-        cout << "숫자(1, 2)만 입력하세요!";
+        cout << "숫자만 입력하세요!";
         gotoxy(14, 20); // 다시 입력 위치로 복귀
         cout << "         "; // 기존 잘못된 입력 지우기
         gotoxy(14, 20);
