@@ -1,8 +1,4 @@
 ﻿#include "ItemDB.h"
-<<<<<<< HEAD
-=======
-#include "itemDB.h"
->>>>>>> b4a9b1c98193288177528f5b60d72d0256910b83
 
 void ItemManager::init() {
     // 무기 (아이템넘버, 이름, 구매가격, 판매가격, 공격력)

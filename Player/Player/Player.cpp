@@ -164,7 +164,7 @@ void Player::setAtk(int atk)
 	this->atk = atk;
 }
 
-void Player::getDef(int def)
+void Player::setDef(int def)
 {
 	this->def = def;
 }

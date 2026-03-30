@@ -3,11 +3,12 @@
 #include <limits>
 #include "Player/CreatePlayer.h"
 
+// 테스트 코드 헤더-------------
 #include "Item/Inventory.h"
-  #include "Item/Inventory_UI.h"
-  #include "Item/ItemDB.h"
-  #include "Player/Job/Warrior.h"
-
+#include "Item/Inventory_UI.h"
+#include "Item/ItemDB.h"
+#include "Player/Job/Warrior.h"
+// --------------------------
 
 using namespace std;
 
@@ -65,7 +66,7 @@ void startGame() {
     // inv->addItem(301, 3);    // 체력 포션 x3
     // inv->addItem(302, 1);    // 대형 체력 포션 x1
 
-    showInventoryUI(*inv, player);
+    showInventoryUI( player);
 }
 
 int main() {

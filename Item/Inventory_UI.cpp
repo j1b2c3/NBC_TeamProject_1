@@ -1,5 +1,6 @@
 ﻿#include "Inventory_UI.h"
 #include "ItemFactory.h"
+#include "Inventory.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -8,23 +9,22 @@
 using namespace std;
 
 
-void displayInventory(int playerGold, const Inventory& inventory,
-                      const std::vector<ItemInfo>& weapons,
-                      const std::vector<ItemInfo>& armors,
-                      const std::vector<ItemInfo>& consumables)
+void displayInventory(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    
+    auto weapons     = inventory.getWeapons();
+    auto armors      = inventory.getArmors();
+    auto consumables = inventory.getConsumables();
     displayInventoryHeader();
-
+    
     // 자산 정보
-    string goldDisplay = to_string(playerGold) + " G";
+    string goldDisplay = to_string(player.getGold()) + " G";
     cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';
 
-    string equippedWeapon = inventory.getEquippedWeaponId() != 0
-                                ? weaponDB.at(inventory.getEquippedWeaponId()).base.name
-                                : "없음";
-    string equippedArmor = inventory.getEquippedArmorId() != 0
-                               ? armorDB.at(inventory.getEquippedArmorId()).base.name
-                               : "없음";
+    string equippedWeapon = inventory.getEquippedWeaponName();
+    string equippedArmor  = inventory.getEquippedArmorName();
+    
     string equippedDisplay = "무기: " + equippedWeapon + "    방어구: " + equippedArmor;
     cout << "|  [장착 중]  " << left << setw(65) << equippedDisplay << "|" << '\n';
 
@@ -73,39 +73,13 @@ void displayInventory(int playerGold, const Inventory& inventory,
     cout << "  선택 >> ";
 }
 
-void showInventoryUI(Inventory& inventory, Player& player)
+void showInventoryUI(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    
     while (true)
     {
-        std::vector<ItemInfo> weapons, armors, consumables;
-
-        for (const auto& [id, count] : inventory.getItems())
-        {
-            ItemType type = ItemFactory::getType(id);
-            ItemInfo info;
-            info.count = count;
-
-            if (type == ItemType::Weapon)
-            {
-                info.name = weaponDB.at(id).base.name;
-                info.desc = "공격력 +" + std::to_string(weaponDB.at(id).attack);
-                weapons.push_back(info);
-            }
-            else if (type == ItemType::Armor)
-            {
-                info.name = armorDB.at(id).base.name;
-                info.desc = "방어력 +" + std::to_string(armorDB.at(id).defense);
-                armors.push_back(info);
-            }
-            else if (type == ItemType::Consumable)
-            {
-                info.name = consumableDB.at(id).base.name;
-                info.desc = "HP +" + std::to_string(consumableDB.at(id).hp);
-                consumables.push_back(info);
-            }
-        }
-
-        displayInventory(player.getGold(), inventory, weapons, armors, consumables);
+        displayInventory(player);
 
         int choice;
         std::cin >> choice;
@@ -113,11 +87,11 @@ void showInventoryUI(Inventory& inventory, Player& player)
 
         switch (choice)
         {
-        case 1: handleWeaponAction(inventory, player, weapons);
+        case 1: handleWeaponAction(player);
             break;
-        case 2: handleArmorAction(inventory, player, armors);
+        case 2: handleArmorAction(player);
             break;
-        case 3: handleConsumableAction(inventory, player, consumables);
+        case 3: handleConsumableAction(player);
             break;
         default: break;
         }
@@ -165,8 +139,11 @@ void displayInventoryHeader()
     cout << "+==============================================================================+" << '\n';
 }
 
-void handleWeaponAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& weapons)
+void handleWeaponAction(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    auto weapons = inventory.getWeapons();
+    
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";
@@ -213,8 +190,11 @@ void handleWeaponAction(Inventory& inventory, Player& player, const std::vector<
     }
 }
 
-void handleArmorAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& armors)
+void handleArmorAction(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    auto armors = inventory.getArmors();
+    
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";
@@ -261,8 +241,11 @@ void handleArmorAction(Inventory& inventory, Player& player, const std::vector<I
     }
 }
 
-void handleConsumableAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& consumables)
+void handleConsumableAction(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    auto consumables = inventory.getConsumables();
+    
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";

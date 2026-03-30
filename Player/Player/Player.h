@@ -58,7 +58,7 @@ public:
 	void setMaxHP(int maxHp);
 	void setCurHP(int curHp);
 	void setAtk(int atk);
-	void getDef(int def);
+	void setDef(int def);
 	void setdodge(int dodge);
 	void setgold(int gold);
 };

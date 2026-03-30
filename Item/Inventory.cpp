@@ -30,17 +30,46 @@ bool Inventory::hasItem(int id) const
     return items.count(id) > 0 && items.at(id) > 0;
 }
 
-std::map<int, int> Inventory::getConsumables() const
+std::string Inventory::getEquippedWeaponName() const
 {
-    std::map<int, int> result;
-    
+    if (equippedWeaponId == 0) return "없음";
+    return weaponDB.at(equippedWeaponId).base.name;
+}
+
+
+std::string Inventory::getEquippedArmorName() const
+{
+    if (equippedArmorId == 0) return "없음";
+    return armorDB.at(equippedArmorId).base.name;
+}
+
+std::vector<ItemInfo> Inventory::getWeapons() const
+{
+    std::vector<ItemInfo> result;
     for (const auto& [id, count] : items)
-    {
+        if (ItemFactory::getType(id) == ItemType::Weapon)
+            result.push_back({ weaponDB.at(id).base.name, count,
+                               "공격력 +" + std::to_string(weaponDB.at(id).attack) });
+    return result;
+}
+
+std::vector<ItemInfo> Inventory::getArmors() const
+{
+    std::vector<ItemInfo> result;
+    for (const auto& [id, count] : items)
+        if (ItemFactory::getType(id) == ItemType::Armor)
+            result.push_back({ armorDB.at(id).base.name, count,
+                               "방어력 +" + std::to_string(armorDB.at(id).defense) });
+    return result;
+}
+
+std::vector<ItemInfo> Inventory::getConsumables() const
+{
+    std::vector<ItemInfo> result;
+    for (const auto& [id, count] : items)
         if (ItemFactory::getType(id) == ItemType::Consumable)
-        {
-            result[id] = count;
-        }
-    }
+            result.push_back({ consumableDB.at(id).base.name, count,
+                               "HP +" + std::to_string(consumableDB.at(id).hp) });
     return result;
 }
 
@@ -126,7 +155,7 @@ void Inventory::equipArmor(int id, Player& player)
 
     // 장착
     equippedArmorId = id;
-    player.getDef(player.getDef() + armorDB[id].defense);
+    player.setDef(player.getDef() + armorDB[id].defense);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
@@ -160,52 +189,11 @@ void Inventory::unequipArmor(Player& player)
         return;
     }
 
-    player.getDef(player.getDef() - armorDB[equippedArmorId].defense);
+    player.setDef(player.getDef() - armorDB[equippedArmorId].defense);
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense
               << " (현재 방어력: " << player.getDef() << ")\n";
 
     equippedArmorId = 0;
-}
-
-// 인벤토리 출력
-void Inventory::displayItems() const 
-{                                                                                                                                                                                                                                                                            
-    std::cout << "\n===== 인벤토리 =====\n";                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                    
-    if (items.empty()) 
-    {
-        std::cout << "보유 중인 아이템이 없습니다.\n";
-        return;
-    }
-
-    for (const auto& pair : items)
-    {
-        std::cout << "[" << pair.first << "] "
-                  << ItemFactory::getName(pair.first)
-                  << " x" << pair.second << '\n';
-    }
-
-    std::cout << "====================\n";
-}
-
-// 장착된 장비 출력
-void Inventory::displayEquipped() const 
-{
-    std::cout << "\n===== 장착 장비 =====\n";
-
-    if (equippedWeaponId != 0)
-        std::cout << "[무기] " << weaponDB[equippedWeaponId].base.name
-                  << " (공격력 +" << weaponDB[equippedWeaponId].attack << ")\n";
-    else
-        std::cout << "[무기] 없음\n";
-
-    if (equippedArmorId != 0)
-        std::cout << "[방어구] " << armorDB[equippedArmorId].base.name
-                  << " (방어력 +" << armorDB[equippedArmorId].defense << ")\n";
-    else
-        std::cout << "[방어구] 없음\n";
-
-    std::cout << "=====================\n";
 }
