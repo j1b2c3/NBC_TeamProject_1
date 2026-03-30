@@ -20,7 +20,6 @@ struct ItemBase {
 struct Weapon { ItemBase base; int attack = 0; };
 struct Armor { ItemBase base; int defense = 0; };
 struct Consumable { ItemBase base; int hp = 0; };
-struct Loot { ItemBase base; int amount = 0; };
 struct Money { ItemBase base; int amount = 0; };
 
 // 2. ItemManager 싱글톤 (데이터 중앙 관리)
@@ -41,7 +40,6 @@ public:
     map<int, Weapon> weaponDB;
     map<int, Armor> armorDB;
     map<int, Consumable> consumableDB;
-    map<int, Loot> LootDB;
     map<int, Money> moneyDB;
 
     // [데이터 채우기 함수 선언]
@@ -64,11 +62,6 @@ public:
         return (it != consumableDB.end()) ? &(it->second) : nullptr;
     }
 
-    Loot* GetLoot(int id) {
-        auto it = LootDB.find(id);
-        return (it != LootDB.end()) ? &(it->second) : nullptr;
-    }
-
     Money* GetMoney(int id) {
         auto it = moneyDB.find(id);
         return (it != moneyDB.end()) ? &(it->second) : nullptr;
@@ -86,5 +79,4 @@ inline void initItemDB() {
 inline auto& weaponDB = ItemManager::GetInstance().weaponDB;
 inline auto& armorDB = ItemManager::GetInstance().armorDB;
 inline auto& consumableDB = ItemManager::GetInstance().consumableDB;
-inline auto& LootDB = ItemManager::GetInstance().LootDB;
 inline auto& moneyDB = ItemManager::GetInstance().moneyDB;

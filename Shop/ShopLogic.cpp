@@ -7,8 +7,8 @@ void buyItem(int id, ItemType type, int amount,
     int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,
-    map<int, int>& playerConsumables,
-    map<int, int>& playerLoot)
+    map<int, int>& playerConsumables
+    )
 {
     int cost = 0;
     bool canBuy = true;
@@ -25,10 +25,6 @@ void buyItem(int id, ItemType type, int amount,
     case ItemType::Consumable:
         cost = consumableDB[id].base.price * amount;
         canBuy = consumableDB[id].base.canBuy;
-        break;
-    case ItemType::Loot:
-        cost = LootDB[id].base.price * amount;
-        canBuy = LootDB[id].base.canBuy;
         break;
     }
 
@@ -48,7 +44,6 @@ void buyItem(int id, ItemType type, int amount,
     case ItemType::Weapon: playerWeapons[id] += amount; break;
     case ItemType::Armor: playerArmors[id] += amount; break;
     case ItemType::Consumable: playerConsumables[id] += amount; break;
-    case ItemType::Loot: playerLoot[id] += amount; break;
     }
 
     cout << "구매 완료!\n";
@@ -59,8 +54,8 @@ void sellItem(int id, ItemType type,
     int& playerGold,
     map<int, int>& playerWeapons,
     map<int, int>& playerArmors,
-    map<int, int>& playerConsumables,
-    map<int, int>& playerLoot)
+    map<int, int>& playerConsumables
+    )
 {
     int qty = 0;
     int gold = 0;
@@ -80,11 +75,6 @@ void sellItem(int id, ItemType type,
         qty = playerConsumables[id];
         gold = qty * consumableDB[id].base.sellprice;
         playerConsumables.erase(id);
-        break;
-    case ItemType::Loot:
-        qty = playerLoot[id];
-        gold = qty * LootDB[id].base.sellprice;
-        playerLoot.erase(id);
         break;
     }
 

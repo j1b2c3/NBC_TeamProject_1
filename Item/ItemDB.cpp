@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 ﻿#include "ItemDB.h"
+=======
+﻿#include "itemDB.h"
+>>>>>>> Stashed changes
 
 void ItemManager::init() {
     // 무기 (아이템넘버, 이름, 구매가격, 판매가격, 공격력)
@@ -15,12 +19,6 @@ void ItemManager::init() {
     // 소모품 (번호, 이름, 구매가격, 판매가격, 회복력)
     consumableDB[301] = { {301, "체력 포션", 50, 30, true}, 30 };
     consumableDB[302] = { {302, "대형 체력 포션", 120, 72, true}, 100 };
-
-    // 전리품 (번호, 이름, 구매가격, 판매가격, 구매제한, 최대갯수)
-    LootDB[401] = { {401, "목재", 10, 2, false }, 999 };
-    LootDB[402] = { {402, "원석", 10, 2, false }, 999 };
-    LootDB[403] = { {403, "슬라임의 점액", 5, 5, false }, 999 };
-    LootDB[404] = { {404, "고블린의 귀", 10, 10, false }, 999 };
 
     // 화폐 (번호, 이름, 구매가격, 판매가격, 구매제한, 최대갯수
     moneyDB[501] = { {501, "금화", 1, 1, true }, 9999 };
