@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#include <algorithm>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 
@@ -14,6 +15,8 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     Vector2D curPos;
     while (true)
     {
+        cin.clear();
+        cin.ignore(1000, '\n');
         int choice;
         log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
         //플레이어 페이즈
@@ -39,9 +42,8 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             bProgress = false;
             break;
         default:
-            log.line_3 = "                            잘못된 입력이다.";
+            log.line_3 = "                            잘못된 입력입니다.";
             continue;
-            break;
         }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
@@ -98,8 +100,7 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
     int str_maxlen = 0;
     for (string a : actions)
     {
-        if (str_maxlen < a.size())
-            str_maxlen = a.size();
+        str_maxlen = max<std::basic_string<char>::size_type>(str_maxlen, a.size());
     }
     for (int i = 0; i < actions.size(); i++)
     {
