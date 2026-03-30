@@ -45,47 +45,38 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             if (Select % Shop_Stage == 0 && Select != 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
                 EnterShop(Player_);
             
-            // TODO : 던전 관련 올려놓긴했는데 몬스터는 한마리씩 들어오는건 battle system 에서 고치는대로 수정하겠습니다.
-            // TODO : 그리고 몬스터 DB 가 필요 해.... 우어어어ㅓ어..
-            if (Select == Last_Stage) // 10번째 스테이지 
-                ; // 보스 던전 입장 bool값으로 하는 던전 보스 DB는????? 
+            if (Select == Last_Stage)
+            {
+                Monster_ = Mons_g.Create(Last_Stage);
+                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
+                playerLifeCheck(Player_);// 생존 유무확인 
+                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
+                    Monster_->giveLoot(*Player_);
+                // Todo : 보스전
+            }
             else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
             {
-                EnterShop(Player_);
-
-                // TODO : 몬스터 연동
-                if (Select == Last_Stage)
-                {
-                    Monster_ = Mons_g.Create(Last_Stage);
-                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
-                    playerLifeCheck(Player_);// 생존 유무확인 
-                    if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                        Monster_->giveLoot(*Player_);
-                    // Todo : 보스전
-                }
-                else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
-                {
-                    Select--; //히든은 적용 안함
-                    Monster_ = Mons_g.Create(0);
-                    BattleSystem::getInstance().Battle(*Player_, *Monster_);
-                    Monster_->giveLoot(*Player_);
-                    // Todo: 히든
-                }
-                //b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
-                else
-                {
-                    Monster_ = Mons_g.Create(Select);
-                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
-                    playerLifeCheck(Player_);// 생존 유무확인 
-                    if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                        Monster_->giveLoot(*Player_);
-                }
-                if (Monster_ != nullptr) //  몬스터 존제 하면 삭제 상점만 했다면 캇!
-                    delete Monster_;
-
-                if (!b_LifeCheck)
-                    break;
+                Select--; //히든은 적용 안함
+                Monster_ = Mons_g.Create(0);
+                BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                Monster_->giveLoot(*Player_);
+                // Todo: 히든
             }
+            //b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
+            else
+            {
+                Monster_ = Mons_g.Create(Select);
+                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
+                playerLifeCheck(Player_);// 생존 유무확인 
+                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
+                    Monster_->giveLoot(*Player_);
+            }
+            if (Monster_ != nullptr) //  몬스터 존제 하면 삭제 상점만 했다면 캇!
+                delete Monster_;
+
+            if (!b_LifeCheck)
+                break;
+            
         }
     }
 }
