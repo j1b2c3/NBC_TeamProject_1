@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "Player.h"
 #include <iostream>
 using namespace std;
 
@@ -25,12 +25,12 @@ bool Player::isDodged(int dodge)
 
 int Player::calculateDamage(int atk, int def)
 {
-    float reduction = def / 100.0f;
-    float damage = atk * (1.0f - reduction);
+	float reduction = def / 100.0f;
+	int damage = static_cast<int>((float)atk * (1.0f - reduction));
 
-    if (damage < 0) damage = 0;
+	if (damage <= 0) damage = 1;
 
-    return static_cast<int>(damage);
+	return damage;
 }
 
 int Player::TakeDamage(int damage)
@@ -66,10 +66,11 @@ void Player::addexp(int gainedExp)
     cout << "남은 경험치: " << exp << " / " << needExp << '\n';
 }
 
-int Player::Attack(Monster& monster)
+int Player::Attack(Monster& monster, string& action_str)
 {
-    int damage = calculateDamage(atk, monster.getDef());
-    return damage;
+	int damage = calculateDamage(atk, monster.getDef());
+	action_str = "";
+	return damage;
 }
 
 void Player::level_Up()

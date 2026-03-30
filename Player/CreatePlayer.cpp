@@ -2,7 +2,8 @@
 #include <string>
 #include <iostream>
 
-#include "../Util/util.h"
+#include "../System/Windows.h"
+#include "../System/util.h"
 #include "Player/Player.h"
 #include "Job/Warrior.h"
 #include "Job/Thief.h"
@@ -71,14 +72,15 @@ void choose_Job(string nickname, Player*& player)
     {
         selectJobUI(nickname);
         // "선택 >>" 위치로 이동 (줄 번호 확인 필요, 대략 19~20번 라인)
-        gotoxy(15, 22);
+        Windows::SetCursorPos(15, 22);
 
-        if (!(cin >> job_choice))
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }
+        InputDigit(job_choice);
+        //if (!(cin >> job_choice))
+        //{
+        //    cin.clear();
+        //    cin.ignore(1000, '\n');
+        //    continue;
+        //}
 
         // 직업별 확인 창 로직
         string jobName = "";
@@ -102,8 +104,8 @@ void choose_Job(string nickname, Player*& player)
         }
 
         displayConfirmJob(jobName, desc);
-        gotoxy(15, 21);
-        cin >> answer;
+        Windows::SetCursorPos(15, 21);
+        InputDigit(answer);
 
         if (answer == 1)
         {
@@ -131,7 +133,7 @@ Player* createPlayer()
     cout << "+==============================================================================+" << '\n';
     cout << "|    닉네임 >>                                                                 | " << '\n';
     cout << "+==============================================================================+" << '\n';
-    gotoxy(15, 20);
+    Windows::SetCursorPos(15, 20);
     cin >> nickname;
 
     choose_Job(nickname, player);

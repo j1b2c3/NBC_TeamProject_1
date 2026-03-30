@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <string>
 
-#include "../Util/util.h"
+#include "../System/Windows.h"
 
 using namespace std;
 
@@ -48,6 +48,6 @@ void displayDungeon(string areaName, string dungeonLog)
     cout << "|    선택 >>                                                                   | " << '\n';
     cout << "+==============================================================================+" << '\n';
 
-    gotoxy(13, 28);
+    Windows::SetCursorPos(13, 28);
     cin.ignore(1000, '\n');
 }

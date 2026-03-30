@@ -5,7 +5,7 @@
 
 #include "BattleSystem/dungeonManager.h"
 #include "Player/CreatePlayer.h"
-#include "Util/util.h"
+#include "System/Windows.h"
 
 using namespace std;
 
@@ -40,17 +40,17 @@ void displayMenu()
 int getUserChoice()
 {
     int choice;
-    gotoxy(14, 20);
+    Windows::SetCursorPos(14, 20);
 
     while (!(cin >> choice))
     {
         cin.clear();
         cin.ignore(1000, '\n');
-        gotoxy(14, 20);
+        Windows::SetCursorPos(14, 20);
         cout << "숫자(1, 2)만 입력하세요!";
-        gotoxy(14, 20); // 다시 입력 위치로 복귀
+        Windows::SetCursorPos(14, 20); // 다시 입력 위치로 복귀
         cout << "         "; // 기존 잘못된 입력 지우기
-        gotoxy(14, 20);
+        Windows::SetCursorPos(14, 20);
     }
 
     cin.ignore(1000, '\n');
@@ -80,7 +80,6 @@ int main()
                 if (myPlayer != nullptr)
                 {
                     dm.StartDungeon(myPlayer);
-
                     delete myPlayer;
                     myPlayer = nullptr;
                 }

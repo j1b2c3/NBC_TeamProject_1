@@ -1,4 +1,4 @@
-#include "Thief.h"
+﻿#include "Thief.h"
 #include "../Player/Player.h"
 #include <iostream>
 using namespace std;
@@ -13,7 +13,7 @@ Thief::Thief(string nickname) : Player(nickname)
     dodge = 30;
 }
 
-int Thief::Attack(Monster& monster)
+int Thief::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
     if (damage < 0) damage = 0;
@@ -21,7 +21,12 @@ int Thief::Attack(Monster& monster)
     // 크리티컬 (30%)
     if (rand() % 100 < 50)
     {
-        damage *= 1.5;
+        action_str = "1.5배의 크리티컬!";
+        damage *= 1.5f;
+    }
+    else
+    {
+        action_str = "";
     }
 
     monster.TakeDamage(damage, true);
