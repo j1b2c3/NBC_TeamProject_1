@@ -17,17 +17,15 @@ void ShopSystem::showShopMenu(int& playerGold,
         displayShop(playerGold);
         cout << "선택 >> ";
 
-        int menuChoice;
-        cin >> menuChoice;
+        int menuchoice;
+        cin >> menuchoice;
 
-        if (menuChoice == 0) break;
+        if (menuchoice == 0) break;
 
-        switch (menuChoice) {
-        case 1: { // 메인 메뉴의 '무기 상점' 진입
-            std::cout << "\n=== 무기 메뉴 ===\n";
-            std::cout << "1. 구매\n";
-            std::cout << "2. 판매\n";
-            std::cout << "선택 >> ";
+        switch (menuchoice) {
+        // 메인 메뉴의 '무기 상점' 진입
+        case 1: { 
+            displayWeaponMenu();
 
             int subChoice;
             std::cin >> subChoice;
@@ -56,11 +54,7 @@ void ShopSystem::showShopMenu(int& playerGold,
                     int itemId = indexToID[choice];
                     auto& selectedWeapon = weaponDB[itemId];
 
-                    std::cout << "\n--- [ " << selectedWeapon.base.name << " ] ---\n";
-                    std::cout << "가격   : " << selectedWeapon.base.price << "G\n";
-                    std::cout << "공격력 : " << selectedWeapon.attack << "\n";
-                    std::cout << "------------------------\n";
-                    std::cout << "구매하시겠습니까? (1.예 / 2.아니오) >> ";
+                    displayWeaponDetail(selectedWeapon);
 
                     int confirm;
                     std::cin >> confirm;
@@ -116,12 +110,8 @@ void ShopSystem::showShopMenu(int& playerGold,
                     int itemId = indexToID[choice];
                     auto& selectedWeapon = weaponDB[itemId];
 
-                    std::cout << "\n--- [ " << selectedWeapon.base.name << " 판매 ] ---\n";
-                    std::cout << "공격력 : " << selectedWeapon.attack << "\n";
-                    std::cout << "판매가 : " << selectedWeapon.base.sellprice << "G\n";
-                    std::cout << "현재 보유량: " << playerWeapons[itemId] << "개\n";
-                    std::cout << "------------------------\n";
-                    std::cout << "정말 판매하시겠습니까? (1.예 / 2.아니오) >> ";
+                    int currentCount = playerWeapons[itemId];
+                    displayWeaponSellDetail(selectedWeapon, currentCount);
 
                     int confirm;
                     std::cin >> confirm;
@@ -148,10 +138,7 @@ void ShopSystem::showShopMenu(int& playerGold,
             break; // 무기의 케이스 종료 ->  상점메뉴로 되돌아감
         }
 case 2: { // 메인 메뉴의 '방어구 상점' 진입
-    std::cout << "\n=== 방어구 메뉴 ===\n";
-    std::cout << "1. 구매\n";
-    std::cout << "2. 판매\n";
-    std::cout << "선택 >> ";
+    displayArmorMenu();
 
     int subChoice;
     std::cin >> subChoice;
@@ -180,11 +167,7 @@ case 2: { // 메인 메뉴의 '방어구 상점' 진입
                 int itemId = indexToID[choice];
                 auto& selectedArmor = armorDB[itemId];
 
-                std::cout << "\n--- [ " << selectedArmor.base.name << " ] ---\n";
-                std::cout << "가격   : " << selectedArmor.base.price << "G\n";
-                std::cout << "방어력 : " << selectedArmor.defense << "\n";
-                std::cout << "------------------------\n";
-                std::cout << "구매하시겠습니까? (1.예 / 2.아니오) >> ";
+                displayArmorDetail(selectedArmor);
 
                 int confirm;
                 std::cin >> confirm;
@@ -341,7 +324,7 @@ case 3: {
     break;
 }
         case 4: {
-            cout << "\n=== 전리품 판매 ===" << '\n';
+            cout << "\n=== 전리품 판매 ===" << endl;
             int index = 1;
             map<int, int> indexToID;
 
@@ -354,7 +337,7 @@ case 3: {
                 cout << "[" << index << "] "
                     << LootDB[itemId].base.name
                     << " (수량: " << qtyOwned
-                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << '\n';
+                    << ", 판매가: " << LootDB[itemId].base.sellprice << "G)" << endl;
 
                 indexToID[index] = itemId;
                 index++;
