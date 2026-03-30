@@ -6,7 +6,9 @@
 
 using namespace std;
 
-void displayDungeon(string areaName, string dungeonLog) {\
+void displayDungeon(string areaName, string dungeonLog)
+{
+    system("cls");
     cout << "\n" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -23,7 +25,8 @@ void displayDungeon(string areaName, string dungeonLog) {\
     cout << "|                                                                              |" << '\n';
     cout << "|          . . . . . . . . . . . . . . . . . . . . . . . . . . . .             |" << '\n';
     cout << "|          .                                                     .             |" << '\n';
-    cout << "|          .          [ 현재 구역: " << left << setw (4) << areaName << " ]                    .             |" << '\n';
+    cout << "|          .          [ 현재 구역: " << left << setw(10) << areaName << " ]                  .             |"
+        << '\n';
     cout << "|          .                                                     .             |" << '\n';
     cout << "|          . . . . . . . . . . . . . . . . . . . . . . . . . . . .             |" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -32,7 +35,6 @@ void displayDungeon(string areaName, string dungeonLog) {\
     // 탐험 로그 (최근 발생한 일)
     cout << "|  [ LOG ]                                                                     |" << '\n';
     cout << "|  >> " << left << setw(73) << dungeonLog << "|" << '\n';
-    cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
 
     // 탐험 메뉴
@@ -40,5 +42,7 @@ void displayDungeon(string areaName, string dungeonLog) {\
     cout << "|    [1] 진행한다       [2] 아이템       [3] 휴식하기       [4] 마을 귀환      |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  무엇을 하시겠습니까? >> ";
+    cout << "| 무엇을 하시겠습니까?                                                         |" << '\n';
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
 }
