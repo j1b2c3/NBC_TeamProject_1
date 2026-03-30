@@ -68,6 +68,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
         switch (Select)
         {
+
         case 1:
             {
                 // 상점 체크
@@ -115,6 +116,8 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                     return;
                 }
             }
+
+        }
             break;
         case 2: // 아이템
             while (true)
