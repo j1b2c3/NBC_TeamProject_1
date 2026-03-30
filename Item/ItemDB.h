@@ -7,7 +7,7 @@ using namespace std;
 
 // 1. 아이템 데이터 구조 (기본값 설정으로 경고 해결)
 
-enum class ItemType { Weapon, Armor, Consumable, Loot, Money };
+enum class ItemType { Weapon, Armor, Consumable, Money };
 
 struct ItemBase {
     int id = 0;

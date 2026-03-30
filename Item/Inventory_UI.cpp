@@ -7,25 +7,26 @@
 
 using namespace std;
 
-void displayInventory(int playerGold, 
-                        const vector<ItemInfo>& weapons, 
-                        const vector<ItemInfo>& armors, 
-                        const vector<ItemInfo>& consumables) 
+void displayInventory(int playerGold, const Inventory& inventory,
+                        const std::vector<ItemInfo>& weapons,
+                        const std::vector<ItemInfo>& armors,
+                        const std::vector<ItemInfo>& consumables)
 {
-    cout << "+==============================================================================+" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|     ####      ########      ########      ##     ##        ######            |" << '\n';
-    cout << "|      ##          ##         ##            ###   ###       ##    ##           |" << '\n';
-    cout << "|      ##          ##         ######        #### ####        ######            |" << '\n';
-    cout << "|      ##          ##         ##            ## ### ##             ##           |" << '\n';
-    cout << "|      ##          ##         ##            ##     ##       ##    ##           |" << '\n';
-    cout << "|     ####         ##         ########      ##     ##        ######            |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "+==============================================================================+" << '\n';
+    displayInventoryHeader();
 
     // 자산 정보
     string goldDisplay = to_string(playerGold) + " G";
     cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';
+    
+    string equippedWeapon = inventory.getEquippedWeaponId() != 0
+        ? weaponDB.at(inventory.getEquippedWeaponId()).base.name
+        : "없음";
+    string equippedArmor = inventory.getEquippedArmorId() != 0
+        ? armorDB.at(inventory.getEquippedArmorId()).base.name
+        : "없음";
+    string equippedDisplay = "무기: " + equippedWeapon + "    방어구: " + equippedArmor;
+    cout << "|  [장착 중]  " << left << setw(65) << equippedDisplay << "|" << '\n';
+    
     cout << "|  --------------------------------------------------------------------------  |" << '\n';
 
     // [1] 무기 목록
@@ -45,7 +46,7 @@ void displayInventory(int playerGold,
     cout << "|                                                                              |" << '\n';
 
     // [3] 소모품 목록
-    cout << "|  [3] 소모품                                                                  |" << '\n';
+    cout << "|  [3] 소모품                                                                 |" << '\n';
     if (consumables.empty()) cout << "|      - (비어 있음)                                                           |" << '\n';
     for (const auto& item : consumables) {
         cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) << item.desc << ") |" << '\n';
@@ -88,32 +89,37 @@ void showInventoryUI(Inventory& inventory, Player& player)
             }
         }
 
-        displayInventory(player.getGold(), weapons, armors, consumables);
+        displayInventory(player.getGold(), inventory, weapons, armors, consumables);
 
         int choice;
         std::cin >> choice;
         if (choice == 0) break;
 
-        // 이후 선택 처리 (장착/사용 등)
+        switch (choice) 
+        {
+        case 1: handleWeaponAction(inventory, player, weapons);         break;
+        case 2: handleArmorAction(inventory, player, armors);           break;
+        case 3: handleConsumableAction(inventory, player, consumables); break;
+        default: break;
+        }
     }
 }
 
 void showConsumableListUI(const std::map<int, int>& consumables)
 {
     cout << "+==============================================================================+" << '\n';
-    cout << "|                          [ 소모품 목록 ]                                    |" << '\n';
+    cout << "|                          [ 소모품 목록 ]                                         |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
 
     if (consumables.empty()) 
     {
-        cout << "|      - (비어 있음)                                                           |" << '\n';
+        cout << "|      - (비어 있음)                                                         |" << '\n';
     }
     
     for (const auto& [id, count] : consumables) 
     {
-        const Consumable* c = ItemManager::GetInstance().GetConsumable(id);
-        if (c) 
+        if (const Consumable* c = ItemManager::GetInstance().GetConsumable(id)) 
         {
             string desc = "HP +" + to_string(c->hp);
             cout << "|      - " << left << setw(15) << c->base.name
@@ -126,3 +132,160 @@ void showConsumableListUI(const std::map<int, int>& consumables)
     cout << "+==============================================================================+" << '\n';
 }
 
+void displayInventoryHeader()
+{
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|     ####      ########      ########      ##     ##        ######            |" << '\n';
+    cout << "|      ##          ##         ##            ###   ###       ##    ##           |" << '\n';
+    cout << "|      ##          ##         ######        #### ####        ######            |" << '\n';
+    cout << "|      ##          ##         ##            ## ### ##             ##           |" << '\n';
+    cout << "|      ##          ##         ##            ##     ##       ##    ##           |" << '\n';
+    cout << "|     ####         ##         ########      ##     ##        ######            |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+}
+
+ void handleWeaponAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& weapons)                                                                                                                                                                                                            
+  {                                                                                                                                                                                                                                                                                                                
+      displayInventoryHeader();                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                   
+      string goldDisplay = to_string(player.getGold()) + " G";                                                                                                                                                                                                                                                     
+      cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';                                                                                                                                                                                                                                
+      cout << "|  --------------------------------------------------------------------------  |" << '\n';
+
+      cout << "|  무기                                                                        |" << '\n';
+      if (weapons.empty()) 
+      {
+          cout << "|      - (비어 있음)                                                           |" << '\n';
+      }
+      for (int i = 0; i < (int)weapons.size(); i++) 
+      {
+          string num = to_string(i + 1) + ".";
+          cout << "|      " << left << setw(3) << num << setw(15) << weapons[i].name
+               << " x" << setw(3) << weapons[i].count
+               << " (" << setw(35) << weapons[i].desc << ") |" << '\n';
+      }
+      cout << "|                                                                              |" << '\n';
+      cout << "+==============================================================================+" << '\n';
+      cout << "|  [무기 장착]  번호를 선택하세요                   [0] 뒤로가기               |" << '\n';
+      cout << "+==============================================================================+" << '\n';
+      cout << "  선택 >> ";
+
+      int choice;
+      cin >> choice;
+      if (choice == 0) return;
+      if (choice < 1 || choice > (int)weapons.size()) 
+      {
+          cout << "잘못된 입력입니다.\n";
+          return;
+      }
+      int idx = 0;
+      for (const auto& [id, count] : inventory.getItems()) 
+      {
+          if (ItemFactory::getType(id) == ItemType::Weapon) 
+          {
+              if (++idx == choice) 
+              {
+                  inventory.equipWeapon(id, player);
+                  return;
+              }
+          }
+      }
+  }
+
+void handleArmorAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& armors)                                                                                                                                                                                                              
+  {                                                                                                                                                                                                                                                                                                                
+      displayInventoryHeader();                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                   
+      string goldDisplay = to_string(player.getGold()) + " G";
+      cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';
+      cout << "|  --------------------------------------------------------------------------  |" << '\n';
+
+      cout << "|  방어구                                                                      |" << '\n';
+      if (armors.empty()) 
+      {
+          cout << "|      - (비어 있음)                                                           |" << '\n';
+      }
+      for (int i = 0; i < (int)armors.size(); i++) 
+      {
+          string num = to_string(i + 1) + ".";
+          cout << "|      " << left << setw(3) << num << setw(15) << armors[i].name
+               << " x" << setw(3) << armors[i].count
+               << " (" << setw(35) << armors[i].desc << ") |" << '\n';
+      }
+      cout << "|                                                                              |" << '\n';
+      cout << "+==============================================================================+" << '\n';
+      cout << "|  [방어구 장착]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
+      cout << "+==============================================================================+" << '\n';
+      cout << "  선택 >> ";
+
+      int choice;
+      cin >> choice;
+      if (choice == 0) return;
+      if (choice < 1 || choice > (int)armors.size()) 
+      {
+          cout << "잘못된 입력입니다.\n";
+          return;
+      }
+      int idx = 0;
+      for (const auto& [id, count] : inventory.getItems()) 
+      {
+          if (ItemFactory::getType(id) == ItemType::Armor) 
+          {
+              if (++idx == choice) 
+              {
+                  inventory.equipArmor(id, player);
+                  return;
+              }
+          }
+      }
+  }
+
+void handleConsumableAction(Inventory& inventory, Player& player, const std::vector<ItemInfo>& consumables)
+{
+    displayInventoryHeader();
+
+    string goldDisplay = to_string(player.getGold()) + " G";
+    cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';
+    cout << "|  --------------------------------------------------------------------------  |" << '\n';
+
+    cout << "|  소모품                                                                      |" << '\n';
+    if (consumables.empty()) 
+    {
+        cout << "|      - (비어 있음)                                                           |" << '\n';
+    }
+    for (int i = 0; i < (int)consumables.size(); i++) 
+    {
+        string num = to_string(i + 1) + ".";
+        cout << "|      " << left << setw(3) << num << setw(15) << consumables[i].name
+             << " x" << setw(3) << consumables[i].count
+             << " (" << setw(35) << consumables[i].desc << ") |" << '\n';
+    }
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|  [소모품 사용]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "  선택 >> ";
+
+    int choice;
+    cin >> choice;
+    if (choice == 0) return;
+    if (choice < 1 || choice > (int)consumables.size()) 
+    {
+        cout << "잘못된 입력입니다.\n";
+        return;
+    }
+    int idx = 0;
+    for (const auto& [id, count] : inventory.getItems()) 
+    {
+        if (ItemFactory::getType(id) == ItemType::Consumable) 
+        {
+            if (++idx == choice) 
+            {
+                inventory.useConsumable(id, player);
+                return;
+            }
+        }
+    }
+}

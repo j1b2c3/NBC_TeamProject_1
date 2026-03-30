@@ -3,6 +3,12 @@
 #include <limits>
 #include "Player/CreatePlayer.h"
 
+#include "Item/Inventory.h"
+  #include "Item/Inventory_UI.h"
+  #include "Item/ItemDB.h"
+  #include "Player/Job/Warrior.h"
+
+
 using namespace std;
 
 // 메뉴 출력
@@ -46,6 +52,20 @@ int getUserChoice() {
 void startGame() {
     cout << "\n게임을 시작합니다..." << '\n';
     //Todo : Game Start (캐릭터 생성)
+    
+    ItemManager::GetInstance().init();                                                                                                                                                                                                                                                                           
+                  
+    Warrior player("테스트");
+    Inventory* inv = player.getInventory();
+
+    // 무기/방어구/소모품 각각 추가
+    inv->addItem(101);       // 모험가의 검
+    inv->addItem(102);       // 롱 소드
+    inv->addItem(201);       // 낡은 가죽 갑옷
+    inv->addItem(301, 3);    // 체력 포션 x3
+    inv->addItem(302, 1);    // 대형 체력 포션 x1
+
+    showInventoryUI(*inv, player);
 }
 
 int main() {
