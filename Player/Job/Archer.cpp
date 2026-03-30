@@ -3,11 +3,11 @@
 
 Archer::Archer(string nickname) : Player(nickname)
 {
-    jobname = nickname;
-    maxHP = (level * 10) + 100;
-    curHP = (level * 10) + 100;
-    atk = (level * 2)+ 13;
-    def = (level * 1) + 10;
+    jobname = "Archer";
+    maxHP = 100;
+    curHP = 100;
+    atk = 13;
+    def = 10;
     dodge = 15;
 }
 
@@ -19,4 +19,13 @@ int Archer::Attack(Monster& monster, string& action_str)
 
     monster.TakeDamage(damage, false);
     return damage;
+}
+
+void Archer::level_Up()
+{
+    level++;
+    maxHP += 10;
+    curHP += 10;
+    atk += 2;
+    def += 1;
 }

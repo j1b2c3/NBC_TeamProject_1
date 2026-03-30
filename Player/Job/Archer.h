@@ -8,5 +8,7 @@ class Archer : public Player
 public:
 	Archer(string nickname);
 
+
+	void level_Up() override;
 	int Attack(Monster& monster, string& action_str) override;
 };

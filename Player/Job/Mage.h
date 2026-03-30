@@ -8,5 +8,6 @@ class Mage : public Player
 public:
     Mage(string nickname);
 
+    void level_Up() override;
     int Attack(Monster& monster, string& action_str) override;
 };
