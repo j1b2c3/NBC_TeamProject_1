@@ -29,7 +29,7 @@ int Player::calculateDamage(int atk, int def)
 	float reduction = def / 100.0f;
 	float damage = atk * (1.0f - reduction);
 
-	if (damage < 0) damage = 0;
+	if (damage <= 0) damage = 1;
 
 	return static_cast<int>(damage);
 }

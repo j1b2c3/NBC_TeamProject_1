@@ -31,9 +31,10 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 			break;
 		case 1:
 			log.line_1.assign("방어를 시도했다!");
+			log.line_2.assign("이번 턴 동안 방어력이 두 배 증가한다.");
 			break;
 		case 2:
-			log.line_1.assign("아이템을 사용했다!");
+			log.line_1 = "                        어떤 아이템을 사용할까?";
 			break;
 		case 3:
 			log.line_1.assign("도주했다...");
