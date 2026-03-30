@@ -47,8 +47,8 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             
             if (Select == Last_Stage)
             {
-                Monster_ = Mons_g.Create(Last_Stage);
-                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
+                Monster_ = new FinalBoss; // 마지막 최종 보스
+                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); 
                 playerLifeCheck(Player_);// 생존 유무확인 
                 if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
                     Monster_->giveLoot(*Player_);

@@ -28,7 +28,7 @@ public:
 	*/
 
 
-	static const int Last_Stage = 9; // 보스 등장 stage
+	static const int Last_Stage = 10; // 보스 등장 stage
 	static const int Shop_Stage = 3; // 3의 배율로 상점 등장
 	int BattleCount; //BattleCount 현제 플레이어이의 Stage
 	bool b_LifeCheck; // 플레이어 생존 유무 확인
