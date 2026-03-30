@@ -49,6 +49,8 @@ int Monster::attack(Player& player)
 	if (damage < 0) damage = 1;
 
 	player.TakeDamage(damage);
+	
+	return damage;
 }
 
 void Monster::TakeDamage(int damage, bool canDodge)

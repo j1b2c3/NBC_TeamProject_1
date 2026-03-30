@@ -64,8 +64,12 @@ public:
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(Player* player_); // 상점 입장유무 
 
+<<<<<<< HEAD
 	void playerLifeCheck(Player* Player_);
 	Monster* getrandmonster(vector<Monster*> mons);
+=======
+	void playerLifeCheck(Player* ply);
+>>>>>>> Dev
 	
 };
 

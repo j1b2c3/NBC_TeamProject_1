@@ -46,7 +46,7 @@ void jobChoiceArcher()
     cout << "|  궁수는 높은 어쩌구 저쩌구                          |" << '\n';
     cout << "|  정말 궁수로 전직하시겠습니까?                                                  |" << '\n';
     cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                   |" << '\n';
+    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "선택 : ";
@@ -59,7 +59,7 @@ void jobChoiceMage()
     cout << "|  마법사는 어쩌구                          |" << '\n';
     cout << "|  정말 마법사로 전직하시겠습니까?                                                  |" << '\n';
     cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                   |" << '\n';
+    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "선택 : ";
@@ -72,7 +72,7 @@ void jobChoiceThief()
     cout << "|  도적은 어쩌구                          |" << '\n';
     cout << "|  정말 도적으로 전직하시겠습니까?                                                  |" << '\n';
     cout << "|                                                                              |" << '\n';
-    cout << "|                  [1] 예                          [2] 아니요                   |" << '\n';
+    cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "선택 : ";
@@ -94,28 +94,14 @@ void selectJobUI(string nickname)
     cout << "+==============================================================================+" << '\n';
 }
 
-Player* createPlayer()
+
+void choose_Job(string nickname, Player*& player)
 {
-    string jobs[] = { "전사", "궁수", "도적", "마법사" };
     int job_choice = 0;
     int answer = 0;
-    string nickname;
-
-    Player* player = nullptr;
-
-    cout << "\n" << '\n';
-    displayMainUI();
-    cout << "+==============================================================================+" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|     TEXT RPG에 오신 것을 환영합니다.                                         |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "|     닉네임을 입력해 주세요!                                                  |" << '\n';
-    cout << "|                                                                              |" << '\n';
-    cout << "+==============================================================================+" << '\n';
-    cout << "닉네임 : ";
-    cin >> nickname;
     
-    while (true){
+    while (true)
+    {
         selectJobUI(nickname);
         cout << "선택: ";
         if (!(cin >> job_choice)) {
@@ -154,7 +140,7 @@ Player* createPlayer()
             {
                 cout << "잘못 입력하셨습니다.";
                 cin.clear(); cin.ignore(1000, '\n');
-                break;
+                return;
             }
 
         case 3:
@@ -193,8 +179,28 @@ Player* createPlayer()
         default:
             cout << "잘못된 입력입니다." << '\n';
         }
-        // 여기서 던전 시스템으로 연결, 인자 Player
-        return player;
     }
 }
 
+Player* createPlayer()
+{
+    string jobs[] = { "전사", "궁수", "도적", "마법사" };    
+    string nickname;
+    Player* player = nullptr;
+    cout << "\n" << '\n';
+    displayMainUI();
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|     TEXT RPG에 오신 것을 환영합니다.                                         |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|     닉네임을 입력해 주세요!                                                  |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "닉네임 : ";
+    cin >> nickname;
+    
+    choose_Job(nickname, player);
+    // 여기서 던전 시스템으로 연결, 인자 Player
+    
+    return player;
+}

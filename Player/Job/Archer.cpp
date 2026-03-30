@@ -17,4 +17,5 @@ int Archer::Attack(Monster& monster)
 	if (damage < 0) damage = 0;
 
 	monster.TakeDamage(damage, false);
+	return damage;
 }
