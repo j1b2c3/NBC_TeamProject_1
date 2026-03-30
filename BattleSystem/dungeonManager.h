@@ -64,7 +64,7 @@ public:
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(); // 상점 입장유무 
 
-	void playerLifeCheck();
+	void playerLifeCheck(Player* ply);
 	
 };
 

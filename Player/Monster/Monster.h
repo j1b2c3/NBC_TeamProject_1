@@ -36,7 +36,7 @@ public:
             int minGold,
             int maxGold		//vector<item> items;
     );
-    virtual ~Monster();
+    ~Monster();
 
     int attack(Player& player);
 
