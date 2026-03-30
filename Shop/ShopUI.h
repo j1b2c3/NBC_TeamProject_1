@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿#pragma once
 #include "../Item/ItemDB.h"
 
@@ -13,8 +12,5 @@ void displayWeaponSellDetail(const Weapon& weapon, int ownedCount);
 void displayArmorMenu();
 
 void displayArmorDetail(const Armor& armor);
-=======
-#pragma once
 
 void displayShop(int playerGold);
->>>>>>> BattleBranch

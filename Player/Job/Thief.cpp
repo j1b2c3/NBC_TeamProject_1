@@ -26,4 +26,5 @@ int Thief::Attack(Monster& monster)
     }
 
     monster.TakeDamage(damage, true);
+	return damage;
 }

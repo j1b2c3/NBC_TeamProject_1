@@ -1,4 +1,4 @@
-#include "Mage.h"
+﻿#include "Mage.h"
 #include "../Player/Player.h"
 
 Mage::Mage(string nickname) : Player(nickname)
@@ -15,4 +15,5 @@ int Mage::Attack(Monster& monster)
 {
     int damage = atk;
     monster.TakeDamage(damage, true);
+    return damage;
 }

@@ -69,7 +69,8 @@ void Player::addexp(int gainedExp)
 
 int Player::Attack(Monster& monster)
 {
-	
+	int damage = calculateDamage(atk, monster.getDef());
+	return damage;
 }
 
 void Player::subExp(int lostExp)

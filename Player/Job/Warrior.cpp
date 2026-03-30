@@ -15,6 +15,6 @@ int Warrior::Attack(Monster& monster)
 {
 	int damage = calculateDamage(atk, monster.getDef());
 	if (damage < 0) damage = 0;
-
 	monster.TakeDamage(damage, true);
+	return damage;
 }
