@@ -50,12 +50,12 @@ void Inventory::useConsumable(int id, Player& player)
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = (int)std::min((float)item.hp, player.getMaxHp() - player.getCurHp());
-    player.setCurHp(player.getCurHp() + healed);
+    int healed = std::min(item.hp, player.getMaxHP() - player.getCurHP());
+    player.setCurHP(player.getCurHP() + healed);
 
     std::cout << "[아이템 사용] " << item.base.name
               << " → HP +" << healed
-              << " (현재 HP: " << player.getCurHp() << "/" << player.getMaxHp() << ")\n";
+              << " (현재 HP: " << player.getCurHP() << "/" << player.getMaxHP() << ")\n";
 
     // 사용 후 제거
     removeItem(id);
@@ -112,7 +112,7 @@ void Inventory::equipArmor(int id, Player& player)
 
     // 장착
     equippedArmorId = id;
-    player.setDef(player.getDef() + armorDB[id].defense);
+    player.getDef(player.getDef() + armorDB[id].defense);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
@@ -146,7 +146,7 @@ void Inventory::unequipArmor(Player& player)
         return;
     }
 
-    player.setDef(player.getDef() - armorDB[equippedArmorId].defense);
+    player.getDef(player.getDef() - armorDB[equippedArmorId].defense);
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense

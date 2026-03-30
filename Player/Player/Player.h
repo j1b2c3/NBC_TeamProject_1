@@ -35,30 +35,30 @@ public:
 
 	virtual int Attack(Monster& monster) = 0;
 	int TakeDamage(int damage);
-	void AddExp(int gainedExp);
-	void SubExp(int lostExp);
-	void AddGold(int gold);
-	void SubGold(int gold);
+	void addexp(int gainedExp);
+	void subExp(int lostExp);
+	void addGold(int gold);
+	void subGold(int gold);
 
-	string GetNickname();
-	string GetJobName();
-	int GetLevel();
-	int GetExp();
-	int GetMaxHp();
-	int GetCurHp();
-	int GetAtk();
-	int GetDef();
-	int GetDodge();
-	int GetGold();
+	string getNickname();
+	string getJobName();
+	int getLevel();
+	int getExp();
+	int getMaxHP();
+	int getCurHP();
+	int getAtk();
+	int getDef();
+	int getDodge();
+	int getGold();
 
-	void SetNickname(string nickname);
-	void SetLevel(int level);
-	void SetExp(int exp);
-	void SetMaxHp(float maxHp);
-	void SetCurHp(float curHp);
-	void SetAtk(int atk);
-	void SetDef(int def);
-	void SetDodge(int dodge);
-	void SetGold(int gold);
+	void setNickname(string nickname);
+	void setLevel(int level);
+	void setExp(int exp);
+	void setMaxHP(float maxHp);
+	void setCurHP(float curHp);
+	void setAtk(int atk);
+	void getDef(int def);
+	void setdodge(int dodge);
+	void setgold(int gold);
 };
 

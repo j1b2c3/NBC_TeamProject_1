@@ -14,8 +14,8 @@ void displayBattle(Player& const p, Monster& const m, Vector2D& curPos, BattleLo
     int n;
 
     // HP, MP 바를 그리기 위한 비율 계산
-    int playerHpBar = (p.GetMaxHp() > 0) ? (p.GetCurHp() * 20 / p.GetMaxHp()) : 0;
-    int monsterHpBar = (m.GetMaxHp() > 0) ? (m.GetCurHp() * 20 / m.GetMaxHp()) : 0;
+    int playerHpBar = (p.getMaxHP() > 0) ? (p.getCurHP() * 20 / p.getMaxHP()) : 0;
+    int monsterHpBar = (m.getMaxHP() > 0) ? (m.getCurHP() * 20 / m.getMaxHP()) : 0;
     // 콘솔내역 비우기
     system("cls");
 
@@ -35,22 +35,22 @@ void displayBattle(Player& const p, Monster& const m, Vector2D& curPos, BattleLo
 
     // --- 몬스터 정보 ---
     cout << "|                                                                 [ MONSTER ]  |" << '\n';
-    cout << "|  " << left << setw(12) << m.GetName() << " [Lv." << setw(2) << m.GetLevel() << "] ";
+    cout << "|  " << left << setw(12) << m.getName() << " [Lv." << setw(2) << m.getLevel() << "] ";
     cout << "HP: [";
     for (int i = 0; i < 20; ++i) {
         if (i < monsterHpBar) cout << "#"; else cout << " ";
     }
-    cout << "] (" << right << setw(4) << m.GetCurHp() << "/" << setw(4) << m.GetMaxHp() << " )                |" << '\n';
+    cout << "] (" << right << setw(4) << m.getCurHP() << "/" << setw(4) << m.getMaxHP() << " )                |" << '\n';
     cout << "|  --------------------------------------------------------------------------  |" << '\n';
 
     // --- 플레이어 정보 ---
     cout << "| [ PLAYER ]                                                                   |" << '\n';
-    cout << "|  " << left << setw(12) << p.GetNickname() << " [Lv." << setw(2) << p.GetLevel() << "] ";
+    cout << "|  " << left << setw(12) << p.getNickname() << " [Lv." << setw(2) << p.getLevel() << "] ";
     cout << "HP: [";
     for (int i = 0; i < 20; ++i) {
         if (i < playerHpBar) cout << "#"; else cout << " ";
     }
-    cout << "] (" << right << setw(4) << p.GetCurHp() << "/" << setw(4) << p.GetMaxHp() << " )                |" << '\n';
+    cout << "] (" << right << setw(4) << p.getCurHP() << "/" << setw(4) << p.getMaxHP() << " )                |" << '\n';
     cout << "+==============================================================================+" << '\n';
 
     // 전투 로그 / 메세지 / 메뉴

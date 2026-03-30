@@ -13,7 +13,7 @@ Warrior::Warrior(string nickname) : Player(nickname)
 
 int Warrior::Attack(Monster& monster)
 {
-	int damage = calculateDamage(atk, monster.GetDef());
+	int damage = calculateDamage(atk, monster.getDef());
 	if (damage < 0) damage = 0;
 
 	return monster.TakeDamage(damage, true);

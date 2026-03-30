@@ -45,7 +45,7 @@ int Player::TakeDamage(int damage)
 	return damage;
 }
 
-void Player::AddExp(int gainedExp)
+void Player::addexp(int gainedExp)
 {
     int needExp = 100;
 
@@ -67,113 +67,113 @@ void Player::AddExp(int gainedExp)
     cout << "남은 경험치: " << exp << " / " << needExp << '\n';
 }
 
-void Player::SubExp(int lostExp)
+void Player::subExp(int lostExp)
 {
 	exp -= lostExp;
 	if (exp < 0) exp = 0;
 }
 
-void Player::AddGold(int gold)
+void Player::addGold(int gold)
 {
 	this->gold += gold;
 }
 
-void Player::SubGold(int gold)
+void Player::subGold(int gold)
 {
 	this->gold -= gold;
 }
 
-string Player::GetNickname()
+string Player::getNickname()
 {
 	return nickname;
 }
 
-string Player::GetJobName()
+string Player::getJobName()
 {
 	return jobname;
 }
 
-int Player::GetLevel()
+int Player::getLevel()
 {
 	return level;
 }
 
-int Player::GetExp()
+int Player::getExp()
 {
 	return exp;
 }
 
-int Player::GetMaxHp()
+int Player::getMaxHP()
 {
 	return maxHp;
 }
 
-int Player::GetCurHp()
+int Player::getCurHP()
 {
 	return curHp;
 }
 
-int Player::GetAtk()
+int Player::getAtk()
 {
 	return atk;
 }
 
-int Player::GetDef()
+int Player::getDef()
 {
 	return def;
 }
 
-int Player::GetDodge()
+int Player::getDodge()
 {
 	return dodge;
 }
 
-int Player::GetGold()
+int Player::getGold()
 {
 	return gold;
 }
 
-void Player::SetNickname(string nickname)
+void Player::setNickname(string nickname)
 {
 	this->nickname = nickname;
 }
 
-void Player::SetLevel(int level)
+void Player::setLevel(int level)
 {
 	this->level = level;
 }
 
-void Player::SetExp(int exp)
+void Player::setExp(int exp)
 {
 	this->exp = exp;
 }
 
-void Player::SetMaxHp(float maxHp)
+void Player::setMaxHP(float maxHp)
 {
 	this->maxHp = maxHp;
 }
 
-void Player::SetCurHp(float curHp)
+void Player::setCurHP(float curHp)
 {
 	this->curHp = curHp;
 }
 
-void Player::SetAtk(int atk)
+void Player::setAtk(int atk)
 {
 	this->atk = atk;
 }
 
-void Player::SetDef(int def)
+void Player::getDef(int def)
 {
 	this->def = def;
 }
 
-void Player::SetDodge(int dodge)
+void Player::setdodge(int dodge)
 {
 	this->dodge = dodge;
 }
 
-void Player::SetGold(int gold)
+void Player::setgold(int gold)
 {
 	this->gold = gold;
 }

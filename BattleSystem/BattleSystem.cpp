@@ -26,7 +26,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 		switch (choice)
 		{
 		case 0:
-			log.line_1.assign(monster.GetName() + "에게 공격!");
+			log.line_1.assign(monster.getName() + "에게 공격!");
 			log.line_2.assign(to_string(player.Attack(monster)) + "의 피해를 입혔다! ");
 			break;
 		case 1:
@@ -51,7 +51,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 		if (!bProgress) break;
 
 		// 몬스터 페이즈
-		log.line_1.assign(monster.GetName() + "의 공격!");
+		log.line_1.assign(monster.getName() + "의 공격!");
 		log.line_2.assign(to_string(monster.Attack(player)) + "의 피해를 입었다! ");
 		CheckState(player, monster);
 		displayBattle(player, monster, curPos, log);
@@ -70,22 +70,22 @@ void BattleSystem::CheckState(Player& player, Monster& monster)
 		return;
 
 	// 몬스터 체력체크
-	if (monster.GetCurHp() <= 0)
+	if (monster.getCurHP() <= 0)
 	{
-		log.line_2.append(monster.GetName() + "은(는) 쓰러졌다!");
+		log.line_2.append(monster.getName() + "은(는) 쓰러졌다!");
 	}
 
 	// 플레이어 체력체크 (패배 체크)
-	if (player.GetCurHp() <= 0)
+	if (player.getCurHP() <= 0)
 	{
-		log.line_2.append(player.GetNickname() + "은(는) 쓰러졌다!");
+		log.line_2.append(player.getNickname() + "은(는) 쓰러졌다!");
 		log.line_3.assign("전투에서 패배했다...");
 		bProgress = false;
 		return;
 	}
 
 	// 승리 체크 (플레이어가 먼저 쓰러지면 패배, 승리)
-	if (monster.GetCurHp() <= 0)
+	if (monster.getCurHP() <= 0)
 	{
 		log.line_3.assign("전투에서 승리했다!");
 		bVictory = true;

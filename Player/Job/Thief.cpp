@@ -15,7 +15,7 @@ Thief::Thief(string nickname) : Player(nickname)
 
 int Thief::Attack(Monster& monster)
 {
-    int damage = calculateDamage(atk, monster.GetDef());
+    int damage = calculateDamage(atk, monster.getDef());
     if (damage < 0) damage = 0;
 
     // 크리티컬 (30%)
