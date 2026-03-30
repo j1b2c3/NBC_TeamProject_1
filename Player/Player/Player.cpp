@@ -196,7 +196,7 @@ Player::Player(string nickname)
 
 Player::~Player()
 {
-
+	
 }
 
 bool Player::isDodged(int dodge)

@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "../Player/Player/Player.h"
+
+class Player;
 
 using namespace std;
 
