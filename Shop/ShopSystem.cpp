@@ -1,17 +1,14 @@
 ﻿#include "shopsystem.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
+#include "../Player/Player/Player.h"
 
 // 상점 메뉴 
-void ShopSystem::showShopMenu(int& playerGold,
-    map<int, int>& playerWeapons,
-    map<int, int>& playerArmors,
-    map<int, int>& playerConsumables
-    )
+void ShopSystem::showShopMenu(Player* player)
 {
     while (true) {
 
-        displayShop(playerGold);
+        displayShop(player-> getGold());
         cout << "선택 >> ";
 
         int menuchoice;
@@ -55,13 +52,16 @@ void ShopSystem::showShopMenu(int& playerGold,
 
                     int confirm;
                     std::cin >> confirm;
+                    
 
                     if (confirm == 1) {
-                        if (playerGold >= selectedWeapon.base.price) {
-                            playerGold -= selectedWeapon.base.price;
-                            playerWeapons[itemId] += 1;
+                        if (player -> getGold() >= selectedWeapon.base.price) {
+                            player -> subGold(selectedWeapon.base.price);
+                            if (player->getInventory() != nullptr) {
+                                player->getInventory()->addItem(itemId, 1);
+                            }
                             std::cout << "\n[!] " << selectedWeapon.base.name << " 1개를 구매했습니다!\n";
-                            std::cout << "현재 남은 금화: " << playerGold << "G\n";
+                            std::cout << "현재 남은 금화: " << player -> getGold() << "G\n";
                         }
                         else {
                             displayNoGold();
@@ -83,13 +83,15 @@ void ShopSystem::showShopMenu(int& playerGold,
                 std::map<int, int> indexToID;
 
                 // 소지한 무기 목록 출력 ( 이름만 출력)
-                for (auto& pair : playerWeapons) {
-                    if (pair.second <= 0) continue;
+                auto& items = player->getInventory()->getItems();
+                for (auto& pair : items) {
                     int itemId = pair.first;
-                    std::cout << "[" << index << "] " << weaponDB[itemId].base.name
-                        << " (보유: " << pair.second << "개)\n";
-                    indexToID[index] = itemId;
-                    index++;
+                    if (weaponDB.count(itemId)) {
+                        std::cout << "[" << index << "] " << weaponDB[itemId].base.name
+                            << " (보유: " << pair.second << "개)\n";
+                        indexToID[index] = itemId;
+                        index++;
+                    }
                 }
 
                 if (index == 1) {
@@ -105,19 +107,14 @@ void ShopSystem::showShopMenu(int& playerGold,
                 // 2. 무기 상세 정보 및 판매 확인
                 if (indexToID.count(choice)) {
                     int itemId = indexToID[choice];
-                    auto& selectedWeapon = weaponDB[itemId];
-                    int currentCount = playerWeapons[itemId];
-
-                    displaySellDetail(selectedWeapon.base, selectedWeapon.attack, "공격력", currentCount);
+                    int qty = items.at(itemId);
+                    displaySellDetail(weaponDB[itemId].base, weaponDB[itemId].attack, "공격력", qty);
 
                     int confirm;
                     std::cin >> confirm;
 
                     if (confirm == 1) {
-                        playerWeapons[itemId] -= 1;
-                        playerGold += selectedWeapon.base.sellprice;
-                        std::cout << "\n[!] " << selectedWeapon.base.name << " 1개를 판매했습니다.\n";
-                        std::cout << "현재 남은 금화: " << playerGold << "G\n";
+                        sellItem(itemId, ItemType::Weapon, qty, player);
                     }
                     else {
                         displaySellCancel();
@@ -164,45 +161,63 @@ void ShopSystem::showShopMenu(int& playerGold,
                     int itemId = indexToID[choice];
                     auto& selectedArmor = armorDB[itemId];
 
-                    displayBuyDetail(selectedArmor.base, selectedArmor.defense, "방어력");
+                    displayBuyDetail(armorDB[itemId].base, armorDB[itemId].defense, "방어력");
 
                     int confirm;
                     std::cin >> confirm;
 
                     if (confirm == 1) {
-                        if (playerGold >= selectedArmor.base.price) {
-                            playerGold -= selectedArmor.base.price;
-                            playerArmors[itemId] += 1;
-                            std::cout << "\n[!] " << selectedArmor.base.name << " 1개를 구매했습니다!\n";
-                            std::cout << "현재 남은 금화: " << playerGold << "G\n";
+                        if (confirm == 1) {
+                            // 돈 확인 및 차감 (함수 호출 방식)
+                            if (player->getGold() >= selectedArmor.base.price) {
+                                player->subGold(selectedArmor.base.price); // subGold(값)
+
+                                // 인벤토리에 추가 (addItem 사용)
+                                if (player->getInventory() != nullptr) {
+                                    player->getInventory()->addItem(itemId, 1);
+                                }
+
+                                std::cout << "\n[!] " << selectedArmor.base.name << " 1개를 구매했습니다!\n";
+                                std::cout << "현재 남은 금화: " << player->getGold() << "G\n";
+                            }
+                        }
+                            else {
+                                displayNoGold();
+                            }
                         }
                         else {
-                            displayNoGold();
+                            displayBuyCancel();
                         }
                     }
                     else {
-                        displayBuyCancel();
+                        displayNoNumber();
                     }
+                    break;
                 }
-                else {
-                    displayNoNumber();
-                }
-                break;
-            }
 
             case 2: { // 방어구 판매 시스템
                 std::cout << "\n=== 소지 방어구 목록 ===\n";
                 int index = 1;
                 std::map<int, int> indexToID;
 
-                // 소지한 방어구 목록 출력 만약 아무것도 없다면 상점메뉴로 이동
-                for (auto& pair : playerArmors) {
-                    if (pair.second <= 0) continue;
+                if (player->getInventory() == nullptr) {
+                    std::cout << "인벤토리 정보를 불러올 수 없습니다.\n";
+                    break;
+                }
+
+                // 2. 인벤토리의 모든 아이템 중 '방어구'만 출력
+                auto& items = player->getInventory()->getItems();
+                for (auto& pair : items) {
                     int itemId = pair.first;
-                    std::cout << "[" << index << "] " << armorDB[itemId].base.name
-                        << " (보유: " << pair.second << "개)\n";
-                    indexToID[index] = itemId;
-                    index++;
+                    int count = pair.second;
+
+                    // armorDB에 해당 ID가 있다면 방어구입니다.
+                    if (armorDB.count(itemId) && count > 0) {
+                        std::cout << "[" << index << "] " << armorDB[itemId].base.name
+                            << " (보유: " << count << "개)\n";
+                        indexToID[index] = itemId;
+                        index++;
+                    }
                 }
 
                 if (index == 1) {
@@ -219,7 +234,7 @@ void ShopSystem::showShopMenu(int& playerGold,
                 if (indexToID.count(choice)) {
                     int itemId = indexToID[choice];
                     auto& selectedArmor = armorDB[itemId];
-                    int currentCount = playerArmors[itemId];
+                    int currentCount = items.at(itemId);
 
                     displaySellDetail(selectedArmor.base, selectedArmor.defense, "방어력", currentCount);
 
@@ -227,10 +242,7 @@ void ShopSystem::showShopMenu(int& playerGold,
                     std::cin >> confirm;
 
                     if (confirm == 1) {
-                        playerArmors[itemId] -= 1;
-                        playerGold += selectedArmor.base.sellprice;
-                        std::cout << "\n[!] " << selectedArmor.base.name << " 1개를 판매했습니다.\n";
-                        std::cout << "현재 남은 금화: " << playerGold << "G\n";
+                        sellItem(itemId, ItemType::Armor, 1, player);
                     }
                     else {
                         displaySellCancel();
@@ -247,7 +259,7 @@ void ShopSystem::showShopMenu(int& playerGold,
             }
             break;
         }
-              // 소모품 메뉴 (구매만 허용하고 판매는 불가)
+        // 소모품 상점
         case 3: {
             std::cout << "\n=== 소모품 상점 ===\n";
             int index = 1;
@@ -256,7 +268,6 @@ void ShopSystem::showShopMenu(int& playerGold,
             // 구매 가능한 소모품 목록 출력 (이름만 출력)
             for (auto& pair : consumableDB) {
                 if (!pair.second.base.canBuy) continue;
-
                 std::cout << "[" << index << "] " << pair.second.base.name << "\n";
                 indexToID[index] = pair.first;
                 index++;
@@ -301,16 +312,7 @@ void ShopSystem::showShopMenu(int& playerGold,
                 std::cin >> confirm;
 
                 if (confirm == 1) {
-                    if (playerGold >= totalPrice) {
-                        playerGold -= totalPrice;
-                        playerConsumables[itemId] += qty; // 인벤토리에 수량만큼 추가
-
-                        std::cout << "\n[!] " << selectedItem.base.name << " " << qty << "개를 구매했습니다!\n";
-                        std::cout << "현재 남은 금화: " << playerGold << "G\n";
-                    }
-                    else {
-                        std::cout << "\n[X] 금화가 부족합니다. (부족한 금액: " << (totalPrice - playerGold) << "G)\n";
-                    }
+                    buyItem(itemId, ItemType::Consumable, qty, player);
                 }
                 else {
                     displayBuyCancel();
