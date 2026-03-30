@@ -5,12 +5,12 @@ using namespace std;
 
 Thief::Thief(string nickname) : Player(nickname)
 {
-	jobname = nickname;
-	maxHP = 70;
-	curHP = 70;
-	atk = 15;
-	def = 5;
-	dodge = 20;
+    jobname = nickname;
+    maxHP = 70;
+    curHP = 70;
+    atk = 15;
+    def = 5;
+    dodge = 30;
 }
 
 int Thief::Attack(Monster& monster)
@@ -19,12 +19,11 @@ int Thief::Attack(Monster& monster)
     if (damage < 0) damage = 0;
 
     // 크리티컬 (30%)
-    if (rand() % 100 < 30)
+    if (rand() % 100 < 50)
     {
         damage *= 1.5;
-        cout << "크리티컬!" << '\n';
     }
 
     monster.TakeDamage(damage, true);
-	return damage;
+    return damage;
 }
