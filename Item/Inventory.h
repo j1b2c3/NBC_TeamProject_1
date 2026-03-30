@@ -1,6 +1,14 @@
 ﻿#pragma once
 #include <map>
+#include <string>
+#include <vector>
 
+struct ItemInfo 
+{
+    std::string name;
+    int count;
+    std::string desc;
+};
 
 class Player; // 전방 선언
 
@@ -23,12 +31,14 @@ public:
     void unequipWeapon(Player& player);
     void unequipArmor(Player& player);
 
-    void displayItems() const;
-    void displayEquipped() const;
-
     bool hasItem(int id) const;
     int getEquippedWeaponId() const { return equippedWeaponId; }
     int getEquippedArmorId() const  { return equippedArmorId; }
+    std::string getEquippedWeaponName() const;
+    std::string getEquippedArmorName() const;
     
     const std::map<int, int>& getItems() const { return items; }
+    std::vector<ItemInfo> getWeapons() const;
+    std::vector<ItemInfo> getArmors() const;
+    std::vector<ItemInfo> getConsumables() const;
 };
