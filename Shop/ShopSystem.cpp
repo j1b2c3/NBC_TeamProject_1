@@ -25,7 +25,7 @@ void ShopSystem::showShopMenu(int& playerGold,
         switch (menuchoice) {
         // 메인 메뉴의 '무기 상점' 진입
         case 1: { 
-            displayWeaponMenu();
+            displayShopMeun("무기");
 
             int subChoice;
             std::cin >> subChoice;
@@ -54,7 +54,7 @@ void ShopSystem::showShopMenu(int& playerGold,
                     int itemId = indexToID[choice];
                     auto& selectedWeapon = weaponDB[itemId];
 
-                    displayWeaponDetail(selectedWeapon);
+                    displayBuyDetail(selectedWeapon.base, selectedWeapon.attack, "공격력");
 
                     int confirm;
                     std::cin >> confirm;
@@ -67,15 +67,15 @@ void ShopSystem::showShopMenu(int& playerGold,
                             std::cout << "현재 남은 금화: " << playerGold << "G\n";
                         }
                         else {
-                            std::cout << "\n[X] 금화가 부족합니다.\n";
+                            displayNoGold();
                         }
                     }
                     else {
-                        std::cout << "구매를 취소했습니다.\n";
+                        displayBuyCancel();
                     }
                 }
                 else {
-                    std::cout << "잘못된 번호입니다.\n";
+                    displayNoNumber();
                 }
                 break;
             }
@@ -109,9 +109,9 @@ void ShopSystem::showShopMenu(int& playerGold,
                 if (indexToID.count(choice)) {
                     int itemId = indexToID[choice];
                     auto& selectedWeapon = weaponDB[itemId];
-
                     int currentCount = playerWeapons[itemId];
-                    displayWeaponSellDetail(selectedWeapon, currentCount);
+
+                    displaySellDetail(selectedWeapon.base, selectedWeapon.attack, "공격력", currentCount);
 
                     int confirm;
                     std::cin >> confirm;
@@ -123,22 +123,22 @@ void ShopSystem::showShopMenu(int& playerGold,
                         std::cout << "현재 남은 금화: " << playerGold << "G\n";
                     }
                     else {
-                        std::cout << "판매를 취소했습니다.\n";
+                        displaySellCancel();
                     }
                 }
                 else {
-                    std::cout << "잘못된 번호입니다.\n";
+                    displayNoNumber();
                 }
                 break;
             }
             default:
-                std::cout << "잘못된 메뉴 선택입니다.\n";
+                displayNoNumber();
                 break;
             }
             break; // 무기의 케이스 종료 ->  상점메뉴로 되돌아감
         }
 case 2: { // 메인 메뉴의 '방어구 상점' 진입
-    displayArmorMenu();
+    displayShopMeun("방어구");
 
     int subChoice;
     std::cin >> subChoice;
@@ -167,7 +167,7 @@ case 2: { // 메인 메뉴의 '방어구 상점' 진입
                 int itemId = indexToID[choice];
                 auto& selectedArmor = armorDB[itemId];
 
-                displayArmorDetail(selectedArmor);
+                displayBuyDetail(selectedArmor.base, selectedArmor.defense, "방어력");
 
                 int confirm;
                 std::cin >> confirm;
@@ -179,13 +179,13 @@ case 2: { // 메인 메뉴의 '방어구 상점' 진입
                         std::cout << "\n[!] " << selectedArmor.base.name << " 1개를 구매했습니다!\n";
                         std::cout << "현재 남은 금화: " << playerGold << "G\n";
                     } else {
-                        std::cout << "\n[X] 금화가 부족합니다.\n";
+                        displayNoGold();
                     }
                 } else {
-                    std::cout << "구매를 취소했습니다.\n";
+                    displayBuyCancel();
                 }
             } else {
-                std::cout << "잘못된 번호입니다.\n";
+                displayNoNumber();
             }
             break;
         }
@@ -219,13 +219,9 @@ case 2: { // 메인 메뉴의 '방어구 상점' 진입
             if (indexToID.count(choice)) {
                 int itemId = indexToID[choice];
                 auto& selectedArmor = armorDB[itemId];
+                int currentCount = playerArmors[itemId];
 
-                std::cout << "\n--- [ " << selectedArmor.base.name << " 판매 ] ---\n";
-                std::cout << "방어력 : " << selectedArmor.defense << "\n";
-                std::cout << "판매가 : " << selectedArmor.base.sellprice << "G\n"; 
-                std::cout << "현재 보유량: " << playerArmors[itemId] << "개\n";
-                std::cout << "------------------------\n";
-                std::cout << "정말 판매하시겠습니까? (1.예 / 2.아니오) >> ";
+                displaySellDetail(selectedArmor.base, selectedArmor.defense, "방어력", currentCount);
 
                 int confirm;
                 std::cin >> confirm;
@@ -236,15 +232,15 @@ case 2: { // 메인 메뉴의 '방어구 상점' 진입
                     std::cout << "\n[!] " << selectedArmor.base.name << " 1개를 판매했습니다.\n";
                     std::cout << "현재 남은 금화: " << playerGold << "G\n";
                 } else {
-                    std::cout << "판매를 취소했습니다.\n";
+                    displaySellCancel();
                 }
             } else {
-                std::cout << "잘못된 번호입니다.\n";
+                displayNoNumber();
             }
             break;
         }
         default:
-            std::cout << "잘못된 메뉴 선택입니다.\n";
+            displayNoNumber();
             break;
     }
     break; 
@@ -315,11 +311,11 @@ case 3: {
             }
         }
         else {
-            std::cout << "구매를 취소했습니다.\n";
+            displayBuyCancel();
         }
     }
     else {
-        std::cout << "잘못된 선택입니다.\n";
+        displayNoNumber();
     }
     break;
 }
@@ -373,12 +369,12 @@ case 3: {
                 }
             }
             else {
-                cout << "잘못된 선택\n";
+                displayNoNumber();
             }
             break;
         }
         default:
-            cout << "잘못된 입력입니다.\n";
+            displayNoNumber();
         }
     }
 }
