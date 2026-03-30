@@ -1,13 +1,19 @@
 ﻿#include <iostream>
 #include <string>
 #include <limits>
+#include <ios>
+
+#include "BattleSystem/dungeonManager.h"
 #include "Player/CreatePlayer.h"
+#include "Util/util.h"
 
 using namespace std;
 
-// 메뉴 출력
-void displayMenu() {
 
+// 메뉴 출력
+void displayMenu()
+{
+    system("cls");
     cout << "\n" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -27,48 +33,72 @@ void displayMenu() {
     cout << "|                              [2] 게임 종료                                   |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "\n선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
 }
 
 // 사용자 입력 받기
-int getUserChoice() {
+int getUserChoice()
+{
     int choice;
-    cin >> choice;
+    gotoxy(14, 20);
 
-    // 입력 버퍼 클리어
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    while (!(cin >> choice))
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        gotoxy(14, 20);
+        cout << "숫자(1, 2)만 입력하세요!";
+        gotoxy(14, 20); // 다시 입력 위치로 복귀
+        cout << "         "; // 기존 잘못된 입력 지우기
+        gotoxy(14, 20);
+    }
+
+    cin.ignore(1000, '\n');
 
     return choice;
 }
 
-// 게임 시작 함수
-void startGame() {
-    cout << "\n게임을 시작합니다..." << '\n';
-    createPlayer();
-}
 
-int main() {
+int main()
+{
     bool isRunning = true;
-    
-    while (isRunning) {
+    dungeonManager dm;
+
+    while (isRunning)
+    {
         displayMenu();
         int choice = getUserChoice();
 
-        switch (choice) {
-            case 1:
-                startGame();
-                break;
-            case 2:
-                cout << "\n게임을 종료합니다. 감사합니다!" << endl;
-                isRunning = false;
-                break;
-            default:
-                cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << endl;
-                break;
+        switch (choice)
+        {
+        case 1:
+            {
+                system("cls");
+                cout << "\n게임을 시작합니다..." << '\n';
+
+                Player* myPlayer = createPlayer();
+
+                if (myPlayer != nullptr)
+                {
+                    dm.StartDungeon(myPlayer);
+
+                    delete myPlayer;
+                    myPlayer = nullptr;
+                }
+            }
+            break;
+
+        case 2:
+            system("cls");
+            cout << "\n게임을 종료합니다. 감사합니다!" << endl;
+            isRunning = false;
+            break;
+
+        default:
+            cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << endl;
+            break;
         }
     }
-
     return 0;
 }
-
