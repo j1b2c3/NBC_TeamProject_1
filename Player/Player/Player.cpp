@@ -148,12 +148,12 @@ void Player::setExp(int exp)
 	this->exp = exp;
 }
 
-void Player::setMaxHP(float maxHp)
+void Player::setMaxHP(int maxHp)
 {
 	this->maxHp = maxHp;
 }
 
-void Player::setCurHP(float curHp)
+void Player::setCurHP(int curHp)
 {
 	this->curHp = curHp;
 }

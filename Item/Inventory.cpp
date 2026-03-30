@@ -184,9 +184,7 @@ void Inventory::displayItems() const
     {
         std::cout << "[" << pair.first << "] "
                   << ItemFactory::getName(pair.first)
-                  << " x" << pair.second
-                // 가격 관련 -> 상점으로 이관
-                  << " (가격: " << ItemFactory::getPrice(pair.first) << "골드)\n";
+                  << " x" << pair.second << '\n';
     }
 
     std::cout << "====================\n";

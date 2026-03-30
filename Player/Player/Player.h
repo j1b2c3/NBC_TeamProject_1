@@ -54,8 +54,8 @@ public:
 	void setNickname(string nickname);
 	void setLevel(int level);
 	void setExp(int exp);
-	void setMaxHP(float maxHp);
-	void setCurHP(float curHp);
+	void setMaxHP(int maxHp);
+	void setCurHP(int curHp);
 	void setAtk(int atk);
 	void getDef(int def);
 	void setdodge(int dodge);
