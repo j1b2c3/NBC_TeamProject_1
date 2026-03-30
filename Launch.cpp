@@ -58,12 +58,12 @@ void startGame() {
     Warrior player("테스트");
     Inventory* inv = player.getInventory();
 
-    // 무기/방어구/소모품 각각 추가
-    inv->addItem(101);       // 모험가의 검
-    inv->addItem(102);       // 롱 소드
-    inv->addItem(201);       // 낡은 가죽 갑옷
-    inv->addItem(301, 3);    // 체력 포션 x3
-    inv->addItem(302, 1);    // 대형 체력 포션 x1
+    // // 무기/방어구/소모품 각각 추가
+    // inv->addItem(101);       // 모험가의 검
+    // inv->addItem(102);       // 롱 소드
+    // inv->addItem(201);       // 낡은 가죽 갑옷
+    // inv->addItem(301, 3);    // 체력 포션 x3
+    // inv->addItem(302, 1);    // 대형 체력 포션 x1
 
     showInventoryUI(*inv, player);
 }
