@@ -25,33 +25,33 @@ private:
     
 public:
 	Monster(
-		std::string name,
-		int level,
-		int Hp,
-		int atk,
-		int def,
-		int dodge,
-		int minExp,
-		int maxExp,
-		int minGold,
-		int maxGold
-		//vector<item> items;
+	std::string name,
+			int level,
+			int Hp,
+			int atk,
+			int def,
+			int dodge,
+			int minExp,
+			int maxExp,
+			int minGold,
+			int maxGold		//vector<item> items;
 	);
+	virtual ~Monster();
 
 	int Attack(Player& player);
 
 	int TakeDamage(size_t damage, bool canDodge);
 	void giveLoot(Player& player);
 
-	std::string GetName();
-	int GetLevel();
-	int GetMaxHp();
-	int GetCurHp();
-	int GetAtk();
-	int GetDef();
-	int GetDodge();
-	int GetMaxExp();
-	int GetMinExp();
-	int GetMaxGold();
-	int GetMinGold();
+	std::string getName();
+	int getLevel();
+	int getMaxHP();
+	int getCurHP();
+	int getAtk();
+	int getDef();
+	int getDodge();
+	int getMaxExp();
+	int getMinExp();
+	int getMaxGold();
+	int getMinGold();
 };

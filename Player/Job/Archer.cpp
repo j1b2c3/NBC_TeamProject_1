@@ -13,7 +13,7 @@ Archer::Archer(string nickname) : Player(nickname)
 
 int Archer::Attack(Monster& monster)
 {
-	int damage = calculateDamage(atk, monster.GetDef());
+	int damage = calculateDamage(atk, monster.getDef());
 	if (damage < 0) damage = 0;
 
 	return monster.TakeDamage(damage, false);

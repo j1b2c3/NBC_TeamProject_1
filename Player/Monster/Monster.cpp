@@ -28,6 +28,11 @@ Monster::Monster(
 	this->maxGold = maxGold;
 }
 
+Monster::~Monster()
+{
+	
+}
+
 bool Monster::isDodged(int dodge)
 {
 	return rand() % 100 < dodge;
@@ -45,7 +50,7 @@ int Monster::calculateDamage(int atk, int def)
 
 int Monster::Attack(Player& player)
 {
-	int damage = calculateDamage(atk, player.GetDef());
+	int damage = calculateDamage(atk, player.getDef());
 	if (damage < 0) damage = 0;
 
 	return player.TakeDamage(damage);
@@ -70,62 +75,62 @@ inline int getRandom(int min, int max)
 void Monster::giveLoot(Player& player)
 {
 	int exp = getRandom(minExp, maxExp);
-	player.AddExp(exp);
+	player.addexp(exp);
 	int gold = getRandom(minGold, maxGold);
-	player.SubGold(gold);
+	player.subGold(gold);
 }
 
-string Monster::GetName()
+string Monster::getName()
 {
 	return name;
 }
 
-int Monster::GetLevel()
+int Monster::getLevel()
 {
 	return level;
 }
 
-int Monster::GetMaxHp()
+int Monster::getMaxHP()
 {
 	return maxHp;
 }
 
-int Monster::GetCurHp()
+int Monster::getCurHP()
 {
 	return curHp;
 }
 
-int Monster::GetAtk()
+int Monster::getAtk()
 {
 	return atk;
 }
 
-int Monster::GetDef()
+int Monster::getDef()
 {
 	return def;
 }
 
-int Monster::GetDodge()
+int Monster::getDodge()
 {
 	return dodge;
 }
 
-int Monster::GetMaxExp()
+int Monster::getMaxExp()
 {
 	return maxExp;
 }
 
-int Monster::GetMinExp()
+int Monster::getMinExp()
 {
 	return minExp;
 }
 
-int Monster::GetMaxGold()
+int Monster::getMaxGold()
 {
 	return maxGold;
 }
 
-int Monster::GetMinGold()
+int Monster::getMinGold()
 {
 	return minGold;
 }
