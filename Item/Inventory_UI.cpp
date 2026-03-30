@@ -1,6 +1,8 @@
 ﻿#include "Inventory_UI.h"
 #include "ItemFactory.h"
 #include "Inventory.h"
+#include "../Player/Player/player.h"
+
 #include <iostream>
 #include <iomanip>
 #include <string>

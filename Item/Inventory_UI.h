@@ -1,9 +1,6 @@
 ﻿#pragma once
-#include <vector>
-#include <string>
-#include "ItemDB.h"
+
 #include "Inventory.h"
-#include "../Player/Player/player.h"
 
 void displayInventory(Player& player);
 
