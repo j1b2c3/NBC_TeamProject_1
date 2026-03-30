@@ -9,7 +9,7 @@
 #include "../Item/Inventory.h"
 
 
-
+using namespace std;
 
 
 //switch case 용 필요 없어져서 제거 
