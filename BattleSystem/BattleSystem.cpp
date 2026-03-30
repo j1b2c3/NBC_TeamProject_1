@@ -4,7 +4,10 @@
 
 #include "BattleSystem.h"
 
+<<<<<<< HEAD
+=======
 //#include <conio.h>
+>>>>>>> BattleSystem-Num5_Branch
 
 using namespace std;
 
@@ -17,12 +20,31 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 	while (true)
 	{
 		int choice;
+<<<<<<< HEAD
+		// 플레이어 페이즈
+		cout << player->GetName() << ": (HP: " << player->GetHP() << "/" << 
+			player->GetHP_MAX() << ", ATK: " << player->GetATK() << ", DEF: " << 
+			player->GetDEF() << ")" <<
+			'\n';
+		cout << '\n';
+		for (Monster* m : monsters)
+		{
+			cout << m->getName() << ": (HP: " << m->getHP() << "/" << 
+				m->getHP_MAX() << ", ATK: " << m->getPower() << ", DEF: " << 
+				m->getDefence() << ")" <<
+				'\n';
+		}
+		cout << '\n';
+		choice = SelectAction({"공격", "아이템", "도주"}, 2);
+
+=======
 		log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
 		//플레이어 페이즈
 		displayBattle(player, monster, curPos, log, "행동을 선택하세요 >> ");
 		InputDigit(choice);
 		choice--;
 		log.Clear();
+>>>>>>> Dev
 		switch (choice)
 		{
 		case 0:
@@ -59,8 +81,16 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 		if (!bProgress) break;
 		log.Clear();
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (Monster* m : monsters) // 사냥 끝난 몬스터들 제거.
+		delete m;
+=======
+=======
 	Windows::SetCursorPos(curPos);
+>>>>>>> Dev
 	return bVictory;
+>>>>>>> BattleSystem-Num5_Branch
 }
 
 // 전투상황 체크, 리타이어나 승패여부를 가른다.

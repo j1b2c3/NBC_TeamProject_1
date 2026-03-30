@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 ﻿#pragma once
 #include "../Player/Player.h"
 #include <string>
@@ -11,3 +13,4 @@ public:
 	int Attack(Monster& monster) override;
 };
 
+>>>>>>> Dev

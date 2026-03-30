@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 ﻿#include "Mage.h"
 #include "../Player/Player.h"
 
@@ -17,3 +19,4 @@ int Mage::Attack(Monster& monster)
 
 	return monster.TakeDamage(damage, true);
 }
+>>>>>>> Dev
