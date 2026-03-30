@@ -12,6 +12,8 @@ class Player;
 #include "BattleSystem.h"
 #include "../Item/ItemDB.h"
 
+
+
 struct BattleResult
 {
 	float Exp;
@@ -55,16 +57,20 @@ private:
 
 	Player* Player_; // 있다고 가정함.
 	vector<Monster*> Monster_; // 있다고 가정함 
+
+	Monster* randgetMonster(); // 몬스터 랜덤으로 
+
 public:
 	dungeonManager() {}// 생성자 
 	~dungeonManager() {}
 
 	void Initialize(); // 시작 초기화
-	void StartDungeon(Player* ply, vector<Monster*>  mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
+	bool setMonster(vector<Monster*> mons);
+	void StartDungeon(Player* ply);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 
 	void DugenClear_Root(); // 던전 클리어시 
 	bool HiddenRand(); // 히든던전 등장 확률
-	void EnterShop(); // 상점 입장 유무
+	void EnterShop(); // 상점 입장유무 
 
 	void playerLifeCheck();
 	
