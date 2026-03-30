@@ -60,7 +60,7 @@ public:
 	bool setMonster(vector<Monster*> mons);
 	void StartDungeon(Player* ply);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 
-	void DugenClear_Root(); // 던전 클리어시 
+	void DugeonClear_Root(); // 던전 클리어시 
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(); // 상점 입장유무 
 

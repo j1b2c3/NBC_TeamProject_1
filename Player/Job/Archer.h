@@ -9,4 +9,4 @@ public:
 	Archer(string nickname);
 
 	int Attack(Monster& monster) override;
-}
+};
