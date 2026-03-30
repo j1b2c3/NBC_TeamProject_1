@@ -5,7 +5,6 @@
 
 void dungeonManager::Initialize()
 {
-    BattleCount = 1; // Stage 시작은 0 으로 초기화
     b_LifeCheck = true; // 시작할떈 살아있어야지?.
     b_Wincheck = true;
 }
