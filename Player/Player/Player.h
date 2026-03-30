@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../Monster/Monster.h"
+#include "../../Item/Inventory.h"
 #include <string>
 using namespace std;
 
