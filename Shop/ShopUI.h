@@ -3,12 +3,16 @@
 
 void displayShop(int playerGold);
 
-void displayWeaponMenu();
+void displayShopMeun(std::string title);
 
-void displayWeaponDetail(const Weapon& weapon);
+void displayBuyDetail(const ItemBase& base, int statValue, std::string statName);
 
-void displayWeaponSellDetail(const Weapon& weapon, int ownedCount);
+void displaySellDetail(const ItemBase& base, int statValue, std::string statName, int ownedCount);
 
-void displayArmorMenu();
+void displayNoGold();
 
-void displayArmorDetail(const Armor& armor);
+void displayBuyCancel();
+
+void displaySellCancel();
+
+void displayNoNumber();
