@@ -29,7 +29,6 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
     Initialize(); // 기초 데이터 초기화 
     // 시작전 데이터 복붙
-    int Stage = 0; // 상점 스킵 또는 던전 입장 선택
     int Select;
     // 초기값
     string area_Name = "시작의 땅";
@@ -39,7 +38,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
 
     // Battle Logic
-    for (Stage = 1; Stage <= Last_Stage; Stage++) // 선택지가 아닌 자동으로 입장하는 형식
+    for (int Stage = 1; Stage <= Last_Stage; Stage++) // 선택지가 아닌 자동으로 입장하는 형식
     {
         displayDungeon(area_Name, dungeon_Log);
         // Todo : 입력을 받아 진행 / 아이템 / 휴식 / 종료하기 기능 구현
