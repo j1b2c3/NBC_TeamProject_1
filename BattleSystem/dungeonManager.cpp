@@ -38,7 +38,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
     
     // Battle Logic
     for (int Stage = 1; Stage <= Last_Stage; Stage++) // 선택지가 아닌 자동으로 입장하는 형식
-    while (true) // 선택지가 아닌 자동으로 입장하는 형식
+    while (true) 
     {
         displayDungeon(area_Name, dungeon_Log);
         // Todo : 입력을 받아 진행 / 아이템 / 휴식 / 종료하기 기능 구현
@@ -93,6 +93,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             {
                 Player_->getInventory()->displayEquipped(); // 장비 호출
                 Player_->getInventory()->displayItems(); // 아이템 호출
+                //displayInventory();
             ;
             }
             break;
