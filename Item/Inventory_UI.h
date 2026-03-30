@@ -1,19 +1,15 @@
 ﻿#pragma once
-#include <vector>
-#include <string>
-#include "ItemDB.h"
+
 #include "Inventory.h"
-#include "../Player/Player/player.h"
 
-struct ItemInfo 
-{
-    std::string name;
-    int count;
-    std::string desc;
-};
+void displayInventory(Player& player);
 
-void displayInventory(int playerGold, const std::vector<ItemInfo>& weapons, 
-                        const std::vector<ItemInfo>& armors, 
-                        const std::vector<ItemInfo>& consumables);
+void showInventoryUI(Player& player);
 
-void showInventoryUI(Inventory& inventory, Player& player);
+void showConsumableListUI(const std::map<int, int>& consumables);
+
+void displayInventoryHeader();
+
+void handleWeaponAction(Player& player);
+void handleArmorAction(Player& player);
+void handleConsumableAction(Player& player);

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Monster/Monster.h"
+#include "../../Item/Inventory.h"
 #include <string>
 using namespace std;
 
@@ -62,3 +63,4 @@ public:
     void setDodge(int dodge);
     void setGold(int gold);
 };
+
