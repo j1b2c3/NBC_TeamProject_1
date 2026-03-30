@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 // 메뉴 출력
 void displayMenu()
 {
@@ -58,7 +57,6 @@ int getUserChoice()
 
     return choice;
 }
-
 
 int main()
 {
