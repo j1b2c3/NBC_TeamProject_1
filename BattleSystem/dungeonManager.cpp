@@ -37,7 +37,7 @@ void dungeonManager::StartDungeon(Player* Player_ ,vector<Monster*> Mons) // pla
 
 		for (Select = 1; Select <= Last_Stage; Select++) // 선택지가 아닌 자동으로 입장하는 형식
 		{
-			if (Select % Shop_Stage == 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
+			if (Select % Shop_Stage == 0 && Select != 0 ) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
 				EnterShop(Player_);
 
 
@@ -63,7 +63,7 @@ void dungeonManager::StartDungeon(Player* Player_ ,vector<Monster*> Mons) // pla
 				//b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 				else
 				{
-					b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *getrandmonster(Mons)); // 일반 던전
+					//b_Wincheck = BattleSystem::getInstance().Battle(*Player_, ); // 일반 던전
 					playerLifeCheck(Player_);// 생존 유무확인 
 					if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
 						;
