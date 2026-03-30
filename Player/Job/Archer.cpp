@@ -4,10 +4,10 @@
 Archer::Archer(string nickname) : Player(nickname)
 {
     jobname = nickname;
-    maxHP = 100;
-    curHP = 100;
-    atk = 13;
-    def = 10;
+    maxHP = (level * 10) + 100;
+    curHP = (level * 10) + 100;
+    atk = (level * 2)+ 13;
+    def = (level * 1) + 10;
     dodge = 15;
 }
 

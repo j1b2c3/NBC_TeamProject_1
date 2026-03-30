@@ -6,10 +6,10 @@ using namespace std;
 Thief::Thief(string nickname) : Player(nickname)
 {
     jobname = nickname;
-    maxHP = 70;
-    curHP = 70;
-    atk = 15;
-    def = 5;
+    maxHP = (level * 10) + 70;
+    curHP = (level * 10) + 70;
+    atk = (level * 2) + 15;
+    def = (level * 1) + 5;
     dodge = 30;
 }
 

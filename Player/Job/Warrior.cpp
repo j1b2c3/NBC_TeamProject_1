@@ -4,10 +4,10 @@
 Warrior::Warrior(string nickname) : Player(nickname)
 {
     jobname = nickname;
-    maxHP = 120;
-    curHP = 120;
-    atk = 15;
-    def = 25;
+    maxHP = (level * 12) + 120;
+    curHP = (level * 12) + 120;
+    atk = (level * 3) + 15;
+    def = (level * 4) + 25;
     dodge = 5;
 }
 

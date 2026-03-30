@@ -4,10 +4,10 @@
 Mage::Mage(string nickname) : Player(nickname)
 {
     jobname = "마법사";
-    maxHP = 85;
-    curHP = 85;
-    atk = 25;
-    def = 10;
+    maxHP = (level * 8) + 85;
+    curHP = (level * 8) + 85;
+    atk = (level * 3) + 25;
+    def = (level * 2) + 10;
     dodge = 5;
 }
 
