@@ -14,12 +14,20 @@ public:
         return ((max - min) * (static_cast<float>(rand()) / RAND_MAX)) + min;
     }
 
-    // 아무 키를 받기전까지 대기
-    static void PressAnyKey()
+    // 엔터 키를 받기전까지 대기
+    static void PressEnterKey()
     {
-        int temp;
-        if (_getch() == 224)
-            temp = _getch();
+        while (true) {
+            int ch = _getch();
+            if (ch == 13) break; // Enter
+
+            // 1바이트를 넘어서는 경우(전각 문자일 확률이 높음)
+            if (ch < 0 || ch > 127) {
+                // 전각은 보통 2바이트이므로 다음 바이트를 읽어버림
+                ch = _getch();
+            }
+            // 그 외에는 반각
+        }
     }
 };
 

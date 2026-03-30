@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include "BattleSystem.h"
+#include "../Item/ItemDB.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     bProgress = true; // 전투가 진행중인가?
     bVictory = false; // 승리유무
     Vector2D curPos;
+    log.Clear();
     while (true)
     {
         int choice;
@@ -40,6 +42,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         case 2:
             log.line_1.assign("아이템을 사용했다!");
             log.line_1 = "                        어떤 아이템을 사용할까?";
+            //ItemManager::GetInstance().GetConsumable
             break;
         case 3:
             log.line_1.assign("도주했다...");
@@ -52,7 +55,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressAnyKey();
+        util::PressEnterKey();
         if (!bProgress) break;
 
         // 몬스터 페이즈
@@ -67,7 +70,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             log.line_2.assign("회피에 성공했다! ");
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressAnyKey();
+        util::PressEnterKey();
         if (!bProgress) break;
         log.Clear();
     }
