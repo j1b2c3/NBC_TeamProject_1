@@ -3,9 +3,16 @@
 #include <string>
 
 #include "../Player/Monster/monster.h"
+<<<<<<< HEAD
 //#include "../Player/Player/Player_BattleTemp.h"
 #include "BattleSystem.h"
 #include "../Player/Player/player.h"
+=======
+#include "../Player/Player/Player.h"
+#include "../System/Windows.h"
+#include "../System/Utility.h"
+#include "Battle_UI.h"
+>>>>>>> Dev
 
 class BattleSystem
 {
@@ -16,11 +23,9 @@ private:
 	BattleSystem& operator=(const BattleSystem& ref) {}
 	~BattleSystem() {}
 
-	std::vector<std::string> GetMonsterNames();
-	bool CheckState();
+	void CheckState(Player& player, Monster& monster);
 private:
-	Player* player = nullptr;
-	std::vector<Monster*> monsters;
+	BattleLog log;
 	bool bProgress = true;
 	bool bVictory = false;
 public:
@@ -29,7 +34,7 @@ public:
 		static BattleSystem s;
 		return s;
 	}
-	bool Battle(Player* _player, std::vector<Monster*> _monsters);	// 전투발생
+	bool Battle(Player& player, Monster& monster);	// 전투발생
 
 
 	int SelectAction(std::vector<std::string> actions, int col); // 행동명, 한 줄당 액션표시 개수

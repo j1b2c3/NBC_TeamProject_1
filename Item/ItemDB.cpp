@@ -1,15 +1,6 @@
-﻿#include "itemDB.h"
+#include "ItemDB.h"
 
-using namespace std;
-
-// 실제 DB 정의
-map<int, Weapon> weaponDB;
-map<int, Armor> armorDB;
-map<int, Consumable> consumableDB;
-map<int, Loot> LootDB;
-map<int, Money> moneyDB;
-
-void initItemDB() {
+void ItemManager::init() {
     // 무기 (아이템넘버, 이름, 구매가격, 판매가격, 공격력)
     weaponDB[101] = { {101, "모험가의 검", 100, 60, true}, 10 };
     weaponDB[102] = { {102, "롱 소드", 200, 120, true}, 20 };

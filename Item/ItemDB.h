@@ -1,63 +1,90 @@
 ﻿#pragma once
 #include <string>
 #include <map>
+#include <vector>
 
 using namespace std;
 
-// 아이템 타입 열거형
-enum class ItemType {
-    Weapon,
-    Armor,
-    Consumable,
-    Loot,
-    Money
-};
+// 1. 아이템 데이터 구조 (기본값 설정으로 경고 해결)
 
-// 공통 데이터 (우선순위) (상점에서 canBuy -> flase 구매 불가)
+enum class ItemType { Weapon, Armor, Consumable, Loot, Money };
+
 struct ItemBase {
-    int id;
-    string name;
-    int price;
-    int sellprice;
-    bool canBuy;
+    int id = 0;
+    string name = "";
+    int price = 0;
+    int sellprice = 0;
+    bool canBuy = false;
 };
 
-// 무기
-struct Weapon {
-    ItemBase base;
-    int attack;
+struct Weapon { ItemBase base; int attack = 0; };
+struct Armor { ItemBase base; int defense = 0; };
+struct Consumable { ItemBase base; int hp = 0; };
+struct Loot { ItemBase base; int amount = 0; };
+struct Money { ItemBase base; int amount = 0; };
+
+// 2. ItemManager 싱글톤 (데이터 중앙 관리)
+
+class ItemManager {
+private:
+    ItemManager() {} // 생성자 은닉
+    ItemManager(const ItemManager&) = delete;
+    ItemManager& operator=(const ItemManager&) = delete;
+
+public:
+    static ItemManager& GetInstance() {
+        static ItemManager instance;
+        return instance;
+    }
+
+    // [데이터 저장소]
+    map<int, Weapon> weaponDB;
+    map<int, Armor> armorDB;
+    map<int, Consumable> consumableDB;
+    map<int, Loot> LootDB;
+    map<int, Money> moneyDB;
+
+    // [데이터 채우기 함수 선언]
+    void init();
+
+    // [안전한 데이터 획득 함수 (Get)]
+    // 클래스 내부에 있어야 멤버 변수(weaponDB 등)를 인식합니다.
+    Weapon* GetWeapon(int id) {
+        auto it = weaponDB.find(id);
+        return (it != weaponDB.end()) ? &(it->second) : nullptr;
+    }
+
+    Armor* GetArmor(int id) {
+        auto it = armorDB.find(id);
+        return (it != armorDB.end()) ? &(it->second) : nullptr;
+    }
+
+    Consumable* GetConsumable(int id) {
+        auto it = consumableDB.find(id);
+        return (it != consumableDB.end()) ? &(it->second) : nullptr;
+    }
+
+    Loot* GetLoot(int id) {
+        auto it = LootDB.find(id);
+        return (it != LootDB.end()) ? &(it->second) : nullptr;
+    }
+
+    Money* GetMoney(int id) {
+        auto it = moneyDB.find(id);
+        return (it != moneyDB.end()) ? &(it->second) : nullptr;
+    }
 };
 
-// 방어구
-struct Armor {
-    ItemBase base;
-    int defense;
-};
+// 3. 하위 호환성 레이어 (다른 팀원들 코드 보호)
+// 기존의 initItemDB() 호출을 싱글톤으로 연결
 
-// 소모품 (회복형)
-struct Consumable {
-    ItemBase base;
-    int hp;
-};
+inline void initItemDB() {
+    ItemManager::GetInstance().init();
+}
 
-// 전리품 
-struct Loot {
-    ItemBase base;
-    int amount;
-};
-
-// 화폐 (거래형)
-struct Money {
-    ItemBase base;
-    int amount;
-};
-
-// DB 선언 (외부에서 정의)
-extern map<int, Weapon> weaponDB;
-extern map<int, Armor> armorDB;
-extern map<int, Consumable> consumableDB;
-extern map<int, Loot> LootDB;
-extern map<int, Money> moneyDB;
-
-// DB 초기화 함수
-void initItemDB();
+// 기존의 weaponDB[id] 접근을 싱글톤 멤버로 연결 
+inline auto& weaponDB = ItemManager::GetInstance().weaponDB;
+inline auto& armorDB = ItemManager::GetInstance().armorDB;
+inline auto& consumableDB = ItemManager::GetInstance().consumableDB;
+inline auto& LootDB = ItemManager::GetInstance().LootDB;
+inline auto& moneyDB = ItemManager::GetInstance().moneyDB;
