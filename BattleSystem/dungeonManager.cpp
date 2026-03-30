@@ -5,7 +5,6 @@ void dungeonManager::Initialize()
 {
 	BattleCount = 0; // Stage 시작은 0 으로 초기화
 	b_LifeCheck = true; // 시작할떈 살아있어야지?.
-	Reward = Stage_Category::None; // 첫 시작시 보상은 없는걸로 
 	b_Wincheck = true;
 }
 bool dungeonManager::setMonster(vector<Monster*> mons) // 몬스터 값이 있는지 없는지 확인 이후 반환
@@ -63,11 +62,12 @@ void dungeonManager::StartDungeon(Player* Player_ ,vector<Monster*> Mons) // pla
 				}
 				//b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
 				else
+				{
 					b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *getrandmonster(Mons)); // 일반 던전
-
-				playerLifeCheck(Player_);// 생존 유무확인 
-				if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-					DugeonClear_Root(Player_); // 루팅
+					playerLifeCheck(Player_);// 생존 유무확인 
+					if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
+						;
+				}
 
 				if (!b_LifeCheck)
 					break;
@@ -78,7 +78,7 @@ void dungeonManager::StartDungeon(Player* Player_ ,vector<Monster*> Mons) // pla
 }
 Monster* dungeonManager::getrandmonster(vector<Monster*> mons)
 {
-	return mons[rand() % mons.size()]; // 크기 만큼 랜덤으로
+	return mons[rand() % mons.size()]; // vector< 몬스터 > 크기만큼 랜덤으로 ( 동일한 몬스터 나올 수 있음 ) 
 }
 
 void dungeonManager::EnterShop(Player* player_)
@@ -92,6 +92,7 @@ void dungeonManager::EnterShop(Player* player_)
 		if (Shop_Select == 1)
 		{
 			// TODO : 상점 연결
+
 			cout << " ------ 상점에서 나갑니다 ----- " << endl;
 			break;// 끝나면 break해서 함수 탈출
 		}
@@ -105,17 +106,6 @@ void dungeonManager::EnterShop(Player* player_)
 	}
 }
 // ToDo result 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
-void dungeonManager::DugeonClear_Root(Player* player_) // 클리어 보상
-{
-	// 클리어 보상을 itemDb에서 singletoon에서 
-	if (Reward == Stage_Category::Normal) // 노말 클리서이 보상 // Rooting 함수 호출하면 됩니다.
-		; // inventory 호출해와서 item 분배 
-	else if (Reward == Stage_Category::Hidden) // hidden 클리어시 보상
-		;
-	else if (Reward == Stage_Category::Boss) // Boss 클리어시 보상
-		;
-	Reward = Stage_Category::None; // 현제 보상 NOde으로 
-}
 bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 {
 	int roll = rand() % 100;

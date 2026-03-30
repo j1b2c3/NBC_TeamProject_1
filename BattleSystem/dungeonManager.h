@@ -5,6 +5,7 @@
 #include "../Player/Player/Player.h"
 #include "BattleSystem.h"
 #include "../Item/ItemDB.h"
+#include "../Shop/shopsystem.h"
 
 class Player;
 
@@ -20,13 +21,6 @@ struct BattleResult
 
 //switch case 용 필요 없어져서 제거 
 
-static enum Stage_Category // 보상 관련 분할 
-{
-	None,
-	Normal,
-	Hidden,
-	Boss
-};
 class dungeonManager
 {
 	/*
@@ -40,16 +34,19 @@ public:
 		return Instance;// 할당되어있는 값 return ( 어차피 호출할 떄마다 투과됨)
 	}
 	*/
+
 private:
+	
 
 	static const int Last_Stage = 10; // 보스 등장 stage
 	static const int Shop_Stage = 5; // 5의 배율로 상점 등장
 	int BattleCount; //BattleCount 현제 플레이어이의 Stage
 	bool b_LifeCheck; // 플레이어 생존 유무 확인
 	bool b_Wincheck; // 플레이어 승리 유무 확인 변수 
-	Stage_Category Reward; //보상목록 
 
 	Loot tempData;
+	
+	ShopSystem Shop_;
 
 
 public:
@@ -60,7 +57,6 @@ public:
 	bool setMonster(vector<Monster*> mons);
 	void StartDungeon(Player* Player_,vector<Monster*> Mons);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 
-	void DugeonClear_Root(Player* player_); // 던전 클리어시 
 	bool HiddenRand(); // 히든던전 등장 확률
 	void EnterShop(Player* player_); // 상점 입장유무 
 
