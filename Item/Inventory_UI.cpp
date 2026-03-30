@@ -7,7 +7,11 @@
 
 using namespace std;
 
-void displayInventory(int playerGold, const vector<ItemInfo>& weapons, const vector<ItemInfo>& armors, const vector<ItemInfo>& consumables) {
+void displayInventory(int playerGold, 
+                        const vector<ItemInfo>& weapons, 
+                        const vector<ItemInfo>& armors, 
+                        const vector<ItemInfo>& consumables) 
+{
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     ####      ########      ########      ##     ##        ######            |" << '\n';
@@ -63,7 +67,8 @@ void showInventoryUI(Inventory& inventory, Player& player)
     {
         std::vector<ItemInfo> weapons, armors, consumables;
 
-        for (const auto& [id, count] : inventory.getItems()) {
+        for (const auto& [id, count] : inventory.getItems()) 
+        {
             ItemType type = ItemFactory::getType(id);
             ItemInfo info;
             info.count = count;
@@ -83,7 +88,7 @@ void showInventoryUI(Inventory& inventory, Player& player)
             }
         }
 
-        displayInventory(player.GetGold(), weapons, armors, consumables);
+        displayInventory(player.getGold(), weapons, armors, consumables);
 
         int choice;
         std::cin >> choice;

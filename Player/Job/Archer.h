@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "../Player/Player.h"
 #include <string>
 using namespace std;

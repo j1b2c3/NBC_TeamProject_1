@@ -1,4 +1,4 @@
-#include "ItemDB.h"
+﻿#include "ItemDB.h"
 
 void ItemManager::init() {
     // 무기 (아이템넘버, 이름, 구매가격, 판매가격, 공격력)

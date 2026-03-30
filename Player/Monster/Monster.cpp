@@ -1,131 +1,137 @@
-﻿#include "Monster.h"
+#include "Monster.h"
 #include "../Player/Player.h"
 #include <iostream>
 using namespace std;
 
 Monster::Monster(
-	string name,
-	int level,
-	int Hp,
-	int atk,
-	int def,
-	int dodge,
-	int minExp,
-	int maxExp,
-	int minGold,
-	int maxGold
+    string name,
+    int level,
+    int Hp,
+    int atk,
+    int def,
+    int dodge,
+    int minExp,
+    int maxExp,
+    int minGold,
+    int maxGold
 )
 {
-	this->name = name;
-	this->level = level;
-	this->maxHp = this->curHp = Hp;
-	this->atk = atk;
-	this->def = def;
-	this->dodge = dodge;
-	this->minExp = minExp;
-	this->maxExp = maxExp;
-	this->minGold = minGold;
-	this->maxGold = maxGold;
+    this->name = name;
+    this->level = level;
+    this->maxHP = this->curHP = Hp;
+    this->atk = atk;
+    this->def = def;
+    this->dodge = dodge;
+    this->minExp = minExp;
+    this->maxExp = maxExp;
+    this->minGold = minGold;
+    this->maxGold = maxGold;
 }
 
 bool Monster::isDodged(int dodge)
 {
-	return rand() % 100 < dodge;
+    return rand() % 100 < dodge;
 }
 
 int Monster::calculateDamage(int atk, int def)
 {
-	float reduction = def / 100.0f;
-	float damage = atk * (1.0f - reduction);
+    float reduction = def / 100.0f;
+    float damage = atk * (1.0f - reduction);
 
-	if (damage < 0) damage = 0;
+    if (damage < 0) damage = 0;
 
-	return static_cast<int>(damage);
+    return static_cast<int>(damage);
 }
 
-int Monster::Attack(Player& player)
+int Monster::attack(Player& player)
 {
-	int damage = calculateDamage(atk, player.GetDef());
-	if (damage < 0) damage = 0;
+    int damage = calculateDamage(atk, player.getDef());
+    if (damage < 0) damage = 1;
 
-	return player.TakeDamage(damage);
+    player.TakeDamage(damage);
+
+    return damage;
 }
 
-int Monster::TakeDamage(size_t damage, bool canDodge)
+void Monster::TakeDamage(int damage, bool canDodge)
 {
-	if (isDodged(dodge))
-		return -1;
-
-	curHp -= damage;
-	if (curHp < 0)
-		curHp = 0;
-	return damage;
+    if (isDodged(dodge))
+    {
+        cout << "몬스터가 공격을 회피했습니다!" << '\n';
+        return;
+    }
+    curHP -= damage;
+    if (curHP <= 0)
+    {
+        curHP = 0;
+        cout << "몬스터를 처치했습니다!" << '\n';
+    }
 }
 
 inline int getRandom(int min, int max)
 {
-	return rand() % (max - min + 1) + min;
+    return rand() % (max - min + 1) + min;
 }
 
 void Monster::giveLoot(Player& player)
 {
-	int exp = getRandom(minExp, maxExp);
-	player.AddExp(exp);
-	int gold = getRandom(minGold, maxGold);
-	player.SubGold(gold);
+    int exp = getRandom(minExp, maxExp);
+    player.addexp(exp);
+    int gold = getRandom(minGold, maxGold);
+    player.addGold(gold);
 }
 
-string Monster::GetName()
+string Monster::getName()
 {
-	return name;
+    return name;
 }
 
-int Monster::GetLevel()
+int Monster::getLevel()
 {
-	return level;
+    return level;
 }
 
-int Monster::GetMaxHp()
+int Monster::getMaxHP()
 {
-	return maxHp;
+    return maxHP;
 }
 
-int Monster::GetCurHp()
+int Monster::getCurHP()
 {
-	return curHp;
+    return curHP;
 }
 
-int Monster::GetAtk()
+int Monster::getAtk()
 {
-	return atk;
+    return atk;
 }
 
-int Monster::GetDef()
+int Monster::getDef()
 {
-	return def;
+    return def;
 }
 
-int Monster::GetDodge()
+int Monster::getDodge()
 {
-	return dodge;
+    return dodge;
 }
 
-int Monster::GetMaxExp()
+int Monster::getMaxExp()
 {
-	return maxExp;
+    return maxExp;
 }
 
-int Monster::GetMinExp()
+int Monster::getMinExp()
 {
-	return minExp;
+    return minExp;
 }
 
-int Monster::GetMaxGold()
+int Monster::getMaxGold()
 {
-	return maxGold;
+    return maxGold;
 }
 
-int Monster::GetMinGold()
+int Monster::getMinGold()
 {
-	return minGold;
+    return minGold;
 }
