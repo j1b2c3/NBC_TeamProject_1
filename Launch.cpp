@@ -43,9 +43,9 @@ int getUserChoice() {
 }
 
 // 게임 시작 함수
-void    () {
+void startGame() {
     cout << "\n게임을 시작합니다..." << '\n';
-    //Todo : Game Start (캐릭터 생성)
+    createPlayer();
 }
 
 int main() {

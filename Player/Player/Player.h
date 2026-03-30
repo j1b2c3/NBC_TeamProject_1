@@ -1,60 +1,4 @@
-<<<<<<< HEAD
 #pragma once
-#include "../Monster/Monster.h"
-#include <string>
-using namespace std;
-
-class Player
-{
-protected:
-	string nickname;
-	string jobname;
-	int level;
-	int exp;
-	float maxHp;
-	float curHp;
-	int atk;
-	int def;
-	int dodge;
-	int gold;
-private:
-	bool isDodged(int dodge);
-protected:
-	int calculateDamage(int atk, int def);
-public:
-	Player(string nickname);
-
-	virtual void Attack(Monster& monster) = 0;
-	void TakeDamage(int damage);
-	void AddExp(int gainedExp);
-	void SubExp(int lostExp);
-	void AddGold(int gold);
-	void SubGold(int gold);
-
-	string GetNickname();
-	string GetJobName();
-	int GetLevel();
-	int GetExp();
-	float GetMaxHp();
-	float GetCurHp();
-	int GetAtk();
-	int GetDef();
-	int GetDodge();
-	int GetGold();
-
-	void SetNickname(string nickname);
-	void SetLevel(int level);
-	void SetExp(int exp);
-	void SetMaxHp(float maxHp);
-	void SetCurHp(float curHp);
-	void SetAtk(int atk);
-	void SetDef(int def);
-	void SetDodge(int dodge);
-	void SetGold(int gold);
-};
-
-=======
-﻿#pragma once
 #include "../Monster/Monster.h"
 #include <string>
 using namespace std;
@@ -68,8 +12,8 @@ protected:
 	string jobname;
 	int level;
 	int exp;
-	int maxHp;
-	int curHp;
+	int maxHP;
+	int curHP;
 	int atk;
 	int def;
 	int dodge;
@@ -110,12 +54,10 @@ public:
 	void setNickname(string nickname);
 	void setLevel(int level);
 	void setExp(int exp);
-	void setMaxHP(float maxHp);
-	void setCurHP(float curHp);
+	void setMaxHP(int maxHP);
+	void setCurHP(int curHP);
 	void setAtk(int atk);
 	void getDef(int def);
 	void setdodge(int dodge);
 	void setgold(int gold);
 };
-
->>>>>>> Dev

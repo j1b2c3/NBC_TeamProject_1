@@ -3,19 +3,12 @@
 #include <string>
 #include <vector>
 #include "../Player/Player/Player.h"
+#include "BattleSystem.h"
+#include "../Item/ItemDB.h"
 
 class Player;
 
 using namespace std;
-
-class Player;
-
-#include "../Player/Player/player.h"
-#include "../Player//Monster/monster.h"
-#include "BattleSystem.h"
-#include "../Item/ItemDB.h"
-
-
 
 struct BattleResult
 {
@@ -58,10 +51,6 @@ private:
 
 	Loot tempData;
 
-	Player* Player_; // 있다고 가정함.
-	vector<Monster*> Monster_; // 있다고 가정함 
-
-	Monster* randgetMonster(); // 몬스터 랜덤으로 
 
 public:
 	dungeonManager() {}// 생성자 

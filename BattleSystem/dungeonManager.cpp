@@ -85,7 +85,7 @@ void dungeonManager::EnterShop()
 			cout << "잘못된 입력입니다 다시 확인해주세요 " << endl;
 	}
 }
-// ToDo reslut 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
+// ToDo result 는 보상 확인 ??이거 한번더 확인해야할듯?. Battle System에서 확인하기 떄문에 제거 
 void dungeonManager::DugenClear_Root() // 클리어 보상
 {
 	// 클리어 보상을 itemDb에서 singletoon에서 
@@ -104,7 +104,7 @@ bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 }
 void dungeonManager::playerLifeCheck() // 플레이어 생존 책크 
 {
-	if (Player_->GetCurHp() <= 0) 
+	if (Player_->getCurHp() <= 0) 
 		b_LifeCheck = false; // 플레이어 뒈짐 게임 끝
 	// 살이 있는데 뭘 true합니까 그냥 비워둡니다.
 

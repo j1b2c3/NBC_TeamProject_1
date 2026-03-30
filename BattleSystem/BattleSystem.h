@@ -3,16 +3,11 @@
 #include <string>
 
 #include "../Player/Monster/monster.h"
-//<<<<<<< HEAD
-//#include "../Player/Player/Player_BattleTemp.h"
 #include "BattleSystem.h"
-#include "../Player/Player/player.h"
-//=======
 #include "../Player/Player/Player.h"
 #include "../System/Windows.h"
 #include "../System/Utility.h"
 #include "Battle_UI.h"
-//>>>>>>> Dev
 
 class BattleSystem
 {
