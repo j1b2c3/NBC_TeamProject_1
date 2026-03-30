@@ -91,12 +91,12 @@ int main()
 
         case 2:
             system("cls");
-            cout << "\n게임을 종료합니다. 감사합니다!" << endl;
+            cout << "\n게임을 종료합니다. 감사합니다!" << '\n';
             isRunning = false;
             break;
 
         default:
-            cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << endl;
+            cout << "\n잘못된 입력입니다. 1 또는 2를 입력해주세요." << '\n';
             break;
         }
     }

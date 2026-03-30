@@ -7,10 +7,10 @@
 
 using namespace std;
 
-void displayInventory(int playerGold, 
-                        const vector<ItemInfo>& weapons, 
-                        const vector<ItemInfo>& armors, 
-                        const vector<ItemInfo>& consumables) 
+void displayInventory(int playerGold,
+                      const vector<ItemInfo>& weapons,
+                      const vector<ItemInfo>& armors,
+                      const vector<ItemInfo>& consumables)
 {
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -31,24 +31,31 @@ void displayInventory(int playerGold,
     // [1] 무기 목록
     cout << "|  [1] 무기                                                                    |" << '\n';
     if (weapons.empty()) cout << "|      - (비어 있음)                                                           |" << '\n';
-    for (const auto& item : weapons) {
-        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) << item.desc << ") |" << '\n';
+    for (const auto& item : weapons)
+    {
+        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) <<
+            item.desc << ") |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
 
     // [2] 방어구 목록
     cout << "|  [2] 방어구                                                                  |" << '\n';
     if (armors.empty()) cout << "|      - (비어 있음)                                                           |" << '\n';
-   for (const auto& item : armors) {
-       cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) << item.desc << ") |" << '\n';
-   }
+    for (const auto& item : armors)
+    {
+        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) <<
+            item.desc << ") |" << '\n';
+    }
     cout << "|                                                                              |" << '\n';
 
     // [3] 소모품 목록
     cout << "|  [3] 소모품                                                                  |" << '\n';
-    if (consumables.empty()) cout << "|      - (비어 있음)                                                           |" << '\n';
-    for (const auto& item : consumables) {
-        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) << item.desc << ") |" << '\n';
+    if (consumables.empty()) cout << "|      - (비어 있음)                                                           |" <<
+        '\n';
+    for (const auto& item : consumables)
+    {
+        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " (" << setw(35) <<
+            item.desc << ") |" << '\n';
     }
 
     cout << "|                                                                              |" << '\n';
@@ -58,30 +65,36 @@ void displayInventory(int playerGold,
     cout << "|    [1~3] 아이템 사용/장착       [0] 가방 닫기                                |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
 }
 
-void showInventoryUI(Inventory& inventory, Player& player) 
+void showInventoryUI(Inventory& inventory, Player& player)
 {
-    while (true) 
+    while (true)
     {
         std::vector<ItemInfo> weapons, armors, consumables;
 
-        for (const auto& [id, count] : inventory.getItems()) 
+        for (const auto& [id, count] : inventory.getItems())
         {
             ItemType type = ItemFactory::getType(id);
             ItemInfo info;
             info.count = count;
 
-            if (type == ItemType::Weapon) {
+            if (type == ItemType::Weapon)
+            {
                 info.name = weaponDB.at(id).base.name;
                 info.desc = "공격력 +" + std::to_string(weaponDB.at(id).attack);
                 weapons.push_back(info);
-            } else if (type == ItemType::Armor) {
+            }
+            else if (type == ItemType::Armor)
+            {
                 info.name = armorDB.at(id).base.name;
                 info.desc = "방어력 +" + std::to_string(armorDB.at(id).defense);
                 armors.push_back(info);
-            } else if (type == ItemType::Consumable) {
+            }
+            else if (type == ItemType::Consumable)
+            {
                 info.name = consumableDB.at(id).base.name;
                 info.desc = "HP +" + std::to_string(consumableDB.at(id).hp);
                 consumables.push_back(info);

@@ -71,7 +71,7 @@ void choose_Job(string nickname, Player*& player)
     {
         selectJobUI(nickname);
         // "선택 >>" 위치로 이동 (줄 번호 확인 필요, 대략 19~20번 라인)
-        gotoxy(15, 20);
+        gotoxy(15, 22);
 
         if (!(cin >> job_choice))
         {
@@ -87,7 +87,7 @@ void choose_Job(string nickname, Player*& player)
         switch (job_choice)
         {
         case 1: jobName = "전사";
-            desc = "높은 체력과 방어력을 갖습니다. 특별한 능력이 없지만 기본 능력이 높습니다.";
+            desc = "높은 체력과 방어력을 갖습니다. 기본 능력치가 높습니다.";
             break;
         case 2: jobName = "궁수";
             desc = "방어 무시와 높은 회피를 갖습니다. 최소 5의 대미지를 줍니다.";
@@ -102,7 +102,7 @@ void choose_Job(string nickname, Player*& player)
         }
 
         displayConfirmJob(jobName, desc);
-        gotoxy(15, 20);
+        gotoxy(15, 21);
         cin >> answer;
 
         if (answer == 1)
@@ -123,7 +123,6 @@ Player* createPlayer()
     Player* player = nullptr;
     cout << "\n" << '\n';
     displayMainUI();
-    cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     TEXT RPG에 오신 것을 환영합니다.                                         |" << '\n';
     cout << "|                                                                              |" << '\n';
