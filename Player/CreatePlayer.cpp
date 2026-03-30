@@ -135,7 +135,7 @@ Player* createPlayer()
     cout << "+==============================================================================+" << '\n';
     Windows::SetCursorPos(15, 20);
     cin >> nickname;
-
+    
     choose_Job(nickname, player);
     return player;
 }

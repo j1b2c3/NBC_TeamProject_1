@@ -44,16 +44,8 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
         displayDungeon(area_Name, dungeon_Log);
 
         int Select;
-        if (!(cin >> Select))
-        {
-            // 숫자 이외 입력 시 예외 처리
-            cin.clear();
-            cin.ignore(100, '\n');
-            continue;
-        }
-
-        cin.ignore(100, '\n');
-
+        InputDigit(Select);
+        
         switch (Select)
         {
         case 1:
