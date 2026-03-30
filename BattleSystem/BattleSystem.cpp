@@ -15,8 +15,6 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     Vector2D curPos;
     while (true)
     {
-        cin.clear();
-        cin.ignore(1000, '\n');
         int choice;
         log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
         //플레이어 페이즈
@@ -24,6 +22,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         InputDigit(choice);
         choice--;
         log.Clear();
+
         switch (choice)
         {
         case 0:
@@ -47,7 +46,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressAnyKey();
+        _getch();
         if (!bProgress) break;
 
         // 몬스터 페이즈
@@ -55,9 +54,10 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         log.line_2.assign(to_string(monster.attack(player)) + "의 피해를 입었다! ");
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressAnyKey();
-        if (!bProgress) break;
+        _getch();
+
         log.Clear();
+        if (!bProgress) break;
     }
     Windows::SetCursorPos(curPos);
     return bVictory;
@@ -120,6 +120,7 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
 
     cout << "\n\n입력: ";
     cin >> choice;
+    cin.ignore(100, '\n');
 
     return choice - 1;
 }

@@ -27,7 +27,7 @@ void displayDungeon(string areaName, string dungeonLog)
     cout << "|                                                                              |" << '\n';
     cout << "|          . . . . . . . . . . . . . . . . . . . . . . . . . . . .             |" << '\n';
     cout << "|          .                                                     .             |" << '\n';
-    cout << "|          .          [ 현재 구역: " << left << setw(10) << areaName << " ]                  .             |"
+    cout << "|          .          [ 현재 구역: " << left << setw(12) << areaName << " ]                .             |"
         << '\n';
     cout << "|          .                                                     .             |" << '\n';
     cout << "|          . . . . . . . . . . . . . . . . . . . . . . . . . . . .             |" << '\n';

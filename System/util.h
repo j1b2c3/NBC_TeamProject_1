@@ -13,20 +13,18 @@ public:
     {
         return ((max - min) * (static_cast<float>(rand()) / RAND_MAX)) + min;
     }
-
-    // 아무 키를 받기전까지 대기
-    static void PressAnyKey()
-    {
-        int temp;
-        if (_getch() == 224)
-            temp = _getch();
-    }
 };
 
 // 숫자값만 입력받음, 입력 실패 시 out참조변수에 -1을 넘기고 false반환
 static bool InputDigit(int& out)
 {
     std::string str;
+    if (!(std::cin >> std::ws))
+    {
+        out = -1;
+        return false;
+    }
+
     getline(std::cin, str);
 
     // 입력은 숫자만
