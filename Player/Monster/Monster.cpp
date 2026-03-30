@@ -1,4 +1,4 @@
-#include "Monster.h"
+﻿#include "Monster.h"
 #include "../Player/Player.h"
 #include <iostream>
 using namespace std;
@@ -33,24 +33,21 @@ bool Monster::isDodged(int dodge)
     return rand() % 100 < dodge;
 }
 
-int Monster::calculateDamage(int atk, int def)
+int Monster::calculateDamage(int atk, int def, bool is_defence)
 {
+    if (is_defence) def *= 2;
     float reduction = def / 100.0f;
-    float damage = atk * (1.0f - reduction);
+    int damage = static_cast<int>((float)atk * (1.0f - reduction));
 
-    if (damage < 0) damage = 0;
-
-    return static_cast<int>(damage);
-}
-
-int Monster::attack(Player& player)
-{
-    int damage = calculateDamage(atk, player.getDef());
-    if (damage < 0) damage = 1;
-
-    player.TakeDamage(damage);
+    if (damage <= 0)
+        damage = is_defence ? 0 : 1;
 
     return damage;
+}
+
+int Monster::attack(Player& player, bool is_defence)
+{
+    return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence));
 }
 
 void Monster::TakeDamage(int damage, bool canDodge)

@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "BattleSystem.h"
+#include "../Item/ItemDB.h"
 
 using namespace std;
 
@@ -12,12 +13,15 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     bProgress = true; // 전투가 진행중인가?
     bVictory = false; // 승리유무
     Vector2D curPos;
+    log.Clear();
     while (true)
     {
         int choice;
-        log.Clear();
-        log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
+        bool bPlayer_is_defence = false;
+        string action_str = "";  // 특수 행동 시 기본행동과 동시에 출력할 문장
+        int dam;
         //플레이어 페이즈
+        log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
         displayBattle(player, monster, curPos, log, "행동을 선택하세요 >> ");
         InputDigit(choice);
         choice--;
@@ -27,13 +31,19 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         {
         case 0:
             log.line_1.assign(monster.getName() + "에게 공격!");
-            log.line_2.assign(to_string(player.Attack(monster)) + "의 피해를 입혔다! ");
+            dam = player.Attack(monster, action_str);
+            if (!action_str.empty()) action_str.append(" ");
+            log.line_2.assign(action_str + to_string(dam) + "의 피해를 입혔다! ");
             break;
         case 1:
             log.line_1.assign("방어를 시도했다!");
+            log.line_2.assign("이번 턴 동안 방어력이 두 배 증가한다.");
+            bPlayer_is_defence = true;
             break;
         case 2:
             log.line_1.assign("아이템을 사용했다!");
+            log.line_1 = "                        어떤 아이템을 사용할까?";
+            //ItemManager::GetInstance().GetConsumable
             break;
         case 3:
             log.line_1.assign("도주했다...");
@@ -52,7 +62,13 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         // 몬스터 페이즈
         log.Clear();
         log.line_1.assign(monster.getName() + "의 공격!");
-        log.line_2.assign(to_string(monster.attack(player)) + "의 피해를 입었다! ");
+        int monster_dmg = monster.attack(player, bPlayer_is_defence);
+        if(monster_dmg > 0)
+            log.line_2.assign(to_string(monster_dmg) + "의 피해를 입었다! ");
+        else if(monster_dmg == 0)
+            log.line_2.assign("방어에 성공했다! ");
+        else
+            log.line_2.assign("회피에 성공했다! ");
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
         _getch();

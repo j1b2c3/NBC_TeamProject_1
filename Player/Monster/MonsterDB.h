@@ -34,7 +34,7 @@ class FinalBoss : public Monster
 public:
     FinalBoss() : Monster("최종 보스", 10, 1000, 100, 100, 10, 1000, 1000, 1000, 1000) {}      
     
-    int attack(Player& player) override;
+    int attack(Player& player, bool is_defence) override;
 };
 
 class BossGenerator

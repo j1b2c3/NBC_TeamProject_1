@@ -1,4 +1,4 @@
-#include "Warrior.h"
+﻿#include "Warrior.h"
 #include "../Player/Player.h"
 
 Warrior::Warrior(string nickname) : Player(nickname)
@@ -11,10 +11,12 @@ Warrior::Warrior(string nickname) : Player(nickname)
     dodge = 5;
 }
 
-int Warrior::Attack(Monster& monster)
+int Warrior::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
     if (damage < 0) damage = 0;
+
+    action_str = "";
     monster.TakeDamage(damage, true);
     return damage;
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Monster/Monster.h"
 #include "../../Item/Inventory.h"
 #include <string>
@@ -34,7 +34,8 @@ public:
 
     Inventory* getInventory() { return inventory; }
 
-    virtual int Attack(Monster& monster) = 0;
+    // monster: 대상 몬스터, action_str: 특수한 행동 시 추가 출력한 문자열
+    virtual int Attack(Monster& monster, string& action_str) = 0;
     virtual void level_Up() = 0;
     int TakeDamage(int damage);
     void addexp(int gainedExp);
