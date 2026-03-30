@@ -28,6 +28,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
     Initialize(); // 기초 데이터 초기화 
     // 시작전 데이터 복붙
+    int Stage = 1;
     int Select;
     // 초기값
     string area_Name = "시작의 땅";
@@ -36,7 +37,6 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
     // 배열로 작성하면 편할듯?
     
     // Battle Logic
-    for (int Stage = 1; Stage <= Last_Stage; Stage++) // 선택지가 아닌 자동으로 입장하는 형식
     while (true) 
     {
         displayDungeon(area_Name, dungeon_Log);
@@ -46,45 +46,41 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
         {
 
         case 1:
-        {
-            for (int Stage = 1; Stage <= Last_Stage; Stage++) // 선택지가 아닌 자동으로 입장하는 형식
+        {// 시작하자 마자 shop 나오진 않음 .. 0 이 아니기 떄문에.
+            if (Stage % Shop_Stage == 0 && Stage != 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
+                EnterShop(Player_); // 샾 입장
+
+            if (Stage == Last_Stage)
             {
-                // 시작하자 마자 shop 나오진 않음 .. 0 이 아니기 떄문에.
-                if (Stage % Shop_Stage == 0 && Stage != 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
-                    EnterShop(Player_); // 샾 입장
-
-                if (Stage == Last_Stage)
-                {
-                    Monster_ = new FinalBoss; // 마지막 최종 보스
-                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_);
-                    playerLifeCheck(Player_);// 생존 유무확인 
-                    if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                        Monster_->giveLoot(*Player_);
-                    // Todo : 보스전
-                }
-                else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
-                {
-                    Stage--; //히든은 적용 안함
-                    Monster_ = Mons_g.Create(0);
-                    BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                Monster_ = new FinalBoss; // 마지막 최종 보스
+                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                playerLifeCheck(Player_);// 생존 유무확인 
+                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
                     Monster_->giveLoot(*Player_);
-                    // Todo: 히든
-                }
-                //b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
-                else
-                {
-                    Monster_ = Mons_g.Create(Stage);
-                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
-                    playerLifeCheck(Player_);// 생존 유무확인 
-                    if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                        Monster_->giveLoot(*Player_);
-                }
-                if (Monster_ != nullptr) //  몬스터 존제 하면 삭제 상점만 했다면 캇!
-                    delete Monster_;
-
-                if (!b_LifeCheck) // 사망 확인시 즉시 return 처리
-                    return;
+                // Todo : 보스전
             }
+            else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
+            {
+                Monster_ = Mons_g.Create(0);
+                BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                Monster_->giveLoot(*Player_);
+                // Todo: 히든
+            }
+            //b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
+            else
+            {
+                Monster_ = Mons_g.Create(Stage);
+                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
+                playerLifeCheck(Player_);// 생존 유무확인 
+                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
+                    Monster_->giveLoot(*Player_);
+                Stage++;
+            }
+            if (Monster_ != nullptr) //  몬스터 존제 하면 삭제 상점만 했다면 캇!
+                delete Monster_;
+
+            if (!b_LifeCheck) // 사망 확인시 즉시 return 처리
+                return;
         }
             break;
         case 2: // 아이템
@@ -98,7 +94,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             break;
         case 3: //휴식 
             Player_->setCurHP(Player_->getMaxHP()); // 체력 만땅 딴거 필요한게 있으면 호출 플리즈
-            cout << " 체력 만땅 ! " << endl;
+            //cout << " 체력 만땅 ! " << endl;
             break;
         case 4: // 게임 종료 
             return;
