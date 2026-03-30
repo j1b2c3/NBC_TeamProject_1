@@ -7,6 +7,7 @@
 #include "../Shop/shopsystem.h"
 #include "../Player/Monster/MonsterDB.h"
 #include "../Item/Inventory.h"
+#include "../Item/Inventory_UI.h"
 
 
 using namespace std;
