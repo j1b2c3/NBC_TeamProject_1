@@ -9,16 +9,22 @@ void dungeonManager::Initialize()
     b_Wincheck = true;
     b_isShopVisited = false;
 }
-
-bool dungeonManager::setMonster(vector<Monster*> mons) // 몬스터 값이 있는지 없는지 확인 이후 반환
+string getAreaName(int stageLevel)
 {
-    if (!mons.empty()) // 없는지 있는지 확인 비어있지 않으면 treu 비었으면 false
+    switch (stageLevel)
     {
-        // Monster Monster_ = mons; // vector 값이 있으면 
-        return true;
+    case 1: return "버려진 초소";
+    case 2: return "피의 황무지";
+    case 3: return "잊혀진 묘지";
+    case 4: return "그림자 숲";
+    case 5: return "울부짖는 동굴";
+    case 6: return "폭풍의 절벽";
+    case 7: return "불타는 심연";
+    case 8: return "용의 둥지";
+    case 9: return "하늘의 제단";
+    case 0: return "기만자의 방"; // 히든
+    default: return "알 수 없는 구역";
     }
-    cout << " 망했어요 몬스터가 없어요 " << '\n'; // 예외 확인 
-    return false;
 }
 
 // monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
