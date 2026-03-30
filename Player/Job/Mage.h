@@ -9,4 +9,5 @@ public:
     Mage(string nickname);
 
     int Attack(Monster& monster) override;
+    void level_Up() override;
 };

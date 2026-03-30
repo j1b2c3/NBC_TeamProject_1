@@ -34,6 +34,7 @@ public:
     Inventory* getInventory() { return inventory; }
 
     virtual int Attack(Monster& monster) = 0;
+    virtual void level_Up() = 0;
     int TakeDamage(int damage);
     void addexp(int gainedExp);
     void subExp(int lostExp);

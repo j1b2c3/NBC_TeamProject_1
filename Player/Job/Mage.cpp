@@ -3,11 +3,11 @@
 
 Mage::Mage(string nickname) : Player(nickname)
 {
-    jobname = "마법사";
-    maxHP = (level * 8) + 85;
-    curHP = (level * 8) + 85;
-    atk = (level * 3) + 25;
-    def = (level * 2) + 10;
+    jobname = "Mage";
+    maxHP = 85;
+    curHP = 85;
+    atk = 25;
+    def = 10;
     dodge = 5;
 }
 
@@ -22,4 +22,13 @@ int Mage::Attack(Monster& monster)
     monster.TakeDamage(damage, true);
 
     return damage;
+}
+
+void Mage::level_Up()
+{
+    level++;
+    maxHP += 8;
+    curHP += 8;
+    atk += 3;
+    def += 2;
 }

@@ -3,11 +3,11 @@
 
 Warrior::Warrior(string nickname) : Player(nickname)
 {
-    jobname = nickname;
-    maxHP = (level * 12) + 120;
-    curHP = (level * 12) + 120;
-    atk = (level * 3) + 15;
-    def = (level * 4) + 25;
+    jobname = "Warrior";
+    maxHP = 120;
+    curHP = 120;
+    atk = 15;
+    def = 25;
     dodge = 5;
 }
 
@@ -17,4 +17,13 @@ int Warrior::Attack(Monster& monster)
     if (damage < 0) damage = 0;
     monster.TakeDamage(damage, true);
     return damage;
+}
+
+void Warrior::level_Up()
+{
+    level++;
+    maxHP += 12;
+    curHP += 12;
+    atk += 3;
+    def += 4;
 }

@@ -5,11 +5,11 @@ using namespace std;
 
 Thief::Thief(string nickname) : Player(nickname)
 {
-    jobname = nickname;
-    maxHP = (level * 10) + 70;
-    curHP = (level * 10) + 70;
-    atk = (level * 2) + 15;
-    def = (level * 1) + 5;
+    jobname = "Thief";
+    maxHP = 70;
+    curHP = 70;
+    atk = 15;
+    def = 5;
     dodge = 30;
 }
 
@@ -26,4 +26,13 @@ int Thief::Attack(Monster& monster)
 
     monster.TakeDamage(damage, true);
     return damage;
+}
+
+void Thief::level_Up()
+{
+    level++;
+    maxHP += 12;
+    curHP += 12;
+    atk += 3;
+    def += 4;
 }

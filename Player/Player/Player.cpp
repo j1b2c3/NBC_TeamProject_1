@@ -58,7 +58,7 @@ void Player::addexp(int gainedExp)
     while (exp >= needExp)
     {
         exp -= needExp;
-        level++;
+        level_Up();
         needExp *= 2;
     }
 
@@ -70,6 +70,16 @@ int Player::Attack(Monster& monster)
 {
     int damage = calculateDamage(atk, monster.getDef());
     return damage;
+}
+
+void Player::level_Up()
+{
+    level++;
+    maxHP += 10;
+    curHP += 10;
+    atk += 1;
+    def += 1;
+    dodge += 1;
 }
 
 void Player::subExp(int lostExp)
