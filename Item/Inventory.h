@@ -31,4 +31,5 @@ public:
     int getEquippedArmorId() const  { return equippedArmorId; }
     
     const std::map<int, int>& getItems() const { return items; }
+    std::map<int, int> getConsumables() const;
 };

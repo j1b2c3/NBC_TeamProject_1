@@ -30,6 +30,20 @@ bool Inventory::hasItem(int id) const
     return items.count(id) > 0 && items.at(id) > 0;
 }
 
+std::map<int, int> Inventory::getConsumables() const
+{
+    std::map<int, int> result;
+    
+    for (const auto& [id, count] : items)
+    {
+        if (ItemFactory::getType(id) == ItemType::Consumable)
+        {
+            result[id] = count;
+        }
+    }
+    return result;
+}
+
 // 소모품 사용
 void Inventory::useConsumable(int id, Player& player) 
 {                                                                                                                                                                                                                                                           

@@ -97,3 +97,32 @@ void showInventoryUI(Inventory& inventory, Player& player)
         // 이후 선택 처리 (장착/사용 등)
     }
 }
+
+void showConsumableListUI(const std::map<int, int>& consumables)
+{
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                          [ 소모품 목록 ]                                    |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|                                                                              |" << '\n';
+
+    if (consumables.empty()) 
+    {
+        cout << "|      - (비어 있음)                                                           |" << '\n';
+    }
+    
+    for (const auto& [id, count] : consumables) 
+    {
+        const Consumable* c = ItemManager::GetInstance().GetConsumable(id);
+        if (c) 
+        {
+            string desc = "HP +" + to_string(c->hp);
+            cout << "|      - " << left << setw(15) << c->base.name
+                 << " x" << setw(3) << count
+                 << " (" << setw(35) << desc << ") |" << '\n';
+        }
+    }
+
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+}
+
