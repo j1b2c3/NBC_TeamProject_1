@@ -70,7 +70,7 @@ int Player::Attack(Monster& monster, string& action_str)
 {
 	int damage = calculateDamage(atk, monster.getDef());
 	action_str = "";
-	return damage;
+	return monster.TakeDamage(damage, true);
 }
 
 void Player::level_Up()

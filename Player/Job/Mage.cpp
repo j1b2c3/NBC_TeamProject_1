@@ -20,9 +20,10 @@ int Mage::Attack(Monster& monster, string& action_str)
         action_str = "2배의 크리티컬!";
         damage *= 2.0f;
     }
-    monster.TakeDamage(damage, true);
+    else
+        action_str = "";
 
-    return damage;
+    return monster.TakeDamage(damage, true);
 }
 
 void Mage::level_Up()

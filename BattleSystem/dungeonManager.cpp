@@ -41,7 +41,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
     {
         displayDungeon(area_Name, dungeon_Log);
         // Todo : 입력을 받아 진행 / 아이템 / 휴식 / 종료하기 기능 구현
-        cin >> Select;
+        InputDigit(Select);
         switch (Select)
         {
 

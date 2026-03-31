@@ -21,4 +21,4 @@ struct BattleLog
 };
 
 void displayBattle(class Player& const p, class Monster& const m, Vector2D& curPos, BattleLog log,
-                   string actionMsg = "계속하려면 아무 키를 눌러주세요...");
+                   string actionMsg = "계속하려면 Enter 키를 눌러주세요...");

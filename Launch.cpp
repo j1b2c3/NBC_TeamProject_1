@@ -41,19 +41,15 @@ int getUserChoice()
 {
     int choice;
     Windows::SetCursorPos(14, 20);
-
-    while (!(cin >> choice))
+    InputDigit(choice);
+    if (choice < 1 || choice > 2)
     {
-        cin.clear();
-        cin.ignore(1000, '\n');
         Windows::SetCursorPos(14, 20);
         cout << "숫자(1, 2)만 입력하세요!";
         Windows::SetCursorPos(14, 20); // 다시 입력 위치로 복귀
         cout << "         "; // 기존 잘못된 입력 지우기
         Windows::SetCursorPos(14, 20);
     }
-
-    cin.ignore(1000, '\n');
 
     return choice;
 }
@@ -79,10 +75,10 @@ int main()
 
                 if (myPlayer != nullptr)
                 {
-                    Monster* m = new Monster("sans", 1, 100, 1, 1, 5, 1, 2, 1, 2);
-                    //dm.StartDungeon(myPlayer, { m });
-                    BattleSystem::getInstance().Battle(*myPlayer, *m);
-                    delete m;
+                    //Monster* m = new Monster("sans", 1, 100, 1, 1, 5, 1, 2, 1, 2);
+                    dm.StartDungeon(myPlayer);
+                    //BattleSystem::getInstance().Battle(*myPlayer, *m);
+                    //delete m;
                     delete myPlayer;
                     myPlayer = nullptr;
                 }
