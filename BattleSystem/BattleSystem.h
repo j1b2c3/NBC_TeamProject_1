@@ -32,7 +32,7 @@ class BattleSystem
     BattleLog log;
     bool bProgress = true;
     bool bVictory = false;
-
+    Vector2D curPos;
 public:
     static BattleSystem& getInstance()
     {
@@ -41,7 +41,4 @@ public:
     }
 
     bool Battle(Player& player, Monster& monster); // 전투발생
-
-
-    int SelectAction(std::vector<std::string> actions, int col); // 행동명, 한 줄당 액션표시 개수
 };

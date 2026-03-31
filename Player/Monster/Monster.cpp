@@ -66,12 +66,15 @@ inline int getRandom(int min, int max)
     return rand() % (max - min + 1) + min;
 }
 
-void Monster::giveLoot(Player& player)
+void Monster::giveLoot(Player& player, int& outEXP, int& outGOLD)
 {
     int exp = getRandom(minExp, maxExp);
-    player.addexp(exp);
+    outEXP = exp;
+    //player.addexp(exp);   // BattleSystem에서 처리
+
     int gold = getRandom(minGold, maxGold);
-    player.addGold(gold);
+    outGOLD = gold;
+    //player.addGold(gold); // BattleSystem에서 처리
 }
 
 string Monster::getName()

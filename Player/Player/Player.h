@@ -38,7 +38,7 @@ public:
     virtual int Attack(Monster& monster, string& action_str) = 0;
     virtual void level_Up() = 0;
     int TakeDamage(int damage);
-    void addexp(int gainedExp);
+    void addexp(int gainedExp, int& OUT_needExp, bool& OUT_isLevelUp);
     void subExp(int lostExp);
     void addGold(int gold);
     void subGold(int gold);

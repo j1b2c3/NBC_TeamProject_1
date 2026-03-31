@@ -40,7 +40,7 @@ public:
     virtual int attack(Player& player, bool is_defence);
 
     int TakeDamage(int damage, bool canDodge);
-    void giveLoot(Player& player);
+    void giveLoot(Player& player, int& outEXP, int& outGOLD);
 
     int calculateDamage(int atk, int def, bool is_defence);
     std::string getName();

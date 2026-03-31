@@ -33,9 +33,6 @@
     <ClCompile Include="Item\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item\InventoryTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Item\Inventory_UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,9 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item\ItemFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player\CreatePlayerMonsters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\Job\Archer.cpp">
@@ -78,6 +72,12 @@
     <ClCompile Include="System\Windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player\CreatePlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Monster\MonsterDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleSystem\Battle_UI.h">
@@ -102,9 +102,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item\ItemFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player\CreatePlayerMonsters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\Job\Archer.h">
@@ -137,7 +134,13 @@
     <ClInclude Include="System\Windows.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="System\Utility.h">
+    <ClInclude Include="Player\CreatePlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Monster\MonsterDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

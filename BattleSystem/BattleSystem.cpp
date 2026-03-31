@@ -12,7 +12,6 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     string msg = "전투가 시작되었다!";
     bProgress = true; // 전투가 진행중인가?
     bVictory = false; // 승리유무
-    Vector2D curPos;
     log.Clear();
     while (true)
     {
@@ -64,7 +63,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        _getch();
+        util::PressEnterKey();
         if (!bProgress) break;
 
         // 몬스터 페이즈
@@ -79,7 +78,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             log.line_2.assign("회피에 성공했다! ");
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        _getch();
+        util::PressEnterKey();
 
         log.Clear();
         if (!bProgress) break;
@@ -112,40 +111,23 @@ void BattleSystem::CheckState(Player& player, Monster& monster)
     // 승리 체크 (플레이어가 먼저 쓰러지면 패배, 승리)
     if (monster.getCurHP() <= 0)
     {
+        int monster_gold;
+        int monster_exp;
         log.line_3.assign("전투에서 승리했다!");
+        monster.giveLoot(player, monster_exp, monster_gold);
+        displayBattle(player, monster, curPos, log);
+        util::PressEnterKey();
+        log.Clear();
+        int needExp;
+        bool isLevelUp;
+        player.addexp(monster_exp, needExp, isLevelUp);
+        player.addGold(monster_gold);
+        log.line_1.assign(to_string(monster_exp) + " EXP, " + to_string(monster_gold) + " G를 획득했다!");
+        if (isLevelUp)
+            log.line_2.append("(Level Up!) ");
+        log.line_2.append("Lv " + to_string(player.getLevel()) + " (" + to_string(player.getExp()) + " / " + to_string(needExp) + " EXP)");
+        log.line_3.assign("현재 소지금: " + to_string(player.getGold()) + " Gold");
         bVictory = true;
         bProgress = false;
     }
-}
-
-// 취할 수 있는 행동(action)들을 출력한다. 한줄에 출력되는 action은 col갯수만큼.
-int BattleSystem::SelectAction(vector<string> actions, int col)
-{
-    int choice = -1;
-    int str_maxlen = 0;
-    for (string a : actions)
-    {
-        str_maxlen = max<std::basic_string<char>::size_type>(str_maxlen, a.size());
-    }
-    for (int i = 0; i < actions.size(); i++)
-    {
-        cout << (choice == i ? "▶ " : "　 ");
-        cout << (i + 1) << "." << actions[i];
-        for (int j = actions[i].size(); j < str_maxlen; j++)
-            cout << " ";
-
-        if (not(i == actions.size() - 1 && i < col))
-        {
-            if ((i + 1) % col == 0)
-                cout << '\n';
-            else
-                cout << " | ";
-        }
-    }
-
-    cout << "\n\n입력: ";
-    cin >> choice;
-    cin.ignore(100, '\n');
-
-    return choice - 1;
 }

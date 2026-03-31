@@ -89,7 +89,6 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
                     if (b_Wincheck)
                     {
-                        Monster_->giveLoot(*Player_);
                         dungeon_Log = Monster_->getName() + "에게 승리했습니다!";
                         if (!isHidden)
                         {

@@ -46,19 +46,21 @@ int Player::TakeDamage(int damage)
     return damage;
 }
 
-void Player::addexp(int gainedExp)
+void Player::addexp(int gainedExp, int& OUT_needExp, bool& OUT_isLevelUp)
 {
+    bool bLevelUp = false;
     int needExp = 100;
-        exp += gainedExp;
+    exp += gainedExp;
 
     while (exp >= needExp)
     {
         exp -= needExp;
         level_Up();
+        bLevelUp = true;
     }
 
-    cout << "레벨: " << level << '\n';
-    cout << "남은 경험치: " << exp << " / " << needExp << '\n';
+    OUT_needExp = needExp;      // 필요경험치 반환
+    OUT_isLevelUp = bLevelUp;   // 레벨업 유무 반환
 }
 
 int Player::Attack(Monster& monster, string& action_str)
