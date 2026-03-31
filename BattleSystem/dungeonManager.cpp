@@ -2,107 +2,132 @@
 
 #include "dungeonUI.h"
 #include "../player/Player/Player.h"
+#include "../Item/Inventory_UI.h"
+#include "../Shop/ShopSystem.h"
+
 
 void dungeonManager::Initialize()
 {
     b_LifeCheck = true; // 시작할떈 살아있어야지?.
     b_Wincheck = true;
+    b_isShopVisited = false;
 }
 
-bool dungeonManager::setMonster(vector<Monster*> mons) // 몬스터 값이 있는지 없는지 확인 이후 반환
+string getAreaName(int stageLevel)
 {
-    if (!mons.empty()) // 없는지 있는지 확인 비어있지 않으면 treu 비었으면 false
+    switch (stageLevel)
     {
-        // Monster Monster_ = mons; // vector 값이 있으면 
-        return true;
+    case 1: return "버려진 초소";
+    case 2: return "피의 황무지";
+    case 3: return "잊혀진 묘지";
+    case 4: return "그림자 숲";
+    case 5: return "울부짖는 동굴";
+    case 6: return "폭풍의 절벽";
+    case 7: return "불타는 심연";
+    case 8: return "용의 둥지";
+    case 9: return "하늘의 제단";
+    case 0: return "기만자의 방"; // 히든
+    default: return "알 수 없는 구역";
     }
-    cout << " 망했어요 몬스터가 없어요 " << '\n'; // 예외 확인 
-    return false;
 }
 
 // monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
 void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 {
-    if (Player_ == nullptr) // 플레이어 값이 없으면 return
-        return;
-
+    if (Player_ == nullptr) return;
     Initialize(); // 기초 데이터 초기화 
-    // 시작전 데이터 복붙
-    int Stage = 1;
-    int Select;
-    // 초기값
+
+    int stage = 1;
     string area_Name = "시작의 땅";
     string dungeon_Log = "던전에 진입했습니다.";
-    // Todo : 각 층마다 area_Name, dungeon_Log 추가 
-    // 배열로 작성하면 편할듯?
-    
+
     // Battle Logic
-    while (true) 
+    while (b_LifeCheck)
     {
+        area_Name = getAreaName(stage);
         displayDungeon(area_Name, dungeon_Log);
-        // Todo : 입력을 받아 진행 / 아이템 / 휴식 / 종료하기 기능 구현
+
+        int Select;
         InputDigit(Select);
+
         switch (Select)
         {
-
         case 1:
-        {// 시작하자 마자 shop 나오진 않음 .. 0 이 아니기 떄문에.
-            if (Stage % Shop_Stage == 0 && Stage != 0) // 5로 나눴을 때 0이면 5State 5번째 , 10번 째니 조절 가능
-                EnterShop(Player_); // 샾 입장
+            {
+                // 상점 체크
+                if (stage % Shop_Stage == 0 && !b_isShopVisited)
+                {
+                    EnterShop(Player_);
+                    b_isShopVisited = true;
+                }
+                bool isHidden = false;
+                // 몬스터 생성 (보스 vs 히든 vs 일반)
+                if (stage >= Last_Stage)
+                {
+                    Monster_ = new FinalBoss(); // 보스 생성
+                    dungeon_Log = "최종 보스와의 결전!";
+                }
+                else if (HiddenRand())
+                {
+                    Monster_ = Mons_g.Create(0); // 히든 몬스터
+                    dungeon_Log = "히든 던전에 진입했습니다!";
+                    isHidden = true;
+                }
+                else
+                {
+                    Monster_ = Mons_g.Create(stage); // 일반 몬스터
+                    dungeon_Log = to_string(stage) + "구역 전투 중...";
+                }
 
-            if (Stage == Last_Stage)
-            {
-                Monster_ = new FinalBoss; // 마지막 최종 보스
-                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_);
-                playerLifeCheck(Player_);// 생존 유무확인 
-                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                    Monster_->giveLoot(*Player_);
-                // Todo : 보스전
-            }
-            else if (HiddenRand()) // 히든 던전 입장 히든은 만들어 두는게 좋을듯?.
-            {
-                Monster_ = Mons_g.Create(0);
-                BattleSystem::getInstance().Battle(*Player_, *Monster_);
-                Monster_->giveLoot(*Player_);
-                // Todo: 히든
-            }
-            //b_Wincheck = BattleSystem::getInstance().Battle(ply,mons); // battle을 bool 값으로 
-            else
-            {
-                Monster_ = Mons_g.Create(Stage);
-                b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_); // 일반 던전
-                playerLifeCheck(Player_);// 생존 유무확인 
-                if (b_Wincheck)  // 승리 유무 확인 져서 나오면 죽은거지 
-                    Monster_->giveLoot(*Player_);
-                Stage++;
-            }
-            if (Monster_ != nullptr) //  몬스터 존제 하면 삭제 상점만 했다면 캇!
-                delete Monster_;
+                // 전투 실행
+                if (Monster_ != nullptr)
+                {
+                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                    playerLifeCheck(Player_);
 
-            if (!b_LifeCheck) // 사망 확인시 즉시 return 처리
-                return;
-        }
+                    if (b_Wincheck)
+                    {
+                        Monster_->giveLoot(*Player_);
+                        dungeon_Log = Monster_->getName() + "에게 승리했습니다!";
+                        if (!isHidden)
+                        {
+                            stage++;
+                        }
+                        b_isShopVisited = false;
+                    }
+                    delete Monster_;
+                    Monster_ = nullptr;
+                }
+
+                if (stage > Last_Stage && b_Wincheck)
+                {
+                    cout << "던전을 클리어했습니다!" << endl;
+                    return;
+                }
+                if (!b_LifeCheck)
+                {
+                    dungeon_Log = "눈앞이 캄캄해집니다...";
+                    return;
+                }
+            }
             break;
         case 2: // 아이템
-            while (true)
-            {
-                Player_->getInventory()->displayEquipped(); // 장비 호출
-                Player_->getInventory()->displayItems(); // 아이템 호출
-                //displayInventory();
-            ;
-            }
+
+            showInventoryUI(*Player_);
             break;
         case 3: //휴식 
             Player_->setCurHP(Player_->getMaxHP()); // 체력 만땅 딴거 필요한게 있으면 호출 플리즈
-            //cout << " 체력 만땅 ! " << endl;
+            dungeon_Log = "체력을 회복했습니다.";
             break;
         case 4: // 게임 종료 
             return;
         default: // 예외 처리
+            dungeon_Log = "잘못된 입력입니다.";
             break;
         }
     }
 }
+
 void dungeonManager::EnterShop(Player* player_)
 {
     while (true) //상점 입장 확인
@@ -110,11 +135,11 @@ void dungeonManager::EnterShop(Player* player_)
         cout << " ------------ 상점 ---------" << '\n' << "입장 하시겠습니까? 1. 입장 / 2 스킵 ";
         int Shop_Select;
         cin >> Shop_Select; // 상점 입장 여부 
+        cin.ignore(100, '\n');
 
         if (Shop_Select == 1)
         {
-            // TODO : 상점 연결
-            //Shop_.showShopMenu; 매개변수 너무 많아서 일단 킵 
+            ShopSystem::showShopMenu(player_);
             cout << " ------ 상점에서 나갑니다 ----- " << '\n';
             break; // 끝나면 break해서 함수 탈출
         }

@@ -1,6 +1,6 @@
-﻿#include <iostream>
+﻿#include <algorithm>
+#include <iostream>
 #include <vector>
-#include <algorithm>
 
 #include "BattleSystem.h"
 #include "../Item/ItemDB.h"
@@ -27,6 +27,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         InputDigit(choice);
         choice--;
         log.Clear();
+
         switch (choice)
         {
         case 0:
@@ -58,16 +59,16 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             bProgress = false;
             break;
         default:
-            log.line_3 = "                            잘못된 입력이다.";
+            log.line_3 = "                            잘못된 입력입니다.";
             continue;
         }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressEnterKey();
+        _getch();
         if (!bProgress) break;
 
         // 몬스터 페이즈
-        action_str = "";
+        log.Clear();
         log.line_1.assign(monster.getName() + "의 공격!");
         monster_dmg = monster.attack(player, bPlayer_is_defence);
         if(monster_dmg > 0)
@@ -78,9 +79,10 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             log.line_2.assign("회피에 성공했다! ");
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
-        util::PressEnterKey();
-        if (!bProgress) break;
+        _getch();
+
         log.Clear();
+        if (!bProgress) break;
     }
     Windows::SetCursorPos(curPos);
     return bVictory;
@@ -123,8 +125,7 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
     int str_maxlen = 0;
     for (string a : actions)
     {
-        if (str_maxlen < a.size())
-            str_maxlen = a.size();
+        str_maxlen = max<std::basic_string<char>::size_type>(str_maxlen, a.size());
     }
     for (int i = 0; i < actions.size(); i++)
     {
@@ -144,6 +145,7 @@ int BattleSystem::SelectAction(vector<string> actions, int col)
 
     cout << "\n\n입력: ";
     cin >> choice;
+    cin.ignore(100, '\n');
 
     return choice - 1;
 }

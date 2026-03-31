@@ -30,6 +30,49 @@ bool Inventory::hasItem(int id) const
     return items.count(id) > 0 && items.at(id) > 0;
 }
 
+std::string Inventory::getEquippedWeaponName() const
+{
+    if (equippedWeaponId == 0) return "없음";
+    return weaponDB.at(equippedWeaponId).base.name;
+}
+
+
+std::string Inventory::getEquippedArmorName() const
+{
+    if (equippedArmorId == 0) return "없음";
+    return armorDB.at(equippedArmorId).base.name;
+}
+
+std::vector<ItemInfo> Inventory::getWeapons() const
+{
+    std::vector<ItemInfo> result;
+    for (const auto& [id, count] : items)
+        if (ItemFactory::getType(id) == ItemType::Weapon)
+            result.push_back({ weaponDB.at(id).base.name, count,
+                               "공격력 +" + std::to_string(weaponDB.at(id).attack) });
+    return result;
+}
+
+std::vector<ItemInfo> Inventory::getArmors() const
+{
+    std::vector<ItemInfo> result;
+    for (const auto& [id, count] : items)
+        if (ItemFactory::getType(id) == ItemType::Armor)
+            result.push_back({ armorDB.at(id).base.name, count,
+                               "방어력 +" + std::to_string(armorDB.at(id).defense) });
+    return result;
+}
+
+std::vector<ItemInfo> Inventory::getConsumables() const
+{
+    std::vector<ItemInfo> result;
+    for (const auto& [id, count] : items)
+        if (ItemFactory::getType(id) == ItemType::Consumable)
+            result.push_back({ consumableDB.at(id).base.name, count,
+                               "HP +" + std::to_string(consumableDB.at(id).hp) });
+    return result;
+}
+
 // 소모품 사용
 void Inventory::useConsumable(int id, Player& player) 
 {                                                                                                                                                                                                                                                           
@@ -153,47 +196,4 @@ void Inventory::unequipArmor(Player& player)
               << " (현재 방어력: " << player.getDef() << ")\n";
 
     equippedArmorId = 0;
-}
-
-// 인벤토리 출력
-void Inventory::displayItems() const 
-{                                                                                                                                                                                                                                                                            
-    std::cout << "\n===== 인벤토리 =====\n";                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                    
-    if (items.empty()) 
-    {
-        std::cout << "보유 중인 아이템이 없습니다.\n";
-        return;
-    }
-
-    for (const auto& pair : items)
-    {
-        std::cout << "[" << pair.first << "] "
-                  << ItemFactory::getName(pair.first)
-                  << " x" << pair.second
-                // 가격 관련 -> 상점으로 이관
-                  << " (가격: " << ItemFactory::getPrice(pair.first) << "골드)\n";
-    }
-
-    std::cout << "====================\n";
-}
-
-// 장착된 장비 출력
-void Inventory::displayEquipped() const 
-{
-    std::cout << "\n===== 장착 장비 =====\n";
-
-    if (equippedWeaponId != 0)
-        std::cout << "[무기] " << weaponDB[equippedWeaponId].base.name
-                  << " (공격력 +" << weaponDB[equippedWeaponId].attack << ")\n";
-    else
-        std::cout << "[무기] 없음\n";
-
-    if (equippedArmorId != 0)
-        std::cout << "[방어구] " << armorDB[equippedArmorId].base.name
-                  << " (방어력 +" << armorDB[equippedArmorId].defense << ")\n";
-    else
-        std::cout << "[방어구] 없음\n";
-
-    std::cout << "=====================\n";
 }

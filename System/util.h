@@ -35,6 +35,12 @@ public:
 static bool InputDigit(int& out)
 {
     std::string str;
+    if (!(std::cin >> std::ws))
+    {
+        out = -1;
+        return false;
+    }
+
     getline(std::cin, str);
 
     // 입력은 숫자만
