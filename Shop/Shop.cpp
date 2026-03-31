@@ -377,7 +377,7 @@ void Shop::showShopMenu(Player* player)
 
                     indexToID[index] = pair.first;
 
-                    string effect = "HP +" + to_string(item.hp);
+                    string effect = "HP +" + to_string(static_cast<int>(item.hpRatio * 100.0f)) + "%";
                     cout << "|    [  " << left << setw(2) << index << "]     "
                         << left << setw(25) << item.base.name
                         << right << setw(6) << item.base.price << "G                "
@@ -405,7 +405,7 @@ void Shop::showShopMenu(Player* player)
 
                     cout << "\n--- [ " << selectedItem.base.name << " ] ---\n";
                     cout << "가격   : " << selectedItem.base.price << "G\n";
-                    cout << "회복량 : " << selectedItem.hp << " HP\n";
+                    cout << "회복량 : " << selectedItem.hpRatio << "% HP\n";
                     cout << "------------------------\n";
 
                     cout << "구매할 수량을 입력하세요 >> ";

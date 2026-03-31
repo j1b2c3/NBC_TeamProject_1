@@ -20,7 +20,7 @@ struct ItemBase {
 
 struct Weapon { ItemBase base; int attack = 0; };
 struct Armor { ItemBase base; int defense = 0; };
-struct Consumable { ItemBase base; int hp = 0; };
+struct Consumable { ItemBase base; float hpRatio = 0.0f; };
 struct Money { ItemBase base; int amount = 0; };
 
 // 2. ItemManager 싱글톤 (데이터 중앙 관리)

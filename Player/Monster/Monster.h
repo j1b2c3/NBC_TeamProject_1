@@ -19,6 +19,7 @@ protected:
     int maxGold;
     int minGold;
     //std::vector<item> items;
+    std::string specialMessage; // 특별한 메세지를 입력하면 해당 턴에는 공격하지 않고 대신 해당 메세지를 출력한다.
 private:
     bool isDodged(int dodge);
 
@@ -37,7 +38,7 @@ public:
     );
     virtual ~Monster() = default;
 
-    virtual int attack(Player& player, bool is_defence);
+    virtual int attack(Player& player, bool is_defence, std::string& action_str);
 
     int TakeDamage(int damage, bool canDodge);
     void giveLoot(Player& player, int& outEXP, int& outGOLD);
@@ -54,4 +55,6 @@ public:
     int getMinExp();
     int getMaxGold();
     int getMinGold();
+    std::string getSpecialMessage();
+    void ClearSpecialMessage();
 };

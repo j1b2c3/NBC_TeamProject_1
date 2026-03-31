@@ -1,12 +1,13 @@
 ﻿#include "MonsterDB.h"
 using namespace std;
 
-int FinalBoss::attack(Player& player, bool is_defence)
+int FinalBoss::attack(Player& player, bool is_defence, string& action_str)
 {
     if (isCharging)
     {
-        cout << "[BOSS] 보스가 준비했던 강력한 일격을 가합니다! (데미지 2배)" << '\n';
-        int heavyDamage = calculateDamage(atk * 3, player.getDef(), is_defence);
+        float critical = is_defence ? 0.25f : 10.0f;
+        action_str.assign("불길한 일격!");
+        int heavyDamage = calculateDamage(static_cast<int>((float)atk * critical), player.getDef(), is_defence);
         player.TakeDamage(heavyDamage);
 
         isCharging = false;
@@ -16,11 +17,11 @@ int FinalBoss::attack(Player& player, bool is_defence)
     // 2. 20% 확률로 기 모으기
     if (rand() % 100 < 20)
     {
-        cout << "[BOSS] 보스가 강력한 공격을 위해 기를 모으기 시작합니다!" << '\n';
+        specialMessage.assign(name + "로부터 불길한 기운이 엄습한다...\n방어를 하지 않으면 끔찍한 일이 벌어질 것 같다!");
         isCharging = true;
         return 0;
     }
 
     // 3. 일반 공격
-    return Monster::attack(player, is_defence);
+    return Monster::attack(player, is_defence, action_str);
 }

@@ -121,7 +121,7 @@ void showConsumableListUI(Player& player)
         if (ItemFactory::getType(id) != ItemType::Consumable) continue;
         if (const Consumable* c = ItemManager::GetInstance().GetConsumable(id))
         {
-            string desc = "HP +" + to_string(c->hp);
+            string desc = "HP +" + to_string(static_cast<int>(c->hpRatio * 100.0f)) + "%";
             string fullDesc = "(" + desc + ")";
 
             cout << "|      - " << left << setw(20) << c->base.name

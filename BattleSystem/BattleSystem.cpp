@@ -6,13 +6,13 @@
 
 using namespace std;
 
-bool BattleSystem::Battle(Player& player, Monster& monster)
+bool BattleSystem::Battle(Player& player, Monster& monster, string EntryMessage)
 {
     player.isBattle = true;
-    string msg = "전투가 시작되었다!";
     bProgress = true; // 전투가 진행중인가?
     bVictory = false; // 승리유무
     log.Clear();
+    log.line_1 = EntryMessage;
     while (true)
     {
         int choice;
@@ -66,14 +66,56 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
 
         // 몬스터 페이즈
         log.Clear();
-        log.line_1.assign(monster.getName() + "의 공격!");
-        monster_dmg = monster.attack(player, bPlayer_is_defence);
-        if (monster_dmg > 0)
-            log.line_2.assign(to_string(monster_dmg) + "의 피해를 입었다! ");
-        else if (monster_dmg == 0)
-            log.line_2.assign("방어에 성공했다! ");
+        action_str = "";
+        monster_dmg = monster.attack(player, bPlayer_is_defence, action_str);
+        if (monster.getSpecialMessage().empty())
+        {
+            // 공격행동
+            log.line_1.assign(monster.getName() + "의 공격!");
+            if (monster_dmg > 0)
+            {
+                if (!action_str.empty()) action_str.append(" ");
+                log.line_2.assign(action_str + to_string(monster_dmg) + "의 피해를 입었다! ");
+            }
+            else if (monster_dmg == 0)
+                log.line_2.assign("방어에 성공했다! ");
+            else
+                log.line_2.assign("회피에 성공했다! ");
+        }
         else
-            log.line_2.assign("회피에 성공했다! ");
+        {
+            // 특수행동 (specialMessage가 있을 경우)
+            string specialMsg = monster.getSpecialMessage();
+            string* log_target = &log.line_1;    // 로그 1번째 줄 부터 메세지 출력
+            int sp_strPos = 0;
+            int sp_length = 0;
+            log.Clear();
+            for (int i = 0; i < 3; i++)
+            {
+                int idx = specialMsg.find('\n', sp_strPos);
+                if (idx != string::npos)
+                {
+                    sp_length = idx - sp_strPos;
+                    (*log_target).assign(specialMsg.substr(sp_strPos, sp_length));
+                    sp_strPos = idx + 1;
+                }
+                else
+                {
+                    (*log_target).assign(specialMsg.substr(sp_strPos));
+                    break;
+                }
+                switch (i)
+                {
+                case 0:
+                    log_target = &log.line_2;
+                    break;
+                case 1:
+                    log_target = &log.line_3;
+                    break;
+                }
+                monster.ClearSpecialMessage();
+            }
+        }
         CheckState(player, monster);
         displayBattle(player, monster, curPos, log);
         util::PressEnterKey();

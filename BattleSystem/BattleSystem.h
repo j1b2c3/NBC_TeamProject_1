@@ -41,5 +41,5 @@ public:
         return s;
     }
 
-    bool Battle(Player& player, Monster& monster); // 전투발생
+    bool Battle(Player& player, Monster& monster, string EntryMessage); // 전투발생
 };
