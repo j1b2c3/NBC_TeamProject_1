@@ -17,7 +17,8 @@ public:
     // 엔터 키를 받기전까지 대기
     static void PressEnterKey()
     {
-        while (true) {
+        while (true)
+        {
             int ch = _getch();
             if (ch == 13) break; // Enter
 

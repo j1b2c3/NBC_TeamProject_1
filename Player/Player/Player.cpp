@@ -1,4 +1,5 @@
 ﻿#include "Player.h"
+#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -39,27 +40,19 @@ int Player::TakeDamage(int damage)
         return -1;
 
     curHP -= damage;
-    if (curHP < 0)
-        curHP = 0;
+    curHP = std::max(curHP, 0);
     return damage;
 }
 
 void Player::addexp(int gainedExp)
 {
     int needExp = 100;
-
-    for (int i = 1; i < level; i++)
-    {
-        needExp *= 2;
-    }
-
-    exp += gainedExp;
+        exp += gainedExp;
 
     while (exp >= needExp)
     {
         exp -= needExp;
         level_Up();
-        needExp *= 2;
     }
 
     cout << "레벨: " << level << '\n';

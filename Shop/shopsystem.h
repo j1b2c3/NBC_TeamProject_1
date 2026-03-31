@@ -9,9 +9,6 @@ using namespace std;
 
 class ShopSystem {
 public:
-    // 아즈키 스타일 인벤토리 출력
-    static void showInventoryUI(Player* player);
-
     // 상점 메뉴 실행 (아즈키코드 스타일)
     static void showShopMenu(Player* player);
 };

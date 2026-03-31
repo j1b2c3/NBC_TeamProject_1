@@ -49,5 +49,4 @@ void displayDungeon(string areaName, string dungeonLog)
     cout << "+==============================================================================+" << '\n';
 
     Windows::SetCursorPos(13, 28);
-    cin.ignore(1000, '\n');
 }
