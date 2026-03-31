@@ -1,5 +1,7 @@
 ﻿#pragma once
-#include <string>  
+#include <string>
 using namespace std;
 
 void displayDungeon(string areaName, string dungeonLog);
+
+void clearDungeonUI();

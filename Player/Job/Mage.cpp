@@ -31,6 +31,6 @@ void Mage::level_Up()
     level++;
     maxHP += 80;
     curHP += 80;
-    atk += 20;
-    def += 5;
+    atk += 21;
+    def += 7;
 }

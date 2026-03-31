@@ -35,11 +35,11 @@ void displayConfirmJob(string jobName, string description)
     displayMainUI();
     cout << "|                                                                              |" << '\n';
     cout << "|  " << left << setw(76) << jobName + ": " + description << "|" << '\n';
-    
+
     stringstream ss;
     ss << "정말 " << jobName << "(으)로 전직하시겠습니까?";
-    string Job = ss.str();     
-    cout << "|  " <<  left << setw(50) << Job << "                          |" << '\n';
+    string Job = ss.str();
+    cout << "|  " << left << setw(50) << Job << "                          |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -80,14 +80,7 @@ void choose_Job(string nickname, Player*& player)
         Windows::SetCursorPos(15, 22);
 
         InputDigit(job_choice);
-        //if (!(cin >> job_choice))
-        //{
-        //    cin.clear();
-        //    cin.ignore(1000, '\n');
-        //    continue;
-        //}
 
-        // 직업별 확인 창 로직
         string jobName = "";
         string desc = "";
 
@@ -97,13 +90,13 @@ void choose_Job(string nickname, Player*& player)
             desc = "높은 체력과 방어력을 갖습니다. 기본 능력치가 높습니다.";
             break;
         case 2: jobName = "궁수";
-            desc = "방어 무시와 높은 회피를 갖습니다. 최소 5의 대미지를 줍니다.";
+            desc = "방어 무시와 높은 회피를 갖습니다. 1~20%의 추가 대미지를 줍니다.";
             break;
         case 3: jobName = "도적";
-            desc = "높은 회피를 갖습니다. 50프로의 확률로 1.5배의 대미지를 줍니다.";
+            desc = "높은 회피를 갖습니다. 50%의 확률로 1.5배의 대미지를 줍니다.";
             break;
         case 4: jobName = "마법사";
-            desc = "강력한 마법 공격력을 갖습니다. 10프로 확률로 2배의 대미지를 줍니다";
+            desc = "강력한 마법 공격력을 갖습니다. 10%의 확률로 2배의 대미지를 줍니다";
             break;
         default: continue;
         }
@@ -140,7 +133,7 @@ Player* createPlayer()
     cout << "+==============================================================================+" << '\n';
     Windows::SetCursorPos(15, 20);
     cin >> nickname;
-    
+
     choose_Job(nickname, player);
     return player;
 }

@@ -58,7 +58,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
         case 1:
             {
                 // 상점 체크
-                if (stage % Shop_Stage == 0 && !b_isShopVisited)
+                if ((stage == Last_Stage || stage % Shop_Stage == 0) && !b_isShopVisited)
                 {
                     EnterShop(Player_);
                     b_isShopVisited = true;
@@ -67,13 +67,13 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                 }
                 bool isHidden = false;
                 // 몬스터 생성 (보스 vs 히든 vs 일반)
-                if (stage >= Last_Stage)
+                if (stage == Last_Stage)
                 {
                     Monster_ = new FinalBoss(); // 보스 생성
                     dungeon_Log = "최종 보스와의 결전!";
                     BattleMsg = "                            최종보스와의 결전!";
                 }
-                else if (HiddenRand())
+                else if (HiddenRand() && stage < Last_Stage)
                 {
                     Monster_ = Mons_g.Create(0); // 히든 몬스터
                     dungeon_Log = "히든 던전에 진입했습니다!";
@@ -106,9 +106,9 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                     Monster_ = nullptr;
                 }
 
-                if (stage > Last_Stage && b_Wincheck)
+                if (stage == Last_Stage + 1)
                 {
-                    cout << "던전을 클리어했습니다!" << endl;
+                    clearDungeonUI();
                     return;
                 }
                 if (!b_LifeCheck)
@@ -119,7 +119,6 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             }
             break;
         case 2: // 아이템
-
             showInventoryUI(*Player_);
             break;
         case 3: //휴식 

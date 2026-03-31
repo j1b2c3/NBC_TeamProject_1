@@ -46,7 +46,7 @@ public:
     }
 
     static constexpr int Last_Stage = 10; // 보스 등장 stage
-    static constexpr int Shop_Stage = 3; // 3의 배율로 상점 등장
+    static constexpr int Shop_Stage = 4; // 4의 배율로 상점 등장
     bool b_LifeCheck; // 플레이어 생존 유무 확인
     bool b_Wincheck; // 플레이어 승리 유무 확인 변수 
 

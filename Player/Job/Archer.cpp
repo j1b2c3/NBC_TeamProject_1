@@ -17,12 +17,12 @@ int Archer::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
     action_str = "";
-    int range = damage / 5; 
-    
+    int range = damage / 5;
+
     if (range <= 0) range = 1;
     int ad = rand() % range;
     damage = damage + ad;
-    
+
     return monster.TakeDamage(damage, false);
 }
 
@@ -31,6 +31,6 @@ void Archer::level_Up()
     level++;
     maxHP += 100;
     curHP += 100;
-    atk += 25;
+    atk += 26;
     def += 7;
 }

@@ -1,5 +1,6 @@
 ﻿#include "Thief.h"
 #include "../Player/Player.h"
+#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -16,7 +17,7 @@ Thief::Thief(string nickname) : Player(nickname)
 int Thief::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
-    if (damage < 0) damage = 0;
+    damage = std::max(damage, 0);
 
     // 크리티컬 (30%)
     if (rand() % 100 < 50)
@@ -37,6 +38,6 @@ void Thief::level_Up()
     level++;
     maxHP += 120;
     curHP += 120;
-    atk += 25;
+    atk += 26;
     def += 7;
 }

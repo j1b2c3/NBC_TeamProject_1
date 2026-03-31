@@ -19,9 +19,10 @@ public:
         case 6: return new Monster("와이번", 6, 380, 55, 65, 18, 80, 160, 850, 1600);
         case 7: return new Monster("데몬", 7, 500, 75, 85, 22, 90, 170, 1200, 2300);
         case 8: return new Monster("드래곤", 8, 950, 170, 130, 25, 100, 180, 1700, 3300);
-        case 9: return new Monster("고대용", 9, 1750, 240, 170, 30, 100, 200, 2500, 5000);
+        case 9: return new Monster("고대용", 9, 1750, 240, 150, 30, 100, 200, 2500, 5000);
+        case 0: return new Monster("미믹", 0, 1, 0, 0, 0, 1, 300, 1, 5000);
         // 스테이지 0에서 히든 미믹
-        default: return new Monster("미믹", 0, 1, 0, 0, 0, 1, 300, 1, 5000);
+        default: return nullptr;
         }
     }
 };
@@ -31,7 +32,7 @@ class FinalBoss : public Monster
     bool isCharging = false;
 
 public:
-    FinalBoss() : Monster("불길한 존재", 10, 9999, 500, 300, 20, 1000, 1000, 1000, 1000)
+    FinalBoss() : Monster("불길한 존재", 10, 9999, 500, 170, 20, 1000, 1000, 1000, 1000)
     {
     }
 
