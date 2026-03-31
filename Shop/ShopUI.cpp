@@ -81,7 +81,8 @@ void displayBuyDetail(const ItemBase& base, int statValue, std::string statName)
 // 통합 골드 부족 UI
 void displayNoGold()
 {
-    std::cout << "\n[X] 금화가 부족합니다.\n";
+    std::cout << "[X] 금화가 부족합니다.\n";
+    _getch();
 }
 
 // 통합 구매 취소 UI

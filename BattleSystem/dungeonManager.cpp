@@ -34,7 +34,6 @@ string getAreaName(int stageLevel)
     }
 }
 
-// monster Data를 vector 값으로 묶어서 가져와야하네?.. 망했네?..
 void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 {
     if (Player_ == nullptr) return;
@@ -59,7 +58,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
         case 1:
             {
                 // 상점 체크
-                if (stage % Shop_Stage == 1 && !b_isShopVisited)
+                if (stage % Shop_Stage == 0 && !b_isShopVisited)
                 {
                     EnterShop(Player_);
                     b_isShopVisited = true;
@@ -173,7 +172,7 @@ void dungeonManager::EnterShop(Player* player_)
 bool dungeonManager::HiddenRand() // 히든던전 등장 확률
 {
     int roll = rand() % 100;
-    return roll < 5; // 5% 확률
+    return roll < 10; // 10% 확률
 }
 
 void dungeonManager::playerLifeCheck(Player* Player_) // 플레이어 생존 책크 
