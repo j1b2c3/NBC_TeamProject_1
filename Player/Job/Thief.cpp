@@ -22,7 +22,7 @@ int Thief::Attack(Monster& monster, string& action_str)
     if (rand() % 100 < 50)
     {
         action_str = "1.5배의 크리티컬!";
-        damage *= 1.5f;
+        damage *= 1.5;
     }
     else
     {

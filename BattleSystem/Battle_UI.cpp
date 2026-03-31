@@ -11,7 +11,6 @@ using namespace std;
 // Monster: 이름, HP/MaxHP, Level
 void displayBattle(Player& const p, Monster& const m, Vector2D& curPos, BattleLog log, string actionMsg) {
     Vector2D inputCurPos;
-    int n;
 
     // HP, MP 바를 그리기 위한 비율 계산
     int playerHpBar = (p.getMaxHP() > 0) ? (p.getCurHP() * 20 / p.getMaxHP()) : 0;

@@ -18,7 +18,7 @@ int Mage::Attack(Monster& monster, string& action_str)
     if (rand() % 100 < 10)
     {
         action_str = "2배의 크리티컬!";
-        damage *= 2.0f;
+        damage *= 2.0;
     }
     else
         action_str = "";

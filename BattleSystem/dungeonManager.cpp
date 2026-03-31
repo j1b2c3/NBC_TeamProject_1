@@ -4,6 +4,7 @@
 #include "../player/Player/Player.h"
 #include "../Item/Inventory_UI.h"
 #include "../Shop/ShopSystem.h"
+#include "../Item/ItemDB.h"
 
 
 void dungeonManager::Initialize()
@@ -11,6 +12,7 @@ void dungeonManager::Initialize()
     b_LifeCheck = true; // 시작할떈 살아있어야지?.
     b_Wincheck = true;
     b_isShopVisited = false;
+    initItemDB();
 }
 
 string getAreaName(int stageLevel)
