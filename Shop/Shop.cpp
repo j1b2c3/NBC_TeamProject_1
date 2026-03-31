@@ -35,15 +35,24 @@ void Shop::showShopMenu(Player* player)
                         int index = 1;
                         std::map<int, int> indexToID;
 
-                        // 무기 목록 출력 (이름만 출력)
-                        for (auto& pair : weaponDB)
-                        {
-                            if (!pair.second.base.canBuy) continue;
-                            std::cout << "[" << index << "] " << pair.second.base.name << "\n";
+                        // 무기 목록 출력 (직업 필터링)
+                        for (auto& pair : weaponDB) {
+                            auto& item = pair.second;
+
+                            if (!item.base.canBuy) continue;
+
+                            std::string playerJobName = player->getJobName();
+                            std::string itemJobTag = item.base.jobTag;
+
+                            if (itemJobTag != "공용" && itemJobTag != playerJobName) {
+                                continue;
+                            }
+
+                            std::cout << "[" << index << "] " << item.base.name << "\n";
                             indexToID[index] = pair.first;
                             index++;
                         }
-
+                        
                         std::cout << "----------------------\n";
                         std::cout << "확인할 무기 번호 선택 >> ";
                         int choice;
