@@ -31,7 +31,7 @@ class FinalBoss : public Monster
     bool isCharging = false;
 
 public:
-    FinalBoss() : Monster("최종 보스", 10, 9999, 500, 300, 20, 1000, 1000, 1000, 1000)
+    FinalBoss() : Monster("불길한 존재", 10, 9999, 500, 300, 20, 1000, 1000, 1000, 1000)
     {
     }
 
