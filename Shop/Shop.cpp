@@ -309,7 +309,7 @@ void Shop::showShopMenu(Player* player)
         case 3:
             {
                 displayShopHead();
-                cout << "|    " << right << setw(35) << "소모품 상점" << "                                       |" << '\n';
+                cout << "|    " << right << setw(39) << "소모품 상점" << "                                   |" << '\n';
                 cout << "|                                                                              |" << '\n';
                 cout << "+==============================================================================+" << '\n';
                 int index = 1;

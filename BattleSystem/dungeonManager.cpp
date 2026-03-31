@@ -62,6 +62,8 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                 {
                     EnterShop(Player_);
                     b_isShopVisited = true;
+
+                    continue;
                 }
                 bool isHidden = false;
                 // 몬스터 생성 (보스 vs 히든 vs 일반)
@@ -140,6 +142,8 @@ void dungeonManager::EnterShop(Player* player_)
         cout << "|                                                                              |" << '\n';
         cout << "|          [1] 입장한다                           [2] 지나친다                 |" << '\n';
         cout << "|                                                                              |" << '\n';
+        cout << "+==============================================================================+" << '\n';
+        cout << "|    선택 >>                                                                   | " << '\n';
         cout << "+==============================================================================+" << '\n';
         int Shop_Select;
         cin >> Shop_Select; // 상점 입장 여부 

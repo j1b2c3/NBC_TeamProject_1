@@ -69,11 +69,12 @@ void displayInventory(Player& player)
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
-    // 수정 필요
-    cout << "|    [1~3] 아이템 사용/장착       [0] 가방 닫기                                |" << '\n';
+    cout << "|      [1] 무기        [2] 방어구          [3] 소모품         [0] 가방 닫기    |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
+    // Todo: 커서 위치
 }
 
 void showInventoryUI(Player& player)
@@ -118,9 +119,10 @@ void showConsumableListUI(const std::map<int, int>& consumables)
         if (const Consumable* c = ItemManager::GetInstance().GetConsumable(id))
         {
             string desc = "HP +" + to_string(c->hp);
+            string fullDesc = "(" + desc + ")";
+
             cout << "|      - " << left << setw(15) << c->base.name
-                << " x" << setw(3) << count
-                << " (" << setw(35) << desc << ") |" << '\n';
+                << " x" << setw(3) << count << setw(35) << desc << "   |" << '\n';
         }
     }
 
@@ -162,15 +164,18 @@ void handleWeaponAction(Player& player)
     for (int i = 0; i < static_cast<int>(weapons.size()); i++)
     {
         string num = to_string(i + 1) + ".";
+        string fullDesc = "(" + weapons[i].desc + ")";
+
         cout << "|      " << left << setw(3) << num << setw(15) << weapons[i].name
-            << " x" << setw(3) << weapons[i].count
-            << " (" << setw(35) << weapons[i].desc << ") |" << '\n';
+            << " x" << setw(3) << weapons[i].count << setw(40) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [무기 장착]  번호를 선택하세요                   [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
+    // Todo : 커서 위치
 
     int choice;
     cin >> choice;
@@ -213,15 +218,18 @@ void handleArmorAction(Player& player)
     for (int i = 0; i < static_cast<int>(armors.size()); i++)
     {
         string num = to_string(i + 1) + ".";
+        string fullDesc = "(" + armors[i].desc + ")";
+
         cout << "|      " << left << setw(3) << num << setw(15) << armors[i].name
-            << " x" << setw(3) << armors[i].count
-            << " (" << setw(35) << armors[i].desc << ") |" << '\n';
+            << " x" << setw(3) << armors[i].count << setw(40) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [방어구 장착]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
+    // Todo : 커서 위치
 
     int choice;
     cin >> choice;
@@ -264,15 +272,18 @@ void handleConsumableAction(Player& player)
     for (int i = 0; i < static_cast<int>(consumables.size()); i++)
     {
         string num = to_string(i + 1) + ".";
+        string fullDesc = "(" + consumables[i].desc + ")";
+
         cout << "|      " << left << setw(3) << num << setw(15) << consumables[i].name
-            << " x" << setw(3) << consumables[i].count
-            << " (" << setw(35) << consumables[i].desc << ") |" << '\n';
+            << " x" << setw(3) << consumables[i].count << setw(40) << fullDesc << "       |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [소모품 사용]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "  선택 >> ";
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
+    // Todo : 커서 위치
 
     int choice;
     cin >> choice;
