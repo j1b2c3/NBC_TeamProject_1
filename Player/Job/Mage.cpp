@@ -6,7 +6,7 @@ Mage::Mage(string nickname) : Player(nickname)
     jobname = "Mage";
     maxHP = 85;
     curHP = 85;
-    atk = 30;
+    atk = 20;
     def = 5;
     dodge = 5;
 }
@@ -31,6 +31,6 @@ void Mage::level_Up()
     level++;
     maxHP += 80;
     curHP += 80;
-    atk += 25;
+    atk += 20;
     def += 5;
 }

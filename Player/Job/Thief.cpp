@@ -37,6 +37,6 @@ void Thief::level_Up()
     level++;
     maxHP += 120;
     curHP += 120;
-    atk += 30;
-    def += 8;
+    atk += 25;
+    def += 7;
 }

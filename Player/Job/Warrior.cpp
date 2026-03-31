@@ -25,6 +25,6 @@ void Warrior::level_Up()
     level++;
     maxHP += 120;
     curHP += 120;
-    atk += 40;
+    atk += 30;
     def += 10;
 }
