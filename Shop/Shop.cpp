@@ -308,7 +308,10 @@ void Shop::showShopMenu(Player* player)
         // 소모품 상점
         case 3:
             {
-                std::cout << "\n=== 소모품 상점 ===\n";
+                displayShopHead();
+                cout << "|    " << right << setw(35) << "소모품 상점" << "                                       |" << '\n';
+                cout << "|                                                                              |" << '\n';
+                cout << "+==============================================================================+" << '\n';
                 int index = 1;
                 std::map<int, int> indexToID;
 

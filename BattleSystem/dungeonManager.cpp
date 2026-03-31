@@ -5,6 +5,7 @@
 #include "../Item/Inventory_UI.h"
 #include "../Shop/Shop.h"
 #include "../Item/ItemDB.h"
+#include "../Shop/ShopUI.h"
 
 
 void dungeonManager::Initialize()
@@ -57,7 +58,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
         case 1:
             {
                 // 상점 체크
-                if (stage % Shop_Stage == 0 && !b_isShopVisited)
+                if (stage % Shop_Stage == 1 && !b_isShopVisited)
                 {
                     EnterShop(Player_);
                     b_isShopVisited = true;
@@ -133,7 +134,13 @@ void dungeonManager::EnterShop(Player* player_)
 {
     while (true) //상점 입장 확인
     {
-        cout << " ------------ 상점 ---------" << '\n' << "입장 하시겠습니까? 1. 입장 / 2 스킵 ";
+        displayShopHead();
+        cout << "|                                                                              |" << '\n';
+        cout << "|                          상점을 발견했습니다 !                               |" << '\n';
+        cout << "|                                                                              |" << '\n';
+        cout << "|          [1] 입장한다                           [2] 지나친다                 |" << '\n';
+        cout << "|                                                                              |" << '\n';
+        cout << "+==============================================================================+" << '\n';
         int Shop_Select;
         cin >> Shop_Select; // 상점 입장 여부 
         cin.ignore(100, '\n');

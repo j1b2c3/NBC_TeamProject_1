@@ -5,10 +5,8 @@
 
 using namespace std;
 
-void displayShop(int playerGold)
+void displayShopHead()
 {
-    string goldDisplay = to_string(playerGold) + "G";
-
     system("cls");
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -21,6 +19,14 @@ void displayShop(int playerGold)
     cout << "|     ######     ##     ##      #######      ##                                |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
+}
+
+
+void displayShop(int playerGold)
+{
+    string goldDisplay = to_string(playerGold) + "G";
+
+    displayShopHead();
     cout << "|    보유 금화: " << left << setw(62) << goldDisplay << " |" << '\n';
     cout << "|  --------------------------------------------------------------------------  |" << '\n';
     cout << "|                                                                              |" << '\n';
@@ -34,10 +40,15 @@ void displayShop(int playerGold)
 // 무기 방어구 통합 메뉴판 UI
 void displayShopMenu(std::string title)
 {
-    std::cout << "\n=== " << title << " 메뉴 ===\n";
-    std::cout << "1. 구매\n";
-    std::cout << "2. 판매\n";
-    std::cout << "선택 >> ";
+    string shopName = title + " 상점";
+    displayShopHead();
+    cout << "|    " << right << setw(35) << shopName << "                                      |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|         [1] 구매             [2] 판매             [0] 상점 나가기            |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "+==============================================================================+" << '\n';
+    cout << "|    선택 >>                                                                   | " << '\n';
+    cout << "+==============================================================================+" << '\n';
 }
 
 // 무기 방어구 통합 판매 시스템 UI

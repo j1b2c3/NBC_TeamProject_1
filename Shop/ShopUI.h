@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "../Item/ItemDB.h"
 
+void displayShopHead();
+
 void displayShop(int playerGold);
 
 void displayShopMenu(std::string title);
