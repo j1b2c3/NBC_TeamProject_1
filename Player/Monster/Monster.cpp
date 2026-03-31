@@ -1,5 +1,6 @@
 ﻿#include "Monster.h"
 #include "../Player/Player.h"
+#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -36,8 +37,7 @@ bool Monster::isDodged(int dodge)
 int Monster::calculateDamage(int atk, int def, bool is_defence)
 {
     if (is_defence) def *= 2;
-    float reduction = def / 100.0f;
-    int damage = static_cast<int>((float)atk * (1.0f - reduction));
+    int damage = atk * (100.0f / (100.0f + def));
 
     if (damage <= 0)
         damage = is_defence ? 0 : 1;
@@ -56,8 +56,7 @@ int Monster::TakeDamage(int damage, bool canDodge)
         return -1;
 
     curHP -= damage;
-    if (curHP < 0)
-        curHP = 0;
+    curHP = std::max(curHP, 0);
     return damage;
 }
 

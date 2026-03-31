@@ -8,7 +8,7 @@ Thief::Thief(string nickname) : Player(nickname)
     jobname = "Thief";
     maxHP = 70;
     curHP = 70;
-    atk = 15;
+    atk = 25;
     def = 5;
     dodge = 30;
 }
@@ -35,8 +35,8 @@ int Thief::Attack(Monster& monster, string& action_str)
 void Thief::level_Up()
 {
     level++;
-    maxHP += 12;
-    curHP += 12;
-    atk += 3;
-    def += 4;
+    maxHP += 120;
+    curHP += 120;
+    atk += 30;
+    def += 8;
 }

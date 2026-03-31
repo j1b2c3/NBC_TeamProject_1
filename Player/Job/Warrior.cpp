@@ -6,7 +6,7 @@ Warrior::Warrior(string nickname) : Player(nickname)
     jobname = "Warrior";
     maxHP = 120;
     curHP = 120;
-    atk = 15;
+    atk = 45;
     def = 25;
     dodge = 5;
 }
@@ -23,8 +23,8 @@ int Warrior::Attack(Monster& monster, string& action_str)
 void Warrior::level_Up()
 {
     level++;
-    maxHP += 12;
-    curHP += 12;
-    atk += 3;
-    def += 4;
+    maxHP += 120;
+    curHP += 120;
+    atk += 40;
+    def += 10;
 }

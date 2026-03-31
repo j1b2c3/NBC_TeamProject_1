@@ -4,6 +4,8 @@
 
 #include "BattleSystem.h"
 #include "../Item/ItemDB.h"
+#include "../Item/Inventory.h"
+#include "../Item/Inventory_UI.h"
 
 using namespace std;
 
@@ -17,7 +19,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
     {
         int choice;
         bool bPlayer_is_defence = false;
-        string action_str = "";  // 특수 행동 시 기본행동과 동시에 출력할 문장
+        string action_str = ""; // 특수 행동 시 기본행동과 동시에 출력할 문장
         int player_dmg;
         int monster_dmg;
         //플레이어 페이즈
@@ -50,7 +52,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         case 2:
             log.line_1.assign("아이템을 사용했다!");
             log.line_1 = "                        어떤 아이템을 사용할까?";
-            //ItemManager::GetInstance().GetConsumable
+            showConsumableListUI(player);
             break;
         case 3:
             log.line_1.assign("도주했다...");
@@ -70,9 +72,9 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         log.Clear();
         log.line_1.assign(monster.getName() + "의 공격!");
         monster_dmg = monster.attack(player, bPlayer_is_defence);
-        if(monster_dmg > 0)
+        if (monster_dmg > 0)
             log.line_2.assign(to_string(monster_dmg) + "의 피해를 입었다! ");
-        else if(monster_dmg == 0)
+        else if (monster_dmg == 0)
             log.line_2.assign("방어에 성공했다! ");
         else
             log.line_2.assign("회피에 성공했다! ");
@@ -125,7 +127,9 @@ void BattleSystem::CheckState(Player& player, Monster& monster)
         log.line_1.assign(to_string(monster_exp) + " EXP, " + to_string(monster_gold) + " G를 획득했다!");
         if (isLevelUp)
             log.line_2.append("(Level Up!) ");
-        log.line_2.append("Lv " + to_string(player.getLevel()) + " (" + to_string(player.getExp()) + " / " + to_string(needExp) + " EXP)");
+        log.line_2.append(
+            "Lv " + to_string(player.getLevel()) + " (" + to_string(player.getExp()) + " / " + to_string(needExp) +
+            " EXP)");
         log.line_3.assign("현재 소지금: " + to_string(player.getGold()) + " Gold");
         bVictory = true;
         bProgress = false;

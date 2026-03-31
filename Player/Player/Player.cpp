@@ -28,12 +28,11 @@ bool Player::isDodged(int dodge)
 
 int Player::calculateDamage(int atk, int def)
 {
-	float reduction = def / 100.0f;
-	int damage = static_cast<int>((float)atk * (1.0f - reduction));
+    int damage = atk * (100.0f / (100.0f + def));
 
-	if (damage <= 0) damage = 1;
+    if (damage <= 0) damage = 1;
 
-	return damage;
+    return damage;
 }
 
 int Player::TakeDamage(int damage)
@@ -59,15 +58,15 @@ void Player::addexp(int gainedExp, int& OUT_needExp, bool& OUT_isLevelUp)
         bLevelUp = true;
     }
 
-    OUT_needExp = needExp;      // 필요경험치 반환
-    OUT_isLevelUp = bLevelUp;   // 레벨업 유무 반환
+    OUT_needExp = needExp; // 필요경험치 반환
+    OUT_isLevelUp = bLevelUp; // 레벨업 유무 반환
 }
 
 int Player::Attack(Monster& monster, string& action_str)
 {
-	int damage = calculateDamage(atk, monster.getDef());
-	action_str = "";
-	return monster.TakeDamage(damage, true);
+    int damage = calculateDamage(atk, monster.getDef());
+    action_str = "";
+    return monster.TakeDamage(damage, true);
 }
 
 void Player::level_Up()

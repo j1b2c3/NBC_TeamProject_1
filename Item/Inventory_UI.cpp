@@ -38,7 +38,7 @@ void displayInventory(Player& player)
     for (const auto& item : weapons)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " " << left << setw(49)
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
             << fullDesc << "|" << '\n';
     }
     cout << "|                                                                              |" << '\n';
@@ -49,7 +49,7 @@ void displayInventory(Player& player)
     for (const auto& item : armors)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " " << left << setw(49)
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
             << fullDesc << "|" << '\n';
     }
     cout << "|                                                                              |" << '\n';
@@ -62,7 +62,7 @@ void displayInventory(Player& player)
     for (const auto& item : consumables)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(15) << item.name << " x" << setw(3) << item.count << " " << left << setw(49)
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
             << fullDesc << "|" << '\n';
     }
 
@@ -106,7 +106,7 @@ void showConsumableListUI(Player& player)
 {
     Inventory& inventory = *player.getInventory();
     const auto& consumables = inventory.getItems();
-    
+
     cout << "+==============================================================================+" << '\n';
     cout << "|                          [ 소모품 목록 ]                                         |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -125,8 +125,8 @@ void showConsumableListUI(Player& player)
             string desc = "HP +" + to_string(c->hp);
             string fullDesc = "(" + desc + ")";
 
-            cout << "|      - " << left << setw(15) << c->base.name
-                << " x" << setw(3) << count << setw(35) << desc << "   |" << '\n';
+            cout << "|      - " << left << setw(30) << c->base.name
+                << " x" << setw(3) << count << setw(25) << fullDesc << "   |" << '\n';
         }
     }
 
@@ -170,8 +170,8 @@ void handleWeaponAction(Player& player)
         string num = to_string(i + 1) + ".";
         string fullDesc = "(" + weapons[i].desc + ")";
 
-        cout << "|      " << left << setw(3) << num << setw(15) << weapons[i].name
-            << " x" << setw(3) << weapons[i].count << setw(40) << fullDesc << "         |" << '\n';
+        cout << "|      " << left << setw(3) << num << setw(30) << weapons[i].name
+            << " x" << setw(3) << weapons[i].count << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -224,8 +224,8 @@ void handleArmorAction(Player& player)
         string num = to_string(i + 1) + ".";
         string fullDesc = "(" + armors[i].desc + ")";
 
-        cout << "|      " << left << setw(3) << num << setw(15) << armors[i].name
-            << " x" << setw(3) << armors[i].count << setw(40) << fullDesc << "         |" << '\n';
+        cout << "|      " << left << setw(3) << num << setw(30) << armors[i].name
+            << " x" << setw(3) << armors[i].count << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -278,8 +278,8 @@ void handleConsumableAction(Player& player)
         string num = to_string(i + 1) + ".";
         string fullDesc = "(" + consumables[i].desc + ")";
 
-        cout << "|      " << left << setw(3) << num << setw(15) << consumables[i].name
-            << " x" << setw(3) << consumables[i].count << setw(40) << fullDesc << "       |" << '\n';
+        cout << "|      " << left << setw(3) << num << setw(30) << consumables[i].name
+            << " x" << setw(3) << consumables[i].count << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';

@@ -1,6 +1,7 @@
 ﻿#include <iomanip>
 #include <string>
 #include <iostream>
+#include <sstream>
 
 #include "../System/Windows.h"
 #include "../System/util.h"
@@ -34,7 +35,11 @@ void displayConfirmJob(string jobName, string description)
     displayMainUI();
     cout << "|                                                                              |" << '\n';
     cout << "|  " << left << setw(76) << jobName + ": " + description << "|" << '\n';
-    cout << "|  정말 " << left << setw(2) << jobName + "(으)로 전직하시겠습니까?                                          |" << '\n';
+    
+    stringstream ss;
+    ss << "정말 " << jobName << "(으)로 전직하시겠습니까?";
+    string Job = ss.str();     
+    cout << "|  " <<  left << setw(50) << Job << "                          |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|                  [1] 예                          [2] 아니요                  |" << '\n';
     cout << "|                                                                              |" << '\n';

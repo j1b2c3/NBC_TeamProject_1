@@ -45,7 +45,7 @@ void displayShopMenu(std::string title)
 {
     string shopName = title + " 상점";
     displayShopHead();
-    cout << "|    " << right << setw(35) << shopName << "                                      |" << '\n';
+    cout << "|    " << right << setw(35) << shopName << "                                       |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|         [1] 구매             [2] 판매             [0] 상점 나가기            |" << '\n';
     cout << "|                                                                              |" << '\n';
