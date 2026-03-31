@@ -5,7 +5,7 @@ int FinalBoss::attack(Player& player, bool is_defence, string& action_str)
 {
     if (isCharging)
     {
-        float critical = is_defence ? 0.25f : 10.0f;
+        float critical = is_defence ? 0.25f : 8.0f;
         action_str.assign("불길한 일격!");
         int heavyDamage = calculateDamage(static_cast<int>((float)atk * critical), player.getDef(), is_defence);
 
