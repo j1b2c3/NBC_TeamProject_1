@@ -4,11 +4,10 @@
 #include <map>
 #include <iostream>
 #include <iomanip>
-#include <conio.h>
 
 using namespace std;
 
-class ShopSystem {
+class Shop {
 public:
     // 상점 메뉴 실행 (아즈키코드 스타일)
     static void showShopMenu(Player* player);

@@ -1,10 +1,10 @@
-﻿#include "ShopSystem.h"
+﻿#include "Shop.h"
 #include "ShopUI.h"
 #include "ShopLogic.h"
 #include "../Player/Player/Player.h"
 
 // 상점 메뉴 
-void ShopSystem::showShopMenu(Player* player)
+void Shop::showShopMenu(Player* player)
 {
     while (true)
     {

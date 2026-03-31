@@ -190,7 +190,7 @@
         <ClCompile Include="Player\Monster\MonsterDB.cpp"/>
         <ClCompile Include="Player\Player\Player.cpp"/>
         <ClCompile Include="Shop\ShopLogic.cpp"/>
-        <ClCompile Include="Shop\ShopSystem.cpp"/>
+        <ClCompile Include="Shop\Shop.cpp" />
         <ClCompile Include="Shop\ShopUI.cpp"/>
         <ClCompile Include="System\Windows.cpp">
             <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -287,6 +287,7 @@
         <ClInclude Include="Player\Monster\MonsterDB.h"/>
         <ClInclude Include="Player\Player\Player.h"/>
         <ClInclude Include="Shop\ShopLogic.h"/>
+        <ClInclude Include="Shop\Shop.h" />
         <ClInclude Include="Shop\ShopUI.h"/>
         <ClInclude Include="System\Windows.h"/>
         <ClInclude Include="System\util.h"/>
