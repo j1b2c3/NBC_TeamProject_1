@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <Windows.h>
 
 using namespace std;
 
@@ -38,8 +39,8 @@ void displayInventory(Player& player)
     for (const auto& item : weapons)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
 
@@ -49,8 +50,8 @@ void displayInventory(Player& player)
     for (const auto& item : armors)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
 
@@ -62,8 +63,8 @@ void displayInventory(Player& player)
     for (const auto& item : consumables)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
 
     cout << "|                                                                              |" << '\n';
@@ -72,9 +73,7 @@ void displayInventory(Player& player)
     cout << "|      [1] 무기        [2] 방어구          [3] 소모품         [0] 가방 닫기    |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "|    선택 >>                                                                   | " << '\n';
-    cout << "+==============================================================================+" << '\n';
-    // Todo: 커서 위치
+    cout << "선택 >> ";
 }
 
 void showInventoryUI(Player& player)
@@ -125,8 +124,8 @@ void showConsumableListUI(Player& player)
             string desc = "HP +" + to_string(c->hp);
             string fullDesc = "(" + desc + ")";
 
-            cout << "|      - " << left << setw(30) << c->base.name
-                << " x" << setw(3) << count << setw(25) << fullDesc << "   |" << '\n';
+            cout << "|      - " << left << setw(20) << c->base.name
+                << " x" << setw(3) << count << right << setw(20) << fullDesc << "                  |" << '\n';
         }
     }
 
@@ -171,15 +170,14 @@ void handleWeaponAction(Player& player)
         string fullDesc = "(" + weapons[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << weapons[i].name
-            << " x" << setw(3) << weapons[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << weapons[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [무기 장착]  번호를 선택하세요                   [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "|    선택 >>                                                                   | " << '\n';
-    cout << "+==============================================================================+" << '\n';
-    // Todo : 커서 위치
+    cout << "선택 >> ";
+
 
     int choice;
     cin >> choice;
@@ -225,15 +223,13 @@ void handleArmorAction(Player& player)
         string fullDesc = "(" + armors[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << armors[i].name
-            << " x" << setw(3) << armors[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << armors[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [방어구 장착]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "|    선택 >>                                                                   | " << '\n';
-    cout << "+==============================================================================+" << '\n';
-    // Todo : 커서 위치
+    cout << "선택 >> ";
 
     int choice;
     cin >> choice;
@@ -279,15 +275,13 @@ void handleConsumableAction(Player& player)
         string fullDesc = "(" + consumables[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << consumables[i].name
-            << " x" << setw(3) << consumables[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << consumables[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|  [소모품 사용]  번호를 선택하세요                 [0] 뒤로가기               |" << '\n';
     cout << "+==============================================================================+" << '\n';
-    cout << "|    선택 >>                                                                   | " << '\n';
-    cout << "+==============================================================================+" << '\n';
-    // Todo : 커서 위치
+    cout << "선택 >> ";
 
     int choice;
     cin >> choice;

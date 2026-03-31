@@ -126,6 +126,7 @@ void Inventory::equipWeapon(int id, Player& player)
       // 장착
       equippedWeaponId = id;
       player.setAtk(player.getAtk() + weaponDB[id].attack);
+      removeItem(id);
 
       std::cout << "[장착] " << weaponDB[id].base.name
                 << " → 공격력 +" << weaponDB[id].attack
@@ -155,6 +156,7 @@ void Inventory::equipArmor(int id, Player& player)
     // 장착
     equippedArmorId = id;
     player.setDef(player.getDef() + armorDB[id].defense);
+    removeItem(id);
 
     std::cout << "[장착] " << armorDB[id].base.name
               << " → 방어력 +" << armorDB[id].defense
@@ -171,6 +173,7 @@ void Inventory::unequipWeapon(Player& player)
     }
 
     player.setAtk(player.getAtk() - weaponDB[equippedWeaponId].attack);
+    items[equippedWeaponId] += 1;
 
     std::cout << "[해제] " << weaponDB[equippedWeaponId].base.name
               << " → 공격력 -" << weaponDB[equippedWeaponId].attack
@@ -189,6 +192,7 @@ void Inventory::unequipArmor(Player& player)
     }
 
     player.setDef(player.getDef() - armorDB[equippedArmorId].defense);
+    items[equippedArmorId] += 1;
 
     std::cout << "[해제] " << armorDB[equippedArmorId].base.name
               << " → 방어력 -" << armorDB[equippedArmorId].defense

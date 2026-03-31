@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include "../System/Windows.h"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ void displayShop(int playerGold)
     cout << "+==============================================================================+" << '\n';
     cout << "|    선택 >>                                                                   | " << '\n';
     cout << "+==============================================================================+" << '\n';
-    // Todo : 커서 위치
+    Windows::SetCursorPos(13, 19);
 }
 
 // 무기 방어구 통합 메뉴판 UI
@@ -45,14 +46,15 @@ void displayShopMenu(std::string title)
 {
     string shopName = title + " 상점";
     displayShopHead();
-    cout << "|    " << right << setw(35) << shopName << "                                       |" << '\n';
     cout << "|                                                                              |" << '\n';
-    cout << "|         [1] 구매             [2] 판매             [0] 상점 나가기            |" << '\n';
+    cout << "|    " << right << setw(37) << shopName << "                                     |" << '\n';
+    cout << "|                                                                              |" << '\n';
+    cout << "|         [1] 구매                [2] 판매             [0] 상점 나가기         |" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
     cout << "|    선택 >>                                                                   | " << '\n';
     cout << "+==============================================================================+" << '\n';
-    // Todo : 커서 위치
+    Windows::SetCursorPos(13, 17);
 }
 
 // 무기 방어구 통합 판매 시스템 UI
