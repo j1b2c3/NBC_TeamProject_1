@@ -405,7 +405,7 @@ void Shop::showShopMenu(Player* player)
 
                     cout << "\n--- [ " << selectedItem.base.name << " ] ---\n";
                     cout << "가격   : " << selectedItem.base.price << "G\n";
-                    cout << "회복량 : " << selectedItem.hpRatio << "% HP\n";
+                    cout << "회복량 : " << static_cast<int>(selectedItem.hpRatio * 100.0f) << "% HP\n";
                     cout << "------------------------\n";
 
                     cout << "구매할 수량을 입력하세요 >> ";
