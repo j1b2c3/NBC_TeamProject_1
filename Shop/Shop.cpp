@@ -18,7 +18,7 @@ void Shop::showShopMenu(Player* player)
 
         switch (menuchoice)
         {
-                // 메인 메뉴의 '무기 상점' 진입
+        // 메인 메뉴의 '무기 상점' 진입
         case 1:
             {
                 displayShopMenu("무기");

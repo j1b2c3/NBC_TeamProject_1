@@ -38,15 +38,12 @@ void buyItem(int id, ItemType type, int amount, Player* player)
 
     player->subGold(cost);
 
-    switch (type)
+    if (player->getInventory() != nullptr)
     {
-        if (player->getInventory() != nullptr)
-        {
-            player->getInventory()->addItem(id, amount);
-        }
-
-        std::cout << "[O] 구매 완료! 가방을 확인하세요\n";
+        player->getInventory()->addItem(id, amount);
     }
+
+    std::cout << "[O] 구매 완료! 가방을 확인하세요\n";
 }
 
 // 1. 함수의 '머리(선언부)'를 반드시 써주어야 합니다!

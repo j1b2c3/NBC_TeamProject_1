@@ -6,7 +6,7 @@ void displayInventory(Player& player);
 
 void showInventoryUI(Player& player);
 
-void showConsumableListUI(const std::map<int, int>& consumables);
+void showConsumableListUI(Player& player);
 
 void displayInventoryHeader();
 
