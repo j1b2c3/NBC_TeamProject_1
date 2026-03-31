@@ -102,38 +102,6 @@ void showInventoryUI(Player& player)
     }
 }
 
-void showConsumableListUI(Player& player)
-{
-    Inventory& inventory = *player.getInventory();
-    const auto& consumables = inventory.getItems();
-    
-    cout << "+==============================================================================+" << '\n';
-    cout << "|                          [ 소모품 목록 ]                                         |" << '\n';
-    cout << "+==============================================================================+" << '\n';
-    cout << "|                                                                              |" << '\n';
-
-    if (consumables.empty())
-    {
-        cout << "|      - (비어 있음)                                                         |" << '\n';
-    }
-
-    for (const auto& [id, count] : consumables)
-    {
-        if (ItemFactory::getType(id) != ItemType::Consumable) continue;
-        if (const Consumable* c = ItemManager::GetInstance().GetConsumable(id))
-        {
-            string desc = "HP +" + to_string(c->hp);
-            string fullDesc = "(" + desc + ")";
-
-            cout << "|      - " << left << setw(15) << c->base.name
-                << " x" << setw(3) << count << setw(35) << desc << "   |" << '\n';
-        }
-    }
-
-    cout << "|                                                                              |" << '\n';
-    cout << "+==============================================================================+" << '\n';
-}
-
 void displayInventoryHeader()
 {
     system("cls");
