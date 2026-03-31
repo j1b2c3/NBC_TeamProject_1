@@ -50,7 +50,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         case 2:
             log.line_1.assign("아이템을 사용했다!");
             log.line_1 = "                        어떤 아이템을 사용할까?";
-            //ItemManager::GetInstance().GetConsumable
+            //player.getInventory()->getConsumables() 호출 시 vector<ItemInfo> 반환
             break;
         case 3:
             log.line_1.assign("도주했다...");
