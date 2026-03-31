@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 #include "Inventory.h"
+#include "../System/util.h"
+#include "../System/Windows.h"
 
 void displayInventory(Player& player);
 
