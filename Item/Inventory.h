@@ -24,7 +24,6 @@ public:
     Inventory() : equippedWeaponId(0), equippedArmorId(0)
     {
         items[301] = 3; // 채력 포션 3개
-        items[302] = 3; // 채력 포션 3개
     }
     
     void addItem(int id, int amount = 1);
