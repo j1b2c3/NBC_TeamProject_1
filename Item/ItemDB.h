@@ -15,7 +15,7 @@ struct ItemBase {
     int price = 0;
     int sellprice = 0;
     bool canBuy = false;
-    string jobTag = "공용";
+    string jobTag = "Common";
 };
 
 struct Weapon { ItemBase base; int attack = 0; };
