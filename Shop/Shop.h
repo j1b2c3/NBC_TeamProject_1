@@ -10,5 +10,5 @@ using namespace std;
 class Shop {
 public:
     // 상점 메뉴 실행 (아즈키코드 스타일)
-    static void ShowShopMenu(Player* player);
+    static void showShopMenu(Player* player);
 };
