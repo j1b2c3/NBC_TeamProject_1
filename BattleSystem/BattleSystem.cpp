@@ -158,7 +158,10 @@ bool BattleSystem::ChooseItem(Player& player, Monster& monster)
     displayBattle(player, monster, curPos, log, "아이템을 선택하세요 >> ");
     InputDigit(select);
     if (select == 0)
+    {
+        log.Clear();
         return false;
+    }
     else if (select >= 1 && select <= items.size())
     {
         log.line_1.assign(items[select - 1].name + "을 사용했다!");
