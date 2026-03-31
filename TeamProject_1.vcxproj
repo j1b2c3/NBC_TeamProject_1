@@ -286,7 +286,6 @@
         <ClInclude Include="Player\Monster\Monster.h"/>
         <ClInclude Include="Player\Monster\MonsterDB.h"/>
         <ClInclude Include="Player\Player\Player.h"/>
-        <ClInclude Include="Shop\ShopSystem.h"/>
         <ClInclude Include="Shop\ShopLogic.h"/>
         <ClInclude Include="Shop\ShopUI.h"/>
         <ClInclude Include="System\Windows.h"/>
