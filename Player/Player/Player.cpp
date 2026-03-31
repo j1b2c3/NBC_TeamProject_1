@@ -13,10 +13,12 @@ Player::Player(string nickname)
     dodge = 5;
     gold = 0;
     this->nickname = nickname;
+    inventory = new Inventory();
 }
 
 Player::~Player()
 {
+    delete inventory;
 }
 
 bool Player::isDodged(int dodge)

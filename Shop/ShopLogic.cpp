@@ -1,4 +1,4 @@
-﻿#include "ShopLogic.h"
+#include "ShopLogic.h"
 #include "../Player/Player/Player.h"
 #include <iostream>
 
