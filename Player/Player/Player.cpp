@@ -35,9 +35,9 @@ int Player::calculateDamage(int atk, int def)
     return damage;
 }
 
-int Player::TakeDamage(int damage)
+int Player::TakeDamage(int damage, bool canDodge)
 {
-    if (isDodged(dodge))
+    if (canDodge && isDodged(dodge))
         return -1;
 
     curHP -= damage;

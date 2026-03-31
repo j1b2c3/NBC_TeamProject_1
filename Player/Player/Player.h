@@ -37,7 +37,7 @@ public:
     // monster: 대상 몬스터, action_str: 특수한 행동 시 추가 출력한 문자열
     virtual int Attack(Monster& monster, string& action_str) = 0;
     virtual void level_Up() = 0;
-    int TakeDamage(int damage);
+    int TakeDamage(int damage, bool canDodge);
     void addexp(int gainedExp, int& OUT_needExp, bool& OUT_isLevelUp);
     void subExp(int lostExp);
     void addGold(int gold);

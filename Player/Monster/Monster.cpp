@@ -49,14 +49,14 @@ int Monster::calculateDamage(int atk, int def, bool is_defence)
 int Monster::attack(Player& player, bool is_defence, string& action_str)
 {
     if (specialMessage.empty())
-        return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence));
+        return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence), true);
     else
         return 0;
 }
 
 int Monster::TakeDamage(int damage, bool canDodge)
 {
-    if (isDodged(dodge))
+    if (canDodge && isDodged(dodge))
         return -1;
 
     curHP -= damage;
