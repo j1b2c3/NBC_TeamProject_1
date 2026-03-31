@@ -4,7 +4,7 @@
 
 #include "../Player/Player/Player.h"
 #include "../Item/ItemDB.h"
-#include "../Shop/shopsystem.h"
+#include "../Shop/Shop.h"
 #include "../Player/Monster/MonsterDB.h"
 #include "../Item/Inventory.h"
 #include "../Item/Inventory_UI.h"
@@ -52,7 +52,7 @@ public:
 
     // Loot tempData;
 
-    ShopSystem Shop_;
+    Shop Shop_;
     MonsterGenerator Mons_g;
     Monster* Monster_;
 
@@ -63,8 +63,9 @@ public:
     ~dungeonManager()
     {
     }
+
     void Initialize(); // 시작 초기화
-	void StartDungeon(Player* Player_);// player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
+    void StartDungeon(Player* Player_); // player 데이터와 monster 데이터 받아서 실행 ( 몬스터 여러마리 넣을려먼 vector로 입력 받기 >
 
     bool HiddenRand(); // 히든던전 등장 확률
     void EnterShop(Player* player_); // 상점 입장유무 

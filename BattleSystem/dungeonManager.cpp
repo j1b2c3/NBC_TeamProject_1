@@ -3,7 +3,7 @@
 #include "dungeonUI.h"
 #include "../player/Player/Player.h"
 #include "../Item/Inventory_UI.h"
-#include "../Shop/ShopSystem.h"
+#include "../Shop/Shop.h"
 #include "../Item/ItemDB.h"
 
 
@@ -141,7 +141,7 @@ void dungeonManager::EnterShop(Player* player_)
 
         if (Shop_Select == 1)
         {
-            ShopSystem::showShopMenu(player_);
+            Shop::showShopMenu(player_);
             cout << " ------ 상점에서 나갑니다 ----- " << '\n';
             break; // 끝나면 break해서 함수 탈출
         }
