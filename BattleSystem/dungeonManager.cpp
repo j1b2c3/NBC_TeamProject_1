@@ -47,6 +47,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
     // Battle Logic
     while (b_LifeCheck)
     {
+        string BattleMsg;
         area_Name = getAreaName(stage);
         displayDungeon(area_Name, dungeon_Log);
 
@@ -71,23 +72,26 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
                 {
                     Monster_ = new FinalBoss(); // 보스 생성
                     dungeon_Log = "최종 보스와의 결전!";
+                    BattleMsg = "                            최종보스와의 결전!";
                 }
                 else if (HiddenRand())
                 {
                     Monster_ = Mons_g.Create(0); // 히든 몬스터
                     dungeon_Log = "히든 던전에 진입했습니다!";
+                    BattleMsg = "                           히든 던전에 진입했다!";
                     isHidden = true;
                 }
                 else
                 {
                     Monster_ = Mons_g.Create(stage); // 일반 몬스터
                     dungeon_Log = to_string(stage) + "구역 전투 중...";
+                    BattleMsg = "                            전투가 시작되었다!";
                 }
 
                 // 전투 실행
                 if (Monster_ != nullptr)
                 {
-                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_);
+                    b_Wincheck = BattleSystem::getInstance().Battle(*Player_, *Monster_, BattleMsg);
                     playerLifeCheck(Player_);
 
                     if (b_Wincheck)

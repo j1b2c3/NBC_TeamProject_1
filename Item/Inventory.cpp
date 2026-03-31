@@ -69,7 +69,7 @@ std::vector<ItemInfo> Inventory::getConsumables() const
     for (const auto& [id, count] : items)
         if (ItemFactory::getType(id) == ItemType::Consumable)
             result.push_back({ id, consumableDB.at(id).base.name, count,
-                               "HP +" + std::to_string(consumableDB.at(id).hp) });
+                               "HP +" + std::to_string(static_cast<int>(consumableDB.at(id).hpRatio * 100.0f)) + "%" });
     return result;
 }
 
@@ -91,7 +91,7 @@ std::string Inventory::useConsumable(int id, Player& player)
     Consumable& item = consumableDB[id];
 
     // 체력 회복
-    int healed = std::min(item.hp, player.getMaxHP() - player.getCurHP());
+    int healed = std::min(static_cast<int>((float)player.getMaxHP() * item.hpRatio), player.getMaxHP() - player.getCurHP());
     player.setCurHP(player.getCurHP() + healed);
 
     std::string str;

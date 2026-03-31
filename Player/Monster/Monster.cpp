@@ -27,6 +27,7 @@ Monster::Monster(
     this->maxExp = maxExp;
     this->minGold = minGold;
     this->maxGold = maxGold;
+    this->specialMessage = "";
 }
 
 bool Monster::isDodged(int dodge)
@@ -45,9 +46,12 @@ int Monster::calculateDamage(int atk, int def, bool is_defence)
     return damage;
 }
 
-int Monster::attack(Player& player, bool is_defence)
+int Monster::attack(Player& player, bool is_defence, string& action_str)
 {
-    return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence));
+    if (specialMessage.empty())
+        return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence));
+    else
+        return 0;
 }
 
 int Monster::TakeDamage(int damage, bool canDodge)
@@ -129,4 +133,14 @@ int Monster::getMaxGold()
 int Monster::getMinGold()
 {
     return minGold;
+}
+
+std::string Monster::getSpecialMessage()
+{
+    return specialMessage;
+}
+
+void Monster::ClearSpecialMessage()
+{
+    specialMessage.clear();
 }

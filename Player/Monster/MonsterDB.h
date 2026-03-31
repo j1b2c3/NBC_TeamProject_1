@@ -35,7 +35,7 @@ public:
     {
     }
 
-    int attack(Player& player, bool is_defence) override;
+    int attack(Player& player, bool is_defence, string& action_str) override;
 };
 
 class BossGenerator
