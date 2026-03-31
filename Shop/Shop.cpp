@@ -29,66 +29,79 @@ void Shop::showShopMenu(Player* player)
                 switch (subChoice)
                 {
                 case 1:
+                {
+                    // 1. 플레이어의 직업 이름 가져오기 (예: "Warrior", "Mage")
+                    std::string playerJob = player->getJobName();
+
+                    std::cout << "\n=== 무기 구매 목록 ===\n";
+                    int index = 1;
+                    std::map<int, int> indexToID;
+
+                    // 무기 목록 출력 (직업 필터링 적용)
+                    for (auto& pair : weaponDB)
                     {
-                        // 무기 구매 시스템
-                        std::cout << "\n=== 무기 구매 목록 ===\n";
-                        int index = 1;
-                        std::map<int, int> indexToID;
+                        auto& item = pair.second; 
+                        if (!item.base.canBuy) continue;
 
-                        // 무기 목록 출력 (이름만 출력)
-                        for (auto& pair : weaponDB)
+                        std::string itemTag = item.base.jobTag;
+ 
+                        if (itemTag != "Common" && itemTag != playerJob) continue;
+
+                        // 필터를 통과한 아이템만 번호를 매겨 출력
+                        std::cout << "[" << index << "] " << item.base.name << " (" << item.base.price << "G)\n";
+                        indexToID[index] = pair.first; 
+                        index++;
+                    }
+
+                    if (index == 1) {
+                        std::cout << "[!] 현재 직업(" << playerJob << ")으로 구매 가능한 아이템이 없습니다.\n";
+                        break;
+                    }
+
+                    std::cout << "----------------------\n";
+                    std::cout << "확인할 무기 번호 선택 >> ";
+                    int choice;
+                    std::cin >> choice;
+
+                    // 무기 상세 정보 및 최종 확인 (기존 로직 유지)
+                    if (indexToID.count(choice))
+                    {
+                        int itemId = indexToID[choice];
+                        auto& selectedWeapon = weaponDB[itemId];
+
+                        displayBuyDetail(selectedWeapon.base, selectedWeapon.attack, "공격력");
+
+                        int confirm;
+                        std::cin >> confirm;
+
+                        if (confirm == 1)
                         {
-                            if (!pair.second.base.canBuy) continue;
-                            std::cout << "[" << index << "] " << pair.second.base.name << "\n";
-                            indexToID[index] = pair.first;
-                            index++;
-                        }
-
-                        std::cout << "----------------------\n";
-                        std::cout << "확인할 무기 번호 선택 >> ";
-                        int choice;
-                        std::cin >> choice;
-
-                        // 무기 상세 정보 및 최종 확인
-                        if (indexToID.count(choice))
-                        {
-                            int itemId = indexToID[choice];
-                            auto& selectedWeapon = weaponDB[itemId];
-
-                            displayBuyDetail(selectedWeapon.base, selectedWeapon.attack, "공격력");
-
-                            int confirm;
-                            std::cin >> confirm;
-
-
-                            if (confirm == 1)
+                            if (player->getGold() >= selectedWeapon.base.price)
                             {
-                                if (player->getGold() >= selectedWeapon.base.price)
+                                player->subGold(selectedWeapon.base.price);
+                                if (player->getInventory() != nullptr)
                                 {
-                                    player->subGold(selectedWeapon.base.price);
-                                    if (player->getInventory() != nullptr)
-                                    {
-                                        player->getInventory()->addItem(itemId, 1);
-                                    }
-                                    std::cout << "\n[!] " << selectedWeapon.base.name << " 1개를 구매했습니다!\n";
-                                    std::cout << "현재 남은 금화: " << player->getGold() << "G\n";
+                                    player->getInventory()->addItem(itemId, 1);
                                 }
-                                else
-                                {
-                                    displayNoGold();
-                                }
+                                std::cout << "\n[!] " << selectedWeapon.base.name << " 1개를 구매했습니다!\n";
+                                std::cout << "현재 남은 금화: " << player->getGold() << "G\n";
                             }
                             else
                             {
-                                displayBuyCancel();
+                                displayNoGold();
                             }
                         }
                         else
                         {
-                            displayNoNumber();
+                            displayBuyCancel();
                         }
-                        break;
                     }
+                    else
+                    {
+                        displayNoNumber();
+                    }
+                    break;
+                }
 
                 case 2:
                     {

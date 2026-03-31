@@ -102,8 +102,11 @@ void showInventoryUI(Player& player)
     }
 }
 
-void showConsumableListUI(const std::map<int, int>& consumables)
+void showConsumableListUI(Player& player)
 {
+    Inventory& inventory = *player.getInventory();
+    const auto& consumables = inventory.getItems();
+    
     cout << "+==============================================================================+" << '\n';
     cout << "|                          [ 소모품 목록 ]                                         |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -116,6 +119,7 @@ void showConsumableListUI(const std::map<int, int>& consumables)
 
     for (const auto& [id, count] : consumables)
     {
+        if (ItemFactory::getType(id) != ItemType::Consumable) continue;
         if (const Consumable* c = ItemManager::GetInstance().GetConsumable(id))
         {
             string desc = "HP +" + to_string(c->hp);
