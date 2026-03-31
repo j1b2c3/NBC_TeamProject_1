@@ -29,8 +29,7 @@ int Thief::Attack(Monster& monster, string& action_str)
         action_str = "";
     }
 
-    monster.TakeDamage(damage, true);
-    return damage;
+    return monster.TakeDamage(damage, true);
 }
 
 void Thief::level_Up()

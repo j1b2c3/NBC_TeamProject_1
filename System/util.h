@@ -45,7 +45,7 @@ static bool InputDigit(int& out)
     getline(std::cin, str);
 
     // 입력은 숫자만
-    if (str.length() > 0 && all_of(str.begin(), str.end(), [](char c) { return isdigit(c); }))
+    if (str.length() > 0 && all_of(str.begin(), str.end(), [](char c) { return c >= 0 && isdigit(c); }))
     {
         out = stoi(str);
         return true;

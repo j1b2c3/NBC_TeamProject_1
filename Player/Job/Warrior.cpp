@@ -17,8 +17,7 @@ int Warrior::Attack(Monster& monster, string& action_str)
     if (damage < 0) damage = 0;
 
     action_str = "";
-    monster.TakeDamage(damage, true);
-    return damage;
+    return monster.TakeDamage(damage, true);
 }
 
 void Warrior::level_Up()

@@ -50,19 +50,15 @@ int Monster::attack(Player& player, bool is_defence)
     return player.TakeDamage(calculateDamage(atk, player.getDef(), is_defence));
 }
 
-void Monster::TakeDamage(int damage, bool canDodge)
+int Monster::TakeDamage(int damage, bool canDodge)
 {
     if (isDodged(dodge))
-    {
-        cout << "몬스터가 공격을 회피했습니다!" << '\n';
-        return;
-    }
+        return -1;
+
     curHP -= damage;
-    if (curHP <= 0)
-    {
+    if (curHP < 0)
         curHP = 0;
-        cout << "몬스터를 처치했습니다!" << '\n';
-    }
+    return damage;
 }
 
 inline int getRandom(int min, int max)

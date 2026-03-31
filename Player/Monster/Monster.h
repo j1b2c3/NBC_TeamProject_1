@@ -39,7 +39,7 @@ public:
 
     virtual int attack(Player& player, bool is_defence);
 
-    void TakeDamage(int damage, bool canDodge);
+    int TakeDamage(int damage, bool canDodge);
     void giveLoot(Player& player);
 
     int calculateDamage(int atk, int def, bool is_defence);

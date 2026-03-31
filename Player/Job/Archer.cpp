@@ -15,10 +15,10 @@ int Archer::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
     // 최소 5 대미지
-    if (damage < 5) damage = 5;
-
-    monster.TakeDamage(damage, false);
-    return damage;
+    if (damage < 5) 
+        damage = 5;
+    action_str = "";
+    return monster.TakeDamage(damage, false);
 }
 
 void Archer::level_Up()
