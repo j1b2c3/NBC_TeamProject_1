@@ -16,9 +16,13 @@ Archer::Archer(string nickname) : Player(nickname)
 int Archer::Attack(Monster& monster, string& action_str)
 {
     int damage = calculateDamage(atk, monster.getDef());
-    // 최소 5 대미지
-    damage = std::max(damage, 5);
     action_str = "";
+    int range = damage / 5; 
+    
+    if (range <= 0) range = 1;
+    int ad = rand() % range;
+    damage = damage + ad;
+    
     return monster.TakeDamage(damage, false);
 }
 
