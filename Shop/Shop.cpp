@@ -119,7 +119,7 @@ void Shop::showShopMenu(Player* player)
                 case 2:
                     {
                         // 무기 판매 시스템
-                        cout << "\n=== 소지 무기 목록 ===\n";
+                        cout << "\n\n=== 소지 무기 목록 ===\n";
                         int index = 1;
                         map<int, int> indexToID;
 
@@ -131,7 +131,7 @@ void Shop::showShopMenu(Player* player)
                             if (weaponDB.count(itemId))
                             {
                                 cout << "[" << index << "] " << weaponDB[itemId].base.name
-                                    << " (보유: " << pair.second << "개)\n";
+                                    << " (보유: " << pair.second << "개) \n";
                                 indexToID[index] = itemId;
                                 index++;
                             }
@@ -284,7 +284,7 @@ void Shop::showShopMenu(Player* player)
                 case 2:
                     {
                         // 방어구 판매 시스템
-                        cout << "\n=== 소지 방어구 목록 ===\n";
+                        cout << "\n\n=== 소지 방어구 목록 ===\n";
                         int index = 1;
                         map<int, int> indexToID;
 

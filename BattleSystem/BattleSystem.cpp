@@ -38,9 +38,9 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
                 log.line_2.assign(action_str + to_string(player_dmg) + "의 피해를 입혔다! ");
             }
             else if (player_dmg == 0)
-                log.line_2.assign("공격을 방어했다!");
+                log.line_2.assign(monster.getName() + "(이)가 공격을 방어했다!");
             else
-                log.line_2.assign("공격을 회피했다! ");
+                log.line_2.assign(monster.getName() + "(이)가 공격을 회피했다! ");
             break;
         case 1:
             log.line_1.assign("방어를 시도했다!");

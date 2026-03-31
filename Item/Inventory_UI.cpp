@@ -39,8 +39,8 @@ void displayInventory(Player& player)
     for (const auto& item : weapons)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
 
@@ -50,8 +50,8 @@ void displayInventory(Player& player)
     for (const auto& item : armors)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
 
@@ -63,8 +63,8 @@ void displayInventory(Player& player)
     for (const auto& item : consumables)
     {
         string fullDesc = "(" + item.desc + ")";
-        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << left << setw(34)
-            << fullDesc << "|" << '\n';
+        cout << "|      - " << left << setw(30) << item.name << " x" << setw(3) << item.count << " " << right << setw(29)
+            << fullDesc << "     |" << '\n';
     }
 
     cout << "|                                                                              |" << '\n';
@@ -124,8 +124,8 @@ void showConsumableListUI(Player& player)
             string desc = "HP +" + to_string(c->hp);
             string fullDesc = "(" + desc + ")";
 
-            cout << "|      - " << left << setw(30) << c->base.name
-                << " x" << setw(3) << count << setw(25) << fullDesc << "   |" << '\n';
+            cout << "|      - " << left << setw(20) << c->base.name
+                << " x" << setw(3) << count << right << setw(20) << fullDesc << "                  |" << '\n';
         }
     }
 
@@ -170,7 +170,7 @@ void handleWeaponAction(Player& player)
         string fullDesc = "(" + weapons[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << weapons[i].name
-            << " x" << setw(3) << weapons[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << weapons[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -223,7 +223,7 @@ void handleArmorAction(Player& player)
         string fullDesc = "(" + armors[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << armors[i].name
-            << " x" << setw(3) << armors[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << armors[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
@@ -275,7 +275,7 @@ void handleConsumableAction(Player& player)
         string fullDesc = "(" + consumables[i].desc + ")";
 
         cout << "|      " << left << setw(3) << num << setw(30) << consumables[i].name
-            << " x" << setw(3) << consumables[i].count << setw(25) << fullDesc << "         |" << '\n';
+            << " x" << setw(3) << consumables[i].count << right << setw(25) << fullDesc << "         |" << '\n';
     }
     cout << "|                                                                              |" << '\n';
     cout << "+==============================================================================+" << '\n';
