@@ -1,6 +1,10 @@
 ﻿#include "ShopLogic.h"
+
+#include <conio.h>
+
 #include "../Player/Player/Player.h"
 #include <iostream>
+#include <Windows.h>
 
 // 구매
 void buyItem(int id, ItemType type, int amount, Player* player)
@@ -32,7 +36,8 @@ void buyItem(int id, ItemType type, int amount, Player* player)
 
     if (player->getGold() < cost)
     {
-        std::cout << "금화 부족\n";
+        std::cout << "[X] 금화가 부족합니다.\n";
+        _getch();
         return;
     }
 

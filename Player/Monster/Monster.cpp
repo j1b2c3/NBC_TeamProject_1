@@ -36,9 +36,9 @@ bool Monster::isDodged(int dodge)
 
 int Monster::calculateDamage(int atk, int def, bool is_defence)
 {
-    if (is_defence) def *= 2;
     int damage = atk * (100.0f / (100.0f + def));
-
+    if (is_defence) damage /= 2;
+    
     if (damage <= 0)
         damage = is_defence ? 0 : 1;
 

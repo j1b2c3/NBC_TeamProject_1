@@ -43,8 +43,8 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
                 log.line_2.assign(monster.getName() + "(이)가 공격을 회피했다! ");
             break;
         case 1:
-            log.line_1.assign("방어를 시도했다!");
-            log.line_2.assign("이번 턴 동안 방어력이 두 배 증가한다.");
+            log.line_1.assign("방어를 준비했다!");
+            log.line_2.assign("이번 턴 동안 받는 피해가 감소합니다.");
             bPlayer_is_defence = true;
             break;
         case 2:

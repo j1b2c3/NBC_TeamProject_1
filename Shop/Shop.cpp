@@ -98,6 +98,7 @@ void Shop::showShopMenu(Player* player)
                                     }
                                     cout << "\n[!] " << selectedWeapon.base.name << " 1개를 구매했습니다!\n";
                                     cout << "현재 남은 금화: " << player->getGold() << "G\n";
+                                    _getch();
                                 }
                                 else
                                 {
@@ -262,11 +263,12 @@ void Shop::showShopMenu(Player* player)
 
                                         cout << "\n[!] " << selectedArmor.base.name << " 1개를 구매했습니다!\n";
                                         cout << "현재 남은 금화: " << player->getGold() << "G\n";
+                                        _getch();
                                     }
-                                }
-                                else
-                                {
-                                    displayNoGold();
+                                    else
+                                    {
+                                        displayNoGold();
+                                    }
                                 }
                             }
                             else

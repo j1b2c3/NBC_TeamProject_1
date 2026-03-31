@@ -6,7 +6,7 @@ int FinalBoss::attack(Player& player, bool is_defence)
     if (isCharging)
     {
         cout << "[BOSS] 보스가 준비했던 강력한 일격을 가합니다! (데미지 2배)" << '\n';
-        int heavyDamage = calculateDamage(atk * 2, player.getDef(), is_defence);
+        int heavyDamage = calculateDamage(atk * 3, player.getDef(), is_defence);
         player.TakeDamage(heavyDamage);
 
         isCharging = false;
