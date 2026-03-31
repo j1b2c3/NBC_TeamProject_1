@@ -44,21 +44,17 @@ void buyItem(int id, ItemType type, int amount, Player* player)
     }
 }
 
-    // 1. 함수의 '머리(선언부)'를 반드시 써주어야 합니다!
     void sellItem(int id, ItemType type, int amount, Player * player)
     {
-        // 0. 안전장치: 플레이어나 인벤토리가 없으면 중단
+        // 플레이어나 인벤토리가 없으면 중단
         if (player == nullptr || player->getInventory() == nullptr) return;
 
         int qty = 0;
         int sellGold = 0;
         Inventory* inv = player->getInventory();
 
-        // 1. 수량 파악 및 판매금 계산
-        // 인벤토리의 getItems()를 통해 현재 가지고 있는 아이템 맵을 가져옵니다.
         auto& items = inv->getItems();
 
-        // 아이템이 가방에 없으면 판매 불가
         if (items.find(id) == items.end()) {
             cout << "팔 수 있는 아이템이 없습니다.\n";
             return;
@@ -78,10 +74,10 @@ void buyItem(int id, ItemType type, int amount, Player* player)
             break;
         }
 
-        // 2. 가방에서 제거
+        // 2. 판매가 되면 아이템을 가방에서 제거
         inv->removeItem(id, qty);
 
-        // 3. [수정] 돈 추가 (getGold는 확인만 하는 함수, 더할 때는 addGold!)
+        // 3. 판매하고 판매한 돈 추가 
         player->addGold(sellGold);
 
         cout << "판매 완료! " << qty << "개를 팔아 +" << sellGold << "G를 획득했습니다.\n";
