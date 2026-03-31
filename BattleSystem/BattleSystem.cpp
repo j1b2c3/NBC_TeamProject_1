@@ -3,12 +3,12 @@
 #include <vector>
 
 #include "BattleSystem.h"
-#include "../Item/ItemDB.h"
 
 using namespace std;
 
 bool BattleSystem::Battle(Player& player, Monster& monster)
 {
+    player.isBattle = true;
     string msg = "전투가 시작되었다!";
     bProgress = true; // 전투가 진행중인가?
     bVictory = false; // 승리유무
@@ -21,7 +21,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         int player_dmg;
         int monster_dmg;
         //플레이어 페이즈
-        log.line_2 = "    [1] 공격           [2] 방어           [3] 아이템          [4] 도망";
+        log.line_2.assign("    [1] 공격           [2] 방어           [3] 아이템          [4] 도망");
         displayBattle(player, monster, curPos, log, "행동을 선택하세요 >> ");
         InputDigit(choice);
         choice--;
@@ -48,9 +48,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
             bPlayer_is_defence = true;
             break;
         case 2:
-            log.line_1.assign("아이템을 사용했다!");
-            log.line_1 = "                        어떤 아이템을 사용할까?";
-            //player.getInventory()->getConsumables() 호출 시 vector<ItemInfo> 반환
+            if (!ChooseItem(player, monster)) continue;
             break;
         case 3:
             log.line_1.assign("도주했다...");
@@ -84,6 +82,7 @@ bool BattleSystem::Battle(Player& player, Monster& monster)
         if (!bProgress) break;
     }
     Windows::SetCursorPos(curPos);
+    player.isBattle = false;
     return bVictory;
 }
 
@@ -132,4 +131,41 @@ void BattleSystem::CheckState(Player& player, Monster& monster)
         bVictory = true;
         bProgress = false;
     }
+}
+
+bool BattleSystem::ChooseItem(Player& player, Monster& monster)
+{
+    vector<ItemInfo> items = player.getInventory()->getConsumables();
+    int select;
+    //int page = 0;
+    log.line_1.assign("                        어떤 아이템을 사용할까?");
+    //log.line_2.assign("                                                                            ");
+    //log.line_2.assign("   [1]대형 체력 포션x1     [1]대형 체력 포션x1     [1]대형 체력 포션x1      ");
+    log.line_2.assign("   ");
+    for (int i = 0; i < 4 && i < items.size(); i++)
+    {
+        string tempStr;
+        int len;
+        tempStr.assign("[" + to_string(i + 1) + "]" + items[i].name + "x" + to_string(items[i].count));
+        len = tempStr.length();
+        log.line_2.append(tempStr);
+        for (int j = len; j < 24; j++)
+        {
+            log.line_2.append(" ");
+        }
+    }
+    log.line_3.assign("                             [0]돌아가기");
+    displayBattle(player, monster, curPos, log, "아이템을 선택하세요 >> ");
+    InputDigit(select);
+    if (select == 0)
+        return false;
+    else if (select >= 1 && select <= items.size())
+    {
+        log.line_1.assign(items[select - 1].name + "을 사용했다!");
+        log.line_2.assign(player.getInventory()->useConsumable(items[select - 1].id, player));
+        log.line_3.assign("");
+        return true;
+    }
+    log.line_3 = "                            잘못된 입력입니다.";
+    return false;
 }

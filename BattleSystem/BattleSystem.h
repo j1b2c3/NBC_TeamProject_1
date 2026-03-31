@@ -29,6 +29,7 @@ class BattleSystem
     }
 
     void CheckState(Player& player, Monster& monster);
+    bool ChooseItem(Player& player, Monster& monster);
     BattleLog log;
     bool bProgress = true;
     bool bVictory = false;

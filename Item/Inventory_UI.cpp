@@ -304,7 +304,7 @@ void handleConsumableAction(Player& player)
         {
             if (++idx == choice)
             {
-                inventory.useConsumable(id, player);
+                cout << "[아이템 사용] " + consumableDB[id].base.name << " → " << inventory.useConsumable(id, player) << "\n";
                 return;
             }
         }

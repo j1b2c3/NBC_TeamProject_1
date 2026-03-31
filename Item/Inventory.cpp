@@ -48,7 +48,7 @@ std::vector<ItemInfo> Inventory::getWeapons() const
     std::vector<ItemInfo> result;
     for (const auto& [id, count] : items)
         if (ItemFactory::getType(id) == ItemType::Weapon)
-            result.push_back({ weaponDB.at(id).base.name, count,
+            result.push_back({ id, weaponDB.at(id).base.name, count,
                                "공격력 +" + std::to_string(weaponDB.at(id).attack) });
     return result;
 }
@@ -58,7 +58,7 @@ std::vector<ItemInfo> Inventory::getArmors() const
     std::vector<ItemInfo> result;
     for (const auto& [id, count] : items)
         if (ItemFactory::getType(id) == ItemType::Armor)
-            result.push_back({ armorDB.at(id).base.name, count,
+            result.push_back({ id, armorDB.at(id).base.name, count,
                                "방어력 +" + std::to_string(armorDB.at(id).defense) });
     return result;
 }
@@ -68,26 +68,24 @@ std::vector<ItemInfo> Inventory::getConsumables() const
     std::vector<ItemInfo> result;
     for (const auto& [id, count] : items)
         if (ItemFactory::getType(id) == ItemType::Consumable)
-            result.push_back({ consumableDB.at(id).base.name, count,
+            result.push_back({ id, consumableDB.at(id).base.name, count,
                                "HP +" + std::to_string(consumableDB.at(id).hp) });
     return result;
 }
 
 // 소모품 사용
-void Inventory::useConsumable(int id, Player& player) 
+std::string Inventory::useConsumable(int id, Player& player) 
 {                                                                                                                                                                                                                                                           
     // 소모품인지 확인                                                                                                                                                                                                                                                                                            
     if (ItemFactory::getType(id) != ItemType::Consumable) 
-    {                                                                                                                                                                                                                                                       
-        std::cout << "[오류] 소모품이 아닙니다.\n";
-        return;
+    {
+        return "[오류] 소모품이 아닙니다.";
     }
 
     // 보유 확인
     if (!hasItem(id)) 
     {
-        std::cout << "[오류] 해당 아이템이 없습니다.\n";
-        return;
+        return "[오류] 해당 아이템이 없습니다.";
     }
 
     Consumable& item = consumableDB[id];
@@ -96,12 +94,13 @@ void Inventory::useConsumable(int id, Player& player)
     int healed = std::min(item.hp, player.getMaxHP() - player.getCurHP());
     player.setCurHP(player.getCurHP() + healed);
 
-    std::cout << "[아이템 사용] " << item.base.name
-              << " → HP +" << healed
-              << " (현재 HP: " << player.getCurHP() << "/" << player.getMaxHP() << ")\n";
+    std::string str;
+    str.assign("HP +" + to_string(healed)
+        + " (현재 HP: " + to_string(player.getCurHP()) + "/" + to_string(player.getMaxHP()) + ")");
 
     // 사용 후 제거
     removeItem(id);
+    return str;
 }
 
 // 무기 장착

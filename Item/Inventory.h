@@ -5,6 +5,7 @@
 
 struct ItemInfo 
 {
+    int id;
     std::string name;
     int count;
     std::string desc;
@@ -23,12 +24,13 @@ public:
     Inventory() : equippedWeaponId(0), equippedArmorId(0)
     {
         items[301] = 3; // 채력 포션 3개
+        items[302] = 3; // 채력 포션 3개
     }
     
     void addItem(int id, int amount = 1);
     void removeItem(int id, int amount = 1);
     
-    void useConsumable(int id, Player& player);
+    std::string useConsumable(int id, Player& player);  // 반환값은 메세지이다.
     void equipWeapon(int id, Player& player);
     void equipArmor(int id, Player& player);
     void unequipWeapon(Player& player);

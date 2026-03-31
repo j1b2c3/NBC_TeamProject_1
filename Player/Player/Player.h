@@ -63,5 +63,6 @@ public:
     void setDef(int def);
     void setDodge(int dodge);
     void setGold(int gold);
+    bool isBattle = false;  //전투 중인가?
 };
 
