@@ -2,6 +2,9 @@
 
 #include "dungeonUI.h"
 #include "../player/Player/Player.h"
+#include "../Item/Inventory_UI.h"
+#include "../Shop/ShopSystem.h"
+
 
 void dungeonManager::Initialize()
 {
@@ -9,6 +12,7 @@ void dungeonManager::Initialize()
     b_Wincheck = true;
     b_isShopVisited = false;
 }
+
 string getAreaName(int stageLevel)
 {
     switch (stageLevel)
@@ -45,7 +49,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
 
         int Select;
         InputDigit(Select);
-        
+
         switch (Select)
         {
         case 1:
@@ -109,9 +113,7 @@ void dungeonManager::StartDungeon(Player* Player_) // player 데이터와 monste
             break;
         case 2: // 아이템
 
-            // Player_->getInventory()->displayEquipped(); // 장비 호출
-            // Player_->getInventory()->displayItems(); // 아이템 호출
-            // showInventoryUI();
+            showInventoryUI(*Player_);
             break;
         case 3: //휴식 
             Player_->setCurHP(Player_->getMaxHP()); // 체력 만땅 딴거 필요한게 있으면 호출 플리즈
@@ -137,7 +139,7 @@ void dungeonManager::EnterShop(Player* player_)
 
         if (Shop_Select == 1)
         {
-            // TODO : 상점 연결
+            ShopSystem::showShopMenu(player_);
             cout << " ------ 상점에서 나갑니다 ----- " << '\n';
             break; // 끝나면 break해서 함수 탈출
         }

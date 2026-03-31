@@ -5,9 +5,11 @@
 
 using namespace std;
 
-void displayShop(int playerGold) {
+void displayShop(int playerGold)
+{
     string goldDisplay = to_string(playerGold) + "G";
 
+    system("cls");
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     ######     ##     ##      #######      ########                          |" << '\n';
@@ -30,7 +32,8 @@ void displayShop(int playerGold) {
 }
 
 // 무기 방어구 통합 메뉴판 UI
-void displayShopMeun(std::string title) {
+void displayShopMenu(std::string title)
+{
     std::cout << "\n=== " << title << " 메뉴 ===\n";
     std::cout << "1. 구매\n";
     std::cout << "2. 판매\n";
@@ -38,9 +41,10 @@ void displayShopMeun(std::string title) {
 }
 
 // 무기 방어구 통합 판매 시스템 UI
-void displaySellDetail(const ItemBase& base, int statValue, std::string statName, int ownedCount) {
+void displaySellDetail(const ItemBase& base, int statValue, std::string statName, int ownedCount)
+{
     std::cout << "\n--- [ " << base.name << " 판매 ] ---\n";
-    std::cout << statName << " : " << statValue << "\n";       // "공격력" 혹은 "방어력" 출력
+    std::cout << statName << " : " << statValue << "\n"; // "공격력" 혹은 "방어력" 출력
     std::cout << "판매가 : " << base.sellprice << "G\n";
     std::cout << "현재 보유량: " << ownedCount << "개\n";
     std::cout << "------------------------\n";
@@ -48,7 +52,8 @@ void displaySellDetail(const ItemBase& base, int statValue, std::string statName
 }
 
 // 무기 방어구 통합 구매 시스템 UI
-void displayBuyDetail(const ItemBase& base, int statValue, std::string statName) {
+void displayBuyDetail(const ItemBase& base, int statValue, std::string statName)
+{
     std::cout << "\n--- [ " << base.name << " 구매 ] ---\n";
     std::cout << " 가격    : " << base.price << "G\n";
     std::cout << " " << statName << "  : " << statValue << "\n"; // 전달받은 이름과 수치 출력
@@ -57,18 +62,25 @@ void displayBuyDetail(const ItemBase& base, int statValue, std::string statName)
 }
 
 // 통합 골드 부족 UI
-void displayNoGold() {
+void displayNoGold()
+{
     std::cout << "\n[X] 금화가 부족합니다.\n";
 }
+
 // 통합 구매 취소 UI
-void displayBuyCancel() {
+void displayBuyCancel()
+{
     std::cout << "\n[X] 구매를 취소했습니다.\n";
 }
+
 // 통합 판매 취소 UI
-void displaySellCancel() {
+void displaySellCancel()
+{
     std::cout << "\n[X] 판매를 취소했습니다.\n";
 }
+
 // 통합 번호 선택 실수 UI
-void displayNoNumber() {
+void displayNoNumber()
+{
     std::cout << "\n[X] 잘못된 번호입니다.\n";
 }

@@ -14,19 +14,19 @@ using namespace std;
 void displayInventory(Player& player)
 {
     Inventory& inventory = *player.getInventory();
-    
-    auto weapons     = inventory.getWeapons();
-    auto armors      = inventory.getArmors();
+
+    auto weapons = inventory.getWeapons();
+    auto armors = inventory.getArmors();
     auto consumables = inventory.getConsumables();
     displayInventoryHeader();
-    
+
     // 자산 정보
     string goldDisplay = to_string(player.getGold()) + " G";
     cout << "|  보유 금화: " << left << setw(65) << goldDisplay << "|" << '\n';
 
     string equippedWeapon = inventory.getEquippedWeaponName();
-    string equippedArmor  = inventory.getEquippedArmorName();
-    
+    string equippedArmor = inventory.getEquippedArmorName();
+
     string equippedDisplay = "무기: " + equippedWeapon + "    방어구: " + equippedArmor;
     cout << "|  [장착 중]  " << left << setw(65) << equippedDisplay << "|" << '\n';
 
@@ -56,8 +56,9 @@ void displayInventory(Player& player)
 
     // [3] 소모품 목록
     cout << "|  [3] 소모품                                                                  |" << '\n';
-    if (consumables.empty()) cout << "|      - (비어 있음)                                                           |" <<
-        '\n';
+    if (consumables.empty())
+        cout << "|      - (비어 있음)                                                           |" <<
+            '\n';
     for (const auto& item : consumables)
     {
         string fullDesc = "(" + item.desc + ")";
@@ -78,7 +79,7 @@ void displayInventory(Player& player)
 void showInventoryUI(Player& player)
 {
     Inventory& inventory = *player.getInventory();
-    
+
     while (true)
     {
         displayInventory(player);
@@ -129,6 +130,7 @@ void showConsumableListUI(const std::map<int, int>& consumables)
 
 void displayInventoryHeader()
 {
+    system("cls");
     cout << "+==============================================================================+" << '\n';
     cout << "|                                                                              |" << '\n';
     cout << "|     ####      ########      ########      ##     ##        ######            |" << '\n';
@@ -145,7 +147,7 @@ void handleWeaponAction(Player& player)
 {
     Inventory& inventory = *player.getInventory();
     auto weapons = inventory.getWeapons();
-    
+
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";
@@ -196,7 +198,7 @@ void handleArmorAction(Player& player)
 {
     Inventory& inventory = *player.getInventory();
     auto armors = inventory.getArmors();
-    
+
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";
@@ -247,7 +249,7 @@ void handleConsumableAction(Player& player)
 {
     Inventory& inventory = *player.getInventory();
     auto consumables = inventory.getConsumables();
-    
+
     displayInventoryHeader();
 
     string goldDisplay = to_string(player.getGold()) + " G";

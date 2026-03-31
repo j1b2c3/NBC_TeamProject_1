@@ -3,7 +3,7 @@
 
 void displayShop(int playerGold);
 
-void displayShopMeun(std::string title);
+void displayShopMenu(std::string title);
 
 void displayBuyDetail(const ItemBase& base, int statValue, std::string statName);
 
@@ -16,4 +16,3 @@ void displayBuyCancel();
 void displaySellCancel();
 
 void displayNoNumber();
-
