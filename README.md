@@ -10,6 +10,10 @@ IDE: Visual Studio / JetBrains Rider
 Version Control: Git
 
 실행 방법
+1. 
+exe 파일을 다운로드 및 실행합니다.
+
+2. 
 저장소를 클론합니다.
 
 Bash
@@ -17,6 +21,7 @@ git clone https://github.com/j1b2c3/NBC_TeamProject_1.git
 C++ 컴파일러가 포함된 IDE에서 프로젝트 파일을 엽니다.
 
 솔루션 빌드 후 실행 파일을 실행합니다.
+
 
 🎮 주요 기능
 1. 캐릭터 관리
